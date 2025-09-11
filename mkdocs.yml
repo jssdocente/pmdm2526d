@@ -4,20 +4,19 @@ use_directory_urls: false
 
 nav:
   - "Inicio": "index.md"
-  - "Android":
-    - "Inicio": temas/00-android/index.md
-    - "El lenguaje kotlin": 
-      - "Introducción": temas/00-android/00-kotlin/index.md
-    - "Jetpack Compose": 
-      - "Introducción": temas/00-android/00-compose/index.md
-    - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
-    - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
-    - "Capa de UI":
-    #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
-      - "Implementación": temas/00-android/03.1-capa-ui.md
-      - ""
-  - "UT1 - Visión General y Entorno de desarrollo":
-    - "Inicio": temas/01/index.md
+  # - "Android":
+  #   - "Inicio": temas/00-android/index.md
+  #   - "El lenguaje kotlin": 
+  #     - "Introducción": temas/00-android/00-kotlin/index.md
+  #   - "Jetpack Compose": 
+  #     - "Introducción": temas/00-android/00-compose/index.md
+  #   - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
+  #   - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
+  #   - "Capa de UI":
+  #   #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
+  #     - "Implementación": temas/00-android/03.1-capa-ui.md
+  #     - ""
+  - "UT1 - Visión General y Entorno de desarrollo": temas/01/index.md
   #   - "Introducción": temas/07/index.md
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
