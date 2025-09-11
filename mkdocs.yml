@@ -1,0 +1,154 @@
+site_name: 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+site_url: https://jssdocente.github.io/dwes2526
+use_directory_urls: false
+
+nav:
+  - "Inicio": "index.md"
+  - "Android":
+    - "Inicio": temas/00-android/index.md
+    - "El lenguaje kotlin": 
+      - "Introducción": temas/00-android/00-kotlin/index.md
+    - "Jetpack Compose": 
+      - "Introducción": temas/00-android/00-compose/index.md
+    - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
+    - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
+    - "Capa de UI":
+    #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
+      - "Implementación": temas/00-android/03.1-capa-ui.md
+      - ""
+  - "UT1 - Visión General y Entorno de desarrollo":
+    - "Inicio": temas/01/index.md
+  #   - "Introducción": temas/07/index.md
+  #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
+  #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
+  #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
+  #   - "4. Primer componente": "temas/07/04.primer-componente.md"
+  #   - "5. Estilando componente": "temas/07/05.estilando-nav-link.md"
+  #   - "6. Pasar datos a las vistas": "temas/07/06.pasar-datos-vista-y-rutas.md"
+  #   - "7. Autloading y namespaces": "temas/07/07.autoloading-namespaces-y-models.md"
+  #   - "8. Introducción a las migraciones": "temas/07/08.intro-migraciones.md"
+  #   - "9. Introducción a Eloquent": "temas/07/09.intro-eloquent.md"
+  #   - "10. Eloquent: Factorias": "temas/07/10.eloquent-factories.md"
+  #   - "11. Eloquent: relaciones básicas": "temas/07/11.eloquent-relations-basic.md"
+  #   - "12. Eloquent: relación many-to-many": "temas/07/12.eloquent-relations-many-to-many.md"
+  #   - "13. Eloquent: relación many-has-many-throught": "temas/07/13.eloquent-relations-has-many-throught.md"
+  # - "8.- Frameworks PHP - Laravel avanzado":
+  #   - "Introducción": temas/08/index.md
+  #   - "14. Database Seeders": "temas/08/14.database-seeders.md"
+  #   - "15. Formularios con Laravel y CRSF": "temas/08/15.forms-csrf.md"
+  #   - "16. Validación": "temas/08/16.forms-always-validate.md"
+  #   - "17. Formularios CRUD": "temas/08/17.forms-edit-update-delete.md"
+  #   - "18. Mejorando las rutas": "temas/08/18.mejorar-rutas.md"
+  #   - "19. Autenticación: crear sistema": "temas/08/19.create-login-register-system.md"
+  #   - "20. Autorización: proteger rutas": "temas/08/20.proteger-rutas-middleware.md"
+  #   - "21. Informando al usuario": "temas/08/21.flash-messages.md"
+  #   - "22. Control y Gestión de excepciones": "temas/08/22.Manejando-excepciones.md"
+
+  # - "8.- Servicios REST": "09rest.md"
+  # - "Anexo":
+  #   - "Anexo I. Arquitecturas Web": "extra/ArquitecturasWebExtendido.md"
+
+  # - "Guias":
+  #   - "Configuración entorno desarrollo PHP con Laravel Herd": "extra/guias/02.config_devenv_laravel_herd.md"
+
+theme:
+  language: es
+  favicon: imagenes/favicon.png
+  name: "material"
+  palette:
+    - scheme: default
+      primary: light blue
+      accent: "Teal"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Cambiar a modo noche
+    - scheme: slate 
+      primary: light blue
+      accent: "Teal"
+      toggle:
+        icon: material/toggle-switch
+        name: Cambiar a modo día
+  icon:
+    annotation: material/plus-circle
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: "imagenes/logofp.png"
+  features:
+    - header.autohide
+    - toc.integrate
+    - content.tabs.link
+    - content.code.copy
+    - content.code.select
+    - navigation.top
+    - content.code.annotate
+
+extra:
+  search:
+    language: "es"
+  social:
+    - icon: material/twitter
+      link: https://twitter.com/aitormedrano
+    - icon: material/email-edit
+      link: mailto:<a.medrano@edu.gva.es>
+  #analytics:
+    #provider: google
+    #property: G-X6D0LR7TC8
+
+plugins:
+  - search
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       skip_classes:
+         - custom-skip-class-name
+       auto_caption: false
+       caption_position: bottom
+       background: white
+       shadow: true
+       manual: false
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums: true
+      linenums_style: pymdownx-inline
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+  - footnotes
+  - meta
+  - sane_lists
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+copyright: 2024-2025 Jesús García - Licencia CC BY-NC-SA
