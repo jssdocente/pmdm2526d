@@ -455,3 +455,128 @@ No hay una tecnología superior a las otras en todos los aspectos. La elección 
 -   Para un blog, una tienda online o una herramienta de consulta donde la **inmediatez y el alcance** son lo más importante, una **PWA** es una solución fantástica, ya que combina la visibilidad de la web con una experiencia de usuario muy mejorada.
 
 -   Una **web tradicional** sigue siendo perfecta para contenido informativo simple o sitios donde la funcionalidad offline y las notificaciones no aportan un valor añadido significativo.
+  
+
+
+## Android: El SDK de Android y sus Versiones
+---------------------------------
+
+En este apartado vamos a desmontar la "caja de herramientas" que nos permite construir aplicaciones para Android. Hablaremos del **SDK**, de sus componentes y de cómo entender el sistema de versiones de Android, que es crucial para garantizar que nuestras apps funcionen correctamente en la mayoría de dispositivos posibles.
+
+Pensemos en nosotros como chefs que quieren preparar un plato específico (nuestra app). El SDK sería nuestra cocina profesional: no solo nos da los ingredientes (las APIs), sino también los cuchillos, los fogones y los manuales de recetas (las herramientas y la documentación). Sin esta cocina, solo tendríamos ideas, pero no podríamos cocinar nada.
+
+* * * * *
+
+#### A. ¿Qué es un SDK (Software Development Kit)?
+
+Un **SDK**, o Kit de Desarrollo de Software, es un conjunto de herramientas de software y programas proporcionados por un fabricante de hardware o software para permitir la creación de aplicaciones para una plataforma específica. En nuestro caso, Google nos proporciona el **SDK de Android** para que podamos crear apps para su sistema operativo.
+
+Un SDK típicamente incluye:
+
+-   **Bibliotecas de código (APIs):** Código preescrito que nos da acceso a las funcionalidades del dispositivo, como la cámara, el GPS o la interfaz de usuario.
+
+-   **Depurador (Debugger):** Una herramienta para encontrar y corregir errores en nuestro código.
+
+-   **Documentación:** Manuales, guías y ejemplos que nos enseñan a usar las herramientas y las bibliotecas.
+
+-   **Emuladores:** Programas que nos permiten probar nuestra app en un dispositivo virtual sin necesidad de tener un teléfono físico.
+
+En resumen, **el SDK es el paquete TODO-EN-UNO indispensable para empezar a desarrollar**.
+
+* * * * *
+
+### B. Los Componentes del SDK de Android
+
+Dentro de Android Studio, el SDK se gestiona a través del "SDK Manager" y se divide principalmente en dos pestañas: **SDK Platforms** y **SDK Tools**. Es vital entender la diferencia.
+
+#### **SDK Platforms**
+
+Piensa en una "Platform" como una **versión específica y completa del sistema operativo Android empaquetada para el desarrollador**. Cada "Platform" corresponde a un nivel de API concreto (que veremos más adelante).
+
+Cada paquete de "SDK Platform" incluye:
+
+-   El **`android.jar`**: Este es el archivo clave. Contiene todas las APIs y clases de esa versión de Android contra las que compilaremos nuestro código. Es nuestro "diccionario" de funcionalidades disponibles.
+
+-   **Imagen del Sistema (System Image):** Es una copia del sistema operativo Android que se usa para ejecutar los emuladores. Si quieres probar tu app en un emulador de Android 14, necesitas descargar la "System Image" de Android 14.
+
+**En resumen:** Si quieres que tu app use funciones de Android 14 y probarla en un emulador de Android 14, **necesitas descargar la "SDK Platform" para el nivel de API de Android 14.**
+
+#### **SDK Tools**
+
+Estas son las herramientas **independientes de la versión de Android** que usamos para desarrollar, depurar y probar nuestra aplicación. Son la maquinaria de nuestra cocina. No importa si cocinamos una receta de 2020 o de 2024, los fogones y cuchillos son los mismos (aunque se afilen y mejoren de vez en cuando).
+
+Las herramientas más importantes aquí son:
+
+-   **Android SDK Build-Tools:** Un conjunto de herramientas que toman nuestro código y lo compilan y empaquetan en un archivo `.apk` o `.aab` instalable.
+
+-   **Android Emulator:** El software que nos permite crear y ejecutar dispositivos virtuales.
+
+-   **Android SDK Platform-Tools:** Incluye herramientas de línea de comandos esenciales como:
+
+    -   **ADB (Android Debug Bridge):** El "puente" de comunicación entre nuestro ordenador y el dispositivo (físico o emulado). Nos permite instalar apps, depurar, ver logs, etc.
+
+    -   **Fastboot:** Para flashear el firmware del dispositivo.
+
+**En resumen:** Las **SDK Tools** son las herramientas generales para construir y probar, mientras que las **SDK Platforms** son los "ingredientes" específicos de cada versión de Android.
+
+* * * * *
+
+### C. Entendiendo las Versiones de Android: ¡La Clave está en el Nivel de API!
+
+Aquí es donde muchos estudiantes se lían. Google usa dos nombres para cada versión de Android, y es crucial saber cuál es el importante para nosotros, los desarrolladores.
+
+#### **Nombre Comercial (y postre 🍰)**
+
+Es el nombre público y de marketing que Google utiliza para cada gran lanzamiento. Suelen ser nombres de postres o dulces en orden alfabético (aunque esta tradición se ha relajado en los últimos años).
+
+-   **Ejemplos:** Android 8 (**O**reo), Android 9 (**P**ie), Android 10, Android 11, Android 12 (**S**now Cone).
+
+Este nombre es **útil para los usuarios**, pero **casi irrelevante para los desarrolladores**. Es una etiqueta de marketing.
+
+#### **Nivel de API (API Level)**
+
+Este es el **número que realmente nos importa**. El Nivel de API es un **único número entero** que identifica de forma inequívoca la versión del framework de APIs que ofrece una plataforma Android.
+
+Cuando se lanzan nuevas funcionalidades para desarrolladores (por ejemplo, un nuevo tipo de notificación o un permiso de privacidad), Google incrementa el Nivel de API.
+
+**¿Por qué es tan importante?** Porque nuestro código se escribe "contra" un nivel de API. Si usamos una función que se introdujo en el **API Level 33 (Android 13)**, nuestra aplicación **no funcionará** en un dispositivo con **API Level 32 (Android 12L)**, porque esa función simplemente no existe en ese sistema operativo. ¡La app "crasheará"!
+
+
+### D. Listado de Versiones de Android
+
+Las versiones de Android incluyen nombres de dulces y postres como Cupcake, Donut, Eclair, Froyo, Gingerbread, Honeycomb, Ice Cream Sandwich, Jelly Bean, KitKat, Lollipop, Marshmallow, Nougat, Oreo y Pie. Posteriormente, a partir de Android 10, se han numerado las versiones (Android 10, 11, 12, 13, 14, 15, etc.). 
+
+Versiones antiguas (con nombres de postres) 
+
+-   **Android 1.5** - Cupcake
+-   **Android 1.6** - Donut
+-   **Android 2.0/2.1** - Eclair
+-   **Android 2.2** - Froyo
+-   **Android 2.3** - Gingerbread
+-   **Android 3.0** - Honeycomb
+-   **Android 4.0** - Ice Cream Sandwich
+-   **Android 4.1 - 4.3** - Jelly Bean
+-   **Android 4.4** - KitKat
+-   **Android 5.0/5.1** - Lollipop
+-   **Android 6.0** - Marshmallow
+-   **Android 7.0/7.1** - Nougat
+-   **Android 8.0/8.1** - Oreo
+-   **Android 9.0** - Pie
+
+Versiones recientes (numeradas) 
+
+-   **Android 10** - Fue la primera versión sin nombre de postre.
+-   **Android 11** - Lanzada en 2020.
+-   **Android 12** - Lanzada en 2021, con una variante optimizada para pantallas grandes llamada Android 12L.
+-   **Android 13** - Lanzada en 2022.
+-   **Android 14** - Lanzada en 2023.
+-   **Android 15** - Lanzada en 2024.
+-   **Android 16** - Lanzada en 2025.
+
+Cómo verificar la versión de Android en tu dispositivo 
+
+-   Abre la aplicación Configuración o Ajustes.
+-   Desplázate hacia abajo y selecciona Acerca del teléfono o Acerca de la tablet.
+-   Busca la opción Versión de Android para ver la información de tu sistema operativo.
+
+ℹ️ Más información en: [Lista de versiones de Android](https://developer.android.com/about/versions?hl=es-419)
