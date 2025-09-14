@@ -8,6 +8,10 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2526/temas/00-android/00-kotlin/11-variables-tipos-datos.html">
       
       
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="12-expresiones-vs-sentencias.html">
       
       
       <link rel="icon" href="../../../imagenes/favicon.png">
@@ -15,7 +19,7 @@
     
     
       
-        <title>11 variables tipos datos - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Variables - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -118,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11 variables tipos datos
+              Variables
             
           </span>
         </div>
@@ -260,6 +264,883 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    El lenguaje kotlin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            El lenguaje kotlin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Variables
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11-variables-tipos-datos.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variables
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables-explicitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables explícitas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-implicitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables implícitas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos-primitivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos primitivos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos-compuestos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos compuestos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversion-de-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversión de tipos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-las-variables-mutables-e-inmutables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre las variables mutables e inmutables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sobre las variables mutables e inmutables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sobre-la-mutabilidad-y-la-inmutabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre la mutabilidad y la inmutabilidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-las-variables-nulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre las variables nulas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-las-variables-declaradas-como-const" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre las variables declaradas como const
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-las-strings-en-kotlin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre las Strings en Kotlin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expresiones vs Sentencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funciones y lambdas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Null safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Colecciones
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Colecciones
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-maps.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-sets.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    POO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objetos anónimos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enum classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genéricos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clases selladas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scope functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="51-corrutinas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Corrutinas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetpack Compose
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Jetpack Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ciclo de Vida aplicación Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitecturas en Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Capa de UI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capa de UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.1-capa-ui.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -297,9 +1178,10 @@
 <p>import CodeBlock from '@theme/CodeBlock';</p>
 <h1 id="tipos-de-variables-y-datos-en-kotlin">Tipos de variables y datos en Kotlin<a class="headerlink" href="#tipos-de-variables-y-datos-en-kotlin" title="Permanent link">¶</a></h1>
 <p>En Kotlin las variables pueden declararse de dos formas, de forma explícita o de forma implícita. En el caso de las variables explícitas, se debe indicar el tipo de dato que almacenará la variable, mientras que en las variables implícitas, el tipo de dato se infiere automáticamente por el compilador.</p>
-<p>:::warning[Sobre la inferencia de tipos]
-Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.
-:::</p>
+<div class="admonition warning">
+<p class="admonition-title">Sobre la inferencia de tipos</p>
+<p>Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.</p>
+</div>
 <h2 id="variables-explicitas">Variables explícitas<a class="headerlink" href="#variables-explicitas" title="Permanent link">¶</a></h2>
 <p>Para declarar una variable de forma explícita en Kotlin, se debe indicar el tipo de dato que almacenará la variable seguido del nombre de la variable y opcionalmente de su valor inicial.</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
@@ -378,19 +1260,21 @@ Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea u
 <li>Variable mutable y elementos inmutables: Se puede cambiar la variable, pero no los elementos.</li>
 <li>Variable mutable y elementos mutables: Se puede cambiar tanto la variable como los elementos.</li>
 </ul>
-<p>:::tip[Las variables inmutables y la programación funcional]
-Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. </p>
-<p>Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.
-:::</p>
+<div class="admonition tip">
+<p class="admonition-title">Las variables inmutables y la programación funcional</p>
+<p>Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. </p>
+<p>Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.</p>
+</div>
 <h2 id="sobre-las-variables-nulas">Sobre las variables nulas<a class="headerlink" href="#sobre-las-variables-nulas" title="Permanent link">¶</a></h2>
 <p>En Kotlin, las variables pueden ser nulas si se declara con el operador <code>?</code>. Esto permite que una variable pueda contener un valor nulo en lugar de un valor no nulo.</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, la variable <code>nombre</code> se declara como nula utilizando el operador <code>?</code>. Esto significa que la variable <code>nombre</code> puede contener un valor nulo en lugar de un valor no nulo.</p>
-<p>:::info[Sobre la seguridad de nulos en Kotlin]
-El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.</p>
-<p>Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.
-:::</p>
+<div class="admonition info">
+<p class="admonition-title">Sobre la seguridad de nulos en Kotlin</p>
+<p>El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.</p>
+<p>Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.</p>
+</div>
 <h2 id="sobre-las-variables-declaradas-como-const">Sobre las variables declaradas como const<a class="headerlink" href="#sobre-las-variables-declaradas-como-const" title="Permanent link">¶</a></h2>
 <p>En Kotlin, las variables se pueden declarar como <code>const</code> para indicar que su valor es constante en tiempo de compilación. Las variables <code>const</code> deben ser de tipo <code>val</code> y deben estar en el ámbito de un objeto o de un compañero de clase.</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.14159</span>

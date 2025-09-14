@@ -8,6 +8,10 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2526/temas/00-android/00-kotlin/13-funciones-lambdas.html">
       
       
+        <link rel="prev" href="12-expresiones-vs-sentencias.html">
+      
+      
+        <link rel="next" href="14-null-safety.html">
       
       
       <link rel="icon" href="../../../imagenes/favicon.png">
@@ -15,7 +19,7 @@
     
     
       
-        <title>13 funciones lambdas - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Funciones y lambdas - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -118,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13 funciones lambdas
+              Funciones y lambdas
             
           </span>
         </div>
@@ -260,6 +264,874 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    El lenguaje kotlin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            El lenguaje kotlin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expresiones vs Sentencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Funciones y lambdas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="13-funciones-lambdas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funciones y lambdas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-de-orden-superior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones de orden superior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones lambda
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-parametros-en-kotlin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Los parámetros en Kotlin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Los parámetros en Kotlin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-con-valores-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros con valores por defecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-de-una-funcion-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parámetros de una función lambda
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-palabra-reservada-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      La palabra reservada it
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-lambda-con-multiples-lineas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones lambda con múltiples líneas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-variable-de-argumentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Número variable de argumentos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-de-extension-extension-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones de extensión (Extension Functions)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Null safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Colecciones
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Colecciones
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-maps.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-sets.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    POO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objetos anónimos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enum classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genéricos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clases selladas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scope functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="51-corrutinas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Corrutinas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetpack Compose
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Jetpack Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ciclo de Vida aplicación Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitecturas en Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Capa de UI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capa de UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.1-capa-ui.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -349,10 +1221,11 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">saludar</span><span class="p">(</span><span class="s">"Juan"</span><span class="p">)</span><span class="w"> </span><span class="c1">// Hola, Juan!</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una función <code>saludar</code> que toma un parámetro de tipo <code>String</code> con un valor por defecto de <code>"Mundo"</code>. Si no se proporciona un argumento al llamar a la función, se utiliza el valor por defecto.</p>
-<p>:::tip[Funciones con valores por defecto y su no obligatoriedad, su uso en Compose]
-Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que te permiten definir componentes con valores por defecto y llamar a esos componentes sin proporcionar todos los argumentos.</p>
+<div class="admonition tip">
+<p class="admonition-title">Funciones con valores por defecto y su no obligatoriedad, su uso en Compose</p>
+<p>Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que te permiten definir componentes con valores por defecto y llamar a esos componentes sin proporcionar todos los argumentos.</p>
 <p>Por ejemplo, puedes definir un botón con un texto por defecto y un color por defecto, y luego llamar a ese botón sin proporcionar el texto o el color si deseas utilizar los valores por defecto.</p>
-<p></p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="nd">@Composable</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="nd">@Composable</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Boton</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aceptar"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Blue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Acción al hacer clic */</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
@@ -362,7 +1235,7 @@ Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a><span class="n">Boton</span><span class="p">()</span><span class="w"> </span><span class="c1">// Botón con texto "Aceptar" y color azul</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><a href="#__codelineno-5-9"><span class="linenos" data-linenos="9 "></span></a><span class="n">Boton</span><span class="p">(</span><span class="s">"Cancelar"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Red</span><span class="p">)</span><span class="w"> </span><span class="c1">// Botón con texto "Cancelar" y color rojo</span>
 </span></code></pre></div>
-:::<p></p>
+</div>
 <h3 id="parametros-de-una-funcion-lambda">Parámetros de una función lambda<a class="headerlink" href="#parametros-de-una-funcion-lambda" title="Permanent link">¶</a></h3>
 <p>En una función lambda en Kotlin, puedes especificar los tipos de los parámetros de entrada o dejar que el compilador infiera los tipos automáticamente.</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">suma</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">}</span>
@@ -374,9 +1247,10 @@ Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">cuadrado</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una función lambda <code>cuadrado</code> que toma un parámetro de tipo <code>Int</code> y devuelve un valor de tipo <code>Int</code>. </p>
-<p>:::info[Short explicativo en YouTube]
-<a href="https://youtube.com/shorts/h1SwVhEHAUs?si=Mqk7qXcF8qNsZMWf">Enlace al vídeo</a>
-:::</p>
+<div class="admonition info">
+<p class="admonition-title">Short explicativo en YouTube</p>
+<p><a href="https://youtube.com/shorts/h1SwVhEHAUs?si=Mqk7qXcF8qNsZMWf">Enlace al vídeo</a></p>
+</div>
 <p>La palabra reservada <code>it</code> se utiliza para referirse al único parámetro de entrada de la función lambda.</p>
 <p>Esto es útil cuando la función lambda tiene un solo parámetro y quieres hacer el código más conciso.</p>
 <h3 id="funciones-lambda-con-multiples-lineas">Funciones lambda con múltiples líneas<a class="headerlink" href="#funciones-lambda-con-multiples-lineas" title="Permanent link">¶</a></h3>
@@ -412,11 +1286,12 @@ Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos="6 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">textoInvertido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">invertir</span><span class="p">()</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una función de extensión <code>invertir</code> para la clase <code>String</code> que invierte el contenido de la cadena de texto. La función de extensión se llama como si fuera un método de la clase <code>String</code>.</p>
-<p>:::info[Funciones de extensión y funciones de orden superior]
-Las funciones de extensión y las funciones de orden superior son dos características poderosas de Kotlin que te permiten escribir código más conciso y reutilizable.</p>
+<div class="admonition info">
+<p class="admonition-title">Funciones de extensión y funciones de orden superior</p>
+<p>Las funciones de extensión y las funciones de orden superior son dos características poderosas de Kotlin que te permiten escribir código más conciso y reutilizable.</p>
 <p>Las funciones de extensión te permiten agregar nuevas funciones a las clases existentes sin heredar de ellas, mientras que las funciones de orden superior te permiten pasar funciones como argumentos a otras funciones.</p>
-<p>Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.
-:::</p>
+<p>Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.</p>
+</div>
 
 
 

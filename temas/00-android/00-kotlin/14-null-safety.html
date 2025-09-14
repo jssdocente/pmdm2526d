@@ -8,6 +8,10 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2526/temas/00-android/00-kotlin/14-null-safety.html">
       
       
+        <link rel="prev" href="13-funciones-lambdas.html">
+      
+      
+        <link rel="next" href="41-arrays.html">
       
       
       <link rel="icon" href="../../../imagenes/favicon.png">
@@ -15,7 +19,7 @@
     
     
       
-        <title>14 null safety - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Null safety - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -118,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              14 null safety
+              Null safety
             
           </span>
         </div>
@@ -260,6 +264,823 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    El lenguaje kotlin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            El lenguaje kotlin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expresiones vs Sentencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funciones y lambdas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Null safety
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="14-null-safety.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Null safety
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos-nulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos nulos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-de-seguridad-de-nulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores de seguridad de nulos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-de-extension-de-seguridad-de-nulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones de extensión de seguridad de nulos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusiones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Colecciones
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Colecciones
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-maps.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-sets.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    POO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objetos anónimos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enum classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genéricos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clases selladas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scope functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="51-corrutinas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Corrutinas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetpack Compose
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Jetpack Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ciclo de Vida aplicación Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitecturas en Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Capa de UI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capa de UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.1-capa-ui.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -299,10 +1120,11 @@
 <p>En Kotlin, el manejo de nulos es una parte fundamental del lenguaje. </p>
 <p>Kotlin está diseñado para evitar los errores de referencia nula que son comunes en otros lenguajes de programación, como Java. </p>
 <p>En Kotlin, los tipos de datos pueden ser nulos o no nulos, lo que te permite expresar de forma segura si un valor puede ser nulo o no.  </p>
-<p>:::info[Diferencia con Java]
-En Java, todos los tipos de datos pueden ser nulos, lo que puede llevar a errores de referencia nula si no se manejan correctamente. </p>
-<p>En Kotlin, los tipos de datos no nulos deben ser manejados de forma explícita, lo que ayuda a prevenir los errores de referencia nula.
-:::</p>
+<div class="admonition info">
+<p class="admonition-title">Diferencia con Java</p>
+<p>En Java, todos los tipos de datos pueden ser nulos, lo que puede llevar a errores de referencia nula si no se manejan correctamente. </p>
+<p>En Kotlin, los tipos de datos no nulos deben ser manejados de forma explícita, lo que ayuda a prevenir los errores de referencia nula.</p>
+</div>
 <h2 id="tipos-de-datos-nulos">Tipos de datos nulos<a class="headerlink" href="#tipos-de-datos-nulos" title="Permanent link">¶</a></h2>
 <p>En Kotlin, los tipos de datos pueden ser nulos o no nulos.</p>
 <ul>
@@ -365,11 +1187,14 @@ En Java, todos los tipos de datos pueden ser nulos, lo que puede llevar a errore
 <h2 id="conclusiones">Conclusiones<a class="headerlink" href="#conclusiones" title="Permanent link">¶</a></h2>
 <p>El manejo de nulos en Kotlin es una parte fundamental del lenguaje que te permite expresar de forma segura si un valor puede ser nulo o no.</p>
 <p>Al utilizar tipos de datos nulos y operadores de seguridad de nulos, puedes prevenir los errores de referencia nula y escribir código más robusto y seguro.</p>
-<p>:::tip[Recursos]
-- <a href="https://kotlinlang.org/docs/null-safety.html">Documentación oficial de Kotlin sobre seguridad de nulos</a>
-- <a href="https://play.kotlinlang.org/">Kotlin Playground</a>: Un entorno de programación en línea para probar y aprender Kotlin.
-- <a href="https://github.com/resuadam2/kotlin-apuntes">Apuntes Kotlin</a>: Un repositorio con apuntes y ejemplos de Kotlin.
-:::</p>
+<div class="admonition tip">
+<p class="admonition-title">Recursos</p>
+<ul>
+<li><a href="https://kotlinlang.org/docs/null-safety.html">Documentación oficial de Kotlin sobre seguridad de nulos</a></li>
+<li><a href="https://play.kotlinlang.org/">Kotlin Playground</a>: Un entorno de programación en línea para probar y aprender Kotlin.</li>
+<li><a href="https://github.com/resuadam2/kotlin-apuntes">Apuntes Kotlin</a>: Un repositorio con apuntes y ejemplos de Kotlin.</li>
+</ul>
+</div>
 
 
 

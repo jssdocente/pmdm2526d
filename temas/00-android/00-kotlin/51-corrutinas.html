@@ -8,6 +8,10 @@
         <link rel="canonical" href="https://jssdocente.github.io/dwes2526/temas/00-android/00-kotlin/51-corrutinas.html">
       
       
+        <link rel="prev" href="31-scope-functions.html">
+      
+      
+        <link rel="next" href="../00-compose/index.html">
       
       
       <link rel="icon" href="../../../imagenes/favicon.png">
@@ -15,7 +19,7 @@
     
     
       
-        <title>Corrutinas en Kotlin - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Corrutinas - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -118,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Corrutinas en Kotlin
+              Corrutinas
             
           </span>
         </div>
@@ -260,6 +264,883 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    El lenguaje kotlin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            El lenguaje kotlin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expresiones vs Sentencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funciones y lambdas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Null safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Colecciones
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Colecciones
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-maps.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="42-sets.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    POO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objetos anónimos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enum classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genéricos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Clases selladas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scope functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Corrutinas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="51-corrutinas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Corrutinas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-sincrono" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código síncrono
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-asincrono" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código asíncrono
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-metodos-launch-y-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Los métodos launch y async
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excepciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancelacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-clase-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      La clase Job
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La clase Job">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jerarquia-de-trabajos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jerarquía de trabajos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coroutinescope" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoroutineScope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coroutinecontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoroutineContext
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coroutinedispatcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoroutineDispatcher
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetpack Compose
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Jetpack Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ciclo de Vida aplicación Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitecturas en Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Capa de UI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Capa de UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.1-capa-ui.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -373,10 +1254,12 @@
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una función <code>obtenerDatos</code> que simula una operación asíncrona que tarda 1 segundo en completarse y lanza una excepción. La función <code>main</code> utiliza un bloque <code>try-catch</code> para manejar la excepción lanzada en la corrutina.</p>
-<div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- [Documentación oficial de Kotlin](https://kotlinlang.org/docs/coroutines-guide.html): La documentación oficial de Kotlin sobre corrutinas, que incluye guías, tutoriales y ejemplos para aprender a usar corrutinas en Kotlin.
-</code></pre></div>
-<p>:::warning[La importancia de controlar las excepciones al usar corrutinas]
-Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones que se pueden producir durante la ejecución de la aplicación. Las excepciones no controladas pueden provocar fallos en la aplicación y afectar negativamente la experiencia del usuario.   </p>
+<ul>
+<li><a href="https://kotlinlang.org/docs/coroutines-guide.html">Documentación oficial de Kotlin</a>: La documentación oficial de Kotlin sobre corrutinas, que incluye guías, tutoriales y ejemplos para aprender a usar corrutinas en Kotlin.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">La importancia de controlar las excepciones al usar corrutinas</p>
+<p>Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones que se pueden producir durante la ejecución de la aplicación. Las excepciones no controladas pueden provocar fallos en la aplicación y afectar negativamente la experiencia del usuario.   </p>
 <p>Por lo tanto, es importante utilizar bloques <code>try-catch</code> para manejar las excepciones que se pueden producir en las corrutinas. Además, es recomendable utilizar la función <code>CoroutineExceptionHandler</code> para manejar las excepciones que se producen en las corrutinas de manera global.</p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">val</span><span class="w"> </span><span class="nv">exceptionHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CoroutineExceptionHandler</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="o">-&gt;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Error: </span><span class="si">${</span><span class="n">exception</span><span class="p">.</span><span class="na">message</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
@@ -397,7 +1280,7 @@ Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a><a href="#__codelineno-5-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Datos obtenidos"</span>
 </span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><a href="#__codelineno-5-18"><span class="linenos" data-linenos="18 "></span></a><span class="p">}</span>
 </span></code></pre></div>
-<p>:::</p>
+</div>
 <h2 id="cancelacion">Cancelación<a class="headerlink" href="#cancelacion" title="Permanent link">¶</a></h2>
 <p>En Kotlin, las corrutinas se pueden cancelar utilizando la función <code>cancel()</code>. La cancelación de una corrutina no detiene inmediatamente su ejecución, sino que la marca como cancelada y permite que se complete de manera segura. </p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -434,9 +1317,10 @@ Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una función <code>obtenerDatos</code> que simula una operación asíncrona que tarda 1 segundo en completarse. La función <code>main</code> utiliza la función <code>launch</code> para ejecutar la función <code>obtenerDatos</code> en una corrutina y espera 500 milisegundos antes de cancelar la corrutina utilizando la función <code>cancel()</code>. </p>
 <p>El objeto <code>Job</code> se utiliza para gestionar la ejecución de la corrutina y se puede utilizar para supervisar su estado. </p>
-<p>:::info[La importancia de Job]
-Job desempeña un papel importante para garantizar la simultaneidad estructurada, ya que administra el ciclo de vida de las corrutinas y mantiene la relación de superior y secundario.
-:::</p>
+<div class="admonition info">
+<p class="admonition-title">La importancia de Job</p>
+<p>Job desempeña un papel importante para garantizar la simultaneidad estructurada, ya que administra el ciclo de vida de las corrutinas y mantiene la relación de superior y secundario.</p>
+</div>
 <h3 id="jerarquia-de-trabajos">Jerarquía de trabajos<a class="headerlink" href="#jerarquia-de-trabajos" title="Permanent link">¶</a></h3>
 <p>En Kotlin, la jerarquía de trabajos se utiliza para gestionar la ejecución de corrutinas. Un trabajo (Job) representa una unidad de trabajo que se puede cancelar y supervisar. Los trabajos se pueden organizar en una jerarquía para gestionar la ejecución de corrutinas de manera más eficiente. </p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -490,9 +1374,10 @@ Job desempeña un papel importante para garantizar la simultaneidad estructurada
 </span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a><a href="#__codelineno-9-23"><span class="linenos" data-linenos="23 "></span></a><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define una clase <code>MyCoroutineScope</code> que implementa la interfaz <code>CoroutineScope</code>. La clase <code>MyCoroutineScope</code> define un ámbito para las corrutinas utilizando la propiedad <code>coroutineContext</code>, que combina el despachador <code>Dispatchers.Main</code> y un objeto <code>Job</code>. La clase también incluye una función <code>cancel()</code> que cancela todas las corrutinas en el ámbito. En la función <code>main</code>, se crea una instancia de <code>MyCoroutineScope</code> y se utiliza para ejecutar una corrutina que llama a la función <code>obtenerDatos</code>. Después de 500 milisegundos, se cancela el ámbito utilizando la función <code>cancel()</code>.  </p>
-<p>:::tip[launch y async en CoroutineScope]
-launch() y async() son funciones de extension de la interfaz <code>CoroutineScope</code> que se utilizan para crear corrutinas en un ámbito determinado. La función <code>launch()</code> se utiliza para crear una corrutina que no devuelve un valor, mientras que la función <code>async()</code> se utiliza para crear una corrutina que devuelve un valor. Ambas funciones se pueden utilizar en un ámbito de <code>CoroutineScope</code> para gestionar la ejecución de corrutinas de manera más eficiente.
-:::</p>
+<div class="admonition tip">
+<p class="admonition-title">launch y async en CoroutineScope</p>
+<p>launch() y async() son funciones de extension de la interfaz <code>CoroutineScope</code> que se utilizan para crear corrutinas en un ámbito determinado. La función <code>launch()</code> se utiliza para crear una corrutina que no devuelve un valor, mientras que la función <code>async()</code> se utiliza para crear una corrutina que devuelve un valor. Ambas funciones se pueden utilizar en un ámbito de <code>CoroutineScope</code> para gestionar la ejecución de corrutinas de manera más eficiente.</p>
+</div>
 <h2 id="coroutinecontext">CoroutineContext<a class="headerlink" href="#coroutinecontext" title="Permanent link">¶</a></h2>
 <p>En Kotlin, el <code>CoroutineContext</code> es una interfaz que define el contexto en el que se ejecuta una corrutina. </p>
 <p>Un <code>CoroutineContext</code> se utiliza para definir el despachador, la supervisión y otros elementos del contexto de una corrutina. </p>
