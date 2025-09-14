@@ -97,9 +97,8 @@ En Android, puedes obtener el contexto de varias formas, dependiendo de la clase
 - `getApplicationContext()`: En una actividad o un servicio, puedes utilizar `getApplicationContext()` para obtener el contexto de la aplicación.
 - `getContext()`: En una vista, puedes utilizar `getContext()` para obtener el contexto de la vista.
 
-:::tip[Contexto en Compose]
-Para obtener el contexto en un entorno de Compose, puedes utilizar el modificador `LocalContext.current`.
-:::
+!!! tip "Contexto en Compose"
+    Para obtener el contexto en un entorno de Compose, puedes utilizar el modificador `LocalContext.current`.
 
 ## Usos comunes del contexto
 

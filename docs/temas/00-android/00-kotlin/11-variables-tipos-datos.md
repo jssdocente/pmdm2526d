@@ -4,9 +4,9 @@ import CodeBlock from '@theme/CodeBlock';
 
 En Kotlin las variables pueden declararse de dos formas, de forma explícita o de forma implícita. En el caso de las variables explícitas, se debe indicar el tipo de dato que almacenará la variable, mientras que en las variables implícitas, el tipo de dato se infiere automáticamente por el compilador.
 
-:::warning[Sobre la inferencia de tipos]
-Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.
-:::
+!!! warning "Sobre la inferencia de tipos"
+    Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.
+
 
 ## Variables explícitas
 
@@ -123,11 +123,10 @@ Podemos entonces tener cuatro situaciones posibles:
 - Variable mutable y elementos inmutables: Se puede cambiar la variable, pero no los elementos.
 - Variable mutable y elementos mutables: Se puede cambiar tanto la variable como los elementos.
 
-:::tip[Las variables inmutables y la programación funcional]
-Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. 
+!!! tip "Las variables inmutables y la programación funcional"
+    Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. 
 
-Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.
-:::
+    Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.
 
 ## Sobre las variables nulas
 
@@ -139,11 +138,10 @@ val nombre: String? = null
 
 En el ejemplo anterior, la variable `nombre` se declara como nula utilizando el operador `?`. Esto significa que la variable `nombre` puede contener un valor nulo en lugar de un valor no nulo.
 
-:::info[Sobre la seguridad de nulos en Kotlin]
-El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.
+!!! info "Sobre la seguridad de nulos en Kotlin"
+    El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.
 
-Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.
-:::
+    Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.
 
 ## Sobre las variables declaradas como const
 

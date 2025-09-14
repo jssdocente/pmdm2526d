@@ -4,17 +4,36 @@ use_directory_urls: false
 
 nav:
   - "Inicio": "index.md"
-  # - "Android":
-  #   - "Inicio": temas/00-android/index.md
-  #   - "El lenguaje kotlin": 
-  #     - "Introducción": temas/00-android/00-kotlin/index.md
-  #   - "Jetpack Compose": 
-  #     - "Introducción": temas/00-android/00-compose/index.md
-  #   - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
-  #   - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
-  #   - "Capa de UI":
-  #   #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
-  #     - "Implementación": temas/00-android/03.1-capa-ui.md
+  - "Android":
+    - "Inicio": temas/00-android/index.md
+    - "El lenguaje kotlin": 
+      - "Introducción": temas/00-android/00-kotlin/index.md
+      - "Variables": temas/00-android/00-kotlin/11-variables-tipos-datos.md
+      - "Expresiones vs Sentencias": temas/00-android/00-kotlin/12-expresiones-vs-sentencias.md
+      - "Funciones y lambdas": temas/00-android/00-kotlin/13-funciones-lambdas.md
+      - "Null safety": temas/00-android/00-kotlin/14-null-safety.md
+      - "Colecciones":
+        - "Arrays": temas/00-android/00-kotlin/41-arrays.md
+        - "Listas": temas/00-android/00-kotlin/42-listas.md
+        - "Maps": temas/00-android/00-kotlin/42-maps.md
+        - "Sets": temas/00-android/00-kotlin/42-sets.md
+      - "POO": temas/00-android/00-kotlin/21-poo.md
+      - "Objetos anónimos": temas/00-android/00-kotlin/22-objetos-anonimos.md
+      - "Data classes": temas/00-android/00-kotlin/23-data-classes.md
+      - "Enum classes": temas/00-android/00-kotlin/24-enum-classes.md
+      - "Genéricos": temas/00-android/00-kotlin/25-genericos.md
+      - "Clases selladas": temas/00-android/00-kotlin/26-sealed-classes.md
+      - "Scope functions": temas/00-android/00-kotlin/31-scope-functions.md
+      - "Corrutinas": temas/00-android/00-kotlin/51-corrutinas.md
+      
+
+    - "Jetpack Compose": 
+      - "Introducción": temas/00-android/00-compose/index.md
+    - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
+    - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
+    - "Capa de UI":
+    #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
+      - "Implementación": temas/00-android/03.1-capa-ui.md
   #     - ""
   - "UT1 - Visión General y Entorno de desarrollo": temas/01/index.md
   #   - "Introducción": temas/07/index.md

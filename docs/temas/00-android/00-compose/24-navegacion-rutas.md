@@ -18,13 +18,13 @@ dependencies {
 }
 ```
 
-:::info[Video ejemplo de uso de Navegación]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1SwKa-ODia0?si=hMzFLzsVHiwwVcMb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video ejemplo de uso de Navegación"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/1SwKa-ODia0?si=hMzFLzsVHiwwVcMb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-:::info[Video ejemplo de Splash Screen personalizada]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oguCwoGqaD0?si=QUUgNkUX_p7I2cVT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+
+!!! info "Video ejemplo de Splash Screen personalizada"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oguCwoGqaD0?si=QUUgNkUX_p7I2cVT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Navegación en Jetpack Compose
 

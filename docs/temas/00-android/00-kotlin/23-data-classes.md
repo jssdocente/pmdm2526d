@@ -10,13 +10,13 @@ data class Persona(val nombre: String, val edad: Int)
 
 En el ejemplo anterior, se define una clase de datos `Persona` que tiene dos propiedades `nombre` y `edad`. La clase de datos se crea utilizando la palabra clave `data` seguida del nombre de la clase y las propiedades de la clase.
 
-:::info[Short explicativo en YouTube]
-[Enlace al vídeo](https://youtube.com/shorts/W-oBld3JNWk?si=2yRcnnElE5dfeYGy)
-:::
+!!! info "Short explicativo en YouTube"
+    [Enlace al vídeo](https://youtube.com/shorts/W-oBld3JNWk?si=2yRcnnElE5dfeYGy)
 
-:::info[vídeo explicativo en YouTube]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wiQrSGa4tBI?si=vplFQK_jsJwbjh95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+
+!!! info "vídeo explicativo en YouTube"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/wiQrSGa4tBI?si=vplFQK_jsJwbjh95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 
 ## Propiedades de las clases de datos

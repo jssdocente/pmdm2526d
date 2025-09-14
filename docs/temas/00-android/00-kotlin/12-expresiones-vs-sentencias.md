@@ -42,13 +42,12 @@ Las principales diferencias entre expresiones y sentencias en Kotlin son las sig
 
 - **Uso**: Las expresiones se utilizan para realizar operaciones y producir resultados, mientras que las sentencias se utilizan para realizar acciones en un programa, como asignar valores a variables, tomar decisiones basadas en condiciones o repetir bloques de código.
 
-:::tip[La ventaja de las expresiones en la programación funcional]
-En la programación funcional, se fomenta el uso de expresiones en lugar de sentencias, ya que las expresiones son más concisas, legibles y fáciles de entender. 
+!!! tip "La ventaja de las expresiones en la programación funcional"
+    En la programación funcional, se fomenta el uso de expresiones en lugar de sentencias, ya que las expresiones son más concisas, legibles y fáciles de entender. 
 
-Al utilizar expresiones en lugar de sentencias, se puede escribir menos código y hacer más cosas.
+    Al utilizar expresiones en lugar de sentencias, se puede escribir menos código y hacer más cosas.
 
-Esto es especialmente útil en Kotlin, que es un lenguaje de programación funcional que fomenta el uso de expresiones para realizar operaciones y producir resultados de forma concisa y eficiente.
-:::
+    Esto es especialmente útil en Kotlin, que es un lenguaje de programación funcional que fomenta el uso de expresiones para realizar operaciones y producir resultados de forma concisa y eficiente.
 
 ### Ejemplo de una función que usa sentencias (statement) y expresiones (expression)
 

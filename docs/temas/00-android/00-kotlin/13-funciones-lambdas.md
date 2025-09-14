@@ -80,23 +80,22 @@ saludar("Juan") // Hola, Juan!
 
 En el ejemplo anterior, se define una función `saludar` que toma un parámetro de tipo `String` con un valor por defecto de `"Mundo"`. Si no se proporciona un argumento al llamar a la función, se utiliza el valor por defecto.
 
-:::tip[Funciones con valores por defecto y su no obligatoriedad, su uso en Compose]
-Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que te permiten definir componentes con valores por defecto y llamar a esos componentes sin proporcionar todos los argumentos.
+!!! tip "Funciones con valores por defecto y su no obligatoriedad, su uso en Compose"
+    Las funciones con valores por defecto son muy útiles en Jetpack Compose, ya que te permiten definir componentes con valores por defecto y llamar a esos componentes sin proporcionar todos los argumentos.
 
-Por ejemplo, puedes definir un botón con un texto por defecto y un color por defecto, y luego llamar a ese botón sin proporcionar el texto o el color si deseas utilizar los valores por defecto.
+    Por ejemplo, puedes definir un botón con un texto por defecto y un color por defecto, y luego llamar a ese botón sin proporcionar el texto o el color si deseas utilizar los valores por defecto.
 
-```kotlin
-@Composable
-fun Boton(texto: String = "Aceptar", color: Color = Color.Blue) {
-    Button(onClick = { /* Acción al hacer clic */ }) {
-        Text(texto, color = color)
+    ```kotlin
+    @Composable
+    fun Boton(texto: String = "Aceptar", color: Color = Color.Blue) {
+        Button(onClick = { /* Acción al hacer clic */ }) {
+            Text(texto, color = color)
+        }
     }
-}
 
-Boton() // Botón con texto "Aceptar" y color azul
-Boton("Cancelar", Color.Red) // Botón con texto "Cancelar" y color rojo
-```
-:::
+    Boton() // Botón con texto "Aceptar" y color azul
+    Boton("Cancelar", Color.Red) // Botón con texto "Cancelar" y color rojo
+    ```
 
 ### Parámetros de una función lambda
 
@@ -119,9 +118,9 @@ val cuadrado: (Int) -> Int = { it * it }
 
 En el ejemplo anterior, se define una función lambda `cuadrado` que toma un parámetro de tipo `Int` y devuelve un valor de tipo `Int`. 
 
-:::info[Short explicativo en YouTube]
-[Enlace al vídeo](https://youtube.com/shorts/h1SwVhEHAUs?si=Mqk7qXcF8qNsZMWf)
-:::
+!!! info "Short explicativo en YouTube"
+    [Enlace al vídeo](https://youtube.com/shorts/h1SwVhEHAUs?si=Mqk7qXcF8qNsZMWf)
+
 
 La palabra reservada `it` se utiliza para referirse al único parámetro de entrada de la función lambda.
 
@@ -176,10 +175,10 @@ val textoInvertido = texto.invertir()
 
 En el ejemplo anterior, se define una función de extensión `invertir` para la clase `String` que invierte el contenido de la cadena de texto. La función de extensión se llama como si fuera un método de la clase `String`.
 
-:::info[Funciones de extensión y funciones de orden superior]
-Las funciones de extensión y las funciones de orden superior son dos características poderosas de Kotlin que te permiten escribir código más conciso y reutilizable.
+!!! info "Funciones de extensión y funciones de orden superior"
+    Las funciones de extensión y las funciones de orden superior son dos características poderosas de Kotlin que te permiten escribir código más conciso y reutilizable.
 
-Las funciones de extensión te permiten agregar nuevas funciones a las clases existentes sin heredar de ellas, mientras que las funciones de orden superior te permiten pasar funciones como argumentos a otras funciones.
+    Las funciones de extensión te permiten agregar nuevas funciones a las clases existentes sin heredar de ellas, mientras que las funciones de orden superior te permiten pasar funciones como argumentos a otras funciones.
 
-Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.
-:::
+    Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.
+

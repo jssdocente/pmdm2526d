@@ -34,9 +34,9 @@ fun GreetingList(names: List<String>) {
 
 En el ejemplo anterior, se define una función componible `GreetingList` que toma una lista de nombres y muestra un saludo personalizado para cada nombre utilizando la función componible `Greeting`.
 
-:::info[Video introducción a Compose]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DQq3L4FDjuI?si=P2HmN_2u5p722iKN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video introducción a Compose"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/DQq3L4FDjuI?si=P2HmN_2u5p722iKN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Actualización de funciones componibles
 
@@ -88,9 +88,9 @@ fun Greeting(name: String) {
 
 En el ejemplo anterior, se utiliza el modificador `padding` para añadir un relleno alrededor del texto, el modificador `background` para cambiar el color de fondo del texto, y el modificador `clickable` para añadir una acción al hacer clic en el texto.
 
-:::info[Video Modificadores y uso del tema]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oqV6ZQ48sjM?si=q_RKkBR4TwZJBcKV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video Modificadores y uso del tema]
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oqV6ZQ48sjM?si=q_RKkBR4TwZJBcKV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Recursos en Jetpack Compose
 

@@ -103,35 +103,33 @@ suspend fun obtenerDatos(): String {
 
 En el ejemplo anterior, se define una función `obtenerDatos` que simula una operación asíncrona que tarda 1 segundo en completarse y lanza una excepción. La función `main` utiliza un bloque `try-catch` para manejar la excepción lanzada en la corrutina.
 
-    - [Documentación oficial de Kotlin](https://kotlinlang.org/docs/coroutines-guide.html): La documentación oficial de Kotlin sobre corrutinas, que incluye guías, tutoriales y ejemplos para aprender a usar corrutinas en Kotlin.
+- [Documentación oficial de Kotlin](https://kotlinlang.org/docs/coroutines-guide.html): La documentación oficial de Kotlin sobre corrutinas, que incluye guías, tutoriales y ejemplos para aprender a usar corrutinas en Kotlin.
 
-:::warning[La importancia de controlar las excepciones al usar corrutinas]
-Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones que se pueden producir durante la ejecución de la aplicación. Las excepciones no controladas pueden provocar fallos en la aplicación y afectar negativamente la experiencia del usuario.   
+!!! warning "La importancia de controlar las excepciones al usar corrutinas"
+    Cuando se utilizan corrutinas en Kotlin, es importante controlar las excepciones que se pueden producir durante la ejecución de la aplicación. Las excepciones no controladas pueden provocar fallos en la aplicación y afectar negativamente la experiencia del usuario.   
 
-Por lo tanto, es importante utilizar bloques `try-catch` para manejar las excepciones que se pueden producir en las corrutinas. Además, es recomendable utilizar la función `CoroutineExceptionHandler` para manejar las excepciones que se producen en las corrutinas de manera global.
+    Por lo tanto, es importante utilizar bloques `try-catch` para manejar las excepciones que se pueden producir en las corrutinas. Además, es recomendable utilizar la función `CoroutineExceptionHandler` para manejar las excepciones que se producen en las corrutinas de manera global.
 
-```kotlin
-val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-    println("Error: ${exception.message}")
-}
-
-suspend fun main() {
-    try {
-        val resultado = async { obtenerDatos() }
-        println("Datos: ${resultado.await()}")
-    } catch (e: Exception) {
-        println("Error: ${e.message}")
+    ```kotlin
+    val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+        println("Error: ${exception.message}")
     }
-}   
 
-suspend fun obtenerDatos(): String {
-    delay(1000)
-    throw Exception("Error al obtener los datos")
-    return "Datos obtenidos"
-}
-```
+    suspend fun main() {
+        try {
+            val resultado = async { obtenerDatos() }
+            println("Datos: ${resultado.await()}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
+    }   
 
-:::
+    suspend fun obtenerDatos(): String {
+        delay(1000)
+        throw Exception("Error al obtener los datos")
+        return "Datos obtenidos"
+    }
+    ```
 
 ## Cancelación
 
@@ -180,9 +178,9 @@ En el ejemplo anterior, se define una función `obtenerDatos` que simula una ope
 
 El objeto `Job` se utiliza para gestionar la ejecución de la corrutina y se puede utilizar para supervisar su estado. 
 
-:::info[La importancia de Job]
-Job desempeña un papel importante para garantizar la simultaneidad estructurada, ya que administra el ciclo de vida de las corrutinas y mantiene la relación de superior y secundario.
-:::
+!!! info "La importancia de Job"
+    Job desempeña un papel importante para garantizar la simultaneidad estructurada, ya que administra el ciclo de vida de las corrutinas y mantiene la relación de superior y secundario.
+
 
 ### Jerarquía de trabajos
 
@@ -249,9 +247,9 @@ suspend fun obtenerDatos() {
 
 En el ejemplo anterior, se define una clase `MyCoroutineScope` que implementa la interfaz `CoroutineScope`. La clase `MyCoroutineScope` define un ámbito para las corrutinas utilizando la propiedad `coroutineContext`, que combina el despachador `Dispatchers.Main` y un objeto `Job`. La clase también incluye una función `cancel()` que cancela todas las corrutinas en el ámbito. En la función `main`, se crea una instancia de `MyCoroutineScope` y se utiliza para ejecutar una corrutina que llama a la función `obtenerDatos`. Después de 500 milisegundos, se cancela el ámbito utilizando la función `cancel()`.  
 
-:::tip[launch y async en CoroutineScope]
-launch() y async() son funciones de extension de la interfaz `CoroutineScope` que se utilizan para crear corrutinas en un ámbito determinado. La función `launch()` se utiliza para crear una corrutina que no devuelve un valor, mientras que la función `async()` se utiliza para crear una corrutina que devuelve un valor. Ambas funciones se pueden utilizar en un ámbito de `CoroutineScope` para gestionar la ejecución de corrutinas de manera más eficiente.
-:::
+!!! tip "launch y async en CoroutineScope"
+    launch() y async() son funciones de extension de la interfaz `CoroutineScope` que se utilizan para crear corrutinas en un ámbito determinado. La función `launch()` se utiliza para crear una corrutina que no devuelve un valor, mientras que la función `async()` se utiliza para crear una corrutina que devuelve un valor. Ambas funciones se pueden utilizar en un ámbito de `CoroutineScope` para gestionar la ejecución de corrutinas de manera más eficiente.
+
 
 ## CoroutineContext
 

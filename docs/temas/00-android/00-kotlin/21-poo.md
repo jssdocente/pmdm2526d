@@ -57,9 +57,9 @@ persona.saludar()
 
 En el ejemplo anterior, se crea un objeto `persona` de la clase `Persona` y se inicializan las propiedades `nombre` y `edad` del objeto. Luego, se llama al método `saludar` en el objeto `persona` para imprimir un mensaje de saludo con el nombre de la persona.
 
-:::info[Diferencias con Java]
-A diferencia de Java, en Kotlin, las propiedades y los métodos de una clase son públicos por defecto, lo que significa que se pueden acceder desde cualquier parte del código.
-:::
+!!! info "Diferencias con Java"
+    A diferencia de Java, en Kotlin, las propiedades y los métodos de una clase son públicos por defecto, lo que significa que se pueden acceder desde cualquier parte del código.
+
 
 ## Encapsulación
 
@@ -229,9 +229,9 @@ class Empleado : Persona() {
 
 En el ejemplo anterior, se define una clase `Persona` con un método `saludar` y una clase `Empleado` que hereda de la clase `Persona` y sobrescribe el método `saludar`.
 
-:::tip[La palabra reservada open]
-La palabra reservada `open` se utiliza para marcar una clase o un miembro de una clase como "sobreseíble", lo que significa que puede ser heredado y sobrescrito por clases derivadas. 
-:::
+!!! tip "La palabra reservada open"
+    La palabra reservada `open` se utiliza para marcar una clase o un miembro de una clase como "sobreseíble", lo que significa que puede ser heredado y sobrescrito por clases derivadas. 
+
 
 Para utilizar el polimorfismo en Kotlin, puedes crear un objeto de la clase derivada y asignarlo a una variable de la clase base.
 

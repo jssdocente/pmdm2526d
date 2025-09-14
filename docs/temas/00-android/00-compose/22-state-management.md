@@ -12,9 +12,9 @@ El estado representa la información que puede cambiar a lo largo del tiempo y q
 
 Puedes definir y observar el estado de tu aplicación de forma reactiva en Compose.
 
-:::info[Video introducción al manejo del estado en Compose]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/R5o1aoUT78o?si=EkLkn1pirJROAgqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video introducción al manejo del estado en Compose]
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/R5o1aoUT78o?si=EkLkn1pirJROAgqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Definición de estado
 
@@ -47,11 +47,11 @@ contador.value++
 
 En el ejemplo anterior, se incrementa en uno el valor del estado `contador`.
 
-:::danger[¡Importante!]
-El estado en Compose es inmutable, por lo que debes utilizar la función `value` para actualizar el estado.
+!!! danger "¡Importante!"
+    El estado en Compose es inmutable, por lo que debes utilizar la función `value` para actualizar el estado.
 
-Para que haya recomposición, la actualización del estado debe realizarse dentro de un evento de un componente `@Composable`.
-:::
+    Para que haya recomposición, la actualización del estado debe realizarse dentro de un evento de un componente `@Composable`.
+
 
 ## Ejemplo completo
 
@@ -113,11 +113,11 @@ fun Contador() {
 
 En el ejemplo anterior, se utiliza la función `rememberSaveable` para crear un estado `contador` que se mantiene entre configuraciones.
 
-:::tip[Remember vs RememberSaveable]
-La diferencia entre `remember` y `rememberSaveable` es que `rememberSaveable` guarda el estado en el `Bundle` de la actividad para que se pueda restaurar después de una recreación de la actividad.
+!!! tip "Remember vs RememberSaveable"
+    La diferencia entre `remember` y `rememberSaveable` es que `rememberSaveable` guarda el estado en el `Bundle` de la actividad para que se pueda restaurar después de una recreación de la actividad.
 
-Esto es útil para guardar el estado de la aplicación cuando la actividad se destruye y se vuelve a crear, por ejemplo, al girar la pantalla.
-:::
+    Esto es útil para guardar el estado de la aplicación cuando la actividad se destruye y se vuelve a crear, por ejemplo, al girar la pantalla.
+
 
 ## Uso de derivedStateOf
 
@@ -218,13 +218,12 @@ De esta forma, el estado `contador` se gestiona de forma centralizada en el comp
 
 Esto también facilita la reutilización de los componentes y la separación de las preocupaciones en tu aplicación. Además de facilitar la prueba y el mantenimiento del código.
 
-:::info[Elevación del estado vs. Inyección de dependencias]
-La elevación del estado es una técnica común en Jetpack Compose para compartir el estado entre componentes.
+!!! info "Elevación del estado vs. Inyección de dependencias]
+    La elevación del estado es una técnica común en Jetpack Compose para compartir el estado entre componentes.
 
-Otra técnica común es la inyección de dependencias, que consiste en pasar el estado como argumento a los componentes que lo necesitan.
+    Otra técnica común es la inyección de dependencias, que consiste en pasar el estado como argumento a los componentes que lo necesitan.
 
-Ambas técnicas tienen sus ventajas y desventajas, y la elección entre ellas depende del diseño y la arquitectura de tu aplicación.
-:::
+    Ambas técnicas tienen sus ventajas y desventajas, y la elección entre ellas depende del diseño y la arquitectura de tu aplicación.
 
 ## Conclusión
 

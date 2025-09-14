@@ -22,22 +22,22 @@ Kotlin es un lenguaje de programación moderno, conciso y seguro que se ejecuta 
 
 ## Apartados
 
-- [Variables y tipos de datos](./11-variables-tipos-datos.mdx)
-- [Expresiones vs. sentencias](./12-expresiones-vs-sentencias.mdx)
-- [Funciones y lambdas](./13-funciones-lambdas.mdx)
-- [Null Safety](./14-null-safety.mdx)
-- [Clases y objetos](./21-poo.mdx)
-- [Objetos anónimos](./22-objetos-anonimos.mdx)
-- [Data classes](./23-data-classes.mdx)
-- [Enum classes](./24-enum-classes.mdx)
-- [Genéricos](./25-genericos.mdx)
-- [Sealed classes](./26-sealed-classes.mdx)
-- [Scope functions](./31-scope-functions.mdx)
-- [Arrays en Kotlin](./41-arrays.mdx)
-- [Colecciones en Kotlin](./42-listas.mdx)
-- [Mapas en Kotlin](./43-maps.mdx)
-- [Sets en Kotlin](./44-sets.mdx)
-- [Corrutinas en Kotlin](./51-corrutinas.mdx)
+- [Variables y tipos de datos](./11-variables-tipos-datos.md)
+- [Expresiones vs. sentencias](./12-expresiones-vs-sentencias.md)
+- [Funciones y lambdas](./13-funciones-lambdas.md)
+- [Null Safety](./14-null-safety.md)
+- [Clases y objetos](./21-poo.md)
+- [Objetos anónimos](./22-objetos-anonimos.md)
+- [Data classes](./23-data-classes.md)
+- [Enum classes](./24-enum-classes.md)
+- [Genéricos](./25-genericos.md)
+- [Sealed classes](./26-sealed-classes.md)
+- [Scope functions](./31-scope-functions.md)
+- [Arrays en Kotlin](./41-arrays.md)
+- [Colecciones en Kotlin](./42-listas.md)
+- [Mapas en Kotlin](./43-maps.md)
+- [Sets en Kotlin](./44-sets.md)
+- [Corrutinas en Kotlin](./51-corrutinas.md)
 
 ## Recursos
 

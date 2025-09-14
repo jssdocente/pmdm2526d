@@ -8,11 +8,11 @@ Kotlin está diseñado para evitar los errores de referencia nula que son comune
 
 En Kotlin, los tipos de datos pueden ser nulos o no nulos, lo que te permite expresar de forma segura si un valor puede ser nulo o no.  
 
-:::info[Diferencia con Java]
-En Java, todos los tipos de datos pueden ser nulos, lo que puede llevar a errores de referencia nula si no se manejan correctamente. 
+!!! info "Diferencia con Java"
+    En Java, todos los tipos de datos pueden ser nulos, lo que puede llevar a errores de referencia nula si no se manejan correctamente. 
 
-En Kotlin, los tipos de datos no nulos deben ser manejados de forma explícita, lo que ayuda a prevenir los errores de referencia nula.
-:::
+    En Kotlin, los tipos de datos no nulos deben ser manejados de forma explícita, lo que ayuda a prevenir los errores de referencia nula.
+
 
 ## Tipos de datos nulos
 
@@ -80,9 +80,9 @@ El manejo de nulos en Kotlin es una parte fundamental del lenguaje que te permit
 
 Al utilizar tipos de datos nulos y operadores de seguridad de nulos, puedes prevenir los errores de referencia nula y escribir código más robusto y seguro.
 
-:::tip[Recursos]
-- [Documentación oficial de Kotlin sobre seguridad de nulos](https://kotlinlang.org/docs/null-safety.html)
-- [Kotlin Playground](https://play.kotlinlang.org/): Un entorno de programación en línea para probar y aprender Kotlin.
-- [Apuntes Kotlin](https://github.com/resuadam2/kotlin-apuntes): Un repositorio con apuntes y ejemplos de Kotlin.
-:::
+!!! tip "Recursos"
+    - [Documentación oficial de Kotlin sobre seguridad de nulos](https://kotlinlang.org/docs/null-safety.html)
+    - [Kotlin Playground](https://play.kotlinlang.org/): Un entorno de programación en línea para probar y aprender Kotlin.
+    - [Apuntes Kotlin](https://github.com/resuadam2/kotlin-apuntes): Un repositorio con apuntes y ejemplos de Kotlin.
+
 

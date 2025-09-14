@@ -74,21 +74,20 @@ En el ejemplo anterior, se define un objeto anónimo `Configuracion` que tiene d
 
 El objeto anónimo se utiliza para almacenar la configuración de la aplicación y garantiza que solo haya una instancia de la configuración en toda la aplicación.
 
-:::tip[Características de los objetos anónimos]
-Los objetos anónimos en Kotlin tienen las siguientes características:
+!!! tip "Características de los objetos anónimos"
+    Los objetos anónimos en Kotlin tienen las siguientes características:
 
-- No tienen un nombre y se crean utilizando la palabra clave `object`.
-- Pueden tener propiedades, métodos y constructores.
-- Se utilizan para definir clases de forma concisa y reutilizable.
-- Se pueden utilizar para implementar interfaces y clases abstractas de forma anónima.
-- Se pueden utilizar para implementar el patrón Singleton y almacenar configuraciones globales.
-:::
+    - No tienen un nombre y se crean utilizando la palabra clave `object`.
+    - Pueden tener propiedades, métodos y constructores.
+    - Se utilizan para definir clases de forma concisa y reutilizable.
+    - Se pueden utilizar para implementar interfaces y clases abstractas de forma anónima.
+    - Se pueden utilizar para implementar el patrón Singleton y almacenar configuraciones globales.
 
-:::info[Sobre el patrón Singleton]
-El patrón Singleton es un patrón de diseño que garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a esa instancia.
+!!! info "Sobre el patrón Singleton"
+    El patrón Singleton es un patrón de diseño que garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a esa instancia.
 
-En Kotlin, puedes implementar el patrón Singleton utilizando objetos anónimos, que garantizan que solo haya una instancia de la clase en toda la aplicación.
+    En Kotlin, puedes implementar el patrón Singleton utilizando objetos anónimos, que garantizan que solo haya una instancia de la clase en toda la aplicación.
 
-**Usos comunes del patrón Singleton incluyen la creación de objetos de configuración, conexiones a bases de datos y puntos de acceso a servicios globales.**
-:::
+    **Usos comunes del patrón Singleton incluyen la creación de objetos de configuración, conexiones a bases de datos y puntos de acceso a servicios globales.**
+
 

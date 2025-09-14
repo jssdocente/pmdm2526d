@@ -21,9 +21,9 @@ fun ListaVertical() {
 
 En el ejemplo anterior, se define un componente `ListaVertical` que muestra una lista de 100 elementos verticales utilizando `LazyColumn`. El método `items()` de `LazyColumn` se utiliza para generar los elementos de la lista en función de un rango de índices.
 
-:::info[Video Listas y LazyColumn]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2OUEAhX7o2g?si=zE8Xybp2x_FVVRlj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video Listas y LazyColumn"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2OUEAhX7o2g?si=zE8Xybp2x_FVVRlj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## LazyRow
 

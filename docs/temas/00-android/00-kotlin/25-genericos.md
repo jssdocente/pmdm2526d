@@ -4,9 +4,9 @@ import CodeBlock from '@theme/CodeBlock';
 
 En Kotlin, puedes utilizar genéricos para crear clases, funciones e interfaces que trabajen con tipos de datos de forma genérica. Los genéricos te permiten escribir código que es reutilizable y flexible, ya que puedes definir clases y funciones que trabajen con cualquier tipo de datos.
 
-:::info[Video explicativo en YouTube]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XPVa1vTJQts?si=ZmmU6D0RHGs84G5O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Video explicativo en YouTube"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/XPVa1vTJQts?si=ZmmU6D0RHGs84G5O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Clases genéricas
 

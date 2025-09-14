@@ -12,9 +12,8 @@ Las *scope functions* en Kotlin son las siguientes:
 - `apply`
 - `also`
 
-:::info[Vídeo explicativo en YouTube]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Fz81c3Ywb7Y?si=msfBqTl6DcymqYOx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-:::
+!!! info "Vídeo explicativo en YouTube"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Fz81c3Ywb7Y?si=msfBqTl6DcymqYOx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## `let`
