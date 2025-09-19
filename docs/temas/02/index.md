@@ -13,3 +13,11 @@ Android permite crear aplicaciones utilizando Java o Kotlin, siendo este último
 - [2.2 Ciclo de vida de una aplicación Android](./2.2-ciclo-vida-app.md)
 - [2.3 Primera aplicación](./2.3-primera-app.md)
 
+
+<br/><br/><br/><br/>
+
+### 📁 Recursos
+
+- [Documentación oficial de Jetpack Compose](https://developer.android.com/jetpack/compose?hl=es-419): La documentación oficial de Jetpack Compose, que incluye guías, tutoriales y ejemplos para aprender a usar Compose.
+- [Codelabs introductorios de Android](https://developer.android.com/courses/android-basics-compose/unit-1?hl=es-419): Codelabs introductorios de Android con Jetpack Compose para que puedas aprender a crear aplicaciones Android con Compose.
+  
