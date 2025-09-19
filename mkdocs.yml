@@ -155,7 +155,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.highlight:
       use_pygments: true
-      linenums: true
+      linenums: false
       linenums_style: pymdownx-inline
       anchor_linenums: true
       line_spans: __span
