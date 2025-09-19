@@ -1,5 +1,3 @@
-import CodeBlock from '@theme/CodeBlock';
-
 # Funciones componibles en Jetpack Compose
 
 En Jetpack Compose, las interfaces de usuario se crean a partir de funciones componibles, que son funciones que devuelven un árbol de elementos de la interfaz de usuario. Puedes componer estas funciones para crear interfaces de usuario complejas y reutilizables.

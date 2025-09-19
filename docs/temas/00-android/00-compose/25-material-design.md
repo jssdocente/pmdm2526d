@@ -1,5 +1,3 @@
-import CodeBlock from '@theme/CodeBlock';
-
 # Material Design en Jetpack Compose
 
 Material Design es un sistema de diseño desarrollado por Google que ayuda a los desarrolladores a crear interfaces de usuario atractivas y coherentes en aplicaciones Android. Con Jetpack Compose, puedes implementar los principios de Material Design de forma sencilla y eficiente.

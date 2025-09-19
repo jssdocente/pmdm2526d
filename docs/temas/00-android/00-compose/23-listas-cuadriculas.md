@@ -1,5 +1,3 @@
-import CodeBlock from '@theme/CodeBlock';
-
 # Listas en Compose
 
 En Jetpack Compose, puedes mostrar listas de elementos utilizando los componentes `LazyColumn` y `LazyRow`. Estos componentes te permiten mostrar una lista de elementos de forma eficiente y reactiva.

@@ -18,15 +18,15 @@ Jetpack Compose es un marco de trabajo moderno para la creación de interfaces d
 
 ## Apartados
 
-- [Composable functions](./21-composable-functions.mdx): Aprende a crear funciones componibles en Jetpack Compose y a componerlas para crear interfaces de usuario complejas.
+- [Composable functions](./21-composable-functions.md): Aprende a crear funciones componibles en Jetpack Compose y a componerlas para crear interfaces de usuario complejas.
 
-- [State management](./22-state-management.mdx): Descubre cómo gestionar el estado de tu aplicación en Jetpack Compose y cómo hacer que tu interfaz de usuario sea reactiva.
+- [State management](./22-state-management.md): Descubre cómo gestionar el estado de tu aplicación en Jetpack Compose y cómo hacer que tu interfaz de usuario sea reactiva.
 
-- [Listas y cuadrículas](./23-listas-cuadriculas.mdx): Aprende a mostrar listas y cuadrículas de elementos en Jetpack Compose y a personalizar su apariencia.
+- [Listas y cuadrículas](./23-listas-cuadriculas.md): Aprende a mostrar listas y cuadrículas de elementos en Jetpack Compose y a personalizar su apariencia.
 
-- [Navegación y rutas](./24-navegacion-rutas.mdx): Descubre cómo implementar la navegación entre pantallas en Jetpack Compose y cómo definir rutas para tu aplicación.
+- [Navegación y rutas](./24-navegacion-rutas.md): Descubre cómo implementar la navegación entre pantallas en Jetpack Compose y cómo definir rutas para tu aplicación.
 
-- [Material Design](./25-material-design.mdx): Aprende a implementar los principios de Material Design en Jetpack Compose y a personalizar los estilos de tus componentes.
+- [Material Design](./25-material-design.md): Aprende a implementar los principios de Material Design en Jetpack Compose y a personalizar los estilos de tus componentes.
 
 !!! info "Video Creación de un proyecto Android y sus partes"
     <iframe width="560" height="315" src="https://www.youtube.com/embed/TraKFKUD2lU?si=_lOZXVtTSkWVectx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

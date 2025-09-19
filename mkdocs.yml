@@ -1,5 +1,5 @@
 site_name: 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
-site_url: https://jssdocente.github.io/dwes2526
+site_url: https://jssdocente.github.io/pmdm2526d
 use_directory_urls: false
 
 nav:
@@ -29,14 +29,21 @@ nav:
 
     - "Jetpack Compose": 
       - "Introducción": temas/00-android/00-compose/index.md
-    - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
-    - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
-    - "Capa de UI":
-    #  Incluir aquí guías sobre la Capa de UI, MaterialDesign, componentes, y otros temas importantes.
-      - "Implementación": temas/00-android/03.1-capa-ui.md
+      - "Funciones componibles": temas/00-android/00-compose/21-composable-functions.md
+      - "Gestión del estado": temas/00-android/00-compose/22-state-management.md
+      - "Listas": temas/00-android/00-compose/23-listas-cuadriculas.md
+      - "Navegación Rutas": temas/00-android/00-compose/24-navegacion-rutas.md
+      - "Material Design": temas/00-android/00-compose/25-material-design.md
+    # - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
+    # - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
+    # - "Capa de UI": temas/00-android/02-capa-ui.md
   #     - ""
   - "UT1 - Visión General y Entorno de desarrollo": temas/01/index.md
-  #   - "Introducción": temas/07/index.md
+  - "UT2 - Programación de aplicaciones de móviles con Android":
+    - "Inicio": temas/02/index.md
+    - "2.1. Primeros pasos": temas/02/2.1-primeros-pasos.md
+    - "2.2. Ciclo de Vida": temas/02/2.2-ciclo-vida-app.md
+    - "2.3. Primera aplicación": temas/02/2.3-primera-aplicacion.md
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
   #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
@@ -94,24 +101,29 @@ theme:
   logo: "imagenes/logofp.png"
   features:
     - header.autohide
-    - toc.integrate
+    # - toc.integrate
     - content.tabs.link
     - content.code.copy
     - content.code.select
     - navigation.top
     - content.code.annotate
+    #- navigation.expand
+    - navigation.path
+    - content.tooltips
+  
+  custom_width: false
 
 extra:
   search:
     language: "es"
   social:
-    - icon: material/twitter
-      link: https://twitter.com/aitormedrano
     - icon: material/email-edit
-      link: mailto:<a.medrano@edu.gva.es>
+      link: mailto:<jssgarcia.docente@gmail.com>
   #analytics:
     #provider: google
     #property: G-X6D0LR7TC8
+extra_css:
+  - extra/css/extra.css
 
 plugins:
   - search
