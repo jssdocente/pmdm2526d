@@ -5,28 +5,28 @@
       
       
       
-        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/index.html">
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/02/2.1-primeros-pasos.html">
       
       
-        <link rel="prev" href="../00-kotlin/51-corrutinas.html">
+        <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="21-composable-functions.html">
+        <link rel="next" href="2.2-ciclo-vida-app.html">
       
       
-      <link rel="icon" href="../../../imagenes/favicon.png">
+      <link rel="icon" href="../../imagenes/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>Introducción - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>2.1. Primeros pasos - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -51,16 +51,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../extra/css/extra.css">
+      <link rel="stylesheet" href="../../extra/css/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jetpack-compose" class="md-skip">
+        <a href="#21-primeros-pasos-con-android" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -105,9 +105,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
       
-  <img src="../../../imagenes/logofp.png" alt="logo">
+  <img src="../../imagenes/logofp.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introducción
+              2.1. Primeros pasos
             
           </span>
         </div>
@@ -228,9 +228,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
       
-  <img src="../../../imagenes/logofp.png" alt="logo">
+  <img src="../../imagenes/logofp.png" alt="logo">
 
     </a>
     2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
@@ -245,7 +245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
@@ -264,20 +264,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -293,7 +291,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Android
@@ -307,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../00-android/index.html" class="md-nav__link">
         
   
   
@@ -368,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/index.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/index.html" class="md-nav__link">
         
   
   
@@ -391,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
         
   
   
@@ -414,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
         
   
   
@@ -437,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
         
   
   
@@ -460,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/14-null-safety.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/14-null-safety.html" class="md-nav__link">
         
   
   
@@ -521,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/41-arrays.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/41-arrays.html" class="md-nav__link">
         
   
   
@@ -544,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/42-listas.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/42-listas.html" class="md-nav__link">
         
   
   
@@ -567,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/42-maps.md" class="md-nav__link">
+      <a href="../00-android/00-kotlin/42-maps.md" class="md-nav__link">
         
   
   
@@ -590,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/42-sets.md" class="md-nav__link">
+      <a href="../00-android/00-kotlin/42-sets.md" class="md-nav__link">
         
   
   
@@ -621,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/21-poo.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/21-poo.html" class="md-nav__link">
         
   
   
@@ -644,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
         
   
   
@@ -667,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/23-data-classes.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/23-data-classes.html" class="md-nav__link">
         
   
   
@@ -690,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/24-enum-classes.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/24-enum-classes.html" class="md-nav__link">
         
   
   
@@ -713,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/25-genericos.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/25-genericos.html" class="md-nav__link">
         
   
   
@@ -736,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/26-sealed-classes.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/26-sealed-classes.html" class="md-nav__link">
         
   
   
@@ -759,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/31-scope-functions.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/31-scope-functions.html" class="md-nav__link">
         
   
   
@@ -782,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-kotlin/51-corrutinas.html" class="md-nav__link">
+      <a href="../00-android/00-kotlin/51-corrutinas.html" class="md-nav__link">
         
   
   
@@ -810,20 +808,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -839,7 +835,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Jetpack Compose
@@ -850,32 +846,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Introducción
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/index.html" class="md-nav__link">
         
   
   
@@ -886,53 +860,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#caracteristicas-de-jetpack-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      Características de Jetpack Compose
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apartados" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apartados
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recursos
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -945,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="21-composable-functions.html" class="md-nav__link">
+      <a href="../00-android/00-compose/21-composable-functions.html" class="md-nav__link">
         
   
   
@@ -968,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="22-state-management.html" class="md-nav__link">
+      <a href="../00-android/00-compose/22-state-management.html" class="md-nav__link">
         
   
   
@@ -991,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="23-listas-cuadriculas.html" class="md-nav__link">
+      <a href="../00-android/00-compose/23-listas-cuadriculas.html" class="md-nav__link">
         
   
   
@@ -1014,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="24-navegacion-rutas.html" class="md-nav__link">
+      <a href="../00-android/00-compose/24-navegacion-rutas.html" class="md-nav__link">
         
   
   
@@ -1037,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="25-material-design.html" class="md-nav__link">
+      <a href="../00-android/00-compose/25-material-design.html" class="md-nav__link">
         
   
   
@@ -1075,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01/index.html" class="md-nav__link">
+      <a href="../01/index.html" class="md-nav__link">
         
   
   
@@ -1094,18 +1021,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1121,7 +1050,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             UT2 - Programación de aplicaciones de móviles con Android
@@ -1135,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02/index.html" class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         
   
   
@@ -1155,10 +1084,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../02/2.1-primeros-pasos.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.1. Primeros pasos
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2.1-primeros-pasos.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1169,6 +1120,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-instalar-y-configurar-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Instalar y configurar Android Studio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-estructura-de-un-proyecto-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Estructura de un proyecto Android
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-estructura-del-buildgradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Estructura del build.gradle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-partes-de-la-interfaz-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Partes de la interfaz de Android Studio
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1181,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+      <a href="2.2-ciclo-vida-app.html" class="md-nav__link">
         
   
   
@@ -1204,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02/2.3-primera-aplicacion.md" class="md-nav__link">
+      <a href="2.3-primera-aplicacion.md" class="md-nav__link">
         
   
   
@@ -1254,27 +1261,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas-de-jetpack-compose" class="md-nav__link">
+  <a href="#a-instalar-y-configurar-android-studio" class="md-nav__link">
     <span class="md-ellipsis">
-      Características de Jetpack Compose
+      A. Instalar y configurar Android Studio
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#apartados" class="md-nav__link">
+  <a href="#b-estructura-de-un-proyecto-android" class="md-nav__link">
     <span class="md-ellipsis">
-      Apartados
+      B. Estructura de un proyecto Android
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#c-estructura-del-buildgradle" class="md-nav__link">
     <span class="md-ellipsis">
-      Recursos
+      C. Estructura del build.gradle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-partes-de-la-interfaz-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Partes de la interfaz de Android Studio
     </span>
   </a>
   
@@ -1296,65 +1312,103 @@
 
 
 
-<p>import CodeBlock from '@theme/CodeBlock';</p>
-<h1 id="jetpack-compose">Jetpack Compose<a class="headerlink" href="#jetpack-compose" title="Permanent link">¶</a></h1>
-<p>Jetpack Compose es un marco de trabajo moderno para la creación de interfaces de usuario en aplicaciones Android. Con Compose, puedes crear interfaces de usuario de manera declarativa, lo que significa que puedes definir cómo se ve tu aplicación en función del estado de la misma.    </p>
-<h2 id="caracteristicas-de-jetpack-compose">Características de Jetpack Compose<a class="headerlink" href="#caracteristicas-de-jetpack-compose" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p><strong>Declarativo</strong>: Con Compose, defines la interfaz de usuario de tu aplicación de manera declarativa, lo que significa que puedes describir cómo se ve tu aplicación en función del estado de la misma. Esto hace que sea más fácil de entender y mantener tu código.  </p>
-</li>
-<li>
-<p><strong>Composable functions</strong>: En Compose, las interfaces de usuario se crean a partir de funciones componibles, que son funciones que devuelven un árbol de elementos de la interfaz de usuario. Puedes componer estas funciones para crear interfaces de usuario complejas y reutilizables.  </p>
-</li>
-<li>
-<p><strong>State management</strong>: Compose tiene un sistema de manejo de estado integrado que te permite gestionar el estado de tu aplicación de manera sencilla y eficiente. Puedes definir y observar el estado de tu aplicación de forma reactiva.  </p>
-</li>
-<li>
-<p><strong>Material Design</strong>: Compose incluye un conjunto de widgets y estilos basados en Material Design, el lenguaje de diseño de Google para aplicaciones Android. Puedes utilizar estos widgets y estilos para crear interfaces de usuario modernas y atractivas.  </p>
-</li>
-<li>
-<p><strong>Preview en tiempo real</strong>: Compose incluye una función de vista previa en tiempo real que te permite ver cómo se verá tu interfaz de usuario mientras escribes código. Esto hace que sea más fácil iterar y probar tu diseño.    </p>
-</li>
-</ul>
-<h2 id="apartados">Apartados<a class="headerlink" href="#apartados" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p><a href="21-composable-functions.html">Composable functions</a>: Aprende a crear funciones componibles en Jetpack Compose y a componerlas para crear interfaces de usuario complejas.</p>
-</li>
-<li>
-<p><a href="22-state-management.html">State management</a>: Descubre cómo gestionar el estado de tu aplicación en Jetpack Compose y cómo hacer que tu interfaz de usuario sea reactiva.</p>
-</li>
-<li>
-<p><a href="23-listas-cuadriculas.html">Listas y cuadrículas</a>: Aprende a mostrar listas y cuadrículas de elementos en Jetpack Compose y a personalizar su apariencia.</p>
-</li>
-<li>
-<p><a href="24-navegacion-rutas.html">Navegación y rutas</a>: Descubre cómo implementar la navegación entre pantallas en Jetpack Compose y cómo definir rutas para tu aplicación.</p>
-</li>
-<li>
-<p><a href="25-material-design.html">Material Design</a>: Aprende a implementar los principios de Material Design en Jetpack Compose y a personalizar los estilos de tus componentes.</p>
-</li>
-</ul>
+<h1 id="21-primeros-pasos-con-android">2.1 Primeros pasos con Android<a class="headerlink" href="#21-primeros-pasos-con-android" title="Permanent link">¶</a></h1>
+<p>En este apartado vamos a dar los primeros pasos en la programación de aplicaciones para dispositivos móviles con Android, y en este punto, la parte fundamental es conocer el entorno de desarrollo Android Studio, y entender los conceptos básicos de la plataforma Android.</p>
+<h2 id="a-instalar-y-configurar-android-studio"><strong>A. Instalar y configurar Android Studio</strong><a class="headerlink" href="#a-instalar-y-configurar-android-studio" title="Permanent link">¶</a></h2>
+<p>Para comenzar a desarrollar aplicaciones Android, lo primero que necesitas es instalar Android Studio, que es el entorno de desarrollo oficial para Android. Puedes descargarlo desde la página oficial de Android Studio: <a href="https://developer.android.com/studio">https://developer.android.com/studio</a>.</p>
+<p>Una vez que hayas descargado e instalado Android Studio, sigue estos pasos para configurarlo:</p>
+<ol>
+<li><strong>Instalar el SDK de Android</strong>: Durante la instalación de Android Studio, asegúrate de seleccionar la opción para instalar el SDK de Android. Esto es necesario para compilar y ejecutar aplicaciones Android.</li>
+<li><strong>Configurar un emulador</strong>: Android Studio incluye un emulador que te permite probar tus aplicaciones en diferentes dispositivos virtuales. Configura un emulador con las características que desees (tamaño de pantalla, versión de Android, etc.) desde el AVD Manager (Android Virtual Device Manager).</li>
+<li><strong>Crear un nuevo proyecto</strong>: Una vez que Android Studio esté configurado, crea un nuevo proyecto seleccionando y elige una plantilla básica para comenzar.</li>
+<li><strong>Familiarizarse con la interfaz</strong>: Tómate un tiempo para explorar la interfaz de Android Studio, incluyendo el editor de código, el diseñador de interfaces, el panel de herramientas y la consola de logcat.</li>
+<li><strong>Ejecutar la aplicación</strong>: Finalmente, ejecuta tu aplicación en el emulador o en un dispositivo físico conectado para asegurarte de que todo esté funcionando correctamente.</li>
+</ol>
+<details class="info">
+<summary>Video: Instalación y configuración de Android Studio</summary>
+<p><iframe width="780" height="440" src="https://www.youtube.com/embed/vgcvNY5BA7w?list=PLU8oAlHdN5BkdfBPpNv_lVCJxJgE87cr0" title="Curso Android con Kotlin. Instalación Android Studio Giraffe. Vídeo 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</details>
+<h2 id="b-estructura-de-un-proyecto-android"><strong>B. Estructura de un proyecto Android</strong><a class="headerlink" href="#b-estructura-de-un-proyecto-android" title="Permanent link">¶</a></h2>
+<p>Un proyecto Android tiene una estructura específica que incluye varios archivos y carpetas importantes. A continuación, se describen las principales partes de un proyecto Android. Android Studio tiene diferentes vistas para explorar la estructura de un proyecto. La vista "Android" es la más común y muestra una estructura simplificada y organizada del proyecto.</p>
+<p>Vamos a explorar las diferentes vistas disponibles en Android Studio para entender mejor la estructura de un proyecto Android en el siguiente vídeo:</p>
+<details class="info">
+<summary>Video: Estructura de un proyecto en Android Studio</summary>
+<p><iframe width="780" height="440" src="https://www.youtube.com/embed/jYD2eGIkdJI?list=PLrn69hTK5FByEfJEtLzJMEi0cKIwCVgJi" title="Curso Android desde cero - Estructura de un proyecto #8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</details>
+<p>La vista más común y utilizada es la vista "Android", que organiza los archivos y carpetas de manera lógica para facilitar la navegación y el desarrollo. A continuación, se describen las principales partes de un proyecto Android en la vista "Android".</p>
 <div class="admonition info">
-<p class="admonition-title">Video Creación de un proyecto Android y sus partes</p>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/TraKFKUD2lU?si=_lOZXVtTSkWVectx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p class="admonition-title">Estructura de un proyecto Android</p>
+<p>Esta es la estructura típica de un proyecto Android en la vista "Android" de Android Studio:</p>
+<ul>
+<li><strong>app</strong>: Esta es la carpeta principal que contiene el código fuente y los recursos de la aplicación.<ul>
+<li><strong>manifests</strong>: Contiene el archivo <code>AndroidManifest.xml</code>, que define la configuración básica de la aplicación, como las actividades, permisos y servicios.</li>
+<li><strong>java</strong>: Contiene el código fuente de la aplicación en lenguaje Kotlin o Java. Aquí es donde escribirás la lógica de tu aplicación.</li>
+<li><strong>res</strong>: Contiene los recursos de la aplicación, como imágenes, archivos XML de diseño, cadenas de texto y estilos.</li>
+<li><strong>drawable</strong>: Carpeta para almacenar imágenes y gráficos utilizados en la aplicación.</li>
+<li><strong>layout</strong>: Carpeta para almacenar archivos XML que definen la interfaz de usuario (UI) de las actividades y fragmentos.</li>
+<li><strong>values</strong>: Carpeta para almacenar archivos XML que contienen recursos como cadenas de texto, colores y estilos.</li>
+</ul>
+</li>
+<li><strong>Gradle Scripts</strong>: Contiene los archivos de configuración de Gradle, que es el sistema de construcción utilizado por Android Studio. Aquí puedes definir dependencias, versiones de SDK y otras configuraciones de construcción.</li>
+<li><strong>build.gradle (Project)</strong>: Archivo de configuración a nivel de proyecto.</li>
+<li><strong>build.gradle (Module: app)</strong>: Archivo de configuración a nivel de módulo (aplicación).</li>
+<li><strong>settings.gradle</strong>: Archivo que define los módulos del proyecto.</li>
+<li><strong>local.properties</strong>: Archivo que contiene la ruta del SDK de Android en tu sistema. Este archivo no debe ser compartido en sistemas de control de versiones.</li>
+</ul>
 </div>
+<h2 id="c-estructura-del-buildgradle"><strong>C. Estructura del build.gradle</strong><a class="headerlink" href="#c-estructura-del-buildgradle" title="Permanent link">¶</a></h2>
+<p>El archivo <code>build.gradle</code> es un archivo de configuración utilizado por Gradle, el sistema de construcción utilizado por Android Studio. Este archivo define cómo se debe construir y empaquetar la aplicación, así como las dependencias necesarias para el proyecto.</p>
 <div class="admonition info">
-<p class="admonition-title">Video Lógica de actividades e introducción al ciclo de vida</p>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/r7dsQTeTN4E?si=MketZH4wNJws48jq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p class="admonition-title">¿Qué es Gradle?</p>
+<p>Gradle es un sistema de automatización de construcción que se utiliza para compilar, probar y empaquetar aplicaciones. En el contexto de Android, Gradle se utiliza para gestionar las dependencias, configurar las variantes de construcción y definir tareas personalizadas.</p>
 </div>
-<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
+<p>El archivo <code>build.gradle</code> se encuentra en la raíz del proyecto y en el módulo de la aplicación (generalmente llamado <code>app</code>). A continuación, se describen las principales secciones y configuraciones que puedes encontrar en un archivo <code>build.gradle</code> típico para un proyecto Android.</p>
+<p>En el siguiente vídeo se explica la estructura del archivo <code>build.gradle</code> y cómo configurarlo para un proyecto Android.</p>
+<details class="info">
+<summary>Video: Estructura del build.gradle de App</summary>
+<p><iframe width="780" height="440" src="https://www.youtube.com/embed/wriDnBRYriY?list=PLrn69hTK5FByEfJEtLzJMEi0cKIwCVgJi" title="Curso Android desde cero - Estructura del build gradle de app #9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</details>
+<h2 id="d-partes-de-la-interfaz-de-android-studio"><strong>D. Partes de la interfaz de Android Studio</strong><a class="headerlink" href="#d-partes-de-la-interfaz-de-android-studio" title="Permanent link">¶</a></h2>
+<p>Android Studio es un entorno de desarrollo integrado (IDE) completo que proporciona una amplia gama de herramientas y características para desarrollar aplicaciones Android. A continuación, se describen las principales partes de la interfaz de Android Studio:</p>
+<details class="info">
+<summary>Video: Partes de la interfaz de Android Studio</summary>
+<p><iframe width="780" height="440" src="https://www.youtube.com/embed/kFiuU_5VwTE?list=PLrn69hTK5FByEfJEtLzJMEi0cKIwCVgJi" title="Android Studio desde CERO: Aprende a usar Todas sus Funciones #10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</details>
+<details class="info">
+<summary>Partes de la interfaz de Android Studio</summary>
 <ul>
 <li>
-<p><a href="https://developer.android.com/jetpack/compose?hl=es-419">Documentación oficial de Jetpack Compose</a>: La documentación oficial de Jetpack Compose, que incluye guías, tutoriales y ejemplos para aprender a usar Compose.  </p>
+<p><strong>Barra de menú</strong>: La barra de menú en la parte superior de la ventana proporciona acceso a diversas funciones y configuraciones, como crear nuevos proyectos, abrir archivos, ejecutar aplicaciones y acceder a herramientas de desarrollo.</p>
 </li>
 <li>
-<p><a href="https://github.com/resuadam2/TutorialCompose">Ejemplos básicos de Compose</a>: Un repositorio con ejemplos básicos de Jetpack Compose para que puedas aprender a crear interfaces de usuario con Compose.</p>
+<p><strong>Barra de herramientas</strong>: Justo debajo de la barra de menú, la barra de herramientas contiene botones para acciones comunes, como ejecutar y depurar aplicaciones, sincronizar el proyecto con Gradle y acceder al AVD Manager.</p>
 </li>
 <li>
-<p><a href="https://developer.android.com/courses/android-basics-compose/unit-1?hl=es-419">Codelabs introductorios de Android</a>: Codelabs introductorios de Android con Jetpack Compose para que puedas aprender a crear aplicaciones Android con Compose.</p>
+<p><strong>Panel del proyecto</strong>: En el lado izquierdo de la ventana, el panel del proyecto muestra la estructura del proyecto y permite navegar por los archivos y carpetas del proyecto. Puedes cambiar entre diferentes vistas, como "Android", "Project" y "Packages".</p>
+</li>
+<li>
+<p><strong>Editor de código</strong>: El editor de código ocupa la mayor parte de la ventana y es donde escribirás y editarás el código fuente de tu aplicación. El editor ofrece características como resaltado de sintaxis, autocompletado y refactorización.</p>
+</li>
+<li>
+<p><strong>Diseñador de interfaces</strong>: Android Studio incluye un diseñador visual que te permite crear y editar interfaces de usuario (UI) utilizando un editor gráfico. Puedes arrastrar y soltar componentes UI desde una paleta y ajustar sus propiedades.</p>
+</li>
+<li>
+<p><strong>Panel de herramientas</strong>: En el lado derecho de la ventana, el panel de herramientas proporciona acceso a diversas herramientas útiles, como el inspector de diseño, el administrador de dispositivos virtuales (AVD Manager) y el administrador de SDK.</p>
+</li>
+<li>
+<p><strong>Consola de logcat</strong>: En la parte inferior de la ventana, la consola de logcat muestra los mensajes de registro generados por la aplicación en ejecución. Esto es útil para depurar y solucionar problemas en tu aplicación.</p>
+</li>
+<li>
+<p><strong>Ventana emergente de terminal</strong>: Android Studio incluye una terminal integrada que te permite ejecutar comandos directamente desde el IDE. Puedes abrirla desde el menú "View" &gt; "Tool Windows" &gt; "Terminal".</p>
+</li>
+<li>
+<p><strong>Ventana emergente de problemas</strong>: Esta ventana muestra advertencias y errores relacionados con el código fuente y las configuraciones del proyecto. Puedes acceder a ella desde el menú "View" &gt; "Tool Windows" &gt; "Problems".</p>
+</li>
+<li>
+<p><strong>Ventana emergente de estructura</strong>: La ventana emergente de estructura muestra una vista jerárquica del archivo actualmente abierto en el editor. Puedes acceder a ella desde el menú "</p>
 </li>
 </ul>
+</details>
 
 
 
@@ -1428,10 +1482,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   
