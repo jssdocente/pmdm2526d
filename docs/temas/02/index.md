@@ -18,6 +18,11 @@ Android permite crear aplicaciones utilizando Java o Kotlin, siendo este último
 
 ### 📁 Recursos
 
-- [Documentación oficial de Jetpack Compose](https://developer.android.com/jetpack/compose?hl=es-419): La documentación oficial de Jetpack Compose, que incluye guías, tutoriales y ejemplos para aprender a usar Compose.
-- [Codelabs introductorios de Android](https://developer.android.com/courses/android-basics-compose/unit-1?hl=es-419): Codelabs introductorios de Android con Jetpack Compose para que puedas aprender a crear aplicaciones Android con Compose.
+=== "Android y Jetpack Compose"
+    - [Documentación oficial de Jetpack Compose](https://developer.android.com/jetpack/compose?hl=es-419): La documentación oficial de Jetpack Compose, que incluye guías, tutoriales y ejemplos para aprender a usar Compose.
+    - [Codelabs introductorios de Android](https://developer.android.com/courses/android-basics-compose/unit-1?hl=es-419): Codelabs introductorios de Android con Jetpack Compose para que puedas aprender a crear aplicaciones Android con Compose.  
   
+=== "Kotlin"
+    - [Curso: Android con Kotlin (youtube)](https://www.youtube.com/playlist?list=PLU8oAlHdN5BkdfBPpNv_lVCJxJgE87cr0)
+    - [Curso Kotlin con Jetpack Compose](https://www.youtube.com/playlist?list=PLQL8Dog3JUwe6fHSgVnBp68gVUCBkOL_n)
+    - [Curso: Jetpack Compose 2023](https://www.youtube.com/playlist?list=PLrn69hTK5FBwu7VmWBg76v23atiMqz_pY)

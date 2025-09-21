@@ -47,6 +47,10 @@ El segundo bloque trata sobre el desarrollo de videojuegos, para lo cual usaremo
         * Pildoras informáticas
             * [Curso Android & Kotlin](https://www.pildorasinformaticas.es/course/curso-android-kotlin/)
             * [Curso de Android (java) con Android Studio](https://www.youtube.com/playlist?list=PLU8oAlHdN5Bkn-KS1sRFlSEnXXcAtAJ9P)
+        * Youtube
+            * [Curso: Android con Kotlin](https://www.youtube.com/playlist?list=PLU8oAlHdN5BkdfBPpNv_lVCJxJgE87cr0)
+            * [Curso Kotlin con Jetpack Compose](https://www.youtube.com/playlist?list=PLQL8Dog3JUwe6fHSgVnBp68gVUCBkOL_n)
+            * [Curso: Jetpack Compose 2023](https://www.youtube.com/playlist?list=PLrn69hTK5FBwu7VmWBg76v23atiMqz_pY)
 
             
         
