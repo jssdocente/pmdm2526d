@@ -10,6 +10,7 @@ nav:
       - "Introducción": temas/00-android/00-kotlin/index.md
       - "Variables": temas/00-android/00-kotlin/11-variables-tipos-datos.md
       - "Expresiones vs Sentencias": temas/00-android/00-kotlin/12-expresiones-vs-sentencias.md
+      - "When": temas/00-android/00-kotlin/12.1-when.md
       - "Funciones y lambdas": temas/00-android/00-kotlin/13-funciones-lambdas.md
       - "Null safety": temas/00-android/00-kotlin/14-null-safety.md
       - "Colecciones":
