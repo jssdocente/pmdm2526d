@@ -1,5 +1,3 @@
-import CodeBlock from '@theme/CodeBlock';
-
 # Maps en Kotlin
 
 En Kotlin, un `Map` es una colección de pares clave-valor donde cada clave está asociada a un valor. Los `Map` en Kotlin son inmutables por defecto, lo que significa que no puedes modificar su tamaño una vez que se han creado.

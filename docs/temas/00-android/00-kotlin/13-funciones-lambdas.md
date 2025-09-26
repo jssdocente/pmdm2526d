@@ -1,4 +1,4 @@
-import CodeBlock from '@theme/CodeBlock';
+
 
 # Funciones y lambdas en Kotlin
 
@@ -181,4 +181,166 @@ En el ejemplo anterior, se define una función de extensión `invertir` para la 
     Las funciones de extensión te permiten agregar nuevas funciones a las clases existentes sin heredar de ellas, mientras que las funciones de orden superior te permiten pasar funciones como argumentos a otras funciones.
 
     Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.
+
+
+
+
+## 🎯 Ejemplo. Poniendo en práctica todo
+
+Imaginen que estamos desarrollando una aplicación para gestionar los cursos de una universidad. Vamos a trabajar con una lista de estudiantes.
+
+### **Paso 1: Definir nuestro modelo de datos** #️⃣
+
+Primero, definamos una clase de datos (`data class`) que representará a un estudiante. Las `data class` en Kotlin son perfectas para este propósito, ya que nos proveen automáticamente de métodos útiles como `equals()`, `hashCode()` y `toString()`.
+
+```kotlin
+data class Estudiante(
+    val id: Int,
+    val nombre: String,
+    val calificacion: Double,
+    val curso: String,
+    val activo: Boolean = true
+)
+```
+
+### **Paso 2: Generar nuestra colección de datos** #️⃣
+
+Ahora, vamos a crear una lista (`List`) de estudiantes para nuestros ejemplos. Las listas son colecciones ordenadas de elementos. En Kotlin, podemos crearlas fácilmente con la función `listOf()`.
+
+```kotlin
+val estudiantes = listOf(
+    Estudiante(1, "Ana", 9.5, "Kotlin Avanzado", true),
+    Estudiante(2, "Luis", 6.8, "Jetpack Compose", false),
+    Estudiante(3, "Carlos", 8.9, "Kotlin Avanzado", true),
+    Estudiante(4, "Sofía", 10.0, "Arquitectura Android", true),
+    Estudiante(5, "Marta", 7.2, "Jetpack Compose", true),
+    Estudiante(6, "Pedro", 5.5, "Kotlin Avanzado", true),
+    Estudiante(7, "Lucía", 8.1, "Arquitectura Android", false)
+)
+```
+***
+
+### **Paso 3: Procesando la colección con funciones de orden superior y Lambdas** #️⃣
+
+Aquí es donde reside la magia de la programación funcional en Kotlin. En lugar de usar bucles `for` tradicionales para todo, podemos usar funciones que aceptan otras funciones (lambdas) como parámetros para procesar colecciones.
+
+#### **1. `filter`: Filtrando la colección**
+
+La función `filter` crea una nueva lista que contiene únicamente los elementos que cumplen con una condición específica (el "predicado").
+
+**Ejemplo:** Queremos obtener solo los estudiantes que hayan aprobado, es decir, que tengan una calificación mayor o igual a 7.0.
+
+```kotlin
+val estudiantesAprobados = estudiantes.filter { estudiante ->
+    estudiante.calificacion >= 7.0
+}
+
+println("Estudiantes Aprobados:")
+estudiantesAprobados.forEach { println(it) }
+
+// --- Salida ---
+// Estudiantes Aprobados:
+// Estudiante(id=1, nombre=Ana, calificacion=9.5, curso=Kotlin Avanzado, activo=true)
+// Estudiante(id=3, nombre=Carlos, calificacion=8.9, curso=Kotlin Avanzado, activo=true)
+// Estudiante(id=4, nombre=Sofía, calificacion=10.0, curso=Arquitectura Android, activo=true)
+// Estudiante(id=5, nombre=Marta, calificacion=7.2, curso=Jetpack Compose, activo=true)
+// Estudiante(id=7, nombre=Lucía, calificacion=8.1, curso=Arquitectura Android, activo=false)
+```
+
+!!! info "Explicación"
+    La lambda `{ estudiante -> estudiante.calificacion >= 7.0 }` se ejecuta para cada estudiante en la lista. Si la expresión devuelve `true`, el estudiante se incluye en la nueva lista `estudiantesAprobados`.
+
+#### **2. `map`: Transformando la colección** #️⃣
+
+La función `map` crea una nueva lista transformando cada elemento de la lista original en algo nuevo.
+
+**Ejemplo:** Necesitamos una lista que contenga solo los nombres de todos los estudiantes, pero en mayúsculas.
+
+```kotlin
+val nombresEnMayusculas = estudiantes.map { it.nombre.uppercase() }
+
+println("\nNombres de Estudiantes en Mayúsculas:")
+println(nombresEnMayusculas)
+
+// --- Salida ---
+// Nombres de Estudiantes en Mayúsculas:
+// [ANA, LUIS, CARLOS, SOFÍA, MARTA, PEDRO, LUCÍA]
+```
+
+!!! info "Explicación"
+    La lambda `{ it.nombre.uppercase() }` toma cada estudiante (`it` es el nombre implícito para un único parámetro) y devuelve su nombre convertido a mayúsculas. El resultado es una `List<String>`.
+
+#### **3. `find` (o `firstOrNull`): Encontrando un elemento** #️⃣
+
+La función `firstOrNull` devuelve el primer elemento que cumple una condición, o `null` si ninguno la cumple.
+
+**Ejemplo:** Busquemos al estudiante con el ID 4.
+
+```kotlin
+val estudianteBuscado = estudiantes.firstOrNull { it.id == 4 }
+
+if (estudianteBuscado != null) {
+    println("\nEstudiante encontrado: ${estudianteBuscado.nombre}")
+} else {
+    println("\nNo se encontró al estudiante.")
+}
+
+// --- Salida ---
+// Estudiante encontrado: Sofía
+```
+
+#### **4. `groupBy`: Agrupando elementos** #️⃣
+
+Esta función es increíblemente útil. Agrupa los elementos de una colección en un `Map`, donde las claves son el resultado de la lambda y los valores son listas de los elementos que generaron esa clave.
+
+**Ejemplo:** Agrupemos a los estudiantes por el curso en el que están inscritos.
+
+```kotlin
+val estudiantesPorCurso = estudiantes.groupBy { it.curso }
+
+println("\nEstudiantes agrupados por curso:")
+estudiantesPorCurso.forEach { (curso, listaEstudiantes) ->
+    println("Curso: $curso")
+    listaEstudiantes.forEach { estudiante ->
+        println("  - ${estudiante.nombre}")
+    }
+}
+
+// --- Salida ---
+// Estudiantes agrupados por curso:
+// Curso: Kotlin Avanzado
+//   - Ana
+//   - Carlos
+//   - Pedro
+// Curso: Jetpack Compose
+//   - Luis
+//   - Marta
+// Curso: Arquitectura Android
+//   - Sofía
+//   - Lucía
+```
+!!! info "Explicación"
+    La lambda `{ it.curso }` se ejecuta para cada estudiante, y el valor que devuelve (el nombre del curso) se usa como clave en el `Map` resultante.
+
+### **Encadenamiento de Operaciones: El verdadero poder** 💪
+
+La verdadera expresividad se alcanza cuando encadenamos estas funciones. Las operaciones se ejecutan en secuencia, permitiéndonos realizar consultas complejas de forma muy legible.
+
+**Ejemplo complejo:** Queremos obtener los nombres de los estudiantes activos del curso "Kotlin Avanzado" que hayan aprobado, ordenados por su calificación de mayor a menor.
+
+```kotlin
+val resultadoFinal = estudiantes
+    .filter { it.curso == "Kotlin Avanzado" && it.activo } // 1. Filtra por curso y estado activo
+    .filter { it.calificacion >= 7.0 }                 // 2. Filtra los aprobados de ese grupo
+    .sortedByDescending { it.calificacion }               // 3. Ordena de mayor a menor calificación
+    .map { "${it.nombre} - Calificación: ${it.calificacion}" } // 4. Mapea al formato deseado (String)
+
+println("\nConsulta compleja:")
+resultadoFinal.forEach { println(it) }
+
+// --- Salida ---
+// Consulta compleja:
+// Ana - Calificación: 9.5
+// Carlos - Calificación: 8.9
+```
 

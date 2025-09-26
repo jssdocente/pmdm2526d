@@ -1,4 +1,4 @@
-import CodeBlock from '@theme/CodeBlock';
+
 
 # Tipos de variables y datos en Kotlin
 
