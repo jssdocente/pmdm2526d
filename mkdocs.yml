@@ -16,8 +16,8 @@ nav:
       - "Colecciones":
         - "Arrays": temas/00-android/00-kotlin/41-arrays.md
         - "Listas": temas/00-android/00-kotlin/42-listas.md
-        - "Maps": temas/00-android/00-kotlin/42-maps.md
-        - "Sets": temas/00-android/00-kotlin/42-sets.md
+        - "Maps": temas/00-android/00-kotlin/43-maps.md
+        - "Sets": temas/00-android/00-kotlin/44-sets.md
       - "POO": temas/00-android/00-kotlin/21-poo.md
       - "Objetos anónimos": temas/00-android/00-kotlin/22-objetos-anonimos.md
       - "Data classes": temas/00-android/00-kotlin/23-data-classes.md
