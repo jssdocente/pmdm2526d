@@ -598,6 +598,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejemplo-poniendo-en-practica-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Ejemplo. Poniendo en práctica todo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Ejemplo. Poniendo en práctica todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-definir-nuestro-modelo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Definir nuestro modelo de datos #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-generar-nuestra-coleccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Generar nuestra colección de datos #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-procesando-la-coleccion-con-funciones-de-orden-superior-y-lambdas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Procesando la colección con funciones de orden superior y Lambdas #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-operaciones-el-verdadero-poder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encadenamiento de Operaciones: El verdadero poder 💪
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -721,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="42-maps.md" class="md-nav__link">
+      <a href="43-maps.html" class="md-nav__link">
         
   
   
@@ -744,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="42-sets.md" class="md-nav__link">
+      <a href="44-sets.html" class="md-nav__link">
         
   
   
@@ -1423,6 +1474,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ejemplo-poniendo-en-practica-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Ejemplo. Poniendo en práctica todo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Ejemplo. Poniendo en práctica todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-definir-nuestro-modelo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Definir nuestro modelo de datos #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-generar-nuestra-coleccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Generar nuestra colección de datos #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-procesando-la-coleccion-con-funciones-de-orden-superior-y-lambdas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Procesando la colección con funciones de orden superior y Lambdas #️⃣
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-operaciones-el-verdadero-poder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encadenamiento de Operaciones: El verdadero poder 💪
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1439,7 +1541,6 @@
 
 
 
-<p>import CodeBlock from '@theme/CodeBlock';</p>
 <h1 id="funciones-y-lambdas-en-kotlin">Funciones y lambdas en Kotlin<a class="headerlink" href="#funciones-y-lambdas-en-kotlin" title="Permanent link">¶</a></h1>
 <p>En Kotlin, las funciones son ciudadanos de primera clase, lo que significa que puedes tratarlas como cualquier otro tipo de dato, como un <code>Int</code> o un <code>String</code>. Esto te permite pasar funciones como argumentos a otras funciones, devolver funciones de otras funciones y almacenar funciones en variables. </p>
 <p>Las funciones en Kotlin se definen utilizando la palabra clave <code>fun</code>, seguida del nombre de la función, los parámetros de entrada y el tipo de retorno. </p>
@@ -1565,6 +1666,132 @@
 <p>Las funciones de extensión te permiten agregar nuevas funciones a las clases existentes sin heredar de ellas, mientras que las funciones de orden superior te permiten pasar funciones como argumentos a otras funciones.</p>
 <p>Al combinar estas dos características, puedes escribir código más flexible y expresivo en Kotlin.</p>
 </div>
+<h2 id="ejemplo-poniendo-en-practica-todo">🎯 Ejemplo. Poniendo en práctica todo<a class="headerlink" href="#ejemplo-poniendo-en-practica-todo" title="Permanent link">¶</a></h2>
+<p>Imaginen que estamos desarrollando una aplicación para gestionar los cursos de una universidad. Vamos a trabajar con una lista de estudiantes.</p>
+<h3 id="paso-1-definir-nuestro-modelo-de-datos"><strong>Paso 1: Definir nuestro modelo de datos</strong> #️⃣<a class="headerlink" href="#paso-1-definir-nuestro-modelo-de-datos" title="Permanent link">¶</a></h3>
+<p>Primero, definamos una clase de datos (<code>data class</code>) que representará a un estudiante. Las <code>data class</code> en Kotlin son perfectas para este propósito, ya que nos proveen automáticamente de métodos útiles como <code>equals()</code>, <code>hashCode()</code> y <code>toString()</code>.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Estudiante</span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">calificacion</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">curso</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">activo</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="paso-2-generar-nuestra-coleccion-de-datos"><strong>Paso 2: Generar nuestra colección de datos</strong> #️⃣<a class="headerlink" href="#paso-2-generar-nuestra-coleccion-de-datos" title="Permanent link">¶</a></h3>
+<p>Ahora, vamos a crear una lista (<code>List</code>) de estudiantes para nuestros ejemplos. Las listas son colecciones ordenadas de elementos. En Kotlin, podemos crearlas fácilmente con la función <code>listOf()</code>.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">estudiantes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="m">9.5</span><span class="p">,</span><span class="w"> </span><span class="s">"Kotlin Avanzado"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">"Luis"</span><span class="p">,</span><span class="w"> </span><span class="m">6.8</span><span class="p">,</span><span class="w"> </span><span class="s">"Jetpack Compose"</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="s">"Carlos"</span><span class="p">,</span><span class="w"> </span><span class="m">8.9</span><span class="p">,</span><span class="w"> </span><span class="s">"Kotlin Avanzado"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="s">"Sofía"</span><span class="p">,</span><span class="w"> </span><span class="m">10.0</span><span class="p">,</span><span class="w"> </span><span class="s">"Arquitectura Android"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="s">"Marta"</span><span class="p">,</span><span class="w"> </span><span class="m">7.2</span><span class="p">,</span><span class="w"> </span><span class="s">"Jetpack Compose"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="s">"Pedro"</span><span class="p">,</span><span class="w"> </span><span class="m">5.5</span><span class="p">,</span><span class="w"> </span><span class="s">"Kotlin Avanzado"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="n">Estudiante</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="s">"Lucía"</span><span class="p">,</span><span class="w"> </span><span class="m">8.1</span><span class="p">,</span><span class="w"> </span><span class="s">"Arquitectura Android"</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="p">)</span>
+</span></code></pre></div>
+<hr>
+<h3 id="paso-3-procesando-la-coleccion-con-funciones-de-orden-superior-y-lambdas"><strong>Paso 3: Procesando la colección con funciones de orden superior y Lambdas</strong> #️⃣<a class="headerlink" href="#paso-3-procesando-la-coleccion-con-funciones-de-orden-superior-y-lambdas" title="Permanent link">¶</a></h3>
+<p>Aquí es donde reside la magia de la programación funcional en Kotlin. En lugar de usar bucles <code>for</code> tradicionales para todo, podemos usar funciones que aceptan otras funciones (lambdas) como parámetros para procesar colecciones.</p>
+<h4 id="1-filter-filtrando-la-coleccion"><strong>1. <code>filter</code>: Filtrando la colección</strong><a class="headerlink" href="#1-filter-filtrando-la-coleccion" title="Permanent link">¶</a></h4>
+<p>La función <code>filter</code> crea una nueva lista que contiene únicamente los elementos que cumplen con una condición específica (el "predicado").</p>
+<p><strong>Ejemplo:</strong> Queremos obtener solo los estudiantes que hayan aprobado, es decir, que tengan una calificación mayor o igual a 7.0.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">estudiantesAprobados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">estudiante</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">estudiante</span><span class="p">.</span><span class="na">calificacion</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">7.0</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">println</span><span class="p">(</span><span class="s">"Estudiantes Aprobados:"</span><span class="p">)</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">estudiantesAprobados</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1">// --- Salida ---</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1">// Estudiantes Aprobados:</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1">// Estudiante(id=1, nombre=Ana, calificacion=9.5, curso=Kotlin Avanzado, activo=true)</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="c1">// Estudiante(id=3, nombre=Carlos, calificacion=8.9, curso=Kotlin Avanzado, activo=true)</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1">// Estudiante(id=4, nombre=Sofía, calificacion=10.0, curso=Arquitectura Android, activo=true)</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1">// Estudiante(id=5, nombre=Marta, calificacion=7.2, curso=Jetpack Compose, activo=true)</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1">// Estudiante(id=7, nombre=Lucía, calificacion=8.1, curso=Arquitectura Android, activo=false)</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Explicación</p>
+<p>La lambda <code>{ estudiante -&gt; estudiante.calificacion &gt;= 7.0 }</code> se ejecuta para cada estudiante en la lista. Si la expresión devuelve <code>true</code>, el estudiante se incluye en la nueva lista <code>estudiantesAprobados</code>.</p>
+</div>
+<h4 id="2-map-transformando-la-coleccion"><strong>2. <code>map</code>: Transformando la colección</strong> #️⃣<a class="headerlink" href="#2-map-transformando-la-coleccion" title="Permanent link">¶</a></h4>
+<p>La función <code>map</code> crea una nueva lista transformando cada elemento de la lista original en algo nuevo.</p>
+<p><strong>Ejemplo:</strong> Necesitamos una lista que contenga solo los nombres de todos los estudiantes, pero en mayúsculas.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombresEnMayusculas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">nombre</span><span class="p">.</span><span class="na">uppercase</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">println</span><span class="p">(</span><span class="s">"\nNombres de Estudiantes en Mayúsculas:"</span><span class="p">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">println</span><span class="p">(</span><span class="n">nombresEnMayusculas</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">// --- Salida ---</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// Nombres de Estudiantes en Mayúsculas:</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">// [ANA, LUIS, CARLOS, SOFÍA, MARTA, PEDRO, LUCÍA]</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Explicación</p>
+<p>La lambda <code>{ it.nombre.uppercase() }</code> toma cada estudiante (<code>it</code> es el nombre implícito para un único parámetro) y devuelve su nombre convertido a mayúsculas. El resultado es una <code>List&lt;String&gt;</code>.</p>
+</div>
+<h4 id="3-find-o-firstornull-encontrando-un-elemento"><strong>3. <code>find</code> (o <code>firstOrNull</code>): Encontrando un elemento</strong> #️⃣<a class="headerlink" href="#3-find-o-firstornull-encontrando-un-elemento" title="Permanent link">¶</a></h4>
+<p>La función <code>firstOrNull</code> devuelve el primer elemento que cumple una condición, o <code>null</code> si ninguno la cumple.</p>
+<p><strong>Ejemplo:</strong> Busquemos al estudiante con el ID 4.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">estudianteBuscado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">.</span><span class="na">firstOrNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">estudianteBuscado</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"\nEstudiante encontrado: </span><span class="si">${</span><span class="n">estudianteBuscado</span><span class="p">.</span><span class="na">nombre</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"\nNo se encontró al estudiante."</span><span class="p">)</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">}</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// --- Salida ---</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1">// Estudiante encontrado: Sofía</span>
+</span></code></pre></div>
+<h4 id="4-groupby-agrupando-elementos"><strong>4. <code>groupBy</code>: Agrupando elementos</strong> #️⃣<a class="headerlink" href="#4-groupby-agrupando-elementos" title="Permanent link">¶</a></h4>
+<p>Esta función es increíblemente útil. Agrupa los elementos de una colección en un <code>Map</code>, donde las claves son el resultado de la lambda y los valores son listas de los elementos que generaron esa clave.</p>
+<p><strong>Ejemplo:</strong> Agrupemos a los estudiantes por el curso en el que están inscritos.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">estudiantesPorCurso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">.</span><span class="na">groupBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">curso</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">println</span><span class="p">(</span><span class="s">"\nEstudiantes agrupados por curso:"</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">estudiantesPorCurso</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">curso</span><span class="p">,</span><span class="w"> </span><span class="n">listaEstudiantes</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Curso: </span><span class="si">$</span><span class="n">curso</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="n">listaEstudiantes</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">estudiante</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"  - </span><span class="si">${</span><span class="n">estudiante</span><span class="p">.</span><span class="na">nombre</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">}</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1">// --- Salida ---</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1">// Estudiantes agrupados por curso:</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="c1">// Curso: Kotlin Avanzado</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c1">//   - Ana</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1">//   - Carlos</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">//   - Pedro</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="c1">// Curso: Jetpack Compose</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="c1">//   - Luis</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="c1">//   - Marta</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="c1">// Curso: Arquitectura Android</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="c1">//   - Sofía</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="c1">//   - Lucía</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Explicación</p>
+<p>La lambda <code>{ it.curso }</code> se ejecuta para cada estudiante, y el valor que devuelve (el nombre del curso) se usa como clave en el <code>Map</code> resultante.</p>
+</div>
+<h3 id="encadenamiento-de-operaciones-el-verdadero-poder"><strong>Encadenamiento de Operaciones: El verdadero poder</strong> 💪<a class="headerlink" href="#encadenamiento-de-operaciones-el-verdadero-poder" title="Permanent link">¶</a></h3>
+<p>La verdadera expresividad se alcanza cuando encadenamos estas funciones. Las operaciones se ejecutan en secuencia, permitiéndonos realizar consultas complejas de forma muy legible.</p>
+<p><strong>Ejemplo complejo:</strong> Queremos obtener los nombres de los estudiantes activos del curso "Kotlin Avanzado" que hayan aprobado, ordenados por su calificación de mayor a menor.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">resultadoFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiantes</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">curso</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Kotlin Avanzado"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">activo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// 1. Filtra por curso y estado activo</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">calificacion</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">7.0</span><span class="w"> </span><span class="p">}</span><span class="w">                 </span><span class="c1">// 2. Filtra los aprobados de ese grupo</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="p">.</span><span class="na">sortedByDescending</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">calificacion</span><span class="w"> </span><span class="p">}</span><span class="w">               </span><span class="c1">// 3. Ordena de mayor a menor calificación</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"</span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">nombre</span><span class="si">}</span><span class="s"> - Calificación: </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">calificacion</span><span class="si">}</span><span class="s">"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// 4. Mapea al formato deseado (String)</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">println</span><span class="p">(</span><span class="s">"\nConsulta compleja:"</span><span class="p">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">resultadoFinal</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1">// --- Salida ---</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1">// Consulta compleja:</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="c1">// Ana - Calificación: 9.5</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="c1">// Carlos - Calificación: 8.9</span>
+</span></code></pre></div>
 
 
 
