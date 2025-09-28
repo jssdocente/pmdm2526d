@@ -396,9 +396,6 @@ En el ejemplo anterior, se define un componente `Contador` que muestra un botón
 ## 📦 Recursos
 
 - [Documentación oficial de Jetpack Compose](https://developer.android.com/jetpack/compose?hl=es-419): La documentación oficial de Jetpack Compose, que incluye guías, tutoriales y ejemplos para aprender a usar Compose.
-
 - [Ejemplos básicos de Compose](https://github.com/resuadam2/TutorialCompose): Un repositorio con ejemplos básicos de Jetpack Compose para que puedas aprender a crear interfaces de usuario con Compose.   
-
 - [Avanzando con Kotlin y el manejo de la UI - Codelabs](https://developer.android.com/courses/android-basics-compose/unit-2?hl=es-419)
-
 - [Más Kotlin y listas de elementos (LazyColumn) - Codelabs](https://developer.android.com/courses/android-basics-compose/unit-3?hl=es-419)

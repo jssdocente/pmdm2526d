@@ -45,6 +45,7 @@ nav:
     - "2.1. Primeros pasos": temas/02/2.1-primeros-pasos.md
     - "2.2. Ciclo de Vida": temas/02/2.2-ciclo-vida-app.md
     - "2.3. Primera aplicación": temas/02/2.3-primera-app.md
+    - "2.4. Gestión del estado": temas/02/2.4-gestion-estado.md
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
   #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
