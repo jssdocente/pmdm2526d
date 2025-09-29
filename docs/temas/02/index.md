@@ -12,6 +12,8 @@ Android permite crear aplicaciones utilizando Java o Kotlin, siendo este último
 - [2.1 Primeros pasos](./2.1-primeros-pasos.md)
 - [2.2 Ciclo de vida de una aplicación Android](./2.2-ciclo-vida-app.md)
 - [2.3 Primera aplicación](./2.3-primera-app.md)
+- [2.4 Gestión del estado](./2.4-gestion-estado.md)
+- [2.5 Mejorando el código](./2.5-mejorando-codigo.md)
 
 
 <br/><br/><br/><br/>
