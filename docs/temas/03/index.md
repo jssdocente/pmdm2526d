@@ -1,20 +1,18 @@
-# **UT2. Programación de aplicaciones para dispositivos móviles en Android**
+# **UT3. Interfaz de usuario**
 
-En este tema veremos una visión general de la programación de aplicaciones para dispositivos móviles en Android, comenzando a crear las primeras aplicaciones, y entendiendo los conceptos básicos de la plataforma Android.
+En este tema nos enfocaremos en el concepto de interfaz de usuario, accesibilidad, adaptación a diferentes tamaños de pantalla, y exploraremos en profundidad una de las capas en cualquier arquitectura, como es la capa de UI.
 
-Android permite crear aplicaciones utilizando Java o Kotlin, siendo este último el lenguaje recomendado por Google para el desarrollo de aplicaciones Android.
-
-- [En lenguaje Kotlin](../00-android/00-kotlin/index.md)
+También vamos a tratar el tema del diseño de la interfaz de usuario, las líneas guía que nos provee Android con su Material Design.
 
 Índice:
 
 
-- [2.1 Primeros pasos](./2.1-primeros-pasos.md)
+<!-- - [2.1 Primeros pasos](./2.1-primeros-pasos.md)
 - [2.2 Ciclo de vida de una aplicación Android](./2.2-ciclo-vida-app.md)
 - [2.3 Primera aplicación](./2.3-primera-app.md)
 - [2.4 Gestión del estado](./2.4-gestion-estado.md)
 - [2.5 Mejorando el código](./2.5-mejorando-codigo.md)
-- [2.6 Listas en Compose](./2.6-mostrar-listas.md)
+- [2.6 Listas en Compose](./2.6-mostrar-listas.md) -->
 
 
 <br/><br/><br/><br/>

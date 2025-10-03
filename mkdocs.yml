@@ -47,6 +47,12 @@ nav:
     - "2.3. Primera aplicación": temas/02/2.3-primera-app.md
     - "2.4. Gestión del estado": temas/02/2.4-gestion-estado.md
     - "2.5. Mejorando el código": temas/02/2.5-mejorando-codigo.md
+    - "2.6. Manejo de listas": temas/02/2.6-mostrar-listas.md
+
+  # - "UT3 - Interfaz de Usuario":
+  #   - "Inicio": temas/03/index.md
+  #   - "3.1. Introducción": temas/03/3.1-intro.md
+  #   - "3.2. Temas": temas/03/3.2-temas.md
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
   #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
