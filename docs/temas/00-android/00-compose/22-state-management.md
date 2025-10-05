@@ -285,6 +285,237 @@ En el ejemplo anterior, se utiliza la función `derivedStateOf` para crear un es
 
 En Kotlin, un `Flow` es una secuencia de valores que se emiten de forma asíncrona y reactiva. Los `Flow` te permiten trabajar con datos de forma reactiva y gestionar la concurrencia de forma sencilla.
 
+!!! info "Explicación sencilla"
+
+    Imagina que los Flows son como mangueras de agua 💧. Transportan datos (el agua) desde un emisor (el grifo) hasta un colector (alguien que recoge el agua). La diferencia entre los tipos de Flow radica en cómo y a quién entregan esa agua.
+
+    Existen principalmente tres tipos que debes dominar:
+
+    - Flow (**Frío** 🥶): Es la manguera estándar. Solo empieza a soltar agua (emitir datos) cuando alguien abre el grifo (collect). Cada persona que se conecta (collect) obtiene su propia manguera y recibe toda la secuencia de datos desde el principio. No empieza a producir si nadie está escuchando.
+
+    - SharedFlow (**Caliente** 🔥): Es como un aspersor en un jardín. Emite datos constantemente (o bajo ciertas condiciones) sin importar si alguien está mirando o no. Múltiples colectores pueden conectarse a él y todos recibirán los mismos datos que se emitan después de que se conecten. Es ideal para eventos que deben ser compartidos entre varias partes de tu app (ej: "¡Pago realizado con éxito!").
+
+    - StateFlow (**Caliente y con memoria** 🧐): Es una especialización de SharedFlow. Piensa en él como un termómetro digital en la pared. Siempre tiene un valor (la temperatura actual) y cualquiera que lo mire verá ese valor. Si el valor cambia, todos los que lo estén mirando verán la actualización. La clave es que **siempre tiene un valor inicial** y solo emite el valor más reciente a los nuevos colectores. No emite valores repetidos si son idénticos al anterior.
+
+
+??? example "Ejemplo 1 `Flow`: El Flujo Frío"
+
+    Un Flow solo se activa cuando se consume. Perfecto para operaciones de un solo disparo que devuelven una secuencia, como leer de una base de datos o hacer una petición de red.
+
+    ```kotlin
+    import kotlinx.coroutines.delay
+    import kotlinx.coroutines.flow.Flow
+    import kotlinx.coroutines.flow.flow
+    import kotlinx.coroutines.runBlocking
+
+    // 1. Definimos un Flow que emite números del 1 al 3, con una pausa.
+    fun getNumeros(): Flow<Int> = flow {
+        println("El Flow ha comenzado a emitir.")
+        for (i in 1..3) {
+            delay(1000) // Simula trabajo o espera
+            emit(i)
+        }
+    }
+
+    fun main() = runBlocking {
+        println("Llamando a la función que devuelve el Flow...")
+        val miFlow = getNumeros()
+        
+        println("Esperando para recolectar...")
+        delay(2000)
+        
+        println("Iniciando la recolección.")
+        miFlow.collect { numero ->
+            println("Número recibido: $numero")
+        }
+        
+        println("La recolección ha terminado.")
+    }
+    ```
+    Resultado de la ejecución:
+
+    ```text
+    Llamando a la función que devuelve el Flow...
+    Esperando para recolectar...
+    Iniciando la recolección.
+    El Flow ha comenzado a emitir. // <-- ¡NOTA! El código del flow no se ejecuta hasta el .collect()
+    Número recibido: 1
+    Número recibido: 2
+    Número recibido: 3
+    La recolección ha terminado.
+    ```
+
+??? example "Ejemplo 2 `SharedFlow`: El flujo para eventos"
+
+    Ideal para enviar eventos a múltiples suscriptores. No tiene un estado inicial.
+
+    ```kotlin
+    import kotlinx.coroutines.delay
+    import kotlinx.coroutines.flow.MutableSharedFlow
+    import kotlinx.coroutines.launch
+    import kotlinx.coroutines.runBlocking
+
+    fun main() = runBlocking {
+    // Creamos un SharedFlow mutable para poder emitir valores.
+    val eventos = MutableSharedFlow<String>()
+
+    // Lanzamos una corrutina para el primer suscriptor
+    launch {
+        println("Suscriptor 1 esperando eventos...")
+        eventos.collect { evento ->
+            println("Suscriptor 1 recibió: $evento")
+        }
+    }
+
+    delay(500) // Damos tiempo a que el primer suscriptor se conecte
+
+    println("Emitiendo 'Evento A'")
+    eventos.emit("Evento A")
+
+    // Lanzamos una segunda corrutina para otro suscriptor
+    launch {
+        println("Suscriptor 2 esperando eventos...")
+        eventos.collect { evento ->
+            println("Suscriptor 2 recibió: $evento")
+        }
+    }
+
+    delay(500)
+
+    println("Emitiendo 'Evento B'")
+    eventos.emit("Evento B") // Ambos suscriptores reciben este
+    }
+    ```
+    Resultado de la ejecución:
+
+    ```text
+    Suscriptor 1 esperando eventos...
+    Emitiendo 'Evento A'
+    Suscriptor 1 recibió: Evento A
+    Suscriptor 2 esperando eventos...
+    Emitiendo 'Evento B'
+    Suscriptor 1 recibió: Evento B
+    Suscriptor 2 recibió: Evento B // <-- Ambos reciben los eventos emitidos DESPUÉS de suscribirse
+    ```
+
+
+
+??? example "Ejemplo 3 `StateFlow`: El Rey de Jetpack Compose 👑"
+
+    === "Ejemplo"
+    
+        En este ejemplo, crearemos una clase Carrito que expondrá el número de artículos como un StateFlow. Así, cualquier parte de nuestro código que esté "observando" el carrito sabrá inmediatamente cuántos artículos hay.
+
+        ```kotlin
+        import kotlinx.coroutines.*
+        import kotlinx.coroutines.flow.MutableStateFlow
+        import kotlinx.coroutines.flow.asStateFlow
+        import kotlinx.coroutines.flow.update
+
+        // 1. La clase que gestiona el estado
+        class Carrito {
+
+            // Privado y Mutable: Solo el carrito puede cambiar el número de artículos.
+            // Lo inicializamos con un valor de 0 artículos.
+            private val _numeroDeArticulos = MutableStateFlow(0)
+
+            // Público e Inmutable: Exponemos el Flow como solo lectura.
+            // Cualquiera puede observar cuántos artículos hay, pero no pueden cambiar el valor directamente.
+            val numeroDeArticulos = _numeroDeArticulos.asStateFlow()
+
+            fun anadirArticulo() {
+                // Usamos .update para cambiar el valor de forma segura.
+                // Es la forma recomendada para modificar un StateFlow.
+                _numeroDeArticulos.update { valorActual ->
+                    valorActual + 1
+                }
+                println("📦 Artículo añadido. Total: ${_numeroDeArticulos.value}")
+            }
+
+            fun quitarArticulo() {
+                if (_numeroDeArticulos.value > 0) {
+                    _numeroDeArticulos.update { it - 1 } // 'it' es el valor actual
+                    println("🗑️ Artículo quitado. Total: ${_numeroDeArticulos.value}")
+                } else {
+                    println("⚠️ El carrito ya está vacío.")
+                }
+            }
+        }
+
+        // 2. La función principal que simula el uso
+        fun main() = runBlocking {
+            val miCarrito = Carrito()
+
+            // Lanzamos una corrutina que se quedará observando el carrito.
+            // Este sería el equivalente a nuestra "UI" o consumidor de datos.
+            val jobObservador = launch {
+                println("👀 Observador conectado. Esperando actualizaciones del carrito...")
+                miCarrito.numeroDeArticulos.collect { total ->
+                    // Este bloque se ejecutará cada vez que el valor del StateFlow cambie.
+                    println("🛒 (Observador) El carrito ahora tiene $total artículos.")
+                }
+            }
+
+            // Damos un pequeño respiro para que el observador se inicie
+            delay(100)
+
+            // Simulamos interacciones del usuario
+            println("\n--- Simulación de usuario ---")
+            miCarrito.anadirArticulo()
+            delay(1000)
+
+            miCarrito.anadirArticulo()
+            delay(1000)
+
+            miCarrito.quitarArticulo()
+            delay(1000)
+
+            miCarrito.quitarArticulo()
+            delay(1000)
+
+            miCarrito.quitarArticulo() // Intentamos quitar cuando está vacío
+            println("--- Fin de la simulación ---\n")
+
+            // Cancelamos la corrutina del observador para que el programa termine
+            jobObservador.cancel()
+        }
+        ```
+        Salida esperada en la consola:
+
+        ```text
+        👀 Observador conectado. Esperando actualizaciones del carrito...
+        🛒 (Observador) El carrito ahora tiene 0 artículos.
+
+        --- Simulación de usuario ---
+        📦 Artículo añadido. Total: 1
+        🛒 (Observador) El carrito ahora tiene 1 artículos.
+        📦 Artículo añadido. Total: 2
+        🛒 (Observador) El carrito ahora tiene 2 artículos.
+        🗑️ Artículo quitado. Total: 1
+        🛒 (Observador) El carrito ahora tiene 1 artículos.
+        🗑️ Artículo quitado. Total: 0
+        🛒 (Observador) El carrito ahora tiene 0 artículos.
+        ⚠️ El carrito ya está vacío.
+        --- Fin de la simulación ---
+        ```
+    === "Explicación del código"
+
+      1.  **La Clase `Carrito`**:
+          
+          *   **`_numeroDeArticulos`**: Es un `MutableStateFlow`. El guion bajo `_` es una convención en Kotlin para indicar que es una propiedad privada que no debe usarse desde fuera. Al ser `Mutable`, esta clase puede cambiar su valor. **Siempre necesita un valor inicial** (en este caso, `0`).
+              
+          *   **`numeroDeArticulos`**: Esta es la versión pública y de solo lectura (`StateFlow`). La "UI" o el consumidor observará esta propiedad. Esto protege el estado; nadie fuera de la clase `Carrito` puede modificar el número de artículos. Es un principio de **encapsulación**.
+              
+          *   **`anadirArticulo()` y `quitarArticulo()`**: Son las acciones que modifican el estado interno (`_numeroDeArticulos`). La función `.update { ... }` es la forma moderna y segura de hacerlo.
+              
+      2.  **La Función `main`**:
+          
+          *   **`launch`**: Creamos un "observador" en una corrutina separada. Este se suscribe al `StateFlow` público.
+              
+          *   **`.collect`**: Aquí ocurre la magia. El código dentro de `.collect` se ejecuta **inmediatamente** con el valor actual del `StateFlow` (que es `0`) y luego se vuelve a ejecutar **cada vez que el valor cambia**.
+              
+          *   **`delay`**: Usamos pausas para simular el paso del tiempo y que se pueda ver claramente en la consola cómo el observador reacciona a los cambios.
+
 Puedes crear un `Flow` utilizando la función `flowOf()` de Kotlin.
 
 ```kotlin
@@ -315,6 +546,11 @@ val pares = numeros.filter { numero -> numero % 2 == 0 }
 ```
 
 En el ejemplo anterior, se utilizan los operadores `map` y `filter` para transformar el `Flow` `numeros`.
+
+### Tipos de flow en Kotlin
+
+
+
 
 ### Flows en Jetpack Compose
 
