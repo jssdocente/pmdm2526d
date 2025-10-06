@@ -53,6 +53,7 @@ nav:
   #   - "Inicio": temas/03/index.md
   #   - "3.1. Introducción": temas/03/3.1-intro.md
   #   - "3.2. Temas": temas/03/3.2-temas.md
+  #   - "3.3. Arquitectura": temas/03/3.3-arquitectura.md
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
   #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
