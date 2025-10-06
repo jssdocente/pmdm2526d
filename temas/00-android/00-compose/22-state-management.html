@@ -1084,6 +1084,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tipos-de-flow-en-kotlin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de flow en Kotlin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#flows-en-jetpack-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Flows en Jetpack Compose
@@ -1584,6 +1593,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tipos-de-flow-en-kotlin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de flow en Kotlin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#flows-en-jetpack-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Flows en Jetpack Compose
@@ -1863,51 +1881,290 @@
 <p>En el ejemplo anterior, se utiliza la función <code>derivedStateOf</code> para crear un estado <code>doble</code> que es el doble del estado <code>contador</code>.</p>
 <h2 id="flows-en-kotlin">💦 <strong>Flows en Kotlin</strong><a class="headerlink" href="#flows-en-kotlin" title="Permanent link">¶</a></h2>
 <p>En Kotlin, un <code>Flow</code> es una secuencia de valores que se emiten de forma asíncrona y reactiva. Los <code>Flow</code> te permiten trabajar con datos de forma reactiva y gestionar la concurrencia de forma sencilla.</p>
+<div class="admonition info">
+<p class="admonition-title">Explicación sencilla</p>
+<p>Imagina que los Flows son como mangueras de agua 💧. Transportan datos (el agua) desde un emisor (el grifo) hasta un colector (alguien que recoge el agua). La diferencia entre los tipos de Flow radica en cómo y a quién entregan esa agua.</p>
+<p>Existen principalmente tres tipos que debes dominar:</p>
+<ul>
+<li>
+<p>Flow (<strong>Frío</strong> 🥶): Es la manguera estándar. Solo empieza a soltar agua (emitir datos) cuando alguien abre el grifo (collect). Cada persona que se conecta (collect) obtiene su propia manguera y recibe toda la secuencia de datos desde el principio. No empieza a producir si nadie está escuchando.</p>
+</li>
+<li>
+<p>SharedFlow (<strong>Caliente</strong> 🔥): Es como un aspersor en un jardín. Emite datos constantemente (o bajo ciertas condiciones) sin importar si alguien está mirando o no. Múltiples colectores pueden conectarse a él y todos recibirán los mismos datos que se emitan después de que se conecten. Es ideal para eventos que deben ser compartidos entre varias partes de tu app (ej: "¡Pago realizado con éxito!").</p>
+</li>
+<li>
+<p>StateFlow (<strong>Caliente y con memoria</strong> 🧐): Es una especialización de SharedFlow. Piensa en él como un termómetro digital en la pared. Siempre tiene un valor (la temperatura actual) y cualquiera que lo mire verá ese valor. Si el valor cambia, todos los que lo estén mirando verán la actualización. La clave es que <strong>siempre tiene un valor inicial</strong> y solo emite el valor más reciente a los nuevos colectores. No emite valores repetidos si son idénticos al anterior.</p>
+</li>
+</ul>
+</div>
+<details class="example">
+<summary>Ejemplo 1 <code>Flow</code>: El Flujo Frío</summary>
+<p>Un Flow solo se activa cuando se consume. Perfecto para operaciones de un solo disparo que devuelven una secuencia, como leer de una base de datos o hacer una petición de red.</p>
+<p></p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.delay</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.Flow</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.flow</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.runBlocking</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">// 1. Definimos un Flow que emite números del 1 al 3, con una pausa.</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">getNumeros</span><span class="p">():</span><span class="w"> </span><span class="n">Flow</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flow</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"El Flow ha comenzado a emitir."</span><span class="p">)</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1.</span><span class="p">.</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span><span class="w"> </span><span class="c1">// Simula trabajo o espera</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="n">emit</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="p">}</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runBlocking</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Llamando a la función que devuelve el Flow..."</span><span class="p">)</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">miFlow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNumeros</span><span class="p">()</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Esperando para recolectar..."</span><span class="p">)</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">2000</span><span class="p">)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Iniciando la recolección."</span><span class="p">)</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="n">miFlow</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"Número recibido: </span><span class="si">$</span><span class="n">numero</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"La recolección ha terminado."</span><span class="p">)</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="p">}</span>
+</span></code></pre></div>
+Resultado de la ejecución:<p></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Llamando a la función que devuelve el Flow...
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Esperando para recolectar...
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Iniciando la recolección.
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>El Flow ha comenzado a emitir. // &lt;-- ¡NOTA! El código del flow no se ejecuta hasta el .collect()
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Número recibido: 1
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>Número recibido: 2
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Número recibido: 3
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>La recolección ha terminado.
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Ejemplo 2 <code>SharedFlow</code>: El flujo para eventos</summary>
+<p>Ideal para enviar eventos a múltiples suscriptores. No tiene un estado inicial.</p>
+<p></p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.delay</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.MutableSharedFlow</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.launch</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.runBlocking</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runBlocking</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">// Creamos un SharedFlow mutable para poder emitir valores.</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="kd">val</span><span class="w"> </span><span class="nv">eventos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableSharedFlow</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1">// Lanzamos una corrutina para el primer suscriptor</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Suscriptor 1 esperando eventos..."</span><span class="p">)</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="n">eventos</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">evento</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"Suscriptor 1 recibió: </span><span class="si">$</span><span class="n">evento</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="p">}</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="n">delay</span><span class="p">(</span><span class="m">500</span><span class="p">)</span><span class="w"> </span><span class="c1">// Damos tiempo a que el primer suscriptor se conecte</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="n">println</span><span class="p">(</span><span class="s">"Emitiendo 'Evento A'"</span><span class="p">)</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="n">eventos</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="s">"Evento A"</span><span class="p">)</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="c1">// Lanzamos una segunda corrutina para otro suscriptor</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="n">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Suscriptor 2 esperando eventos..."</span><span class="p">)</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">    </span><span class="n">eventos</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">evento</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"Suscriptor 2 recibió: </span><span class="si">$</span><span class="n">evento</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="p">}</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="n">delay</span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="n">println</span><span class="p">(</span><span class="s">"Emitiendo 'Evento B'"</span><span class="p">)</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="n">eventos</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="s">"Evento B"</span><span class="p">)</span><span class="w"> </span><span class="c1">// Ambos suscriptores reciben este</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="p">}</span>
+</span></code></pre></div>
+Resultado de la ejecución:<p></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Suscriptor 1 esperando eventos...
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Emitiendo 'Evento A'
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Suscriptor 1 recibió: Evento A
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Suscriptor 2 esperando eventos...
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Emitiendo 'Evento B'
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Suscriptor 1 recibió: Evento B
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Suscriptor 2 recibió: Evento B // &lt;-- Ambos reciben los eventos emitidos DESPUÉS de suscribirse
+</span></code></pre></div>
+</details>
+<details class="example">
+<summary>Ejemplo 3 <code>StateFlow</code>: El Rey de Jetpack Compose 👑</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Ejemplo</label><label for="__tabbed_1_2">Explicación del código</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>En este ejemplo, crearemos una clase Carrito que expondrá el número de artículos como un StateFlow. Así, cualquier parte de nuestro código que esté "observando" el carrito sabrá inmediatamente cuántos artículos hay.</p>
+<p></p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.*</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.MutableStateFlow</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.asStateFlow</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.update</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">// 1. La clase que gestiona el estado</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Carrito</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span><span class="c1">// Privado y Mutable: Solo el carrito puede cambiar el número de artículos.</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="c1">// Lo inicializamos con un valor de 0 artículos.</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_numeroDeArticulos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="c1">// Público e Inmutable: Exponemos el Flow como solo lectura.</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="c1">// Cualquiera puede observar cuántos artículos hay, pero no pueden cambiar el valor directamente.</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">numeroDeArticulos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">anadirArticulo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">        </span><span class="c1">// Usamos .update para cambiar el valor de forma segura.</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">        </span><span class="c1">// Es la forma recomendada para modificar un StateFlow.</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">        </span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">valorActual</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">            </span><span class="n">valorActual</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"📦 Artículo añadido. Total: </span><span class="si">${</span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">quitarArticulo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="w">            </span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// 'it' es el valor actual</span>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="w">            </span><span class="n">println</span><span class="p">(</span><span class="s">"🗑️ Artículo quitado. Total: </span><span class="si">${</span><span class="n">_numeroDeArticulos</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="w">            </span><span class="n">println</span><span class="p">(</span><span class="s">"⚠️ El carrito ya está vacío."</span><span class="p">)</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="p">}</span>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="c1">// 2. La función principal que simula el uso</span>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runBlocking</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">miCarrito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Carrito</span><span class="p">()</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a><span class="w">    </span><span class="c1">// Lanzamos una corrutina que se quedará observando el carrito.</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="w">    </span><span class="c1">// Este sería el equivalente a nuestra "UI" o consumidor de datos.</span>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">jobObservador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">"👀 Observador conectado. Esperando actualizaciones del carrito..."</span><span class="p">)</span>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a><span class="w">        </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">numeroDeArticulos</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a><span class="w">            </span><span class="c1">// Este bloque se ejecutará cada vez que el valor del StateFlow cambie.</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="w">            </span><span class="n">println</span><span class="p">(</span><span class="s">"🛒 (Observador) El carrito ahora tiene </span><span class="si">$</span><span class="n">total</span><span class="s"> artículos."</span><span class="p">)</span>
+</span><span id="__span-14-47"><a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-14-48"><a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-49"><a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a>
+</span><span id="__span-14-50"><a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a><span class="w">    </span><span class="c1">// Damos un pequeño respiro para que el observador se inicie</span>
+</span><span id="__span-14-51"><a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
+</span><span id="__span-14-52"><a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a>
+</span><span id="__span-14-53"><a id="__codelineno-14-53" name="__codelineno-14-53" href="#__codelineno-14-53"></a><span class="w">    </span><span class="c1">// Simulamos interacciones del usuario</span>
+</span><span id="__span-14-54"><a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"\n--- Simulación de usuario ---"</span><span class="p">)</span>
+</span><span id="__span-14-55"><a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a><span class="w">    </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">anadirArticulo</span><span class="p">()</span>
+</span><span id="__span-14-56"><a id="__codelineno-14-56" name="__codelineno-14-56" href="#__codelineno-14-56"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+</span><span id="__span-14-57"><a id="__codelineno-14-57" name="__codelineno-14-57" href="#__codelineno-14-57"></a>
+</span><span id="__span-14-58"><a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a><span class="w">    </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">anadirArticulo</span><span class="p">()</span>
+</span><span id="__span-14-59"><a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+</span><span id="__span-14-60"><a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a>
+</span><span id="__span-14-61"><a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a><span class="w">    </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">quitarArticulo</span><span class="p">()</span>
+</span><span id="__span-14-62"><a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+</span><span id="__span-14-63"><a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>
+</span><span id="__span-14-64"><a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a><span class="w">    </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">quitarArticulo</span><span class="p">()</span>
+</span><span id="__span-14-65"><a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+</span><span id="__span-14-66"><a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a>
+</span><span id="__span-14-67"><a id="__codelineno-14-67" name="__codelineno-14-67" href="#__codelineno-14-67"></a><span class="w">    </span><span class="n">miCarrito</span><span class="p">.</span><span class="na">quitarArticulo</span><span class="p">()</span><span class="w"> </span><span class="c1">// Intentamos quitar cuando está vacío</span>
+</span><span id="__span-14-68"><a id="__codelineno-14-68" name="__codelineno-14-68" href="#__codelineno-14-68"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"--- Fin de la simulación ---\n"</span><span class="p">)</span>
+</span><span id="__span-14-69"><a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a>
+</span><span id="__span-14-70"><a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a><span class="w">    </span><span class="c1">// Cancelamos la corrutina del observador para que el programa termine</span>
+</span><span id="__span-14-71"><a id="__codelineno-14-71" name="__codelineno-14-71" href="#__codelineno-14-71"></a><span class="w">    </span><span class="n">jobObservador</span><span class="p">.</span><span class="na">cancel</span><span class="p">()</span>
+</span><span id="__span-14-72"><a id="__codelineno-14-72" name="__codelineno-14-72" href="#__codelineno-14-72"></a><span class="p">}</span>
+</span></code></pre></div>
+Salida esperada en la consola:<p></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>👀 Observador conectado. Esperando actualizaciones del carrito...
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>🛒 (Observador) El carrito ahora tiene 0 artículos.
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>--- Simulación de usuario ---
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>📦 Artículo añadido. Total: 1
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>🛒 (Observador) El carrito ahora tiene 1 artículos.
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>📦 Artículo añadido. Total: 2
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>🛒 (Observador) El carrito ahora tiene 2 artículos.
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>🗑️ Artículo quitado. Total: 1
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>🛒 (Observador) El carrito ahora tiene 1 artículos.
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>🗑️ Artículo quitado. Total: 0
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>🛒 (Observador) El carrito ahora tiene 0 artículos.
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>⚠️ El carrito ya está vacío.
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>--- Fin de la simulación ---
+</span></code></pre></div>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+<ol>
+<li>
+<p><strong>La Clase <code>Carrito</code></strong>:</p>
+<ul>
+<li>
+<p><strong><code>_numeroDeArticulos</code></strong>: Es un <code>MutableStateFlow</code>. El guion bajo <code>_</code> es una convención en Kotlin para indicar que es una propiedad privada que no debe usarse desde fuera. Al ser <code>Mutable</code>, esta clase puede cambiar su valor. <strong>Siempre necesita un valor inicial</strong> (en este caso, <code>0</code>).</p>
+</li>
+<li>
+<p><strong><code>numeroDeArticulos</code></strong>: Esta es la versión pública y de solo lectura (<code>StateFlow</code>). La "UI" o el consumidor observará esta propiedad. Esto protege el estado; nadie fuera de la clase <code>Carrito</code> puede modificar el número de artículos. Es un principio de <strong>encapsulación</strong>.</p>
+</li>
+<li>
+<p><strong><code>anadirArticulo()</code> y <code>quitarArticulo()</code></strong>: Son las acciones que modifican el estado interno (<code>_numeroDeArticulos</code>). La función <code>.update { ... }</code> es la forma moderna y segura de hacerlo.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>La Función <code>main</code></strong>:</p>
+<ul>
+<li>
+<p><strong><code>launch</code></strong>: Creamos un "observador" en una corrutina separada. Este se suscribe al <code>StateFlow</code> público.</p>
+</li>
+<li>
+<p><strong><code>.collect</code></strong>: Aquí ocurre la magia. El código dentro de <code>.collect</code> se ejecuta <strong>inmediatamente</strong> con el valor actual del <code>StateFlow</code> (que es <code>0</code>) y luego se vuelve a ejecutar <strong>cada vez que el valor cambia</strong>.</p>
+</li>
+<li>
+<p><strong><code>delay</code></strong>: Usamos pausas para simular el paso del tiempo y que se pueda ver claramente en la consola cómo el observador reacciona a los cambios.</p>
+</li>
+</ul>
+</li>
+</ol>
+</details>
 <p>Puedes crear un <code>Flow</code> utilizando la función <code>flowOf()</code> de Kotlin.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se crea un <code>Flow</code> <code>numeros</code> con los valores <code>1, 2, 3, 4, 5</code>.</p>
 <h3 id="observacion-de-flows">Observación de Flows<a class="headerlink" href="#observacion-de-flows" title="Permanent link">¶</a></h3>
 <p>Puedes observar un <code>Flow</code> utilizando la función <code>collect()</code> de Kotlin.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">numeros</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">numeros</span><span class="p">.</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se observa el <code>Flow</code> <code>numeros</code> y se imprime cada valor que se emite.</p>
 <h3 id="transformacion-de-flows">Transformación de Flows<a class="headerlink" href="#transformacion-de-flows" title="Permanent link">¶</a></h3>
 <p>Puedes transformar un <code>Flow</code> utilizando operadores como <code>map</code>, <code>filter</code>, <code>flatMap</code>, etc.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">cuadrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">pares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">cuadrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">pares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">numero</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se utilizan los operadores <code>map</code> y <code>filter</code> para transformar el <code>Flow</code> <code>numeros</code>.</p>
+<h3 id="tipos-de-flow-en-kotlin">Tipos de flow en Kotlin<a class="headerlink" href="#tipos-de-flow-en-kotlin" title="Permanent link">¶</a></h3>
 <h3 id="flows-en-jetpack-compose">Flows en Jetpack Compose<a class="headerlink" href="#flows-en-jetpack-compose" title="Permanent link">¶</a></h3>
 <p>En Jetpack Compose, puedes utilizar Flows para gestionar la información de tu aplicación de forma reactiva.</p>
 <p>Puedes convertir un <code>Flow</code> en un estado observable utilizando la función <code>collectAsState()</code> de Compose.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numerosState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flowOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numerosState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeros</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se convierte el <code>Flow</code> <code>numeros</code> en un estado observable <code>numerosState</code>.</p>
 <h3 id="elevacion-del-estado">Elevación del estado<a class="headerlink" href="#elevacion-del-estado" title="Permanent link">¶</a></h3>
 <p>En Jetpack Compose, puedes elevar el estado de un componente para compartirlo con otros componentes.</p>
 <p>Esto te permite gestionar el estado de tu aplicación de forma centralizada y compartirlo entre diferentes partes de tu interfaz de usuario.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nd">@Composable</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="n">ContadorBoton</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="n">ContadorTexto</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">}</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nd">@Composable</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ContadorBoton</span><span class="p">(</span><span class="n">contador</span><span class="p">:</span><span class="w"> </span><span class="n">MutableState</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Incrementar"</span><span class="p">)</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="p">}</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nd">@Composable</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ContadorTexto</span><span class="p">(</span><span class="n">contador</span><span class="p">:</span><span class="w"> </span><span class="n">MutableState</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Contador: </span><span class="si">${</span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nd">@Composable</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="n">ContadorBoton</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="n">ContadorTexto</span><span class="p">(</span><span class="n">contador</span><span class="p">)</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="p">}</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nd">@Composable</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ContadorBoton</span><span class="p">(</span><span class="n">contador</span><span class="p">:</span><span class="w"> </span><span class="n">MutableState</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Incrementar"</span><span class="p">)</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="p">}</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="nd">@Composable</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ContadorTexto</span><span class="p">(</span><span class="n">contador</span><span class="p">:</span><span class="w"> </span><span class="n">MutableState</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Contador: </span><span class="si">${</span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se eleva el estado <code>contador</code> del componente <code>Contador</code> para compartirlo con los componentes <code>ContadorBoton</code> y <code>ContadorTexto</code>.</p>
 <p>De esta forma, el estado <code>contador</code> se gestiona de forma centralizada en el componente <code>Contador</code> y se comparte con los componentes hijos. Y ambos se recomponen cuando el estado cambia.</p>
@@ -1925,15 +2182,15 @@
 <p>Con Compose, puedes definir, observar y actualizar el estado de tu aplicación de forma reactiva y declarativa.</p>
 <p>Los Flows te permiten trabajar con datos de forma reactiva y gestionar la concurrencia de forma sencilla en Kotlin.</p>
 <h4 id="ejemplo-de-gestion-del-estado-basica-en-una-app-de-contador">Ejemplo de gestión del estado básica en una app de Contador<a class="headerlink" href="#ejemplo-de-gestion-del-estado-basica-en-una-app-de-contador" title="Permanent link">¶</a></h4>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nd">@Composable</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contadorState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">observeAsState</span><span class="p">()</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Contador: </span><span class="si">${</span><span class="n">contadorState</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nd">@Composable</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contadorState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">observeAsState</span><span class="p">()</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="p">.</span><span class="na">value</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Contador: </span><span class="si">${</span><span class="n">contadorState</span><span class="p">.</span><span class="na">value</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>En el ejemplo anterior, se define un componente <code>Contador</code> que muestra un botón y un texto con el valor del estado <code>contador</code>. Al hacer clic en el botón, se incrementa en uno el valor del estado <code>contador</code>.</p>
 <h2 id="recursos">📦 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
