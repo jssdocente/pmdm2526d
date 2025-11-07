@@ -6,13 +6,12 @@ También vamos a tratar el tema del diseño de la interfaz de usuario, las líne
 
 Índice:
 
+- [3.1 Introducción a la interfaz de usuario](./3.1-intro.md)
+- [3.2 Diseño de la interfaz de usuario](./3.2-temas.md)
+- [3.3 Elementos de la interfaz de usuario](./3.3-elementos-menus.md)
 
-<!-- - [2.1 Primeros pasos](./2.1-primeros-pasos.md)
-- [2.2 Ciclo de vida de una aplicación Android](./2.2-ciclo-vida-app.md)
-- [2.3 Primera aplicación](./2.3-primera-app.md)
-- [2.4 Gestión del estado](./2.4-gestion-estado.md)
-- [2.5 Mejorando el código](./2.5-mejorando-codigo.md)
-- [2.6 Listas en Compose](./2.6-mostrar-listas.md) -->
+
+
 
 
 <br/><br/><br/><br/>
