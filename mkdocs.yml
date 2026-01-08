@@ -26,7 +26,10 @@ nav:
       - "Clases selladas": temas/00-android/00-kotlin/26-sealed-classes.md
       - "Scope functions": temas/00-android/00-kotlin/31-scope-functions.md
       - "Corrutinas": temas/00-android/00-kotlin/51-corrutinas.md
-      
+    - "Herramientas Proyecto Android":
+      - "Gradle": "temas/00-android/00-tools/01-gradle-agp-estructura.md"
+      - "Build-gradle": "temas/00-android/00-tools/02-build-gradle.md"
+      - "Fichero Manifest": "temas/00-android/00-tools/03-android-manifest.md"
 
     - "Jetpack Compose": 
       - "Introducción": temas/00-android/00-compose/index.md
@@ -35,6 +38,7 @@ nav:
       - "Listas": temas/00-android/00-compose/23-listas-cuadriculas.md
       - "Navegación Rutas": temas/00-android/00-compose/24-navegacion-rutas.md
       - "Material Design": temas/00-android/00-compose/25-material-design.md
+
     # - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
     # - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
     # - "Capa de UI": temas/00-android/02-capa-ui.md
