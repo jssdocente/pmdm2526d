@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/11-variables-tipos-datos.html">
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/52-corrutinas-sencillo.html">
       
       
-        <link rel="prev" href="index.html">
+        <link rel="prev" href="31-scope-functions.html">
       
       
-        <link rel="next" href="12-expresiones-vs-sentencias.html">
+        <link rel="next" href="../00-tools/01-gradle-agp-estructura.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Variables - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Corrutinas - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tipos-de-variables-y-datos-en-kotlin" class="md-skip">
+        <a href="#corrutinas-en-kotlin" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables
+              Corrutinas
             
           </span>
         </div>
@@ -425,37 +425,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Variables
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="11-variables-tipos-datos.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="11-variables-tipos-datos.html" class="md-nav__link">
         
   
   
@@ -471,142 +444,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#variables-explicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables explícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-implicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables implícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-primitivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos primitivos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-compuestos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos compuestos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conversion-de-tipos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversión de tipos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-mutables-e-inmutables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables mutables e inmutables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sobre las variables mutables e inmutables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sobre-la-mutabilidad-y-la-inmutabilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre la mutabilidad y la inmutabilidad
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-nulas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables nulas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-declaradas-como-const" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables declaradas como const
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-strings-en-kotlin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las Strings en Kotlin
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1091,10 +928,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="52-corrutinas-sencillo.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrutinas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="52-corrutinas-sencillo.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1110,6 +974,198 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-una-corrutina-la-analogia-del-camarero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Qué es una Corrutina? (La Analogía del Camarero)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es una Corrutina? (La Analogía del Camarero)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin-corrutinas-bloqueo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sin Corrutinas (Bloqueo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#con-corrutinas-no-bloqueo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con Corrutinas (No bloqueo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-corrutinas-vs-hilos-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Corrutinas vs Hilos (Threads)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-funciones-de-suspension-suspend-fun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Funciones de suspensión (suspend fun)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-builders-como-arranco-una-corrutina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Builders: ¿Cómo arranco una corrutina?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Builders: ¿Cómo arranco una corrutina?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-launch-lanzar-y-olvidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. launch: "Lanzar y olvidar"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-async-pedir-y-esperar-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. async: "Pedir y esperar resultado"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dispatchers-donde-se-ejecuta-el-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dispatchers: ¿DÓNDE se ejecuta el trabajo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scopes-el-ciclo-de-vida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scopes: El ciclo de vida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ejemplos-realistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Ejemplos Realistas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Ejemplos Realistas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caso-a-login-de-usuario-viewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso A: Login de Usuario (ViewModel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caso-b-cargar-datos-de-base-de-datos-room" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso B: Cargar datos de Base de Datos (Room)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen Rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2239,77 +2295,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#variables-explicitas" class="md-nav__link">
+  <a href="#1-que-es-una-corrutina-la-analogia-del-camarero" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variables explícitas
+        1. ¿Qué es una Corrutina? (La Analogía del Camarero)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-implicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables implícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-primitivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos primitivos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-compuestos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos compuestos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conversion-de-tipos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversión de tipos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-mutables-e-inmutables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables mutables e inmutables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sobre las variables mutables e inmutables">
+    <nav class="md-nav" aria-label="1. ¿Qué es una Corrutina? (La Analogía del Camarero)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sobre-la-mutabilidad-y-la-inmutabilidad" class="md-nav__link">
+  <a href="#sin-corrutinas-bloqueo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre la mutabilidad y la inmutabilidad
+        Sin Corrutinas (Bloqueo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#con-corrutinas-no-bloqueo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con Corrutinas (No bloqueo)
       
     </span>
   </a>
@@ -2322,10 +2334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sobre-las-variables-nulas" class="md-nav__link">
+  <a href="#2-corrutinas-vs-hilos-threads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre las variables nulas
+        2. Corrutinas vs Hilos (Threads)
       
     </span>
   </a>
@@ -2333,10 +2345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sobre-las-variables-declaradas-como-const" class="md-nav__link">
+  <a href="#3-funciones-de-suspension-suspend-fun" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre las variables declaradas como const
+        3. Funciones de suspensión (suspend fun)
       
     </span>
   </a>
@@ -2344,13 +2356,113 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sobre-las-strings-en-kotlin" class="md-nav__link">
+  <a href="#4-builders-como-arranco-una-corrutina" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre las Strings en Kotlin
+        4. Builders: ¿Cómo arranco una corrutina?
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="4. Builders: ¿Cómo arranco una corrutina?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-launch-lanzar-y-olvidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. launch: "Lanzar y olvidar"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-async-pedir-y-esperar-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. async: "Pedir y esperar resultado"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dispatchers-donde-se-ejecuta-el-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dispatchers: ¿DÓNDE se ejecuta el trabajo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scopes-el-ciclo-de-vida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scopes: El ciclo de vida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ejemplos-realistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Ejemplos Realistas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Ejemplos Realistas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caso-a-login-de-usuario-viewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso A: Login de Usuario (ViewModel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caso-b-cargar-datos-de-base-de-datos-room" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caso B: Cargar datos de Base de Datos (Room)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen Rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2437,136 +2549,184 @@
 
 
 
-<h1 id="tipos-de-variables-y-datos-en-kotlin">Tipos de variables y datos en Kotlin<a class="headerlink" href="#tipos-de-variables-y-datos-en-kotlin" title="Permanent link">¶</a></h1>
-<p>En Kotlin las variables pueden declararse de dos formas, de forma explícita o de forma implícita. En el caso de las variables explícitas, se debe indicar el tipo de dato que almacenará la variable, mientras que en las variables implícitas, el tipo de dato se infiere automáticamente por el compilador.</p>
-<div class="admonition warning">
-<p class="admonition-title">Sobre la inferencia de tipos</p>
-<p>Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.</p>
-</div>
-<h2 id="variables-explicitas">Variables explícitas<a class="headerlink" href="#variables-explicitas" title="Permanent link">¶</a></h2>
-<p>Para declarar una variable de forma explícita en Kotlin, se debe indicar el tipo de dato que almacenará la variable seguido del nombre de la variable y opcionalmente de su valor inicial.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edad</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<h1 id="corrutinas-en-kotlin">Corrutinas en Kotlin<a class="headerlink" href="#corrutinas-en-kotlin" title="Permanent link">¶</a></h1>
+<p>Si alguna vez has sentido que las corrutinas son complicadas, ¡no te preocupes! En realidad, son una herramienta fantástica para hacer varias cosas a la vez sin que tu aplicación se congele.</p>
+<h2 id="1-que-es-una-corrutina-la-analogia-del-camarero">1. ¿Qué es una Corrutina? (La Analogía del Camarero)<a class="headerlink" href="#1-que-es-una-corrutina-la-analogia-del-camarero" title="Permanent link">¶</a></h2>
+<p>Imagina un restaurante.
+- <strong>El Hilo Principal (Main Thread)</strong> es el ÚNICO camarero que atiende las mesas.
+- <strong>Las Tareas</strong> son los pedidos de los clientes.</p>
+<h3 id="sin-corrutinas-bloqueo">Sin Corrutinas (Bloqueo)<a class="headerlink" href="#sin-corrutinas-bloqueo" title="Permanent link">¶</a></h3>
+<p>Si un cliente pide un café y el camarero se va a la cocina, se queda allí parado mirando la cafetera hasta que el café está listo (5 minutos). Durante esos 5 minutos, <strong>nadie más es atendido</strong>. Los nuevos clientes se enfadan (la app se congela y sale el aviso de "La aplicación no responde").</p>
+<div class="language-kotlin highlight"><span class="filename">Pseudocódigo Bloqueante (Malo)</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">atenderMesa1</span><span class="p">()</span><span class="w"> </span><span class="c1">// Llega cliente mesa 1</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// ... esperando ...</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">// ¡EL CAMARERO SE QUEDA PARADO EN LA COCINA! (Bloqueo)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="c1">// ... esperando ...</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Mesa 2 intenta llamar al camarero pero nadie responde (ANR)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">servirMesa1</span><span class="p">()</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el ejemplo anterior, se declaran dos variables de forma explícita, una de tipo <code>String</code> llamada <code>nombre</code> y otra de tipo <code>Int</code> llamada <code>edad</code>.</p>
-<h2 id="variables-implicitas">Variables implícitas<a class="headerlink" href="#variables-implicitas" title="Permanent link">¶</a></h2>
-<p>Para declarar una variable de forma implícita en Kotlin, se debe utilizar la palabra clave <code>val</code> o <code>var</code> seguida del nombre de la variable y opcionalmente de su valor inicial. En este caso, el tipo de dato se infiere automáticamente por el compilador.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<h3 id="con-corrutinas-no-bloqueo">Con Corrutinas (No bloqueo)<a class="headerlink" href="#con-corrutinas-no-bloqueo" title="Permanent link">¶</a></h3>
+<p>El camarero toma el pedido del café, lo pasa a la cocina (lanza una corrutina) y <strong>vuelve inmediatamente</strong> a atender a otras mesas. Cuando la cocina avisa "¡Café listo!", el camarero lo recoge y lo sirve.
+¡El camarero siempre está disponible!</p>
+<div class="language-kotlin highlight"><span class="filename">Pseudocódigo con Corrutinas (Bueno)</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// "Lanzamos" la tarea en segundo plano</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="n">tomarPedidoMesa1</span><span class="p">()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">suspend</span><span class="w"> </span><span class="n">esperarCocina</span><span class="p">()</span><span class="w"> </span><span class="c1">// ¡PAUSA! El camarero se va a hacer otras cosas</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="c1">// ... (5 minutos después) ...</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="c1">// La cocina avisa, el camarero vuelve y retoma aquí</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">servirMesa1</span><span class="p">()</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">atenderMesa2</span><span class="p">()</span><span class="w"> </span><span class="c1">// ¡El camarero puede atender a la mesa 2 inmediatamente!</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el ejemplo anterior, se declaran dos variables de forma implícita, una de tipo <code>String</code> llamada <code>nombre</code> y otra de tipo <code>Int</code> llamada <code>edad</code>.</p>
-<h2 id="tipos-de-datos-primitivos">Tipos de datos primitivos<a class="headerlink" href="#tipos-de-datos-primitivos" title="Permanent link">¶</a></h2>
-<p>En Kotlin, los tipos de datos primitivos son los mismos que en Java, pero con algunas diferencias en la forma en que se declaran.</p>
+<hr>
+<h2 id="2-corrutinas-vs-hilos-threads">2. Corrutinas vs Hilos (Threads)<a class="headerlink" href="#2-corrutinas-vs-hilos-threads" title="Permanent link">¶</a></h2>
+<p>A veces se confunden, pero hay una gran diferencia: el <strong>peso</strong>.</p>
 <ul>
-<li><strong>Byte</strong>: Almacena números enteros de 8 bits.</li>
-<li><strong>Short</strong>: Almacena números enteros de 16 bits.</li>
-<li><strong>Int</strong>: Almacena números enteros de 32 bits.</li>
-<li><strong>Long</strong>: Almacena números enteros de 64 bits.</li>
-<li><strong>Float</strong>: Almacena números de punto flotante de 32 bits.</li>
-<li><strong>Double</strong>: Almacena números de punto flotante de 64 bits.</li>
-<li><strong>Char</strong>: Almacena caracteres Unicode de 16 bits.</li>
-<li><strong>Boolean</strong>: Almacena valores booleanos (<code>true</code> o <code>false</code>).</li>
+<li><strong>Hilos (Threads)</strong>: Son <strong>pesados</strong>. Cada hilo consume mucha memoria RAM del sistema. Crear uno nuevo es costoso. Si intentas crear 100.000 hilos, tu ordenador probablemente colapsará (Out of Memory).</li>
+<li><strong>Corrutinas</strong>: Son <strong>ligérisimas</strong>. Puedes crear 100.000 corrutinas y a tu ordenador ni le importará. Son como "hilos virtuales" que viven dentro de los hilos reales.</li>
 </ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">entero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">flotante</span><span class="p">:</span><span class="w"> </span><span class="kt">Float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10.5f</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="p">:</span><span class="w"> </span><span class="kt">Char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'A'</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">booleano</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<blockquote>
+<p><strong>Resumen</strong>: Las corrutinas son mucho más eficientes y baratas que los hilos tradicionales.</p>
+</blockquote>
+<hr>
+<h2 id="3-funciones-de-suspension-suspend-fun">3. Funciones de suspensión (<code>suspend fun</code>)<a class="headerlink" href="#3-funciones-de-suspension-suspend-fun" title="Permanent link">¶</a></h2>
+<p>Una función <code>suspend</code> es una función con un superpoder: <strong>puede pausarse y reanudarse</strong>.</p>
+<p>Cuando llamas a una función <code>suspend</code> (como <code>delay(1000)</code> o una petición a internet), la corrutina se "pausa" sin bloquear al hilo principal. El hilo queda libre para hacer otras cosas (pintar la pantalla, responder a clics). Cuando la operación termina, la corrutina se "despierta" y continúa donde se quedó.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">pedirDatosAInternet</span><span class="p">():</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="m">2000</span><span class="p">)</span><span class="w"> </span><span class="c1">// Simula espera de 2 segundos. ¡No bloquea el hilo!</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Datos recibidos"</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="tipos-de-datos-compuestos">Tipos de datos compuestos<a class="headerlink" href="#tipos-de-datos-compuestos" title="Permanent link">¶</a></h2>
-<p>Además de los tipos de datos primitivos, Kotlin también tiene tipos de datos compuestos que permiten almacenar colecciones de datos.</p>
+<hr>
+<h2 id="4-builders-como-arranco-una-corrutina">4. Builders: ¿Cómo arranco una corrutina?<a class="headerlink" href="#4-builders-como-arranco-una-corrutina" title="Permanent link">¶</a></h2>
+<p>Hay dos formas principales de iniciar una corrutina:</p>
+<h3 id="a-launch-lanzar-y-olvidar">A. <code>launch</code>: "Lanzar y olvidar"<a class="headerlink" href="#a-launch-lanzar-y-olvidar" title="Permanent link">¶</a></h3>
+<p>Lo usas cuando quieres hacer algo y <strong>no necesitas que te devuelva un dato</strong> directamente (o el resultado no afecta al flujo inmediato).
+Ejemplos: Escribir un log en un archivo, mandar una analítica, guardar una preferencia.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">scope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">guardarEnBaseDeDatos</span><span class="p">(</span><span class="n">usuario</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">"Usuario guardado"</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="b-async-pedir-y-esperar-resultado">B. <code>async</code>: "Pedir y esperar resultado"<a class="headerlink" href="#b-async-pedir-y-esperar-resultado" title="Permanent link">¶</a></h3>
+<p>Lo usas cuando <strong>necesitas un valor de vuelta</strong>. <code>async</code> devuelve un <code>Deferred</code> (una promesa de que tendrás un dato en el futuro). Usas <code>.await()</code> para obtener ese dato.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">scope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="c1">// Pedimos dos cosas a la vez (paralelo)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">climaDeferred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">obtenerClima</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">noticiasDeferred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">obtenerNoticias</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="c1">// Esperamos a tener ambos</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">clima</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">climaDeferred</span><span class="p">.</span><span class="na">await</span><span class="p">()</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">noticias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">noticiasDeferred</span><span class="p">.</span><span class="na">await</span><span class="p">()</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">mostrarEnPantalla</span><span class="p">(</span><span class="n">clima</span><span class="p">,</span><span class="w"> </span><span class="n">noticias</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h2 id="5-dispatchers-donde-se-ejecuta-el-trabajo">5. Dispatchers: ¿DÓNDE se ejecuta el trabajo?<a class="headerlink" href="#5-dispatchers-donde-se-ejecuta-el-trabajo" title="Permanent link">¶</a></h2>
+<p>Es crucial elegir el <code>Dispatcher</code> (Despachador) correcto para no congelar la app. Imagina que son "carriles" o "departamentos".</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dispatcher</th>
+<th style="text-align: left;">Uso Correcto</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Dispatchers.Main</strong></td>
+<td style="text-align: left;"><strong>Interfaz de Usuario (UI)</strong>. Solo operaciones rápidas y ligeras.</td>
+<td style="text-align: left;">Actualizar un TextView, mostrar un Toast, animaciones.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dispatchers.IO</strong></td>
+<td style="text-align: left;"><strong>Entrada/Salida (Input/Output)</strong>. Operaciones largas que esperan datos.</td>
+<td style="text-align: left;">Leer/Escribir archivos, Bases de Datos (Room), Peticiones de Red (Retrofit).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dispatchers.Default</strong></td>
+<td style="text-align: left;"><strong>Procesamiento CPU</strong>. Operaciones complejas de cálculo.</td>
+<td style="text-align: left;">Procesar una imagen grande, ordenar una lista gigante, calcular algoritmos complejos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo de cambio de contexto (<code>withContext</code>):</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">scope</span><span class="p">.</span><span class="na">launch</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">Main</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 1. Empezamos en el Hilo Principal (UI)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">mostrarCargando</span><span class="p">()</span><span class="w"> </span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withContext</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">IO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 2. Nos mudamos al hilo IO para lo pesado</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">descargarDatosDeInternet</span><span class="p">()</span><span class="w"> </span><span class="c1">// Esto tarda, pero no bloquea la UI</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">ocultarCargando</span><span class="p">()</span><span class="w"> </span><span class="c1">// 3. Volvemos automáticamente al Main</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="n">mostrarDatos</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h2 id="6-scopes-el-ciclo-de-vida">6. Scopes: El ciclo de vida<a class="headerlink" href="#6-scopes-el-ciclo-de-vida" title="Permanent link">¶</a></h2>
+<p>Las corrutinas necesitan un "dueño" o un ámbito (<code>Scope</code>) para vivir. Si el dueño muere, las corrutinas deben cancelarse para no dejar basura memoria ("zombies").</p>
+<p>En Android, usamos los que ya nos dan hechos:</p>
 <ul>
-<li><strong>Array</strong>: Almacena una colección de elementos del mismo tipo.</li>
-<li><strong>List</strong>: Almacena una colección de elementos ordenados.</li>
-<li><strong>Set</strong>: Almacena una colección de elementos únicos.</li>
-<li><strong>Map</strong>: Almacena una colección de pares clave-valor.</li>
+<li><strong><code>lifecycleScope</code></strong> (en Activities/Fragments): Las corrutinas mueren cuando se destruye la Activity/Fragment.</li>
+<li><strong><code>viewModelScope</code></strong> (en ViewModels): Las corrutinas mueren cuando se limpia el ViewModel. <strong>(El más usado)</strong>.</li>
 </ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="s">"María"</span><span class="p">,</span><span class="w"> </span><span class="s">"Pedro"</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">colores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setOf</span><span class="p">(</span><span class="s">"Rojo"</span><span class="p">,</span><span class="w"> </span><span class="s">"Verde"</span><span class="p">,</span><span class="w"> </span><span class="s">"Azul"</span><span class="p">)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">"Juan"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="s">"María"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="s">"Pedro"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">35</span><span class="p">)</span>
+<hr>
+<h2 id="7-ejemplos-realistas">7. Ejemplos Realistas<a class="headerlink" href="#7-ejemplos-realistas" title="Permanent link">¶</a></h2>
+<h3 id="caso-a-login-de-usuario-viewmodel">Caso A: Login de Usuario (ViewModel)<a class="headerlink" href="#caso-a-login-de-usuario-viewmodel" title="Permanent link">¶</a></h3>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">realizarLogin</span><span class="p">(</span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="c1">// Usamos viewModelScope. Se ejecuta en Main por defecto</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="n">mostrarSpinner</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// UI (Main)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="c1">// Nos vamos a IO para la red</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withContext</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">IO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                    </span><span class="n">apiService</span><span class="p">.</span><span class="na">login</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">)</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">// Volvemos a Main</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resultado</span><span class="p">.</span><span class="na">isExitoso</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                    </span><span class="n">navegarAHome</span><span class="p">()</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                    </span><span class="n">mostrarError</span><span class="p">(</span><span class="s">"Login incorrecto"</span><span class="p">)</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">                </span><span class="n">mostrarError</span><span class="p">(</span><span class="s">"Error de red: </span><span class="si">${</span><span class="n">e</span><span class="p">.</span><span class="na">message</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">                </span><span class="n">mostrarSpinner</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="c1">// UI (Main)</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="conversion-de-tipos">Conversión de tipos<a class="headerlink" href="#conversion-de-tipos" title="Permanent link">¶</a></h2>
-<p>En Kotlin, la conversión de tipos se realiza de forma segura y explícita utilizando funciones específicas para cada tipo de dato.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numero</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">toInt</span><span class="p">()</span>
+<h3 id="caso-b-cargar-datos-de-base-de-datos-room">Caso B: Cargar datos de Base de Datos (Room)<a class="headerlink" href="#caso-b-cargar-datos-de-base-de-datos-room" title="Permanent link">¶</a></h3>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// En un repositorio o ViewModel</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">cargarNotas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">IO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Empezamos directo en IO</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">notas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">database</span><span class="p">.</span><span class="na">notaDao</span><span class="p">().</span><span class="na">getAll</span><span class="p">()</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="c1">// Si necesitamos pintar esto, cambiamos a Main</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">withContext</span><span class="p">(</span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">Main</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="n">adapter</span><span class="p">.</span><span class="na">setNotas</span><span class="p">(</span><span class="n">notas</span><span class="p">)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el primer ejemplo, se convierte un número entero a una cadena de texto utilizando la función <code>toString()</code>. En el segundo ejemplo, se convierte una cadena de texto a un número entero utilizando la función <code>toInt()</code>.   </p>
-<h2 id="sobre-las-variables-mutables-e-inmutables">Sobre las variables mutables e inmutables<a class="headerlink" href="#sobre-las-variables-mutables-e-inmutables" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables se pueden declarar como <code>val</code> (inmutables) o <code>var</code> (mutables). Las variables inmutables no pueden cambiar su valor una vez asignado, mientras que las variables mutables pueden cambiar su valor en cualquier momento.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span><span class="w"> </span><span class="c1">// Variable inmutable</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">var</span><span class="w"> </span><span class="nv">edad</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="c1">// Variable mutable</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, la variable <code>nombre</code> es inmutable, por lo que su valor no puede cambiar una vez asignado. La variable <code>edad</code>, en cambio, es mutable, por lo que su valor puede cambiar en cualquier momento.    </p>
-<h3 id="sobre-la-mutabilidad-y-la-inmutabilidad">Sobre la mutabilidad y la inmutabilidad<a class="headerlink" href="#sobre-la-mutabilidad-y-la-inmutabilidad" title="Permanent link">¶</a></h3>
-<p>La inmutabilidad es una característica importante en Kotlin, ya que ayuda a prevenir los errores de programación al evitar que los valores de las variables cambien de forma inesperada. Al utilizar variables inmutables, se puede escribir código más seguro y predecible, lo que facilita la depuración y el mantenimiento del código.   </p>
-<p>Cuándo trabajamos con listas o arrays, podemos modificar los elementos de la lista, pero no podemos cambiar la referencia de la lista. </p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">lista</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">// Modifica el elemento en la posición 0</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se modifica el elemento en la posición <code>0</code> de la lista <code>lista</code>, pero no se puede cambiar la referencia de la lista. Si se intenta asignar una nueva lista a la variable <code>lista</code>, se produce un error de compilación.</p>
-<p>Podemos ver también un ejemplo de lista mutable pero cuyo contenido no puede ser modificado.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">lista</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se intenta modificar el elemento en la posición <code>0</code> de la lista <code>lista</code>, pero como la lista es inmutable, se produce un error de compilación.</p>
-<p>Esto nos deja claro que la inmutabilidad no solo se refiere a la variable en sí, sino también a los elementos que contiene la variable.</p>
-<p>Podemos entonces tener cuatro situaciones posibles:</p>
-<ul>
-<li>Variable inmutable y elementos inmutables: No se puede cambiar ni la variable ni los elementos.</li>
-<li>Variable inmutable y elementos mutables: No se puede cambiar la variable, pero sí los elementos.</li>
-<li>Variable mutable y elementos inmutables: Se puede cambiar la variable, pero no los elementos.</li>
-<li>Variable mutable y elementos mutables: Se puede cambiar tanto la variable como los elementos.</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Las variables inmutables y la programación funcional</p>
-<p>Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. </p>
-<p>Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.</p>
-</div>
-<h2 id="sobre-las-variables-nulas">Sobre las variables nulas<a class="headerlink" href="#sobre-las-variables-nulas" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables pueden ser nulas si se declara con el operador <code>?</code>. Esto permite que una variable pueda contener un valor nulo en lugar de un valor no nulo.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, la variable <code>nombre</code> se declara como nula utilizando el operador <code>?</code>. Esto significa que la variable <code>nombre</code> puede contener un valor nulo en lugar de un valor no nulo.</p>
-<div class="admonition info">
-<p class="admonition-title">Sobre la seguridad de nulos en Kotlin</p>
-<p>El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.</p>
-<p>Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.</p>
-</div>
-<h2 id="sobre-las-variables-declaradas-como-const">Sobre las variables declaradas como const<a class="headerlink" href="#sobre-las-variables-declaradas-como-const" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables se pueden declarar como <code>const</code> para indicar que su valor es constante en tiempo de compilación. Las variables <code>const</code> deben ser de tipo <code>val</code> y deben estar en el ámbito de un objeto o de un compañero de clase.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.14159</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se declara una constante <code>PI</code> con un valor de <code>3.14159</code>. Esta constante es accesible en tiempo de compilación y su valor no puede cambiar en tiempo de ejecución.   </p>
-<h2 id="sobre-las-strings-en-kotlin">Sobre las Strings en Kotlin<a class="headerlink" href="#sobre-las-strings-en-kotlin" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las cadenas de texto se pueden declarar utilizando comillas simples (<code>'</code>) o comillas dobles (<code>"</code>). Las cadenas de texto declaradas con comillas simples son de tipo <code>Char</code>, mientras que las declaradas con comillas dobles son de tipo <code>String</code>.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="p">:</span><span class="w"> </span><span class="kt">Char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'A'</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se declara una variable <code>caracter</code> de tipo <code>Char</code> con el valor <code>'A'</code> y una variable <code>texto</code> de tipo <code>String</code> con el valor <code>"Ejemplo"</code>.</p>
-<p>Las Strings en Kotlin se pueden comparar utilizando el operador <code>==</code> para comparar el contenido de las cadenas y el operador <code>===</code> para comparar las referencias de las cadenas.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">println</span><span class="p">(</span><span class="n">texto1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">texto2</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">println</span><span class="p">(</span><span class="n">texto1</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">texto2</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se comparan dos cadenas de texto <code>texto1</code> y <code>texto2</code> utilizando los operadores <code>==</code> y <code>===</code>. Ambas comparaciones devuelven <code>true</code> ya que las cadenas son iguales en contenido y referencia. </p>
-<p>A diferencia de Java, en Kotlin las cadenas de texto son inmutables, lo que significa que una vez que se crea una cadena de texto, no se puede modificar su contenido. Para modificar una cadena de texto en Kotlin, se debe crear una nueva cadena con el contenido modificado.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nuevoTexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" Mundo"</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se crea una nueva cadena de texto <code>nuevoTexto</code> concatenando la cadena <code>texto</code> con la cadena <code>" Mundo"</code>. La cadena <code>texto</code> no se modifica, sino que se crea una nueva cadena con el contenido modificado.    </p>
-<p>Sin embargo, si comparamos una string con un caracter, Kotlin no permite la comparación directa, ya que son tipos de datos diferentes.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"H"</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'H'</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">println</span><span class="p">(</span><span class="n">texto</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">caracter</span><span class="p">)</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se intenta comparar una cadena de texto <code>texto</code> con un caracter <code>caracter</code>, lo cual produce un error de compilación ya que los tipos de datos son diferentes.   </p>
+<h3 id="resumen-rapido">Resumen Rápido<a class="headerlink" href="#resumen-rapido" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong><code>suspend</code></strong>: Pausa sin bloquear.</li>
+<li><strong><code>Main</code></strong>: Para pintar (UI).</li>
+<li><strong><code>IO</code></strong>: Para esperar (Red/DB).</li>
+<li><strong><code>Default</code></strong>: Para pensar (Cálculos CPU).</li>
+<li><strong><code>viewModelScope</code></strong>: Tu mejor amigo en Android para lanzar corrutinas.</li>
+</ol>
 
 
 

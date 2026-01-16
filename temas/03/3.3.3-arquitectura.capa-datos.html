@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/02/2.4-gestion-estado.html">
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3-arquitectura.capa-datos.html">
       
       
-        <link rel="prev" href="2.3-primera-app.html">
+        <link rel="prev" href="3.3-arquitectura.html">
       
       
-        <link rel="next" href="2.5-mejorando-codigo.html">
+        <link rel="next" href="../04/4.0-persistencia.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>2.4. Gestión del estado - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>3.3.3. Capas Datos/Dominio - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#24-gestion-del-estado" class="md-skip">
+        <a href="#333-capas-de-dominio-y-datos-el-cerebro-y-la-memoria" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.4. Gestión del estado
+              3.3.3. Capas Datos/Dominio
             
           </span>
         </div>
@@ -1384,20 +1384,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1418,12 +1416,264 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
     UT2 - Programación de aplicaciones de móviles con Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.1-primeros-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Primeros pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2. Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.3-primera-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Primera aplicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.4-gestion-estado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4. Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.5-mejorando-codigo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5. Mejorando el código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.6-mostrar-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6. Manejo de listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 - Interfaz de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 - Interfaz de Usuario
   
 
           </label>
@@ -1464,343 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="2.1-primeros-pasos.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.1. Primeros pasos
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="2.2-ciclo-vida-app.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.2. Ciclo de Vida
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="2.3-primera-app.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.3. Primera aplicación
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.4. Gestión del estado
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="2.4-gestion-estado.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.4. Gestión del estado
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#actividades" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🏋️ Actividades
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏋️ Actividades">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proyecto-guiados-aplicacion-app-clicks-y-calculadora-de-propinas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 Proyecto guiados: Aplicación "App Clicks" y "Calculadora de propinas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📁 Recursos
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="2.5-mejorando-codigo.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.5. Mejorando el código
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="2.6-mostrar-listas.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2.6. Manejo de listas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UT3 - Interfaz de Usuario
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    UT3 - Interfaz de Usuario
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03/index.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Inicio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03/3.1-intro.html" class="md-nav__link">
+      <a href="3.1-intro.html" class="md-nav__link">
         
   
   
@@ -1828,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03/3.2-temas.html" class="md-nav__link">
+      <a href="3.2-temas.html" class="md-nav__link">
         
   
   
@@ -1853,18 +1767,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
           <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
@@ -1885,7 +1801,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1903,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03/3.3-arquitectura.html" class="md-nav__link">
+      <a href="3.3-arquitectura.html" class="md-nav__link">
         
   
   
@@ -1931,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03/3.3.2-arquitectura.capa-ui" class="md-nav__link">
+      <a href="3.3.2-arquitectura.capa-ui" class="md-nav__link">
         
   
   
@@ -1956,10 +1872,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../03/3.3.3-arquitectura.capa-datos.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.3. Capas Datos/Dominio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3.3.3-arquitectura.capa-datos.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1975,6 +1916,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#333-capas-de-dominio-y-datos-el-cerebro-y-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 🧠 Capas de Dominio y Datos. El Cerebro y la Memoria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.3 🧠 Capas de Dominio y Datos. El Cerebro y la Memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-capa-de-datos-data-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧱 La Capa de Datos (Data Layer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-capa-de-dominio-domain-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 La Capa de Dominio (Domain Layer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-app-de-noticias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Ejemplo Práctico: App de Noticias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-del-flujo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen del Flujo de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2150,8 +2170,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2160,22 +2178,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#actividades" class="md-nav__link">
+  <a href="#333-capas-de-dominio-y-datos-el-cerebro-y-la-memoria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏋️ Actividades
+        3.3.3 🧠 Capas de Dominio y Datos. El Cerebro y la Memoria
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🏋️ Actividades">
+    <nav class="md-nav" aria-label="3.3.3 🧠 Capas de Dominio y Datos. El Cerebro y la Memoria">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proyecto-guiados-aplicacion-app-clicks-y-calculadora-de-propinas" class="md-nav__link">
+  <a href="#la-capa-de-datos-data-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Proyecto guiados: Aplicación "App Clicks" y "Calculadora de propinas
+        🧱 La Capa de Datos (Data Layer)
       
     </span>
   </a>
@@ -2183,10 +2201,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#la-capa-de-dominio-domain-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📁 Recursos
+        🧠 La Capa de Dominio (Domain Layer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-app-de-noticias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Ejemplo Práctico: App de Noticias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-del-flujo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen del Flujo de Datos
       
     </span>
   </a>
@@ -2244,7 +2284,25 @@
         <a href="index.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    UT2 - Programación de aplicaciones de móviles con Android
+    UT3 - Interfaz de Usuario
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="3.3-arquitectura.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    3.3. Arquitectura
   </span>
 
         </a>
@@ -2263,62 +2321,133 @@
 
 
 
-<h1 id="24-gestion-del-estado"><strong>2.4 Gestión del estado</strong><a class="headerlink" href="#24-gestion-del-estado" title="Permanent link">¶</a></h1>
-<p>Una aplicación sin estado, es una aplicación estática, es decir, que muestra sus elementos y estos son siempre fijos a lo largo del tiempo, ninguna acción puede cambiarlos.</p>
-<div class="admonition tip">
-<p class="admonition-title">Importante</p>
-<p><strong>dominar</strong> la gestión del estado en Compose no es una opción, es el <strong>requisito principal</strong> para construir aplicaciones que funcionen correctamente, sean fáciles de mantener y estén libres de errores impredecibles.</p>
-</div>
-<p>Antes de continuar y realizar las actividades de este apartado, <a href="../00-android/00-compose/22-state-management.html"><strong>lee a la documentación de la gestión del estado</strong></a></p>
+  <h1>3.3.3. Capas Datos/Dominio</h1>
+
+<h2 id="333-capas-de-dominio-y-datos-el-cerebro-y-la-memoria">3.3.3 🧠 <strong>Capas de Dominio y Datos.</strong> El Cerebro y la Memoria<a class="headerlink" href="#333-capas-de-dominio-y-datos-el-cerebro-y-la-memoria" title="Permanent link">¶</a></h2>
+<p>Si la capa de UI es la "cara bonita" de la aplicación, las capas de <strong>Dominio</strong> y <strong>Datos</strong> son el cerebro y la memoria que hacen que todo funcione. Sin ellas, nuestra app sería una cáscara vacía.</p>
 <hr>
-<h2 id="actividades">🏋️ <strong>Actividades</strong><a class="headerlink" href="#actividades" title="Permanent link">¶</a></h2>
-<h3 id="proyecto-guiados-aplicacion-app-clicks-y-calculadora-de-propinas">🚀 <strong>Proyecto guiados: Aplicación "App Clicks" y "Calculadora de propinas</strong><a class="headerlink" href="#proyecto-guiados-aplicacion-app-clicks-y-calculadora-de-propinas" title="Permanent link">¶</a></h3>
-<p>En estas práctica tenéis que crear 2 aplicaciones.</p>
+<h3 id="la-capa-de-datos-data-layer">🧱 La Capa de Datos (Data Layer)<a class="headerlink" href="#la-capa-de-datos-data-layer" title="Permanent link">¶</a></h3>
+<p>Es la base de la pirámide. Su responsabilidad es <strong>manejar los datos de la aplicación</strong>.
+¿De dónde vienen los datos? ¿Cómo se guardan? ¿Qué pasa si no hay internet? La UI no debería preocuparse por nada de esto; esa es tarea exclusiva de la Capa de Datos.</p>
+<p>Se compone de dos piezas clave:</p>
+<h4 id="1-data-sources-fuentes-de-datos">1. Data Sources (Fuentes de Datos)<a class="headerlink" href="#1-data-sources-fuentes-de-datos" title="Permanent link">¶</a></h4>
+<p>Son las clases de "bajo nivel" que saben hablar con una fuente específica.</p>
 <ul>
-<li>
-<p>⬆️ <strong>Proyecto</strong></p>
-<p>Para esta práctica, vamos a crear una aplicación que nos va cambiar la imagen en base a un número de <em>clicks</em>.</p>
-<p>Proyecto. <strong>App Clicks</strong>. Sigue las indicaciones <a href="https://developer.android.com/codelabs/basic-android-kotlin-compose-button-click-practice-problem?hl=es-419">aquí</a>.</p>
-<details class="info">
-<summary>Video: Explicación paso de la realización de la Actividad</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/uFjbgmJC644" title="🚀 Clase 2.1 (App 1) - Manejo de estados y componentes reutilizables" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-</details>
-</li>
+<li><strong>Remote Data Source</strong>: Sabe hablar con internet (APIs REST, Firebase, GraphQl).</li>
+<li><strong>Local Data Source</strong>: Sabe hablar con el almacenamiento del teléfono (Base de Datos Room, DataStore, Archivos).</li>
 </ul>
-<p><br></p>
+<h4 id="2-repositorios-repositories">2. Repositorios (Repositories)<a class="headerlink" href="#2-repositorios-repositories" title="Permanent link">¶</a></h4>
+<p>Son los <strong>gestores</strong> o mediadores. Es la parte más importante de esta capa.
+El resto de la aplicación (el Dominio o la UI) <strong>NUNCA</strong> debería hablar directamente con un Data Source. Siempre deben pedirle los datos al Repositorio.</p>
+<div class="admonition info">
+<p class="admonition-title">📚 La Analogía del Bibliotecario</p>
+<p>Imagina que vas a una biblioteca a por un libro ("Los Datos").
+Tú no vas al almacén del sótano ni llamas a la editorial. Tú hablas con el <strong>Bibliotecario (Repositorio)</strong>.</p>
 <ul>
-<li>
-<p>⬆️ <strong>Proyecto</strong></p>
-<p>Para esta práctica, vamos a crear una aplicación que nos va a permitir calcular las propinas en un restaurante.</p>
-<p>Proyecto. <strong>Calculadora de propinas</strong>. Sigue las indicaciones <a href="https://developer.android.com/codelabs/basic-android-kotlin-compose-calculate-tip?hl=es-419">aquí</a>.</p>
-<details class="info">
-<summary>Video: Explicación paso de la realización de la Actividad</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/o8kpJjgqXTw" title="🚀 Clase 2.2 (App 2) - Manejo de estados y componentes reutilizables" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       </p>
-</details>
-</li>
+<li>Tú le pides el libro.</li>
+<li>El bibliotecario mira si lo tiene a mano en el mostrador (<strong>Caché en memoria</strong>).</li>
+<li>Si no, baja al archivo a buscarlo (<strong>Base de datos Local</strong>).</li>
+<li>Si no está, llama a la editorial para pedir una copia (<strong>Red/API</strong>).</li>
 </ul>
-<p><br></p>
-<div class="admonition example">
-<p class="admonition-title">Aprende los conceptos previos que aplican en los proyectos</p>
-<p><strong>¿Qué vas a aprender?"</strong></p>
-<ul>
-<li>Manejo del estado</li>
-<li>Crear componentes reutilizables </li>
-<li>Para ello, vamos a realizar los siguientes proyectos guiados:</li>
-</ul>
-<ol>
-<li>Codelab. Cómo crear una app interactiva de <a href="https://developer.android.com/codelabs/basic-android-kotlin-compose-build-a-dice-roller-app?hl=es-419">"Dice Roller"</a>. </li>
-<li>Codelab. Introducción al estado en Compose. Realiza el siguiente <a href="https://developer.android.com/codelabs/basic-android-kotlin-compose-using-state?hl=es-419#0">Codelab</a>.</li>
-</ol>
+<p>A ti te da igual de dónde lo haya sacado. Tú solo querías el libro y el bibliotecario te lo ha conseguido.</p>
 </div>
-<p><br>
-<br></p>
-<h3 id="recursos">📁 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h3>
-<p>Utiliza los siguientes recursos para profundizar en aspectos específicos vistos en este apartado.</p>
+<p>Esta estrategia se llama <strong>Single Source of Truth (Única Fuente de Verdad)</strong>. El repositorio centraliza los datos para que nadie más tenga que adivinar de dónde vienen.</p>
+<hr>
+<h3 id="la-capa-de-dominio-domain-layer">🧠 La Capa de Dominio (Domain Layer)<a class="headerlink" href="#la-capa-de-dominio-domain-layer" title="Permanent link">¶</a></h3>
+<p><em>Nota: Esta capa es opcional en apps muy sencillas, pero recomendada en cuanto la app crece.</em></p>
+<p>Es la capa que contiene la <strong>Lógica de Negocio Pura</strong>. Son las reglas del juego que hacen que tu app sea única, independientemente de si los botones son azules o rojos, o si los datos vienen de una API o de un Excel.</p>
+<h4 id="casos-de-uso-use-cases-interactors">Casos de Uso (Use Cases / Interactors)<a class="headerlink" href="#casos-de-uso-use-cases-interactors" title="Permanent link">¶</a></h4>
+<p>Son clases que encapsulan <strong>una única acción</strong> o tarea de negocio.
+Su nombre debe describir exactamente lo que hacen (verbo + sustantivo + UseCase).</p>
+<p>Ejemplos:</p>
 <ul>
-<li><a href="https://developer.android.com/develop/ui/compose/state?hl=es-419">El estado y Jetpack Compose</a></li>
-<li><a href="https://youtu.be/mX2jmVzLjL0?list=PLrn69hTK5FBwu7VmWBg76v23atiMqz_pY">Video: Tu App Android con diseño Material con AppBar y Scaffold</a></li>
+<li><code>LoginUserUseCase</code></li>
+<li><code>FormatDateUseCase</code></li>
+<li><code>GetLatestNewsUseCase</code></li>
 </ul>
+<p><strong>¿Por qué usarlos?</strong></p>
+<ol>
+<li><strong>Reutilización</strong>: Si varios ViewModels necesitan la misma lógica (ej: formatear una fecha), no copias y pegas código. Llamas al mismo UseCase.</li>
+<li><strong>Legibilidad</strong>: Al abrir la carpeta de "Dominio", ves una lista de todo lo que HACE tu app ("Code screams architecture").</li>
+<li><strong>Independencia</strong>: Los UseCases no saben nada de Android (ni de Views, ni de JSONs). Son código Kotlin puro.</li>
+</ol>
+<hr>
+<h3 id="ejemplo-practico-app-de-noticias">🚀 Ejemplo Práctico: App de Noticias<a class="headerlink" href="#ejemplo-practico-app-de-noticias" title="Permanent link">¶</a></h3>
+<p>Vamos a ver cómo se conectan todas las piezas, desde que el dato sale de internet hasta que llega al ViewModel.
+Imagina una pantalla que muestra una lista de noticias recientes.</p>
+<h4 id="1-data-source-el-especialista">1. Data Source (El especialista)<a class="headerlink" href="#1-data-source-el-especialista" title="Permanent link">¶</a></h4>
+<p>Primero, necesitamos alguien que sepa descargar datos de la API.
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Data Source (Retrofit)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">NewsApiService</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nd">@GET</span><span class="p">(</span><span class="s">"news"</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fetchNews</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">NewsDto</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">// Devuelve datos "feos" (DTOs) de la red</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<h4 id="2-repository-el-bibliotecario">2. Repository (El bibliotecario)<a class="headerlink" href="#2-repository-el-bibliotecario" title="Permanent link">¶</a></h4>
+<p>El repositorio coordina. En este caso simple, solo llama a la API, pero podría guardar en base de datos si quisiéramos modo offline.
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">NewsRepository</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">api</span><span class="p">:</span><span class="w"> </span><span class="n">NewsApiService</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="c1">// Devuelve listas del Dominio (News), no DTOs de red. Limpia los datos.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getNews</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">News</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">apiData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">api</span><span class="p">.</span><span class="na">fetchNews</span><span class="p">()</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="n">apiData</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toDomain</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// Mapea a objetos limpios</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="n">emptyList</span><span class="p">()</span><span class="w"> </span><span class="c1">// O manejar el error</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<h4 id="3-use-case-la-logica-de-negocio">3. Use Case (La lógica de negocio)<a class="headerlink" href="#3-use-case-la-logica-de-negocio" title="Permanent link">¶</a></h4>
+<p>Queremos mostrar noticias, pero una regla de negocio dice: <em>"Solo mostrar noticias de las últimas 24h y ordenadas por fecha"</em>. El ViewModel no debería saber calcular esto.
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">GetRecentNewsUseCase</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">repository</span><span class="p">:</span><span class="w"> </span><span class="n">NewsRepository</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="c1">// El operador 'invoke' permite llamar a la clase como si fuera una función</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">News</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">allNews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repository</span><span class="p">.</span><span class="na">getNews</span><span class="p">()</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="c1">// APLICAMOS LÓGICA DE NEGOCIO AQUÍ</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">allNews</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ayer</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="p">.</span><span class="na">sortedByDescending</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">date</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<h4 id="4-viewmodel-el-consumidor">4. ViewModel (El consumidor)<a class="headerlink" href="#4-viewmodel-el-consumidor" title="Permanent link">¶</a></h4>
+<p>El ViewModel es mucho más simple ahora. Solo llama al UseCase y actualiza el estado.
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">NewsViewModel</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">getRecentNewsUseCase</span><span class="p">:</span><span class="w"> </span><span class="n">GetRecentNewsUseCase</span><span class="w"> </span><span class="c1">// Inyectamos el UseCase</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_uiState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="p">(</span><span class="n">NewsUiState</span><span class="p">())</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">uiState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_uiState</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">loadNews</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">_uiState</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">isLoading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="c1">// ¡Magia! Solo llamamos al caso de uso.</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="c1">// No sabemos si viene de red, base de datos o si se ha filtrado.</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">news</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getRecentNewsUseCase</span><span class="p">()</span><span class="w"> </span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">            </span><span class="n">_uiState</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">                </span><span class="nb">it</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">isLoading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">news</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">news</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<h3 id="resumen-del-flujo-de-datos">Resumen del Flujo de Datos<a class="headerlink" href="#resumen-del-flujo-de-datos" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>UI (Composable)</strong>: "Usuario pulsa botón 'Recargar'". Llama a <code>viewModel.loadNews()</code>.</li>
+<li><strong>ViewModel</strong>: Llama a <code>GetRecentNewsUseCase()</code>.</li>
+<li><strong>UseCase</strong>: Pide datos al <code>Repository</code> y aplica filtro de fecha.</li>
+<li><strong>Repository</strong>: Pide datos al <code>NetworkDataSource</code> (API).</li>
+<li><strong>Data Source</strong>: Descarga el JSON.</li>
+</ol>
+<p>¡Y el camino de vuelta es igual pero con los datos ya procesados! 🔄</p>
 
 
 

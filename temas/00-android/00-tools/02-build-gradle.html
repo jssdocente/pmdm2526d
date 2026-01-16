@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/11-variables-tipos-datos.html">
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/00-android/00-tools/02-build-gradle.html">
       
       
-        <link rel="prev" href="index.html">
+        <link rel="prev" href="01-gradle-agp-estructura.html">
       
       
-        <link rel="next" href="12-expresiones-vs-sentencias.html">
+        <link rel="next" href="03-android-manifest.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Variables - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>Build-gradle - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tipos-de-variables-y-datos-en-kotlin" class="md-skip">
+        <a href="#el-fichero-de-construccion-buildgradlekts" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables
+              Build-gradle
             
           </span>
         </div>
@@ -348,20 +348,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -382,7 +380,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -400,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href="../00-kotlin/index.html" class="md-nav__link">
         
   
   
@@ -425,37 +423,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Variables
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="11-variables-tipos-datos.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
         
   
   
@@ -471,142 +442,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#variables-explicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables explícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-implicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables implícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-primitivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos primitivos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-compuestos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos compuestos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conversion-de-tipos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversión de tipos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-mutables-e-inmutables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables mutables e inmutables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sobre las variables mutables e inmutables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sobre-la-mutabilidad-y-la-inmutabilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre la mutabilidad y la inmutabilidad
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-nulas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables nulas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-declaradas-como-const" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables declaradas como const
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-strings-en-kotlin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las Strings en Kotlin
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -619,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="12-expresiones-vs-sentencias.html" class="md-nav__link">
+      <a href="../00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
         
   
   
@@ -647,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="12.1-when.html" class="md-nav__link">
+      <a href="../00-kotlin/12.1-when.html" class="md-nav__link">
         
   
   
@@ -675,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="13-funciones-lambdas.html" class="md-nav__link">
+      <a href="../00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
         
   
   
@@ -703,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="14-null-safety.html" class="md-nav__link">
+      <a href="../00-kotlin/14-null-safety.html" class="md-nav__link">
         
   
   
@@ -778,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="41-arrays.html" class="md-nav__link">
+      <a href="../00-kotlin/41-arrays.html" class="md-nav__link">
         
   
   
@@ -806,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="42-listas.html" class="md-nav__link">
+      <a href="../00-kotlin/42-listas.html" class="md-nav__link">
         
   
   
@@ -834,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="43-maps.html" class="md-nav__link">
+      <a href="../00-kotlin/43-maps.html" class="md-nav__link">
         
   
   
@@ -862,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="44-sets.html" class="md-nav__link">
+      <a href="../00-kotlin/44-sets.html" class="md-nav__link">
         
   
   
@@ -898,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="21-poo.html" class="md-nav__link">
+      <a href="../00-kotlin/21-poo.html" class="md-nav__link">
         
   
   
@@ -926,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="22-objetos-anonimos.html" class="md-nav__link">
+      <a href="../00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
         
   
   
@@ -954,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="23-data-classes.html" class="md-nav__link">
+      <a href="../00-kotlin/23-data-classes.html" class="md-nav__link">
         
   
   
@@ -982,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="24-enum-classes.html" class="md-nav__link">
+      <a href="../00-kotlin/24-enum-classes.html" class="md-nav__link">
         
   
   
@@ -1010,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="25-genericos.html" class="md-nav__link">
+      <a href="../00-kotlin/25-genericos.html" class="md-nav__link">
         
   
   
@@ -1038,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="26-sealed-classes.html" class="md-nav__link">
+      <a href="../00-kotlin/26-sealed-classes.html" class="md-nav__link">
         
   
   
@@ -1066,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="31-scope-functions.html" class="md-nav__link">
+      <a href="../00-kotlin/31-scope-functions.html" class="md-nav__link">
         
   
   
@@ -1094,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="52-corrutinas-sencillo.html" class="md-nav__link">
+      <a href="../00-kotlin/52-corrutinas-sencillo.html" class="md-nav__link">
         
   
   
@@ -1127,18 +962,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -1159,7 +996,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1177,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-tools/01-gradle-agp-estructura.html" class="md-nav__link">
+      <a href="01-gradle-agp-estructura.html" class="md-nav__link">
         
   
   
@@ -1202,10 +1039,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../00-tools/02-build-gradle.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-gradle
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02-build-gradle.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1221,6 +1085,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-anatomica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura Anatómica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura Anatómica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bloque-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bloque plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bloque-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Bloque android
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bloque-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bloque dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1233,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-tools/03-android-manifest.html" class="md-nav__link">
+      <a href="03-android-manifest.html" class="md-nav__link">
         
   
   
@@ -2239,77 +2173,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#variables-explicitas" class="md-nav__link">
+  <a href="#estructura-anatomica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variables explícitas
+        Estructura Anatómica
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-implicitas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables implícitas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-primitivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos primitivos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipos-de-datos-compuestos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tipos de datos compuestos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conversion-de-tipos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversión de tipos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-mutables-e-inmutables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables mutables e inmutables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sobre las variables mutables e inmutables">
+    <nav class="md-nav" aria-label="Estructura Anatómica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sobre-la-mutabilidad-y-la-inmutabilidad" class="md-nav__link">
+  <a href="#1-bloque-plugins" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sobre la mutabilidad y la inmutabilidad
+        1. Bloque plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bloque-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Bloque android
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bloque-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bloque dependencies
       
     </span>
   </a>
@@ -2318,39 +2219,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-nulas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables nulas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-variables-declaradas-como-const" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las variables declaradas como const
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sobre-las-strings-en-kotlin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sobre las Strings en Kotlin
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2415,10 +2283,10 @@
     
     
       <li class="md-path__item">
-        <a href="index.html" class="md-path__link">
+        <a href="01-gradle-agp-estructura.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    El lenguaje kotlin
+    Herramientas Proyecto Android
   </span>
 
         </a>
@@ -2437,136 +2305,142 @@
 
 
 
-<h1 id="tipos-de-variables-y-datos-en-kotlin">Tipos de variables y datos en Kotlin<a class="headerlink" href="#tipos-de-variables-y-datos-en-kotlin" title="Permanent link">¶</a></h1>
-<p>En Kotlin las variables pueden declararse de dos formas, de forma explícita o de forma implícita. En el caso de las variables explícitas, se debe indicar el tipo de dato que almacenará la variable, mientras que en las variables implícitas, el tipo de dato se infiere automáticamente por el compilador.</p>
-<div class="admonition warning">
-<p class="admonition-title">Sobre la inferencia de tipos</p>
-<p>Que el tipo de dato se infiera automáticamente no quiere decir que Kotlin sea un lenguaje de tipado dinámico, ya que una vez que se asigna un tipo de dato a una variable, no se puede cambiar.</p>
+<h1 id="el-fichero-de-construccion-buildgradlekts">El Fichero de Construcción: <code>build.gradle.kts</code><a class="headerlink" href="#el-fichero-de-construccion-buildgradlekts" title="Permanent link">¶</a></h1>
+<p>En el corazón de la compilación de tu aplicación Android se encuentra el fichero <code>build.gradle.kts</code> (o <code>build.gradle</code> si usas Groovy, aunque el estándar moderno es <strong>Kotlin DSL</strong>).</p>
+<p>Este fichero define <strong>CÓMO</strong> se debe construir tu aplicación: desde qué versión de Android soporta, hasta qué librerías externas utiliza.</p>
+<div class="admonition note">
+<p class="admonition-title">Project vs Module</p>
+<p>Recuerda que existen dos niveles de <code>build.gradle</code>:</p>
+<ol>
+<li><strong>Project-level (<code>build.gradle.kts</code> raíz):</strong> Define configuración global para <em>todos</em> los módulos (normalmente solo plugins comunes).</li>
+<li><strong>Module-level (<code>app/build.gradle.kts</code>):</strong> Es donde pasarás el 99% del tiempo. Define la configuración específica de tu app (o módulo). <strong>Nos centraremos en este.</strong></li>
+</ol>
 </div>
-<h2 id="variables-explicitas">Variables explícitas<a class="headerlink" href="#variables-explicitas" title="Permanent link">¶</a></h2>
-<p>Para declarar una variable de forma explícita en Kotlin, se debe indicar el tipo de dato que almacenará la variable seguido del nombre de la variable y opcionalmente de su valor inicial.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edad</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<hr>
+<h2 id="estructura-anatomica">Estructura Anatómica<a class="headerlink" href="#estructura-anatomica" title="Permanent link">¶</a></h2>
+<p>Un fichero <code>build.gradle.kts</code> de módulo típico tiene esta estructura:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// 1. Plugins</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// 2. Configuración Android</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="c1">// 3. Dependencias externas</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el ejemplo anterior, se declaran dos variables de forma explícita, una de tipo <code>String</code> llamada <code>nombre</code> y otra de tipo <code>Int</code> llamada <code>edad</code>.</p>
-<h2 id="variables-implicitas">Variables implícitas<a class="headerlink" href="#variables-implicitas" title="Permanent link">¶</a></h2>
-<p>Para declarar una variable de forma implícita en Kotlin, se debe utilizar la palabra clave <code>val</code> o <code>var</code> seguida del nombre de la variable y opcionalmente de su valor inicial. En este caso, el tipo de dato se infiere automáticamente por el compilador.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<p>Vamos a diseccionar cada parte.</p>
+<h3 id="1-bloque-plugins">1. Bloque <code>plugins</code><a class="headerlink" href="#1-bloque-plugins" title="Permanent link">¶</a></h3>
+<p>Los plugins son extensiones que "enseñan" a Gradle cómo hacer cosas nuevas. Por defecto, Gradle no sabe qué es una "App Android". Necesitamos aplicarle el plugin de Android.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// Le dice a Gradle: "Este módulo es una Aplicación Android"</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">alias</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">plugins</span><span class="p">.</span><span class="na">android</span><span class="p">.</span><span class="na">application</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1">// Le dice a Gradle: "Vamos a usar Kotlin en Android"</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">alias</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">plugins</span><span class="p">.</span><span class="na">kotlin</span><span class="p">.</span><span class="na">android</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el ejemplo anterior, se declaran dos variables de forma implícita, una de tipo <code>String</code> llamada <code>nombre</code> y otra de tipo <code>Int</code> llamada <code>edad</code>.</p>
-<h2 id="tipos-de-datos-primitivos">Tipos de datos primitivos<a class="headerlink" href="#tipos-de-datos-primitivos" title="Permanent link">¶</a></h2>
-<p>En Kotlin, los tipos de datos primitivos son los mismos que en Java, pero con algunas diferencias en la forma en que se declaran.</p>
-<ul>
-<li><strong>Byte</strong>: Almacena números enteros de 8 bits.</li>
-<li><strong>Short</strong>: Almacena números enteros de 16 bits.</li>
-<li><strong>Int</strong>: Almacena números enteros de 32 bits.</li>
-<li><strong>Long</strong>: Almacena números enteros de 64 bits.</li>
-<li><strong>Float</strong>: Almacena números de punto flotante de 32 bits.</li>
-<li><strong>Double</strong>: Almacena números de punto flotante de 64 bits.</li>
-<li><strong>Char</strong>: Almacena caracteres Unicode de 16 bits.</li>
-<li><strong>Boolean</strong>: Almacena valores booleanos (<code>true</code> o <code>false</code>).</li>
-</ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">entero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">flotante</span><span class="p">:</span><span class="w"> </span><span class="kt">Float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10.5f</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="p">:</span><span class="w"> </span><span class="kt">Char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'A'</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">booleano</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</span></code></pre></div>
-<h2 id="tipos-de-datos-compuestos">Tipos de datos compuestos<a class="headerlink" href="#tipos-de-datos-compuestos" title="Permanent link">¶</a></h2>
-<p>Además de los tipos de datos primitivos, Kotlin también tiene tipos de datos compuestos que permiten almacenar colecciones de datos.</p>
-<ul>
-<li><strong>Array</strong>: Almacena una colección de elementos del mismo tipo.</li>
-<li><strong>List</strong>: Almacena una colección de elementos ordenados.</li>
-<li><strong>Set</strong>: Almacena una colección de elementos únicos.</li>
-<li><strong>Map</strong>: Almacena una colección de pares clave-valor.</li>
-</ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="s">"María"</span><span class="p">,</span><span class="w"> </span><span class="s">"Pedro"</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">val</span><span class="w"> </span><span class="nv">colores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setOf</span><span class="p">(</span><span class="s">"Rojo"</span><span class="p">,</span><span class="w"> </span><span class="s">"Verde"</span><span class="p">,</span><span class="w"> </span><span class="s">"Azul"</span><span class="p">)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">edades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">"Juan"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="s">"María"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="s">"Pedro"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">35</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="conversion-de-tipos">Conversión de tipos<a class="headerlink" href="#conversion-de-tipos" title="Permanent link">¶</a></h2>
-<p>En Kotlin, la conversión de tipos se realiza de forma segura y explícita utilizando funciones específicas para cada tipo de dato.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numero</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">.</span><span class="na">toInt</span><span class="p">()</span>
-</span></code></pre></div>
-<p>En el primer ejemplo, se convierte un número entero a una cadena de texto utilizando la función <code>toString()</code>. En el segundo ejemplo, se convierte una cadena de texto a un número entero utilizando la función <code>toInt()</code>.   </p>
-<h2 id="sobre-las-variables-mutables-e-inmutables">Sobre las variables mutables e inmutables<a class="headerlink" href="#sobre-las-variables-mutables-e-inmutables" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables se pueden declarar como <code>val</code> (inmutables) o <code>var</code> (mutables). Las variables inmutables no pueden cambiar su valor una vez asignado, mientras que las variables mutables pueden cambiar su valor en cualquier momento.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span><span class="w"> </span><span class="c1">// Variable inmutable</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">var</span><span class="w"> </span><span class="nv">edad</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="c1">// Variable mutable</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, la variable <code>nombre</code> es inmutable, por lo que su valor no puede cambiar una vez asignado. La variable <code>edad</code>, en cambio, es mutable, por lo que su valor puede cambiar en cualquier momento.    </p>
-<h3 id="sobre-la-mutabilidad-y-la-inmutabilidad">Sobre la mutabilidad y la inmutabilidad<a class="headerlink" href="#sobre-la-mutabilidad-y-la-inmutabilidad" title="Permanent link">¶</a></h3>
-<p>La inmutabilidad es una característica importante en Kotlin, ya que ayuda a prevenir los errores de programación al evitar que los valores de las variables cambien de forma inesperada. Al utilizar variables inmutables, se puede escribir código más seguro y predecible, lo que facilita la depuración y el mantenimiento del código.   </p>
-<p>Cuándo trabajamos con listas o arrays, podemos modificar los elementos de la lista, pero no podemos cambiar la referencia de la lista. </p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">lista</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">// Modifica el elemento en la posición 0</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se modifica el elemento en la posición <code>0</code> de la lista <code>lista</code>, pero no se puede cambiar la referencia de la lista. Si se intenta asignar una nueva lista a la variable <code>lista</code>, se produce un error de compilación.</p>
-<p>Podemos ver también un ejemplo de lista mutable pero cuyo contenido no puede ser modificado.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">lista</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se intenta modificar el elemento en la posición <code>0</code> de la lista <code>lista</code>, pero como la lista es inmutable, se produce un error de compilación.</p>
-<p>Esto nos deja claro que la inmutabilidad no solo se refiere a la variable en sí, sino también a los elementos que contiene la variable.</p>
-<p>Podemos entonces tener cuatro situaciones posibles:</p>
-<ul>
-<li>Variable inmutable y elementos inmutables: No se puede cambiar ni la variable ni los elementos.</li>
-<li>Variable inmutable y elementos mutables: No se puede cambiar la variable, pero sí los elementos.</li>
-<li>Variable mutable y elementos inmutables: Se puede cambiar la variable, pero no los elementos.</li>
-<li>Variable mutable y elementos mutables: Se puede cambiar tanto la variable como los elementos.</li>
-</ul>
 <div class="admonition tip">
-<p class="admonition-title">Las variables inmutables y la programación funcional</p>
-<p>Las variables inmutables son una característica fundamental de la programación funcional, ya que permiten escribir código más seguro y predecible al evitar los efectos secundarios y las mutaciones de estado. </p>
-<p>Al utilizar variables inmutables, se puede escribir código más conciso, legible y mantenible, lo que facilita la depuración y el mantenimiento del código.</p>
+<p class="admonition-title">Version Catalogs (<code>libs.*</code>)</p>
+<p>Fíjate en el uso de <code>alias(libs...)</code>. Esto es <strong>Version Catalogs</strong>. En lugar de escribir el ID del plugin y la versión "a fuego" (hardcoded), referenciamos una definición centralizada en el fichero <code>libs.versions.toml</code>. ¡Es mucho más limpio y fácil de mantener!</p>
 </div>
-<h2 id="sobre-las-variables-nulas">Sobre las variables nulas<a class="headerlink" href="#sobre-las-variables-nulas" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables pueden ser nulas si se declara con el operador <code>?</code>. Esto permite que una variable pueda contener un valor nulo en lugar de un valor no nulo.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<h3 id="2-bloque-android">2. Bloque <code>android</code><a class="headerlink" href="#2-bloque-android" title="Permanent link">¶</a></h3>
+<p>Aquí configuramos todo lo relacionado con el SDK de Android.</p>
+<h4 id="namespace-y-compilacion">Namespace y Compilación<a class="headerlink" href="#namespace-y-compilacion" title="Permanent link">¶</a></h4>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// Identificador único de tu paquete (sustituye al antiguo 'package' en Manifest)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.ejemplo.miapp"</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">// La versión del SDK que usas para COMPILAR el código.</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// Te permite usar las APIs más nuevas de esa versión en tu código.</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="w"> </span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>En el ejemplo anterior, la variable <code>nombre</code> se declara como nula utilizando el operador <code>?</code>. Esto significa que la variable <code>nombre</code> puede contener un valor nulo en lugar de un valor no nulo.</p>
-<div class="admonition info">
-<p class="admonition-title">Sobre la seguridad de nulos en Kotlin</p>
-<p>El manejo de nulos en Kotlin es una de las características más importantes del lenguaje, ya que ayuda a prevenir los errores de referencia nula que son comunes en otros lenguajes de programación.</p>
-<p>Más adelante veremos cómo manejar los valores nulos de forma segura en Kotlin.</p>
+<h4 id="default-config">Default Config<a class="headerlink" href="#default-config" title="Permanent link">¶</a></h4>
+<p>La configuración base que se aplica a todas las versiones de tu app (debug, release, etc.).</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="c1">// ID único de la aplicación en la Play Store.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">applicationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.ejemplo.miapp"</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="c1">// Mínima versión de Android donde funciona tu app.</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="c1">// Si pones 24 (Android 7.0), nadie con Android 6.0 podrá instalarla.</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="c1">// Versión objetivo. Le dice a Android: "He probado mi app hasta esta versión".</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="c1">// Permite que el sistema active optimizaciones o comportamientos nuevos.</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="c1">// Lo ideal es: targetSdk == compileSdk</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">targetSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="c1">// Versionado para la tienda (interno y visible).</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">versionCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="n">versionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1.0"</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="c1">// Runner para los tests instrumentados</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">testInstrumentationRunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"androidx.test.runner.AndroidJUnitRunner"</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="build-types-tipos-de-construccion">Build Types (Tipos de Construcción)<a class="headerlink" href="#build-types-tipos-de-construccion" title="Permanent link">¶</a></h4>
+<p>Define perfiles de compilación. Por defecto siempre tienes <code>debug</code> y <code>release</code>.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="n">buildTypes</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="n">release</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">            </span><span class="c1">// ¿Activamos minificación (R8)? (Borrar código no usado, ofuscar...)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="c1">// Reglas de ProGuard para la ofuscación</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">                </span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">"proguard-android-optimize.txt"</span><span class="p">),</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">                </span><span class="s">"proguard-rules.pro"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="c1">// El bloque 'debug' existe implícitamente aunque no lo escribas.</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="opciones-de-compilacion">Opciones de Compilación<a class="headerlink" href="#opciones-de-compilacion" title="Permanent link">¶</a></h4>
+<p>Configuramos la versión de Java que usaremos. Hoy en día, Java 11 o 17 son el estándar para desarrollo Android moderno.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="n">compileOptions</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">        </span><span class="n">sourceCompatibility</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JavaVersion</span><span class="p">.</span><span class="na">VERSION_11</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">targetCompatibility</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JavaVersion</span><span class="p">.</span><span class="na">VERSION_11</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">kotlinOptions</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="n">jvmTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"11"</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="3-bloque-dependencies">3. Bloque <code>dependencies</code><a class="headerlink" href="#3-bloque-dependencies" title="Permanent link">¶</a></h3>
+<p>Aquí listamos las librerías externas que nuestra app necesita para funcionar.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// Dependencias 'core' (se compilan y empaquetan con la app)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">core</span><span class="p">.</span><span class="na">ktx</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">appcompat</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">material</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1">// Dependencias SOLO para Tests Unitarios (JUnit local)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="c1">// No se empaquetan en la APK final.</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">testImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">junit</span><span class="p">)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="c1">// Dependencias puramente de Tests Instrumentados (Android)</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">junit</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">espresso</span><span class="p">.</span><span class="na">core</span><span class="p">)</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="c1">// Herramientas de debug (solo en builds debug)</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="c1">// debugImplementation(libs.leakcanary)</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="tipos-de-dependencia-comunes">Tipos de dependencia comunes<a class="headerlink" href="#tipos-de-dependencia-comunes" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><code>implementation</code></strong>: La más común. La librería está disponible en compilación y ejecución.</li>
+<li><strong><code>testImplementation</code></strong>: Solo disponible dentro de <code>src/test</code> (tests unitarios locales).</li>
+<li><strong><code>androidTestImplementation</code></strong>: Solo disponible dentro de <code>src/androidTest</code> (tests en dispositivo).</li>
+<li><strong><code>ksp</code> (o <code>kapt</code>)</strong>: Para procesadores de anotaciones (como Room o Dagger/Hilt).</li>
+<li><strong><code>debugImplementation</code></strong>: Solo se incluye en la variante <code>debug</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con las versiones</p>
+<p>Evita mezclar versiones de librerías relacionadas (como las de <code>androidx.lifecycle</code> o <code>kotlinx.coroutines</code>). Usar el <strong>Version Catalog</strong> (<code>libs.versions.toml</code>) ayuda mucho a mantener la coherencia, ya que defines la versión en un solo lugar.</p>
 </div>
-<h2 id="sobre-las-variables-declaradas-como-const">Sobre las variables declaradas como const<a class="headerlink" href="#sobre-las-variables-declaradas-como-const" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las variables se pueden declarar como <code>const</code> para indicar que su valor es constante en tiempo de compilación. Las variables <code>const</code> deben ser de tipo <code>val</code> y deben estar en el ámbito de un objeto o de un compañero de clase.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.14159</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se declara una constante <code>PI</code> con un valor de <code>3.14159</code>. Esta constante es accesible en tiempo de compilación y su valor no puede cambiar en tiempo de ejecución.   </p>
-<h2 id="sobre-las-strings-en-kotlin">Sobre las Strings en Kotlin<a class="headerlink" href="#sobre-las-strings-en-kotlin" title="Permanent link">¶</a></h2>
-<p>En Kotlin, las cadenas de texto se pueden declarar utilizando comillas simples (<code>'</code>) o comillas dobles (<code>"</code>). Las cadenas de texto declaradas con comillas simples son de tipo <code>Char</code>, mientras que las declaradas con comillas dobles son de tipo <code>String</code>.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="p">:</span><span class="w"> </span><span class="kt">Char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'A'</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ejemplo"</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se declara una variable <code>caracter</code> de tipo <code>Char</code> con el valor <code>'A'</code> y una variable <code>texto</code> de tipo <code>String</code> con el valor <code>"Ejemplo"</code>.</p>
-<p>Las Strings en Kotlin se pueden comparar utilizando el operador <code>==</code> para comparar el contenido de las cadenas y el operador <code>===</code> para comparar las referencias de las cadenas.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">println</span><span class="p">(</span><span class="n">texto1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">texto2</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">println</span><span class="p">(</span><span class="n">texto1</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">texto2</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se comparan dos cadenas de texto <code>texto1</code> y <code>texto2</code> utilizando los operadores <code>==</code> y <code>===</code>. Ambas comparaciones devuelven <code>true</code> ya que las cadenas son iguales en contenido y referencia. </p>
-<p>A diferencia de Java, en Kotlin las cadenas de texto son inmutables, lo que significa que una vez que se crea una cadena de texto, no se puede modificar su contenido. Para modificar una cadena de texto en Kotlin, se debe crear una nueva cadena con el contenido modificado.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hola"</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nuevoTexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" Mundo"</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se crea una nueva cadena de texto <code>nuevoTexto</code> concatenando la cadena <code>texto</code> con la cadena <code>" Mundo"</code>. La cadena <code>texto</code> no se modifica, sino que se crea una nueva cadena con el contenido modificado.    </p>
-<p>Sin embargo, si comparamos una string con un caracter, Kotlin no permite la comparación directa, ya que son tipos de datos diferentes.</p>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"H"</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">caracter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'H'</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">println</span><span class="p">(</span><span class="n">texto</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">caracter</span><span class="p">)</span><span class="w"> </span><span class="c1">// Error de compilación</span>
-</span></code></pre></div>
-<p>En el ejemplo anterior, se intenta comparar una cadena de texto <code>texto</code> con un caracter <code>caracter</code>, lo cual produce un error de compilación ya que los tipos de datos son diferentes.   </p>
 
 
 
