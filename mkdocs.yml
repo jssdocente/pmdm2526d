@@ -25,7 +25,7 @@ nav:
       - "Genéricos": temas/00-android/00-kotlin/25-genericos.md
       - "Clases selladas": temas/00-android/00-kotlin/26-sealed-classes.md
       - "Scope functions": temas/00-android/00-kotlin/31-scope-functions.md
-      - "Corrutinas": temas/00-android/00-kotlin/51-corrutinas.md
+      - "Corrutinas": temas/00-android/00-kotlin/52-corrutinas-sencillo.md
     - "Herramientas Proyecto Android":
       - "Gradle": "temas/00-android/00-tools/01-gradle-agp-estructura.md"
       - "Build-gradle": "temas/00-android/00-tools/02-build-gradle.md"
@@ -38,6 +38,7 @@ nav:
       - "Listas": temas/00-android/00-compose/23-listas-cuadriculas.md
       - "Navegación Rutas": temas/00-android/00-compose/24-navegacion-rutas.md
       - "Material Design": temas/00-android/00-compose/25-material-design.md
+      - "Glosario": temas/00-android/00-compose/99-glosario-android.md
 
     # - "Ciclo de Vida aplicación Android": temas/00-android/01-ciclo-vida-app.md
     # - "Arquitecturas en Android": temas/00-android/02-arquitectura.md
@@ -57,7 +58,14 @@ nav:
     - "Inicio": temas/03/index.md
     - "3.1. Introducción": temas/03/3.1-intro.md
     - "3.2. Temas": temas/03/3.2-temas.md
-    - "3.3. Elementos Menus": temas/03/3.3-elementos-menus.md
+    - "3.3. Arquitectura":
+      - "3.3.1. Introducción": temas/03/3.3-arquitectura.md
+      - "3.3.2. Capa de UI": temas/03/3.3.2-arquitectura.capa-ui
+      - "3.3.3. Capas Datos/Dominio": temas/03/3.3.3-arquitectura.capa-datos.md
+  - "UT4 - Persistencia": 
+    - "Introducción": temas/04/4.0-persistencia.md
+    - "4.1. Room": temas/04/4.1-room.md
+    - "4.2. Conexión a Internet": temas/04/4.2-conexion-internet.md
     #- "3.3. Arquitectura": temas/03/3.3-arquitectura.md
     
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
