@@ -1,0 +1,4014 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3.3-CapaDatos-es.html">
+      
+      
+        <link rel="prev" href="3.3.3.2-CapaDominio-es.html">
+      
+      
+        <link rel="next" href="../04/4.0-persistencia.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Capa de Datos - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17%2013h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#android-clean-architecture-capa-de-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Capa de Datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo noche" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo día" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El lenguaje kotlin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    El lenguaje kotlin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expresiones vs Sentencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/12.1-when.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones y lambdas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Null safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colecciones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Colecciones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/43-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/44-sets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetos anónimos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enum classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genéricos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clases selladas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/52-corrutinas-sencillo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrutinas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Herramientas Proyecto Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Herramientas Proyecto Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/01-gradle-agp-estructura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/02-build-gradle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/03-android-manifest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichero Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/21-composable-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones componibles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/22-state-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/23-listas-cuadriculas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/24-navegacion-rutas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegación Rutas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/25-material-design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/99-glosario-android.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glosario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 - Visión General y Entorno de desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.1-primeros-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Primeros pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2. Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.3-primera-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Primera aplicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.4-gestion-estado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4. Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.5-mejorando-codigo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5. Mejorando el código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.6-mostrar-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6. Manejo de listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 - Interfaz de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 - Interfaz de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.1-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.2-temas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2. Temas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3. Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3. Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.2-arquitectura.capa-ui" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.2. Capa de UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.3-arquitectura.capa-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.3. Capas Datos/Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.4. Clean Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3.4. Clean Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.3.2-CapaDominio-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Datos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3.3.3.3-CapaDatos-es.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android-clean-architecture-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android Clean Architecture - Capa de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomia-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de la Capa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomía de la Capa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fuentes-de-datos-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fuentes de Datos (Data Sources)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-api-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces de API Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-de-acceso-a-datos-daos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetos de Acceso a Datos (DAOs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-de-transferencia-de-datos-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetos de Transferencia de Datos (DTOs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entidades-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entidades (Entities)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mappers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-clave-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsabilidades Clave de la Capa de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-repositorio-en-clean-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patrón Repositorio en Clean Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrón Repositorio en Clean Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-responsabilidades-clave-de-los-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Responsabilidades Clave de los Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cache-en-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Caché en Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesando-datos-antes-de-cachear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procesando Datos Antes de Cachear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrategias de Caché
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multiples-repositorios-y-agregacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Múltiples Repositorios y Agregación de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-incorrecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto incorrecto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-correcto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto correcto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendiendo-las-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendiendo las Fuentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entendiendo las Fuentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-una-fuente-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Qué es una Fuente de Datos?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tipos-de-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tipos de Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-como-estructurar-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cómo Estructurar Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-nombrando-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Nombrando Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-para-implementar-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mejores Prácticas para Implementar Fuentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas para Implementar Fuentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separacion-de-preocupaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Separación de Preocupaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mapeo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mapeo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-manejo-de-errores-y-registro-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Manejo de Errores y Registro (Logging)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manejo-de-cancellationexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manejo de CancellationException
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-inyeccion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inyección de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hileria-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Hilería (Threading)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementando-fuentes-de-datos-remotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementando Fuentes de Datos Remotas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementando Fuentes de Datos Remotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-interfaces-de-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Interfaces de API REST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ejemplo-incorrecto-de-una-fuente-de-datos-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ❌ Ejemplo Incorrecto de una Fuente de Datos Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-incorrecto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto incorrecto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ejemplo-correcto-de-una-fuente-de-datos-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ✅ Ejemplo Correcto de una Fuente de Datos Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-correcto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto correcto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementando-fuentes-de-datos-locales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementando Fuentes de Datos Locales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementando Fuentes de Datos Locales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-opciones-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Opciones de Almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nombrando-interfaces-dao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nombrando Interfaces DAO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ejemplo-de-fuente-de-datos-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ejemplo de Fuente de Datos Local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendiendo-los-modelos-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendiendo los Modelos de la Capa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entendiendo los Modelos de la Capa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-modelos-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Modelos de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mejores-practicas-para-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mejores Prácticas para DTOs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de Paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4 - Persistencia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT4 - Persistencia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.0-persistencia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.1-room.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1. Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.2-conexion-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2. Conexión a Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android-clean-architecture-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android Clean Architecture - Capa de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomia-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de la Capa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomía de la Capa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fuentes-de-datos-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fuentes de Datos (Data Sources)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-api-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces de API Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-de-acceso-a-datos-daos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetos de Acceso a Datos (DAOs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-de-transferencia-de-datos-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetos de Transferencia de Datos (DTOs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entidades-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entidades (Entities)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mappers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-clave-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsabilidades Clave de la Capa de Datos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-repositorio-en-clean-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patrón Repositorio en Clean Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrón Repositorio en Clean Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-responsabilidades-clave-de-los-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Responsabilidades Clave de los Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cache-en-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Caché en Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesando-datos-antes-de-cachear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procesando Datos Antes de Cachear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-de-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrategias de Caché
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multiples-repositorios-y-agregacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Múltiples Repositorios y Agregación de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-incorrecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto incorrecto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-correcto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto correcto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendiendo-las-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendiendo las Fuentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entendiendo las Fuentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-que-es-una-fuente-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Qué es una Fuente de Datos?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tipos-de-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tipos de Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-como-estructurar-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cómo Estructurar Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-nombrando-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Nombrando Fuentes de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-para-implementar-fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mejores Prácticas para Implementar Fuentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas para Implementar Fuentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-separacion-de-preocupaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Separación de Preocupaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mapeo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mapeo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-manejo-de-errores-y-registro-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Manejo de Errores y Registro (Logging)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manejo-de-cancellationexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manejo de CancellationException
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-inyeccion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inyección de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hileria-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Hilería (Threading)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementando-fuentes-de-datos-remotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementando Fuentes de Datos Remotas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementando Fuentes de Datos Remotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-interfaces-de-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Interfaces de API REST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ejemplo-incorrecto-de-una-fuente-de-datos-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ❌ Ejemplo Incorrecto de una Fuente de Datos Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-incorrecto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto incorrecto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ejemplo-correcto-de-una-fuente-de-datos-remota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ✅ Ejemplo Correcto de una Fuente de Datos Remota
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-esto-correcto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es esto correcto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementando-fuentes-de-datos-locales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementando Fuentes de Datos Locales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementando Fuentes de Datos Locales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-opciones-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Opciones de Almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nombrando-interfaces-dao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nombrando Interfaces DAO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ejemplo-de-fuente-de-datos-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ejemplo de Fuente de Datos Local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendiendo-los-modelos-de-la-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendiendo los Modelos de la Capa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entendiendo los Modelos de la Capa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-modelos-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Modelos de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mejores-practicas-para-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Mejores Prácticas para DTOs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de Paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegación">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    UT3 - Interfaz de Usuario
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="3.3-arquitectura.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    3.3. Arquitectura
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="3.3.3.2-CapaDominio-es.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    3.3.4. Clean Architecture
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Capa de Datos</h1>
+
+<h2 id="android-clean-architecture-capa-de-datos">Android Clean Architecture - Capa de Datos<a class="headerlink" href="#android-clean-architecture-capa-de-datos" title="Permanent link">¶</a></h2>
+<p>La Capa de Datos se encarga de todo el trabajo entre bastidores cuando se trata de manejar datos en la aplicación. Ya sea obteniendo datos de una API remota, leyendo de una base de datos local o gestionando una caché en memoria, esta capa hace el trabajo pesado. Su trabajo es proporcionar datos de una manera consistente para que el resto de la app no tenga que preocuparse de dónde vinieron o cómo se almacenaron.</p>
+<p>En Clean Architecture, una regla clave es que la Capa de Datos no debe ser accedida directamente por la Capa de Presentación (como ViewModels o componentes de UI). En su lugar, habla solo con la Capa de Dominio, que define las reglas de negocio en las que confía la aplicación. Esta separación mantiene las cosas modulares y flexibles, por lo que si alguna vez necesitas cambiar APIs remotas o cambiar la configuración de almacenamiento, puedes hacerlo sin afectar al resto de la aplicación.</p>
+<p>Presiona enter o haz clic para ver la imagen en tamaño completo</p>
+<figcaption>
+  <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://miro.medium.com/v2/resize:fit:700/1*INX-TUwdPXyR1bzMsEoPyQ.jpeg" data-desc-position="bottom"><img src="https://miro.medium.com/v2/resize:fit:700/1*INX-TUwdPXyR1bzMsEoPyQ.jpeg" alt="La Capa de Presentación, la Capa de Dominio y la Capa de Datos"></a>
+  Disposición de Dependencias en Clean Architecture
+</figcaption>
+
+<h2 id="anatomia-de-la-capa-de-datos">Anatomía de la Capa de Datos<a class="headerlink" href="#anatomia-de-la-capa-de-datos" title="Permanent link">¶</a></h2>
+<h3 id="fuentes-de-datos-data-sources">Fuentes de Datos (Data Sources)<a class="headerlink" href="#fuentes-de-datos-data-sources" title="Permanent link">¶</a></h3>
+<p>Definen cómo se recuperan los datos, ya sea de APIs remotas, bases de datos o cachés en memoria. A menudo se categorizan en RemoteDataSources (Remotas) y LocalDataSources (Locales).</p>
+<h3 id="repositorios"><strong>Repositorios</strong><a class="headerlink" href="#repositorios" title="Permanent link">¶</a></h3>
+<p>Sirven como el punto de entrada para el acceso a datos, actuando como la interfaz entre la Capa de Datos y la Capa de Dominio. Los Repositorios orquestan datos de Fuentes de Datos remotas o locales.</p>
+<h3 id="interfaces-de-api-remota"><strong>Interfaces de API Remota</strong><a class="headerlink" href="#interfaces-de-api-remota" title="Permanent link">¶</a></h3>
+<p>Definen el contrato para la comunicación de red. Especifican métodos HTTP (como <code>@GET</code>, <code>@POST</code>), rutas de endpoint, parámetros de consulta/ruta, cabeceras y los modelos de respuesta esperados. Esto asegura una interacción consistente y segura en tipos con APIs remotas.</p>
+<h3 id="objetos-de-acceso-a-datos-daos"><strong>Objetos de Acceso a Datos (DAOs)</strong><a class="headerlink" href="#objetos-de-acceso-a-datos-daos" title="Permanent link">¶</a></h3>
+<p>Proporcionan una capa de abstracción sobre la base de datos. Definen las consultas SQL y operaciones de datos usadas para realizar acciones CRUD (Crear, Leer, Actualizar y Borrar).</p>
+<h3 id="objetos-de-transferencia-de-datos-dtos"><strong>Objetos de Transferencia de Datos (DTOs)</strong><a class="headerlink" href="#objetos-de-transferencia-de-datos-dtos" title="Permanent link">¶</a></h3>
+<p>Son representaciones estructuradas de datos externos como respuestas de API REST.</p>
+<h3 id="entidades-entities"><strong>Entidades (Entities)</strong><a class="headerlink" href="#entidades-entities" title="Permanent link">¶</a></h3>
+<p>Son representaciones de base de datos que se mapean directamente a tablas. Definen el esquema de la base de datos.</p>
+<h3 id="mappers"><strong>Mappers</strong><a class="headerlink" href="#mappers" title="Permanent link">¶</a></h3>
+<p>Transforman datos entre DTOs, Entidades y Modelos de Dominio. Los Mappers son necesarios para evitar dependencias directas entre las Capas de Datos y de Dominio.</p>
+<p>Presiona enter o haz clic para ver la imagen en tamaño completo</p>
+<figcaption>
+  <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://miro.medium.com/v2/resize:fit:700/1*pZatdH0cAp8y3hT9ZVc8Yg.jpeg" data-desc-position="bottom"><img src="https://miro.medium.com/v2/resize:fit:700/1*pZatdH0cAp8y3hT9ZVc8Yg.jpeg" alt="Un diagrama que muestra una representación del flujo de datos a través de las capas de Clean Architecture comenzando en la Capa de Presentación con un Fragment, moviéndose al ViewModel y cruzando a la Capa de Dominio con un Caso de Uso. El Caso de Uso luego llama a la Interfaz del Repositorio. Luego cruzamos a la Capa de Datos hacia la Implementación del Repositorio. Desde aquí podemos ir a una Fuente de Datos Local o una Fuente de Datos Remota para enviar o obtener información."></a>
+  Representación del Flujo de Datos en Android Clean Architecture
+</figcaption>
+
+<h2 id="responsabilidades-clave-de-la-capa-de-datos">Responsabilidades Clave de la Capa de Datos<a class="headerlink" href="#responsabilidades-clave-de-la-capa-de-datos" title="Permanent link">¶</a></h2>
+<p>✅ <strong>Obtención, Persistencia y Caché de Datos</strong>
+La Capa de Datos maneja operaciones CRUD de fuentes de datos remotas como APIs REST, y puede persistir datos localmente usando herramientas como Room (para bases de datos), DataStore (para pares clave-valor), o caché en memoria (para datos temporales) cuando es necesario.</p>
+<p>✅ <strong>Manejo de Respuestas de Red</strong>
+La Capa de Datos procesa y valida respuestas de red. Asegura que los datos de fuentes externas como APIs REST sean válidos, completos y estén en el formato correcto antes de ser pasados a la Capa de Dominio.</p>
+<p>✅ <strong>Lógica de Reintento y Manejo de Fallos</strong>
+La Capa de Datos maneja condiciones de red poco fiables implementando estrategias de reintento como espera exponencial (exponential back-off) y gestionando elegantemente los fallos para evitar interrumpir la experiencia del usuario.</p>
+<p>✅ <strong>Registro y Reporte de Errores</strong>
+Cuando las operaciones fallan, capturar esos fallos en la fuente es importante. La Capa de Datos debe registrar excepciones y opcionalmente reportarlas usando herramientas de reporte de fallos para facilitar la depuración y el análisis.</p>
+<p>✅ <strong>Hilería (Threading)</strong>
+Bibliotecas como Retrofit, Room y DataStore manejan automáticamente la hilería cuando se usan Corrutinas, asegurando que las operaciones de datos no bloqueen el hilo principal. Si se usa una biblioteca diferente, la responsabilidad de cambiar hilos para trabajo de E/S pertenece a la Capa de Datos.</p>
+<p>✅ <strong>Mapeo de DTOs y Entidades a Modelos de Dominio</strong>
+Transformar datos brutos (como respuestas de API REST o entidades de base de datos) en modelos de dominio utilizables es una responsabilidad clave de esta capa. Esta separación ayuda a mantener un límite claro entre los formatos de datos externos y la lógica de negocio de la aplicación.</p>
+<p>✅ <strong>Asegurar la Consistencia de Datos</strong>
+Las Fuentes de Datos deben devolver datos inmutables para asegurar la consistencia y prevenir condiciones de carrera o corrupción de datos. Los datos inmutables garantizan que los datos pasados a las capas superiores de la aplicación sean fiables.</p>
+<p>✅ <strong>Seguridad y Privacidad de Datos</strong>
+Aunque la seguridad es una responsabilidad compartida a través de las capas, la Capa de Datos juega un papel importante. Ya sea cifrando el almacenamiento local o asegurando la transmisión segura de datos a través de la red, esta capa ayuda a proteger los datos y la privacidad del usuario.</p>
+<p>❌ <strong>No Debe Contener Lógica de Negocio</strong>
+La Capa de Datos se centra en la gestión de datos, no en la toma de decisiones. La lógica de negocio debe residir dentro de la Capa de Dominio para mantener la separación de preocupaciones y la mantenibilidad.</p>
+<p>❌ <strong>No Debe Ser Accedida Directamente por la Capa de Presentación</strong>
+El acceso a la Capa de Datos está restringido a través de la Capa de Dominio para asegurar que la lógica de negocio se aplique consistentemente y para prevenir un acceso inconsistente a la Capa de Datos en toda la aplicación.</p>
+<blockquote>
+<p>💡 En proyectos más pequeños donde se omite una Capa de Dominio, este límite podría ser más relajado. Pero en apps escalables, adherirse a esta separación conduce a una base de código más mantenible.</p>
+</blockquote>
+<h2 id="patron-repositorio-en-clean-architecture">Patrón Repositorio en Clean Architecture<a class="headerlink" href="#patron-repositorio-en-clean-architecture" title="Permanent link">¶</a></h2>
+<p>Los Repositorios actúan como la capa intermedia entre la Capa de Dominio y las Fuentes de Datos (como APIs REST o bases de datos locales). Su trabajo es exponer una interfaz estable y centrada en el dominio que oculta la complejidad subyacente de cómo y dónde se obtienen o almacenan los datos.</p>
+<p>Típicamente <strong>no</strong> manejan mapeo, hilería o manejo de errores de bajo nivel. Esas preocupaciones viven en las clases de Fuente de Datos remota y local. Sin embargo, si tu aplicación no usa clases de Fuente de Datos (proyectos más pequeños) es aceptable que el Repositorio asuma estas responsabilidades. Los Repositorios se centran en orquestar datos entre fuentes (remotas y locales), y decidir cómo combinar o priorizar datos antes de devolver el resultado a la Capa de Dominio.</p>
+<h3 id="1-nombrando-repositorios">1. Nombrando Repositorios<a class="headerlink" href="#1-nombrando-repositorios" title="Permanent link">¶</a></h3>
+<p>Los Repositorios deben seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Tipo de Dato]</em></strong> <em>+ Repository</em></p>
+</blockquote>
+<p>Por ejemplo:
+✅ <code>**Bag**Repository</code>
+✅ <code>**Checkout**Repository</code></p>
+<h3 id="2-responsabilidades-clave-de-los-repositorios">2. Responsabilidades Clave de los Repositorios<a class="headerlink" href="#2-responsabilidades-clave-de-los-repositorios" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Orquestación de Datos</strong>
+Los Repositorios coordinan entre múltiples fuentes de datos. Por ejemplo, obteniendo de la caché local primero y recurriendo a remoto si es necesario (o viceversa). Deciden de dónde obtener los datos, no cómo obtenerlos.</p>
+<p>✅ <strong>Devolver Modelos de Dominio</strong>
+Los Repositorios siempre exponen Modelos de Dominio a la Capa de Dominio. Cualquier mapeo de DTOs o Entidades de base de datos ocurre en las clases de Fuente de Datos remota o local. Si tu aplicación omite clases de Fuente de Datos, el Repositorio puede asumir la responsabilidad del mapeo.</p>
+<p>✅ <strong>Seguridad del Hilo Principal</strong>
+Los Repositorios no deben realizar operaciones de larga duración en el hilo principal. Pero tampoco deben ser responsables de la hilería. Si se requiere cambio de hilos, esa responsabilidad pertenece a la Fuente de Datos que realiza la operación. Si tu aplicación omite clases de Fuente de Datos, es aceptable que el Repositorio maneje la hilería.</p>
+<p>❌ <strong>Contener Lógica de Negocio</strong>
+La lógica de negocio pertenece a la Capa de Dominio (Casos de Uso)<strong>.</strong> Los Repositorios son responsables de la orquestación de datos, no de la toma de decisiones sobre cómo deben usarse los datos.</p>
+<p>❌ <strong>Depender de Casos de Uso</strong>
+Esto crea una dependencia circular entre las capas de Datos y Dominio. En su lugar, deja que el Caso de Uso reúna todas las entradas requeridas antes de llamar al Repositorio.</p>
+<p>❌ <strong>Depender de Otros Repositorios</strong>
+Los Repositorios no deben depender de otros Repositorios. Cada Repositorio es responsable de manejar una Fuente de Datos específica o tipo de dato. Introducir dependencias entre repositorios conduce a un acoplamiento estrecho. Si necesitas datos de múltiples fuentes, agrégalos en un Caso de Uso en la Capa de Dominio.</p>
+<h3 id="3-cache-en-repositorios">3. Caché en Repositorios<a class="headerlink" href="#3-cache-en-repositorios" title="Permanent link">¶</a></h3>
+<p>Los Repositorios son un buen lugar para activar el almacenamiento en caché, siempre y cuando no se necesite aplicar lógica de negocio antes de que se almacenen los datos. Si una respuesta de API REST es directamente cacheable, el Repositorio debe <strong>almacenarla inmediatamente después de la recuperación</strong>.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">NavigationRepositoryImpl</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">navigationRemoteDataSource</span><span class="p">:</span><span class="w"> </span><span class="n">NavigationRemoteDataSource</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">navigationLocalDataSource</span><span class="p">:</span><span class="w"> </span><span class="n">NavigationLocalDataSource</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NavigationRepository</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getNavigationApi</span><span class="p">():</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="kt">Unit</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">navigationRemoteDataSource</span><span class="p">.</span><span class="na">getNavigationApi</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="k">is</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Success</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">insertNavigationToCache</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">data</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="k">is</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Error</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Error</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">error</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">insertNavigationToCache</span><span class="p">(</span><span class="n">navigationModel</span><span class="p">:</span><span class="w"> </span><span class="n">NavigationModel</span><span class="p">):</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="kt">Unit</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">navigationLocalDataSource</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">navigationModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="k">is</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Success</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Success</span><span class="p">(</span><span class="kt">Unit</span><span class="p">)</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="k">is</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Error</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">Error</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">error</span><span class="p">)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>En este ejemplo, el Repositorio delega tanto la obtención remota como la inserción en caché a sus respectivas Fuentes de Datos. No maneja <em>cómo</em> se hacen esas operaciones, solo <em>cuándo</em> y <em>en qué orden</em> ocurren.</p>
+<h3 id="procesando-datos-antes-de-cachear">Procesando Datos Antes de Cachear<a class="headerlink" href="#procesando-datos-antes-de-cachear" title="Permanent link">¶</a></h3>
+<p>Si los datos necesitan ser transformados, validados o enmendados antes de ser cacheados. Por ejemplo, si la lógica de negocio determina qué partes de los datos almacenar o si deben combinarse con otra fuente, entonces ese trabajo debe ocurrir en la Capa de Dominio, dentro de un Caso de Uso.</p>
+<p>Deja que el Caso de Uso realice las transformaciones necesarias, luego pasa el resultado final de dominio de vuelta al Repositorio para ser persistido. Esto mantiene la lógica de negocio fuera de la Capa de Datos y asegura una separación de preocupaciones.</p>
+<h3 id="estrategias-de-cache">Estrategias de Caché<a class="headerlink" href="#estrategias-de-cache" title="Permanent link">¶</a></h3>
+<p>El almacenamiento en caché es una parte clave de la Capa de Datos, pero no hay un enfoque único para todos. Tu estrategia debe depender de cuán frescos necesiten ser los datos. Por ejemplo, contenido estático como configuraciones de la app se beneficia del caché, mientras que datos en tiempo real (por ejemplo, carritos de compra, niveles de stock) no deben ser cacheados para evitar servir información desactualizada. 🔗 <a href="https://developer.android.com/topic/architecture/data-layer/offline-first">Consulta la documentación oficial de Android Developers</a> para una visión completa de las estrategias de caché en Android.</p>
+<h3 id="4-multiples-repositorios-y-agregacion-de-dependencias">4. Múltiples Repositorios y Agregación de Dependencias<a class="headerlink" href="#4-multiples-repositorios-y-agregacion-de-dependencias" title="Permanent link">¶</a></h3>
+<p>Los Repositorios no deben contener lógica de negocio o comunicación entre repositorios. Permitir que los Repositorios se comuniquen directamente entre sí puede conducir a un acoplamiento estrecho. Si necesitas agregar datos de múltiples Repositorios utiliza un Caso de Uso.</p>
+<p><strong>Por Qué los Casos de Uso Agregan Datos</strong>
+Cuando una pantalla o característica necesita datos de más de una fuente, el Caso de Uso sabe cómo coordinar esas llamadas, aplicar cualquier lógica de negocio y devolver el resultado de una manera que tenga sentido para la Capa de Presentación. Esto mantiene la arquitectura modular y más fácil de mantener a medida que la aplicación crece.</p>
+<p>❌ <strong>Ejemplo Incorrecto: Agregando Datos en un Repositorio</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">StockRepositoryImpl</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">pricingRepository</span><span class="p">:</span><span class="w"> </span><span class="n">PricingRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// ❌ Dependencia entre repositorios</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">stockRemoteDataSource</span><span class="p">:</span><span class="w"> </span><span class="n">StockRemoteDataSource</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">StockRepository</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getStockSummary</span><span class="p">(</span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">StockSummary</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pricingRepository</span><span class="p">.</span><span class="na">getPriceForProduct</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="c1">// ❌ No relacionado con stock</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">stockLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stockRemoteDataSource</span><span class="p">.</span><span class="na">getStockLevel</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">StockSummary</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">stockLevel</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="por-que-es-esto-incorrecto"><strong>¿Por qué es esto incorrecto?</strong><a class="headerlink" href="#por-que-es-esto-incorrecto" title="Permanent link">¶</a></h3>
+<p>❌ <strong>Viola el Principio de Responsabilidad Única (SRP)</strong>
+El Repositorio es ahora responsable de obtener datos de stock <strong>y</strong> precio, lo que introduce un acoplamiento innecesario.</p>
+<p>❌ <strong>Acopla Estrechamente los Repositorios</strong>
+Si PricingRepository cambia, StockRepository podría necesitar modificaciones, aunque no esté relacionado con datos de precios.</p>
+<p>❌ <strong>Aumenta la Complejidad de las Pruebas</strong>
+Las pruebas unitarias para StockRepository ahora necesitan simular o falsificar el PricingRepository, haciendo las pruebas más engorrosas.</p>
+<p>✅ <strong>Ejemplo Correcto: Agregar Datos en el Caso de Uso</strong>
+El enfoque correcto es dejar que los Repositorios se centren en sus propias preocupaciones de datos y mover cualquier lógica de coordinación o transformación a un Caso de Uso.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">GetStockSummaryUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">pricingRepository</span><span class="p">:</span><span class="w"> </span><span class="n">PricingRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">stockRepository</span><span class="p">:</span><span class="w"> </span><span class="n">StockRepository</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">StockSummary</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pricingRepository</span><span class="p">.</span><span class="na">getPriceForProduct</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">stockLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stockRepository</span><span class="p">.</span><span class="na">getStockLevel</span><span class="p">(</span><span class="n">productId</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">StockSummary</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">stockLevel</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="c1">// ✅ Mantiene las responsabilidades claramente separadas</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="por-que-es-esto-correcto"><strong>¿Por qué es esto correcto?</strong><a class="headerlink" href="#por-que-es-esto-correcto" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Los Repositorios permanecen independientes</strong>
+Cada repositorio hace una cosa (stock o precio), y no depende del otro.</p>
+<p>✅ <strong>El Caso de Uso Maneja la Coordinación</strong>
+El GetStockSummaryUseCase orquesta los datos de ambos Repositorios, aplica cualquier regla de negocio (si es necesario), y devuelve el resultado final a la <strong>Capa de Presentación</strong>.</p>
+<p>✅ <strong>Más Fácil de Probar y Mantener</strong>
+Los Repositorios son más fáciles de probar en aislamiento, y los cambios en la lógica de precios no impactarán al StockRepository.</p>
+<blockquote>
+<p>🔗 <a href="/asos-techblog/android-clean-architecture-understanding-the-domain-layer-28bf81d83ef7">Consulta el artículo anterior de la serie</a> para una inmersión profunda en la Capa de Dominio y Casos de Uso.</p>
+</blockquote>
+<h2 id="entendiendo-las-fuentes-de-datos"><strong>Entendiendo las Fuentes de Datos</strong><a class="headerlink" href="#entendiendo-las-fuentes-de-datos" title="Permanent link">¶</a></h2>
+<h3 id="1-que-es-una-fuente-de-datos">1. ¿Qué es una Fuente de Datos?<a class="headerlink" href="#1-que-es-una-fuente-de-datos" title="Permanent link">¶</a></h3>
+<p>Una Fuente de Datos es responsable de acceder y gestionar datos de una ubicación específica, ya sea a través de la red, en almacenamiento local o desde una caché en memoria. Abstrae los detalles de cómo se recuperan o persisten esos datos, ofreciendo una interfaz enfocada para realizar operaciones CRUD.</p>
+<p>Las Fuentes de Datos también manejan la transformación de datos, mapeando respuestas en bruto (como DTOs o entidades de base de datos) en modelos amigables con el dominio antes de pasarlos aguas abajo.</p>
+<blockquote>
+<p>💡 Si tu arquitectura no usa clases de Fuente de Datos explícitas, entonces el trabajo de mapeo y transformación usualmente se desplazará al Repositorio. Aunque eso puede funcionar para apps más pequeñas, tener clases de Fuente de Datos separadas ofrece límites más claros y mejor escalabilidad.</p>
+</blockquote>
+<h3 id="2-tipos-de-fuentes-de-datos">2. Tipos de Fuentes de Datos<a class="headerlink" href="#2-tipos-de-fuentes-de-datos" title="Permanent link">¶</a></h3>
+<p>Típicamente hay dos tipos principales de Fuentes de Datos</p>
+<p><strong>Fuentes de Datos Remotas</strong>
+Manejan la comunicación con APIs remotas. Son responsables de enviar solicitudes, analizar respuestas y mapear resultados de API en modelos de dominio.</p>
+<p><strong>Fuentes de Datos Locales</strong>
+Gestionan el acceso al almacenamiento en el dispositivo, como bases de datos, sistemas de archivos o almacenes de preferencias. Estas fuentes manejan la persistencia local, y típicamente usan herramientas como Room o DataStore.</p>
+<h3 id="3-como-estructurar-fuentes-de-datos">3. Cómo Estructurar Fuentes de Datos<a class="headerlink" href="#3-como-estructurar-fuentes-de-datos" title="Permanent link">¶</a></h3>
+<p>Cada Fuente de Datos debe centrarse en una sola entidad de datos. Por ejemplo, un <code>UserRemoteDataSourceImpl</code> trabajaría con un <code>UserDto</code>, mientras que un <code>UserLocalDataSourceImpl</code> manejaría una <code>UserEntity</code> de Room.</p>
+<p>Aunque es ideal separar por tipo de almacenamiento (p.ej. Room vs. DataStore), también es perfectamente válido combinarlos detrás de una única interfaz de fuente de datos local, siempre y cuando las responsabilidades permanezcan cohesivas y el Repositorio no esté expuesto a los detalles de almacenamiento subyacentes.</p>
+<h3 id="4-nombrando-fuentes-de-datos">4. Nombrando Fuentes de Datos<a class="headerlink" href="#4-nombrando-fuentes-de-datos" title="Permanent link">¶</a></h3>
+<p>El nombrado de Fuentes de Datos debe seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Tipo de Dato]</em></strong> + <em>[_tipo de fuente</em>]<em> + _DataSource</em></p>
+</blockquote>
+<p>Ejemplos:
+✅ <code>**_Bag_**_Remote_DataSource</code>
+✅ <code>**Checkout**_Local_DataSource</code></p>
+<blockquote>
+<p><em>🚫</em> <strong><em>Evita nombres de interfaz específicos de implementación</em></strong><em>(p.ej.</em> <code>_BagSharedPreferencesDataSource_</code><em>).</em> Los Repositorios no deben ser conscientes del mecanismo de almacenamiento subyacente, permitiendo flexibilidad en cambios futuros.</p>
+</blockquote>
+<h2 id="mejores-practicas-para-implementar-fuentes-de-datos">Mejores Prácticas para Implementar Fuentes de Datos<a class="headerlink" href="#mejores-practicas-para-implementar-fuentes-de-datos" title="Permanent link">¶</a></h2>
+<h3 id="1-separacion-de-preocupaciones">1. Separación de Preocupaciones<a class="headerlink" href="#1-separacion-de-preocupaciones" title="Permanent link">¶</a></h3>
+<p>Una Fuente de Datos nunca debe ser accedida directamente por otras capas de tu aplicación, como Casos de Uso o ViewModels. En su lugar, todos los datos fluyen a través de un Repositorio, que sirve como un puente entre las Fuentes de Datos y la Capa de Dominio.</p>
+<p>Mantener las Fuentes de Datos detrás de interfaces te da la flexibilidad de intercambiar mecanismos de almacenamiento o APIs REST sin impactar al resto de la aplicación. Por ejemplo, cambiar de Firebase a una API REST o de Room a DataStore no debería requerir cambios fuera de la clase Implementación de Fuente de Datos. También facilita pruebas más fáciles permitiéndonos intercambiar las implementaciones reales por falsificaciones de prueba.</p>
+<h3 id="2-mapeo">2. Mapeo<a class="headerlink" href="#2-mapeo" title="Permanent link">¶</a></h3>
+<p>El mapeo entre DTOs, Entidades y Modelos de Dominio es necesario para mantener la separación de preocupaciones y evitar acoplamiento estrecho entre capas.</p>
+<p><strong>¿Dónde Debería Ocurrir el Mapeo?</strong>
+El mapeo debería ocurrir idealmente dentro de las clases de Fuente de Datos. Esto asegura que para cuando los datos lleguen al Repositorio, ya estén en forma de Modelo de Dominio. Esto mantiene a los Repositorios centrados puramente en la orquestación.</p>
+<p>Si tu proyecto no tiene clases de Fuente de Datos explícitas, es aceptable que el Repositorio asuma esta responsabilidad. Si tus Repositorios se vuelven hinchados y complejos, considera mover la lógica de mapeo a la Fuente de Datos.</p>
+<p><strong>¿Cómo Deberías Mapear?</strong>
+Hay dos enfoques estándar para el mapeo:</p>
+<ul>
+<li>Usar una clase mapper dedicada</li>
+<li>Usar una función de extensión de Kotlin</li>
+</ul>
+<p><strong>¿Cuál Deberías Elegir?</strong></p>
+<ul>
+<li>Si el mapper tiene dependencias usa una clase mapper independiente.</li>
+<li>Si el mapper no tiene dependencias usa una función de extensión de Kotlin.</li>
+</ul>
+<p><strong>Funciones de Extensión de Mapeo</strong>
+Cuando uses funciones de extensión para mapeo, colócalas en un archivo Kotlin claramente nombrado como UserMappingExtensionFunctions.kt, ubicado en el paquete /data/mapper. Este archivo contiene funciones de mapeo entre un UserDto, UserModel y UserEntity. Estas funciones deben ser <strong>probadas unitariamente</strong>, igual que los mappers independientes. Crea una clase de prueba correspondiente junto a ellas.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Ejemplo de una función de extensión de mapeo de Kotlin</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">fun</span><span class="w"> </span><span class="n">UserDto</span><span class="p">.</span><span class="nf">toDomain</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">email</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// Ejemplo de una clase mapper independiente</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kd">class</span><span class="w"> </span><span class="nc">UserDtoToDomainMapper</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">dto</span><span class="p">:</span><span class="w"> </span><span class="n">UserDto</span><span class="p">):</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">User</span><span class="p">(</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">name</span><span class="p">,</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">email</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="p">)</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 Evita usar valores por defecto para enmascarar datos faltantes (p.ej. cadenas vacías o valores cero) a menos que estés manejando intencionalmente campos opcionales. Fallar silenciosamente puede conducir a errores difíciles de rastrear en la UI o Capa de Dominio.</p>
+</blockquote>
+<h3 id="3-manejo-de-errores-y-registro-logging">3. Manejo de Errores y Registro (Logging)<a class="headerlink" href="#3-manejo-de-errores-y-registro-logging" title="Permanent link">¶</a></h3>
+<p>Las Fuentes de Datos son el lugar correcto para capturar y registrar excepciones. Sin embargo, nunca deben exponer excepciones en bruto al Repositorio o Capa de Dominio. En su lugar, deben mapear esas excepciones a tipos de error amigables con el dominio.</p>
+<p>Esto permite al Repositorio pasar información de error estructurada y significativa a la Capa de Presentación, que luego puede responder de maneras que mejoren la experiencia del usuario. Por ejemplo, mostrando un mensaje de error, deshabilitando un botón o activando un reintento.</p>
+<p>El principio clave aquí es que las excepciones en bruto como códigos de error HTTP nunca deben exponerse directamente a las Capas de Dominio o Presentación. En su lugar, las excepciones deben mapearse a tipos de error específicos que tengan sentido en el dominio de la aplicación.</p>
+<p><strong>Usando una Clase Result Personalizada</strong>
+Usamos una interfaz sellada personalizada llamada <code>BagResult</code> para representar el resultado de una operación. Esto ayuda a unificar la forma en que manejamos tanto el éxito como el fracaso.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Ejemplo de una clase Result personalizada</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">sealed</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">BagResult</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Success</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">data</span><span class="p">:</span><span class="w"> </span><span class="n">Bag</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BagResult</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Error</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">error</span><span class="p">:</span><span class="w"> </span><span class="n">BagError</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BagResult</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Success</strong>: Contiene los datos devueltos de la operación (de una llamada a API REST o consulta de base de datos).</li>
+<li><strong>Error</strong>: Contiene un <code>BagError</code>, que es una clase amigable con el dominio que contiene errores predefinidos que podrían ocurrir al interactuar con la API de Bolsa.</li>
+</ul>
+<p>La clase <code>BagResult</code> nos permite manejar tanto el éxito como el fracaso de una operación de manera consistente, simplificando la propagación de errores a través de diferentes capas de la app.</p>
+<p><strong>Mapeando a Tipos de Error Específicos del Dominio</strong>
+Para mantener el manejo de errores en la capa de datos claro y enfocado en el dominio, usamos una <strong>enum class</strong> para definir tipos de error. Aquí hay un ejemplo de cómo definimos una clase de error personalizada para manejar diferentes tipos de errores relacionados con una API REST de bolsa de compras.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">enum</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">BagError</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">NetworkError</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">InvalidRequest</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Unauthorized</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">Forbidden</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">NotFound</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">InternalServerError</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">UndefinedError</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="c1">// se pueden agregar casos adicionales...</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>El enum <code>BagError</code> captura condiciones de error específicas que podrían ocurrir en el contexto de obtener o gestionar datos de la bolsa. El beneficio de usar tal enfoque es que podemos diferenciar claramente entre varios tipos de errores (p.ej. problemas de red, solicitudes inválidas o errores del servidor). Esto hace que sea más fácil responder a los errores apropiadamente en la UI, como mostrar mensajes de error relevantes, redirigir al usuario a la pantalla de inicio de sesión, etc.</p>
+<p>En este caso, usamos un <code>BagErrorMapper.kt</code> con una función de nivel superior para mapear excepciones en bruto al tipo de error específico del dominio:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">mapToBagError</span><span class="p">(</span><span class="n">exception</span><span class="p">:</span><span class="w"> </span><span class="n">Throwable</span><span class="p">):</span><span class="w"> </span><span class="n">BagError</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="k">is</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">NetworkError</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="k">is</span><span class="w"> </span><span class="n">HttpException</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">mapHttpErrorCode</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">UndefinedError</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">mapHttpErrorCode</span><span class="p">(</span><span class="n">exception</span><span class="p">:</span><span class="w"> </span><span class="n">HttpException</span><span class="p">):</span><span class="w"> </span><span class="n">BagError</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="p">.</span><span class="na">code</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">            </span><span class="m">400</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">InvalidRequest</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">            </span><span class="m">401</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">Unauthorized</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">            </span><span class="m">403</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">Forbidden</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">            </span><span class="m">404</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">NotFound</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">            </span><span class="k">in</span><span class="w"> </span><span class="m">500.</span><span class="p">.</span><span class="m">599</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">InternalServerError</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">BagError</span><span class="p">.</span><span class="na">UndefinedError</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Al manejar errores en el nivel de Fuente de Datos, nosotros:
+✅ Aseguramos consistencia registrando errores en el punto de fallo.
+✅ Proporcionamos errores significativos a las capas de Dominio y Presentación.
+✅ Tipos de error predecibles facilitan pruebas más fáciles.
+✅ Evitamos registros redundantes a través de múltiples Repositorios.
+✅ Mantenemos los Repositorios centrados en la orquestación.</p>
+<h3 id="manejo-de-cancellationexception">Manejo de CancellationException<a class="headerlink" href="#manejo-de-cancellationexception" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>⚠️ <strong>Importante</strong>: Si usas runCatching, asegura que explícitamente <strong>relanzas CancellationExceptions</strong>. Si una Corrutina se cancela debido a un tiempo de espera o cancelación de trabajo, debe propagarse aguas abajo en lugar de ser tragada. No hacerlo puede conducir a un comportamiento inesperado como estados de carga infinita o UIs que no responden.</p>
+</blockquote>
+<p>Usamos una función auxiliar para relanzar automáticamente la CancellationException.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">runSuspendCatching</span><span class="p">(</span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="n">suspend</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">Result</span><span class="p">.</span><span class="na">success</span><span class="p">(</span><span class="n">block</span><span class="p">())</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="n">CancellationException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">c</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Throwable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">Result</span><span class="p">.</span><span class="na">failure</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="4-inyeccion-de-dependencias">4. Inyección de Dependencias<a class="headerlink" href="#4-inyeccion-de-dependencias" title="Permanent link">¶</a></h3>
+<p>Usa inyección de constructor estándar para cualquier Fuente de Datos que se requiera inmediatamente. Si la Fuente de Datos es opcional o raramente usada (una caché que solo se golpea en ciertos flujos), puedes usar inyección lazy. Esto difiere la instanciación hasta que realmente se necesita, lo que ayuda a reducir el uso de memoria y mejorar el tiempo de inicio de la app.</p>
+<h3 id="5-hileria-threading">5. Hilería (Threading)<a class="headerlink" href="#5-hileria-threading" title="Permanent link">¶</a></h3>
+<p>En Corrutinas, bibliotecas como Retrofit, Ktor, Room y DataStore usan internamente <code>Dispatchers.IO</code> para operaciones de red/disco así que no es necesario cambiar hilos manualmente. Sin embargo, si estás leyendo/escribiendo de archivos de almacenamiento local o cualquier otra solución de almacenamiento personalizada necesitarás cambiar manualmente a un hilo en segundo plano usando Dispatcher.IO en la clase DataSource antes de que ocurra la operación.</p>
+<h2 id="implementando-fuentes-de-datos-remotas">Implementando Fuentes de Datos Remotas<a class="headerlink" href="#implementando-fuentes-de-datos-remotas" title="Permanent link">¶</a></h2>
+<p>Las Fuentes de Datos Remotas manejan la comunicación con fuentes remotas, más comúnmente APIs REST. Bibliotecas como Retrofit o Ktor se usan comúnmente para manejar solicitudes de red. Cada Fuente de Datos Remota debe definir una interfaz que especifique cómo interactúa con la API REST.</p>
+<h3 id="1-nombrando-interfaces-de-api-rest">1. Nombrando Interfaces de API REST<a class="headerlink" href="#1-nombrando-interfaces-de-api-rest" title="Permanent link">¶</a></h3>
+<p>Las interfaces de API REST deben seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Característica]</em></strong> <em>+ Api</em></p>
+</blockquote>
+<p>Ejemplos:
+✅ <code>**Bag**Api</code>
+✅ <code>**Checkout**Api</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">BagApi</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nd">@GET</span><span class="p">(</span><span class="s">"bags/{bagId}"</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getBagByBagId</span><span class="p">(</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="nd">@Path</span><span class="p">(</span><span class="s">"bagId"</span><span class="p">)</span><span class="w"> </span><span class="n">bagId</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="p">):</span><span class="w"> </span><span class="n">BagDto</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="2-ejemplo-incorrecto-de-una-fuente-de-datos-remota"><strong>2.</strong> ❌ <strong>Ejemplo Incorrecto de una Fuente de Datos Remota</strong><a class="headerlink" href="#2-ejemplo-incorrecto-de-una-fuente-de-datos-remota" title="Permanent link">¶</a></h3>
+<p>Aquí hay una implementación de Fuente de Datos Remota que viola los límites de Clean Architecture e introduce complejidad innecesaria.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">BagRemoteDataSourceImpl</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagApi</span><span class="p">:</span><span class="w"> </span><span class="n">BagApi</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagDtoToDomainMapper</span><span class="p">:</span><span class="w"> </span><span class="n">BagDtoToDomainMapper</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">userRepository</span><span class="p">:</span><span class="w"> </span><span class="n">UserRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// ❌ No permitido</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nd">@IODispatcher</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">ioDispatcher</span><span class="p">:</span><span class="w"> </span><span class="n">CoroutineDispatcher</span><span class="w"> </span><span class="c1">// ❌ Innecesario</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BagRemoteDataSource</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getBag</span><span class="p">():</span><span class="w"> </span><span class="n">BagResult</span><span class="o">&lt;</span><span class="n">Bag</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">withContext</span><span class="p">(</span><span class="n">ioDispatcher</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ❌ Retrofit maneja la hilería internamente</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">          </span><span class="n">runCatching</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ❌ Usa runSuspendCatching para relanzar auto CancellationExceptions</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">            </span><span class="n">bagApi</span><span class="p">.</span><span class="na">getBag</span><span class="p">(</span><span class="n">userRepository</span><span class="p">.</span><span class="na">getUserId</span><span class="p">())</span><span class="w"> </span><span class="c1">// ❌ El id de usuario debe pasarse en getBag()</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">          </span><span class="p">}.</span><span class="na">fold</span><span class="p">(</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">              </span><span class="n">onSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                  </span><span class="n">BagResult</span><span class="p">.</span><span class="na">Success</span><span class="p">(</span><span class="n">bagDtoToDomainMapper</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">result</span><span class="p">))</span><span class="w"> </span><span class="c1">// ❌ Cualquier error de json malformado puede bloquear la app</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">              </span><span class="p">}</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">          </span><span class="p">},</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">              </span><span class="n">onFailure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                  </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapToBagError</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                  </span><span class="c1">// ❌ Sin registro de errores a herramientas de reporte de fallos</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">                  </span><span class="n">BagResult</span><span class="p">.</span><span class="na">Error</span><span class="p">(</span><span class="n">bagError</span><span class="p">)</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">              </span><span class="p">}</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">           </span><span class="p">)</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="por-que-es-esto-incorrecto_1">¿Por qué es esto incorrecto?<a class="headerlink" href="#por-que-es-esto-incorrecto_1" title="Permanent link">¶</a></h3>
+<p>❌ <strong>Dependencia Circular</strong>
+La Fuente de Datos depende de un Repositorio (<code>UserRepository</code>). Esto rompe el flujo de datos unidireccional y crea una dependencia circular. Valores como el id de usuario deben ser recuperados por la Capa de Dominio y pasados como parámetros.</p>
+<p>❌ <strong>Gestión de Hilos Innecesaria</strong>
+Se inyecta y usa un <code>CoroutineDispatcher</code> explícito vía <code>withContext</code>. Esto es innecesario cuando se usa Retrofit con Corrutinas, ya que Retrofit ya maneja llamadas de red fuera del hilo principal.</p>
+<p>❌ <strong>Sin Registro de Errores</strong>
+Es importante que registremos errores usando herramientas de reporte de fallos para que podamos monitorear las APIs REST en producción.</p>
+<p>❌ <strong>Errores de Mapeo No Capturados</strong>
+Cualquier NullPointerException lanzado durante el mapeo debido a JSON malformado bloqueará la app ya que el mapeo ocurre fuera del runCatching. Un ejemplo de esto podría ser un problema con el contrato que no se respeta y devuelve datos diferentes a los esperados.</p>
+<p>❌ <strong>Usando runCatching</strong>
+Es preferible usar la función auxiliar runSuspendCatching mencionada anteriormente ya que esto relanzará CancellationExceptions por ti, negando la necesidad de que los desarrolladores recuerden hacer esto manualmente.</p>
+<h3 id="3-ejemplo-correcto-de-una-fuente-de-datos-remota">3. ✅ Ejemplo Correcto de una Fuente de Datos Remota<a class="headerlink" href="#3-ejemplo-correcto-de-una-fuente-de-datos-remota" title="Permanent link">¶</a></h3>
+<p>La siguiente versión respeta los principios de Clean Architecture y evita anti-patrones.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">BagRemoteDataSourceImpl</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagApi</span><span class="p">:</span><span class="w"> </span><span class="n">BagApi</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">crashLogger</span><span class="p">:</span><span class="w"> </span><span class="n">CrashLogger</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">eventLogger</span><span class="p">:</span><span class="w"> </span><span class="n">EventLogger</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagDtoToDomainMapper</span><span class="p">:</span><span class="w"> </span><span class="n">BagDtoToDomainMapper</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BagRemoteDataSource</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getBag</span><span class="p">(</span><span class="n">userId</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">BagResult</span><span class="o">&lt;</span><span class="n">Bag</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ✅ Id de usuario pasado como param</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">runSuspendCatching</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ✅ runSuspendCatching relanza CancellationExceptions</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">          </span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bagApi</span><span class="p">.</span><span class="na">getBag</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="c1">// ✅ Sin cambio de hilo</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">          </span><span class="n">bagDtoToDomainMapper</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="c1">// ✅ Mapea en el runSuspendCatching para capturar json malformado</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="p">}.</span><span class="na">fold</span><span class="p">(</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">            </span><span class="n">onSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mappedResult</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">                </span><span class="n">BagResult</span><span class="p">.</span><span class="na">Success</span><span class="p">(</span><span class="n">mappedResult</span><span class="p">)</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">            </span><span class="n">onFailure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapToBagError</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span><span class="w"> </span><span class="c1">// ✅ Usa función mapper para convertir throwable en bruto a tipo de error de dominio</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">                </span><span class="n">logError</span><span class="p">(</span><span class="n">exception</span><span class="p">,</span><span class="w"> </span><span class="n">bagError</span><span class="p">)</span><span class="w"> </span><span class="c1">// ✅ Registra excepciones</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">                </span><span class="n">BagResult</span><span class="p">.</span><span class="na">Error</span><span class="p">(</span><span class="n">bagError</span><span class="p">)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">        </span><span class="p">)</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">logError</span><span class="p">(</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">        </span><span class="n">exception</span><span class="p">:</span><span class="w"> </span><span class="n">Throwable</span><span class="p">,</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">        </span><span class="n">bagError</span><span class="p">:</span><span class="w"> </span><span class="n">BagError</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">javaClass</span><span class="p">.</span><span class="na">simpleName</span><span class="p">,</span><span class="w"> </span><span class="n">exception</span><span class="p">.</span><span class="na">message</span><span class="p">.</span><span class="na">toString</span><span class="p">())</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">        </span><span class="n">crashLogger</span><span class="p">.</span><span class="na">logException</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">        </span><span class="n">eventLogger</span><span class="p">.</span><span class="na">logEvent</span><span class="p">(</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">            </span><span class="n">eventAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">                </span><span class="n">NAME</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">bagError</span><span class="p">.</span><span class="na">name</span><span class="p">,</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">                </span><span class="n">DESCRIPTION</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">exception</span><span class="p">.</span><span class="na">message</span><span class="p">.</span><span class="na">orEmpty</span><span class="p">()</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">        </span><span class="p">)</span>
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="por-que-es-esto-correcto_1">¿Por qué es esto correcto?<a class="headerlink" href="#por-que-es-esto-correcto_1" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Sin Dependencias Circulares</strong>
+El id de usuario se pasa como un parámetro en lugar de obtenerse de un Repositorio, lo cual viola los principios de Clean Architecture. Esto mantiene la Fuente de Datos libre de lógica de negocio y dependencias externas.</p>
+<p>✅ <strong>Delegación de Hilería</strong>
+La hilería se delega y gestiona internamente por Retrofit, eliminando la necesidad de inyectar un despachador o cambiar hilos manualmente. Esto simplifica la configuración y las pruebas.</p>
+<p>✅ <strong>Mapeo</strong>
+El DTO se convierte a un modelo de dominio antes de que el resultado se devuelva al Repositorio.</p>
+<p>✅ <strong>Registro de Errores</strong>
+Los errores se registran en la fuente y se mapean a tipos específicos del dominio permitiendo el monitoreo en producción. Las herramientas de registro se abstraen a través de interfaces desacopladas. Esto hace que la implementación sea fácil de probar y reemplazar si las herramientas de registro cambian en el futuro.</p>
+<p>✅ <strong>Usa runSuspendCatching</strong>
+Usar runSuspendCatching relanza CancellationExceptions por nosotros automáticamente y preserva la concurrencia estructurada.</p>
+<h2 id="implementando-fuentes-de-datos-locales">Implementando Fuentes de Datos Locales<a class="headerlink" href="#implementando-fuentes-de-datos-locales" title="Permanent link">¶</a></h2>
+<p>Las Fuentes de Datos Locales son responsables de interactuar con datos almacenados en el dispositivo. Siguen la misma estructura de Clean Architecture que las Fuentes de Datos Remotas pero en su lugar interactúan con mecanismos de almacenamiento local como bases de datos, archivos o almacenes de clave-valor.</p>
+<h3 id="1-opciones-de-almacenamiento">1. Opciones de Almacenamiento<a class="headerlink" href="#1-opciones-de-almacenamiento" title="Permanent link">¶</a></h3>
+<p>La elección del almacenamiento local depende del tipo de datos y cómo se accederá a ellos:</p>
+<ul>
+<li><strong>Room / SQLDelight</strong>
+    Usa una base de datos cuando tus datos sean estructurados, relacionales y requieran persistencia a largo plazo. Las bases de datos permiten consultas complejas como uniones, filtros y transacciones.</li>
+<li><strong>DataStore</strong>
+    DataStore es el reemplazo moderno respaldado por Corrutinas para SharedPreferences. Es el más adecuado para pequeños conjuntos de datos como configuraciones de usuario, banderas o preferencias que no requieren consultas complejas.</li>
+<li><strong>Archivos (JSON, CSV, XML, etc)</strong>
+    Los archivos son adecuados para configuraciones, registros o datos exportables que no requieren consultas.</li>
+<li><strong>Caché en Memoria</strong>
+    Este es almacenamiento temporal para objetos de datos accedidos frecuentemente que no esperan persistir si la app se mata o reinicia.</li>
+</ul>
+<blockquote>
+<p>⚠️ Ten cuidado con las cachés en memoria. Si la app se coloca en segundo plano y ocurre una muerte de proceso, el sistema puede matar el proceso para reclamar recursos. Cuando el usuario regresa a la app, intentará restaurar el estado anterior, pero la caché en memoria se habrá borrado. Esto puede resultar en estados de UI no intencionados y bloqueos.</p>
+</blockquote>
+<h3 id="2-nombrando-interfaces-dao">2. Nombrando Interfaces DAO<a class="headerlink" href="#2-nombrando-interfaces-dao" title="Permanent link">¶</a></h3>
+<p>Cuando usas una base de datos como Room, un DAO es donde defines cómo la app interactúa con las tablas locales (inserciones, consultas, borrados, etc).</p>
+<p>El nombrado de interfaz DAO debe seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Tipo de Dato]</em></strong> <em>+ Dao</em></p>
+</blockquote>
+<p>Ejemplos:
+✅ <code>**Navigation**Dao</code>
+✅ <code>**SearchHistory**Dao</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nd">@Dao</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">NavigationDao</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">"SELECT * FROM navigation WHERE id = :id"</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getNavigation</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">NavigationEntity?</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nd">@Insert</span><span class="p">(</span><span class="n">onConflict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnConflictStrategy</span><span class="p">.</span><span class="na">REPLACE</span><span class="p">)</span><span class="w"> </span><span class="c1">// reemplaza entradas duplicadas</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">insertNavigation</span><span class="p">(</span><span class="n">navigation</span><span class="p">:</span><span class="w"> </span><span class="n">NavigationEntity</span><span class="p">)</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nd">@Delete</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">deleteNavigation</span><span class="p">(</span><span class="n">navigation</span><span class="p">:</span><span class="w"> </span><span class="n">NavigationEntity</span><span class="p">)</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 Los métodos DAO usando funciones suspend corren automáticamente en un hilo en segundo plano gracias al soporte de Corrutinas de Room, así que no necesitas gestionar explícitamente la hilería.</p>
+</blockquote>
+<h3 id="3-ejemplo-de-fuente-de-datos-local">3. Ejemplo de Fuente de Datos Local<a class="headerlink" href="#3-ejemplo-de-fuente-de-datos-local" title="Permanent link">¶</a></h3>
+<p>Las Fuentes de Datos Locales y Remotas comparten una estructura similar: inyección de dependencias, manejo de errores, envoltura de resultados y mapeo a modelos de dominio. Para estos patrones compartidos, consulta la sección de Fuente de Datos Remota arriba. La diferencia clave es que en lugar de inyectar una interfaz de API REST, inyectas la interfaz DAO cuando usas Room, o una interfaz apropiada cuando trabajas con DataStore u otros mecanismos de almacenamiento local.</p>
+<h2 id="entendiendo-los-modelos-de-la-capa-de-datos">Entendiendo los Modelos de la Capa de Datos<a class="headerlink" href="#entendiendo-los-modelos-de-la-capa-de-datos" title="Permanent link">¶</a></h2>
+<p>En la Capa de Datos, se usan dos tipos principales de modelos:</p>
+<ul>
+<li><strong>DTOs</strong> representan modelos de respuesta de API REST. Deben permanecer inmutables y mapear estrechamente a la respuesta de la API REST.</li>
+<li><strong>Entidades</strong> representan tablas de base de datos y persisten datos dentro de la base de datos local. Típicamente se anotan con <code>@Entity</code> cuando se usa Room. 🔗 <a href="https://developer.android.com/training/data-storage/room/defining-data">Consulta la documentación oficial de Room</a> para más detalles sobre estructuración de Entidades.</li>
+</ul>
+<h3 id="1-nombrando-modelos-de-datos">1. Nombrando Modelos de Datos<a class="headerlink" href="#1-nombrando-modelos-de-datos" title="Permanent link">¶</a></h3>
+<p>Los modelos de datos deben seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Tipo de Dato]</em></strong> <em>+</em> Dto/Entity</p>
+</blockquote>
+<p>Por ejemplo:
+✅ <code>**Navigation**Dto</code>
+✅ <code>**Navigation**Entity</code></p>
+<h3 id="2-mejores-practicas-para-dtos">2. Mejores Prácticas para DTOs<a class="headerlink" href="#2-mejores-practicas-para-dtos" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Clases de Datos Inmutables</strong>
+Haz los DTOs inmutables usando solo propiedades <code>val</code>. Esto ayuda a evitar cambios accidentales y mantiene tus datos consistentes.</p>
+<p>✅ <strong>Manejo de Nulabilidad</strong>
+Coincide la nulabilidad de las propiedades DTO con la especificación de la API REST. Maneja cualquier nulo durante el mapeo para evitar bloqueos más tarde en la app.</p>
+<p>✅ <strong>Mappers para Transformación</strong>
+Usa un mapper dedicado para transformar DTOs a Entidades o Modelos de Dominio. Esto asegura que ningún detalle innecesario de la API REST se filtre a las otras capas.</p>
+<p>✅ <strong>Serialización y Mapeo de Campos</strong>
+Si tus nombres de campo JSON difieren de tus nombres de propiedad Kotlin, usa la anotación <code>@SerialName</code> de Kotlin Serialization. Kotlin Serialization es preferido sobre Gson debido a su mejor rendimiento y soporte nativo de Kotlin.</p>
+<blockquote>
+<p>⚠️ Ten en cuenta que <code>@SerialName</code> ayuda a prevenir la ofuscación de propiedades cuando se usan herramientas como R8.</p>
+</blockquote>
+<p>✅ <strong>Evita Campos Específicos de API</strong>
+Excluye cualquier campo de metadatos de API como códigos de estado o marcas de tiempo que no se necesiten. Mantén los DTOs centrados solo en los datos requeridos.</p>
+<p>✅ <strong>Separación de Preocupaciones</strong>
+Los DTOs deben centrarse solo en la representación de datos. Evita incrustar lógica de negocio o incluir funciones de mapeo dentro de clases DTO.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.SerialName</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.Serializable</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nd">@Serializable</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">NavigationDto</span><span class="p">(</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="nd">@SerialName</span><span class="p">(</span><span class="s">"navigation_id"</span><span class="p">)</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="p">,</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="nd">@SerialName</span><span class="p">(</span><span class="s">"navigation_title"</span><span class="p">)</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">title</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="p">,</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="nd">@SerialName</span><span class="p">(</span><span class="s">"navigation_url"</span><span class="p">)</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">url</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="estructura-de-paquetes">Estructura de Paquetes<a class="headerlink" href="#estructura-de-paquetes" title="Permanent link">¶</a></h2>
+<p>A continuación se muestra un ejemplo de cómo se puede estructurar la Capa de Datos. Esta es una representación simple y podría cambiar en una app modularizada.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>📂 data
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a> ├── 📂 local
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a> │    ├── BagDao.kt
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a> │    ├── BagEntity.kt
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a> │    ├── BagEntityMapper.kt
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a> │    ├── BagLocalDataSourceImpl.kt
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a> │
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a> ├── 📂 remote
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a> │    ├── BagApi.kt
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a> │    ├── BagDto.kt
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a> │    ├── BagErrorMapper.kt
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a> │    ├── BagDtoMapper.kt
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a> │    ├── BagRemoteDataSourceImpl.kt
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a> │
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a> ├── 📂 repository
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a> │    ├── BagLocalDataSource.kt  // interface
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a> │    ├── BagRemoteDataSource.kt. // interface
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a> │    ├── BagRepositoryImpl.kt
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>📂 domain
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a> ├── 📂 repository
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a> │    ├── BagRepository.kt // interface
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:&lt;jssgarcia.docente@gmail.com&gt;" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

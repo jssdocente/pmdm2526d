@@ -1,0 +1,3322 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3.2-CapaDominio-es.html">
+      
+      
+        <link rel="prev" href="3.3.3-arquitectura.capa-datos.html">
+      
+      
+        <link rel="next" href="3.3.3.3-CapaDatos-es.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Capa de Dominio - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17%2013h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#android-clean-architecture-entendiendo-la-capa-de-dominio" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Capa de Dominio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo noche" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo día" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El lenguaje kotlin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    El lenguaje kotlin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expresiones vs Sentencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/12.1-when.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones y lambdas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Null safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colecciones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Colecciones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/43-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/44-sets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetos anónimos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enum classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genéricos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clases selladas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-kotlin/52-corrutinas-sencillo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrutinas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Herramientas Proyecto Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Herramientas Proyecto Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/01-gradle-agp-estructura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/02-build-gradle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-tools/03-android-manifest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichero Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/21-composable-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones componibles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/22-state-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/23-listas-cuadriculas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/24-navegacion-rutas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegación Rutas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/25-material-design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-android/00-compose/99-glosario-android.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glosario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 - Visión General y Entorno de desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.1-primeros-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Primeros pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2. Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.3-primera-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Primera aplicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.4-gestion-estado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4. Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.5-mejorando-codigo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5. Mejorando el código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/2.6-mostrar-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6. Manejo de listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 - Interfaz de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 - Interfaz de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.1-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.2-temas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2. Temas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3. Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3. Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.2-arquitectura.capa-ui" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.2. Capa de UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.3-arquitectura.capa-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.3. Capas Datos/Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.4. Clean Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3.4. Clean Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Dominio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3.3.3.2-CapaDominio-es.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es la Capa de Dominio?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-clave-de-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsabilidades Clave de la Capa de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-anatomia-de-un-caso-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Anatomía de un Caso de Uso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La Anatomía de un Caso de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Casos de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-definiendo-la-logica-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Definiendo la Lógica de Negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependencias-del-caso-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dependencias del Caso de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-como-exponen-datos-los-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cómo Exponen Datos los Casos de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-en-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mejores Prácticas en Casos de Uso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas en Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-el-operador-invoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. El Operador Invoke
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-seguridad-de-hilos-thread-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Seguridad de Hilos (Thread Safety)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-funciona-esto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por Qué Funciona Esto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-combinando-datos-de-multiples-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Combinando Datos de Múltiples Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-esto-es-mejor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por Qué Esto es Mejor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validación de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen de Validación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestionando-casos-de-uso-inyeccion-ciclo-de-vida-y-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestionando Casos de Uso: Inyección, Ciclo de Vida y Ejecución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestionando Casos de Uso: Inyección, Ciclo de Vida y Ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-inyeccion-estandar-vs-lazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos de Inyección: Estándar vs Lazy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-inyeccion-estandar-para-casos-de-uso-usados-frecuentemente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Inyección Estándar (Para Casos de Uso Usados Frecuentemente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inyeccion-lazy-para-casos-de-uso-usados-selectivamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Inyección Lazy (Para Casos de Uso Usados Selectivamente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usa-viewmodelscope-para-gestion-de-corrutinas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usa viewModelScope para Gestión de Corrutinas 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puntos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puntos Clave
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-de-acceso-a-datos-en-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restricciones de Acceso a Datos en la Capa de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de Paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusión
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.3.3.3-CapaDatos-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4 - Persistencia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT4 - Persistencia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.0-persistencia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.1-room.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1. Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04/4.2-conexion-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2. Conexión a Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es la Capa de Dominio?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsabilidades-clave-de-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsabilidades Clave de la Capa de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-anatomia-de-un-caso-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Anatomía de un Caso de Uso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La Anatomía de un Caso de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nombrando-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Nombrando Casos de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-definiendo-la-logica-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Definiendo la Lógica de Negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dependencias-del-caso-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dependencias del Caso de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-como-exponen-datos-los-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cómo Exponen Datos los Casos de Uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-en-casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mejores Prácticas en Casos de Uso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas en Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-el-operador-invoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. El Operador Invoke
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-seguridad-de-hilos-thread-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Seguridad de Hilos (Thread Safety)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-funciona-esto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por Qué Funciona Esto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-combinando-datos-de-multiples-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Combinando Datos de Múltiples Repositorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-esto-es-mejor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por Qué Esto es Mejor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validación de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen-de-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen de Validación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestionando-casos-de-uso-inyeccion-ciclo-de-vida-y-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestionando Casos de Uso: Inyección, Ciclo de Vida y Ejecución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestionando Casos de Uso: Inyección, Ciclo de Vida y Ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-inyeccion-estandar-vs-lazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos de Inyección: Estándar vs Lazy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-inyeccion-estandar-para-casos-de-uso-usados-frecuentemente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Inyección Estándar (Para Casos de Uso Usados Frecuentemente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inyeccion-lazy-para-casos-de-uso-usados-selectivamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Inyección Lazy (Para Casos de Uso Usados Selectivamente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usa-viewmodelscope-para-gestion-de-corrutinas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usa viewModelScope para Gestión de Corrutinas 🚀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puntos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puntos Clave
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-de-acceso-a-datos-en-la-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restricciones de Acceso a Datos en la Capa de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de Paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusión
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegación">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    UT3 - Interfaz de Usuario
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="3.3-arquitectura.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    3.3. Arquitectura
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="3.3.3.2-CapaDominio-es.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    3.3.4. Clean Architecture
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="android-clean-architecture-entendiendo-la-capa-de-dominio">Android Clean Architecture - Entendiendo la Capa de Dominio<a class="headerlink" href="#android-clean-architecture-entendiendo-la-capa-de-dominio" title="Permanent link">¶</a></h1>
+<p>A medida que las aplicaciones Android crecen en complejidad, una base de código no estructurada puede conducir a un acoplamiento estrecho, lógica duplicada y pruebas unitarias frágiles, lo que en última instancia ralentiza el desarrollo. Los principios de Clean Architecture abordan estos desafíos imponiendo una clara separación de preocupaciones, haciendo que las aplicaciones sean más escalables, mantenibles y comprobables.</p>
+<p>En el corazón de esta arquitectura, la <strong>Capa de Dominio</strong> juega un papel crucial en la encapsulación de la lógica de negocio, asegurando un límite distinto entre la interfaz de usuario y el manejo de datos. Este artículo profundiza en la Capa de Dominio, explicando su propósito, mejores prácticas y cómo implementarla eficazmente en aplicaciones Android.</p>
+<h2 id="que-es-la-capa-de-dominio">¿Qué es la Capa de Dominio?<a class="headerlink" href="#que-es-la-capa-de-dominio" title="Permanent link">¶</a></h2>
+<p>La Capa de Dominio es responsable de manejar la lógica de negocio central de una aplicación. Actúa como una capa independiente, separada tanto de la Capa de Presentación (que gestiona la interfaz de usuario y las interacciones del usuario) como de la <a href="/asos-techblog/android-clean-architecture-understanding-the-data-layer-a8df03b508c2">Capa de Datos</a> (que maneja el almacenamiento y recuperación de datos de fuentes como bases de datos y APIs REST).</p>
+<p>Mientras que las Capas de Presentación y de Datos dependen de la Capa de Dominio, esta permanece completamente desacoplada de ellas. Esto asegura que la lógica de negocio permanezca inalterada por cambios en los frameworks de UI o fuentes de datos.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://miro.medium.com/v2/resize:fit:700/1*If9QK8tE1VlzSDc_5CEKKw.jpeg" data-desc-position="bottom"><img alt="Un diagrama que describe las tres capas en Clean Architecture. La Capa de Presentación, la Capa de Dominio y la Capa de Datos." src="https://miro.medium.com/v2/resize:fit:700/1*If9QK8tE1VlzSDc_5CEKKw.jpeg"></a></p>
+<p>Disposición de Dependencias en Clean Architecture</p>
+<p>La Capa de Dominio contiene principalmente:</p>
+<ul>
+<li><strong>Casos de Uso:</strong> Manejan piezas específicas de lógica de negocio, definiendo cómo deben procesarse y usarse los datos dentro de la app.</li>
+<li><strong>Modelos de Dominio:</strong> Representan entidades dentro del dominio del negocio.</li>
+<li><strong>Interfaces de Repositorio:</strong> Definen cómo se puede acceder a los datos sin especificar la fuente subyacente (como una base de datos o API REST), asegurando el desacoplamiento de los internos de la Capa de Datos.</li>
+</ul>
+<figcaption>
+  <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://miro.medium.com/v2/resize:fit:700/1*rYeTfVXyDbwqpVaj9E0EmA.jpeg" data-desc-position="bottom"><img src="https://miro.medium.com/v2/resize:fit:700/1*rYeTfVXyDbwqpVaj9E0EmA.jpeg" alt="Representación del Flujo de Datos en Android Clean Architecture"></a>
+  Representación del Flujo de Datos en Android Clean Architecture
+</figcaption>
+
+<h2 id="responsabilidades-clave-de-la-capa-de-dominio">Responsabilidades Clave de la Capa de Dominio<a class="headerlink" href="#responsabilidades-clave-de-la-capa-de-dominio" title="Permanent link">¶</a></h2>
+<p>✅ <strong>Encapsula la Lógica de Negocio y Promueve la Modularidad</strong>
+La Capa de Dominio centraliza y encapsula la lógica de negocio, asegurando que esté desacoplada tanto de la Capa de Presentación como de la Capa de Datos. Define Casos de Uso, que representan flujos de trabajo de negocio específicos como realizar un pedido o validar la entrada del usuario. Además, al aislar la lógica en esta capa, se puede compartir usando Kotlin Multiplatform (KMP), reduciendo la duplicación de lógica con iOS y otras plataformas.</p>
+<p>✅ <strong>Desacopla la Lógica de Negocio de las Fuentes de Datos</strong>
+La Capa de Dominio asegura que la lógica de negocio permanezca independiente de las fuentes de datos al depender de abstracciones en lugar de implementaciones concretas. Esto permite flexibilidad en cómo se obtienen o persisten los datos, por lo que cambios como cambiar de APIs REST a GraphQL o modificar proveedores de bases de datos no afectan la lógica de negocio central.</p>
+<p>✅ <strong>Mejora la Testabilidad</strong>
+Al mantener la lógica de negocio en clases pequeñas y de responsabilidad única, la Capa de Dominio mejora la testabilidad. Los Casos de Uso dependen de abstracciones (por ejemplo, interfaces de Repositorio), lo que hace fácil simular dependencias y escribir pruebas unitarias en aislamiento. Este diseño soporta el desarrollo guiado por pruebas (TDD) y asegura una alta cobertura de pruebas.</p>
+<p>✅ <strong>Reduce la Complejidad en la Capa de Presentación</strong>
+Al manejar la lógica de negocio y las transformaciones, la Capa de Dominio asegura que los ViewModels permanezcan ligeros, centrándose únicamente en gestionar el estado de la UI. Extraer la lógica de los ViewModels a Casos de Uso nos permite reutilizarla en toda la aplicación. Esto mejora la mantenibilidad, haciendo que la Capa de Presentación sea más fácil de probar.</p>
+<p>❌ <strong>No es Responsable del Almacenamiento o Recuperación de Datos</strong>
+La Capa de Dominio no maneja la persistencia o recuperación de datos. Estas responsabilidades pertenecen a la <a href="/asos-techblog/android-clean-architecture-understanding-the-data-layer-a8df03b508c2">Capa de Datos</a>, que incluye componentes como Repositorios, Fuentes de Datos, APIs REST y Bases de Datos. La Capa de Dominio permanece agnóstica a cómo se obtienen o persisten los datos.</p>
+<p>❌ <strong>No es Responsable de la Gestión del Estado de la UI</strong>
+La Capa de Dominio no gestiona el estado de la UI, esto es manejado por la Capa de Presentación (ViewModels). En su lugar, la Capa de Dominio ejecuta la lógica de negocio y devuelve resultados inmutables.</p>
+<h2 id="la-anatomia-de-un-caso-de-uso"><strong>La Anatomía de un Caso de Uso</strong><a class="headerlink" href="#la-anatomia-de-un-caso-de-uso" title="Permanent link">¶</a></h2>
+<p>Un Caso de Uso es una clase que encapsula una sola operación de negocio, haciéndola reutilizable y fácil de probar. Un Caso de Uso bien estructurado debe tener solo <strong>una</strong> función pública, ya que debe centrarse en una sola responsabilidad.</p>
+<p>Si un Caso de Uso tiene múltiples funciones públicas, puede estar manejando demasiadas preocupaciones, violando el <strong>Principio de Responsabilidad Única (SRP)</strong>. En tales casos, considera dividir la lógica en Casos de Uso separados y más enfocados.</p>
+<h3 id="1-nombrando-casos-de-uso">1. Nombrando Casos de Uso<a class="headerlink" href="#1-nombrando-casos-de-uso" title="Permanent link">¶</a></h3>
+<p>El nombrado de Casos de Uso debe seguir el formato:</p>
+<blockquote>
+<p><strong><em>[Verbo</em></strong><em>]</em> + <em>[_Sustantivo</em>]<em> + _UseCase</em></p>
+</blockquote>
+<p>Ejemplos:</p>
+<p>✅ <code>**_Get_**_CustomerBag_UseCase</code>
+✅ <code>**_Logout_**_User_UseCase</code> <br>
+✅ <code>**Cache**_OrderDetails_UseCase</code></p>
+<h3 id="2-definiendo-la-logica-de-negocio">2. Definiendo la Lógica de Negocio<a class="headerlink" href="#2-definiendo-la-logica-de-negocio" title="Permanent link">¶</a></h3>
+<p>La lógica de negocio define las reglas y decisiones que controlan cómo se comporta la app en diferentes situaciones. Determina:</p>
+<ul>
+<li><strong>Cómo se procesan los datos —</strong> aplicando transformaciones antes de mostrarlos.</li>
+<li><strong>Cuándo y cómo deben realizarse las acciones —</strong> validando la entrada del usuario antes de guardarla.</li>
+<li><strong>Cómo interactúan las diferentes partes de la app —</strong> manteniendo las responsabilidades separadas.</li>
+</ul>
+<h3 id="3-dependencias-del-caso-de-uso">3. Dependencias del Caso de Uso<a class="headerlink" href="#3-dependencias-del-caso-de-uso" title="Permanent link">¶</a></h3>
+<p>Un Caso de Uso solo debe depender de abstracciones y construcciones puras de Kotlin, asegurando la independencia de la plataforma. A continuación hay una guía sobre qué incluir y evitar en los Casos de Uso:</p>
+<p>✅ <strong>Otros Casos de Uso —</strong> Para lógica de negocio compartida (úsalo con moderación para evitar un encadenamiento excesivo).</p>
+<p>✅ <strong>Clases de Utilidad Puras de Kotlin —</strong> Para lógica reutilizable como reglas de validación, formato de números, etc.</p>
+<p>✅ <strong>Interfaces de Repositorio —</strong> Para interactuar con la Capa de Datos sin depender de implementaciones concretas.</p>
+<p>❌ <strong>Dependencias de Android</strong> — Evita usar <code>Context</code>, <code>LiveData</code>, <code>Application</code>, etc. En lugar de usar <code>LiveData</code>, prefiere Kotlin <code>Flow</code> o funciones <code>suspend</code> para asegurar que la Capa de Dominio permanezca desacoplada del framework de Android.</p>
+<h3 id="4-como-exponen-datos-los-casos-de-uso">4. Cómo Exponen Datos los Casos de Uso<a class="headerlink" href="#4-como-exponen-datos-los-casos-de-uso" title="Permanent link">¶</a></h3>
+<p>Los Casos de Uso proporcionan datos a la Capa de Presentación a través de diferentes mecanismos, dependiendo de cómo se ejecute la operación:</p>
+<ul>
+<li><strong>Llamadas a funciones regulares</strong> — Para operaciones síncronas (por ejemplo, comprobaciones en memoria, cálculos simples).</li>
+<li><strong>Funciones suspend</strong> — Para operaciones asíncronas de una sola vez (por ejemplo, solicitudes de red, consultas a base de datos).</li>
+<li><strong>Flow</strong> — Para flujos reactivos que emiten actualizaciones a lo largo del tiempo (por ejemplo, observando cambios en la base de datos).</li>
+<li><strong>Observables/Callbacks</strong> — Para arquitecturas basadas en RxJava.</li>
+</ul>
+<p>La elección depende de si la operación es inmediata y ligera o asíncrona y de larga duración.</p>
+<h2 id="mejores-practicas-en-casos-de-uso">Mejores Prácticas en Casos de Uso<a class="headerlink" href="#mejores-practicas-en-casos-de-uso" title="Permanent link">¶</a></h2>
+<h3 id="1-el-operador-invoke">1. El Operador Invoke<a class="headerlink" href="#1-el-operador-invoke" title="Permanent link">¶</a></h3>
+<p>Dado que los Casos de Uso tienen una responsabilidad única, podemos usar el operador <code>invoke</code> de Kotlin para hacerlos invocables como funciones, eliminando llamadas a métodos redundantes.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">GetCustomerBagUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">userRepository</span><span class="p">:</span><span class="w"> </span><span class="n">UserRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagRepository</span><span class="p">:</span><span class="w"> </span><span class="n">BagRepository</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">():</span><span class="w"> </span><span class="n">Bag</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">getUserId</span><span class="p">()</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">bagRepository</span><span class="p">.</span><span class="na">getCustomerBag</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Esto permite que la llamada en el ViewModel sea más concisa e intuitiva:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">customerBag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getCustomerBagUseCase</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="2-seguridad-de-hilos-thread-safety">2. Seguridad de Hilos (Thread Safety)<a class="headerlink" href="#2-seguridad-de-hilos-thread-safety" title="Permanent link">¶</a></h3>
+<p>Los Casos de Uso deben ser <strong>seguros para el hilo principal (main-thread safe)</strong>, lo que significa que pueden ser llamados desde el hilo principal sin bloquear la UI. Las operaciones de larga duración, como llamadas a API REST o consultas a bases de datos, deben delegarse a la Capa de Datos.</p>
+<p>La Capa de Dominio no debe cambiar a hilos vinculados a E/S (como <code>Dispatchers.IO</code>). La <a href="/asos-techblog/android-clean-architecture-understanding-the-data-layer-a8df03b508c2">Capa de Datos</a> es responsable de gestionar los hilos y cambiará a un hilo en segundo plano tan cerca de la fuente de la llamada como sea posible. Sin embargo, para tareas intensivas de CPU como ordenación y transformaciones, podemos usar <code>Dispatchers.Default</code> dentro de la Capa de Dominio.</p>
+<p>Imagina que necesitamos procesar un lote de productos obtenidos y aplicar ordenación, formateando sus fechas de creación y calculando descuentos.</p>
+<ul>
+<li><strong>Obtención de productos</strong> → Manejado en la Capa de Datos (por ejemplo, Repositorio obteniendo de API REST o base de datos).</li>
+<li><strong>Ordenación y Formato</strong> → Lógica de negocio que pertenece a la Capa de Dominio.</li>
+</ul>
+<p>Dado que procesar estos productos es <strong>intensivo en CPU</strong>, debe ejecutarse en un hilo en segundo plano para evitar bloqueos de la UI y errores de ANR <strong>(</strong>Application Not Responding<strong>)</strong>.</p>
+<p><strong>✅ Mejor Práctica: Mover Computación Pesada a un Hilo en Segundo Plano</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">FormatProductListUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">productRepository</span><span class="p">:</span><span class="w"> </span><span class="n">ProductRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">formatDateUseCase</span><span class="p">:</span><span class="w"> </span><span class="n">FormatDateUseCase</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">calculateDiscountUseCase</span><span class="p">:</span><span class="w"> </span><span class="n">CalculateDiscountUseCase</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nd">@CoroutineDefault</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">defaultDispatcher</span><span class="p">:</span><span class="w"> </span><span class="n">CoroutineDispatcher</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">   </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withContext</span><span class="p">(</span><span class="n">defaultDispatcher</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">productRepository</span><span class="p">.</span><span class="na">getProducts</span><span class="p">()</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="p">.</span><span class="na">sortedByDescending</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">price</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">formattedDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formatDateUseCase</span><span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="na">createdAt</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateDiscountUseCase</span><span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="na">price</span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">            </span><span class="n">product</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">                </span><span class="n">createdAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formattedDate</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">                </span><span class="n">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">discount</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">(</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">price</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">,</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">createdAt</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">discount</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.0</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="por-que-funciona-esto">Por Qué Funciona Esto<a class="headerlink" href="#por-que-funciona-esto" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Delega la Obtención a la Capa de Datos</strong>
+La responsabilidad de obtener los productos es manejada por la Capa de Datos, manteniendo la lógica de negocio centrada en la Capa de Dominio.</p>
+<p>✅ <strong>Usa</strong> <code>**Dispatchers.Default**</code> <strong>para Tareas Intensivas de CPU</strong>
+La ordenación y las transformaciones se ejecutan en un hilo en segundo plano, mejorando el rendimiento y evitando bloqueos de la UI.</p>
+<p>✅ <strong>Inyecta</strong> <code>**CoroutineDispatcher**</code> <strong>para Testabilidad</strong>
+Esto permite un fácil reemplazo con un despachador de prueba durante las pruebas unitarias. Esto asegura que las Corrutinas se ejecuten en un entorno controlado, haciendo que las pruebas sean más rápidas, predecibles y aisladas de preocupaciones reales de hilos.</p>
+<p>✅ <strong>Mantiene la Lógica de Negocio Modular</strong>
+Al encapsular el formato de fecha y el cálculo de descuentos en Casos de Uso separados y reutilizables, el código permanece modular y más fácil de mantener.</p>
+<h3 id="3-combinando-datos-de-multiples-repositorios">3. Combinando Datos de Múltiples Repositorios<a class="headerlink" href="#3-combinando-datos-de-multiples-repositorios" title="Permanent link">¶</a></h3>
+<p>Aunque es posible fusionar datos de múltiples fuentes en un ViewModel o Repositorio, hacerlo puede hacer que estas clases sean complejas y difíciles de probar. En su lugar, es mejor crear un Caso de Uso que agregue datos de diferentes Repositorios, manteniendo la lógica de negocio separada y reutilizable.</p>
+<p>✅ <strong>Mejor Práctica: Combinando Productos Con Conteo de Bolsa de Usuario Usando Flows</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">GetProductsWithBagCountUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">productsRepository</span><span class="p">:</span><span class="w"> </span><span class="n">ProductsRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagRepository</span><span class="p">:</span><span class="w"> </span><span class="n">BagRepository</span><span class="p">,</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">userRepository</span><span class="p">:</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">():</span><span class="w"> </span><span class="n">Flow</span><span class="o">&lt;</span><span class="n">ProductsWithBagCount</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">getUserId</span><span class="p">()</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">combine</span><span class="p">(</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="n">productsRepository</span><span class="p">.</span><span class="na">getUserProducts</span><span class="p">(</span><span class="n">userId</span><span class="p">),</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">bagRepository</span><span class="p">.</span><span class="na">getUserBagCount</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">products</span><span class="p">,</span><span class="w"> </span><span class="n">bagCount</span><span class="w"> </span><span class="o">-&gt;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="n">ProductsWithBagCount</span><span class="p">(</span><span class="n">products</span><span class="p">,</span><span class="w"> </span><span class="n">bagCount</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">ProductsWithBagCount</span><span class="p">(</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">products</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Products</span><span class="o">&gt;</span><span class="p">,</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">bagCount</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="por-que-esto-es-mejor">Por Qué Esto es Mejor<a class="headerlink" href="#por-que-esto-es-mejor" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Usa</strong> <code>**Flow.combine()**</code>
+Agrega datos reactivamente, asegurando que cualquier actualización de cualquiera de los Repositorios se propague automáticamente. <code>combine()</code> emite los últimos valores de todos los flows combinados.</p>
+<p>✅ <strong>Evita Bloquear Hilos</strong>
+La obtención de datos es asíncrona a través de Flows, asegurando una ejecución no bloqueante y eficiente.</p>
+<p>✅ <strong>Mantiene el ViewModel Enfocado</strong>
+El ViewModel solo recoge una única fuente de verdad, en lugar de gestionar múltiples llamadas a Repositorios, haciéndolo más simple y enfocado en el estado de la UI.</p>
+<p>✅ <strong>Los Repositorios Mantienen una Responsabilidad Única</strong>
+Los Repositorios evitan dependencias entre sí, manteniendo una clara separación de preocupaciones, lo que simplifica las pruebas y el mantenimiento.</p>
+<p>✅ <strong>Mejora la Testabilidad</strong>
+El Caso de Uso es más fácil de simular en pruebas unitarias, eliminando la necesidad de manejar múltiples instancias de <code>StateFlow</code> o <code>Flow</code> directamente en el ViewModel.</p>
+<h3 id="4-validacion-de-datos">4. Validación de Datos<a class="headerlink" href="#4-validacion-de-datos" title="Permanent link">¶</a></h3>
+<p>La validación de datos es un aspecto crítico para asegurar la integridad y correctitud de los datos que fluyen a través de tu aplicación. Al manejar la lógica de validación dentro de la <strong>Capa de Dominio</strong>, logramos:</p>
+<p>✅ <strong>Consistencia</strong>
+Asegurar que los datos sean validados antes de ser procesados o presentados.</p>
+<p>✅ <strong>Reutilización</strong>
+Evitar lógica de validación redundante en diferentes partes de la app.</p>
+<p>✅ <strong>Separación de Preocupaciones</strong>
+Mantener la validación independiente de las Capas de Presentación y de Datos.</p>
+<p><strong>Validación de Entrada</strong>
+Asegura que las entradas del usuario cumplan criterios específicos antes de ser procesadas o almacenadas.</p>
+<ul>
+<li>Comprobar si un correo electrónico sigue el formato correcto (por ejemplo, <code>user@example.com</code>).</li>
+<li>Verificar que una contraseña cumpla con los requisitos mínimos de longitud y complejidad.</li>
+</ul>
+<p><strong>Validación de Reglas de Negocio</strong>
+Asegura que los datos cumplan con las reglas de negocio específicas del dominio. La validación en el frontend puede ayudar a mejorar la UX comprobando reglas de negocio antes de que se realice una acción, basándose en los datos recibidos.</p>
+<ul>
+<li>Comprobar si un usuario tiene fondos suficientes antes de realizar un pedido para evitar llamadas innecesarias a la API REST.</li>
+<li>Asegurar que un producto esté en stock antes de proceder con una compra. Si esta comprobación falla, podríamos deshabilitar el botón "Comprar".</li>
+</ul>
+<p><strong>Validación de Formato</strong>
+Asegura que los datos sigan una estructura o patrón predefinido.</p>
+<ul>
+<li>Validar que una cadena de fecha siga cierto formato como <code>YYYY-MM-DD</code>.</li>
+<li>Asegurar que un número de teléfono contenga el número correcto de dígitos.</li>
+</ul>
+<p><strong>✅ Mejor Práctica: Validación de Datos en la Capa de Dominio</strong>
+Consideremos un ejemplo donde necesitamos validar la dirección de correo electrónico y la contraseña de un usuario antes de permitirle registrarse.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">ValidateUserRegistrationUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">emailValidator</span><span class="p">:</span><span class="w"> </span><span class="n">EmailValidator</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">passwordValidator</span><span class="p">:</span><span class="w"> </span><span class="n">PasswordValidator</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">):</span><span class="w"> </span><span class="n">ValidationResult</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="o">!</span><span class="n">emailValidator</span><span class="p">.</span><span class="na">isValid</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ValidationResult</span><span class="p">.</span><span class="na">InvalidEmail</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="o">!</span><span class="n">passwordValidator</span><span class="p">.</span><span class="na">isValid</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ValidationResult</span><span class="p">.</span><span class="na">InvalidPassword</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ValidationResult</span><span class="p">.</span><span class="na">Valid</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="kd">sealed</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">ValidationResult</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="nc">Valid</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ValidationResult</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="nc">InvalidEmail</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ValidationResult</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="kd">data</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="nc">InvalidPassword</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ValidationResult</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="resumen-de-validacion">Resumen de Validación<a class="headerlink" href="#resumen-de-validacion" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Mantén la Lógica de Validación Simple y Enfocada</strong>
+Cada validador debe centrarse en una tarea específica (por ejemplo, validar formato de correo electrónico o longitud de contraseña).</p>
+<p>✅ <strong>Manejo de Errores</strong>
+Usa clases selladas o interfaces selladas para representar estados de validación (válido/inválido), haciendo el manejo de errores más simple y legible.</p>
+<p>✅ <strong>Evita Duplicar Lógica de Validación</strong>
+Mantén la lógica de validación reutilizable para evitar duplicar código en diferentes partes de la app.</p>
+<p>✅ <strong>Prueba la Lógica de Validación Independientemente</strong>
+Dado que la lógica de validación es parte de las reglas de negocio, las pruebas unitarias deben centrarse en asegurar que la lógica de validación funcione correctamente en varios escenarios (por ejemplo, formatos de correo electrónico inválidos, contraseñas cortas, etc.).</p>
+<p>❌ <strong>Codificar Mensajes de Error</strong>
+Evita codificar mensajes de error. En su lugar, define estados de error para asegurar consistencia en toda la app.</p>
+<h2 id="gestionando-casos-de-uso-inyeccion-ciclo-de-vida-y-ejecucion">Gestionando Casos de Uso: Inyección, Ciclo de Vida y Ejecución<a class="headerlink" href="#gestionando-casos-de-uso-inyeccion-ciclo-de-vida-y-ejecucion" title="Permanent link">¶</a></h2>
+<p>En una arquitectura basada en ViewModel, los Casos de Uso se inyectan en el ViewModel y se ejecutan según sea necesario. Hilt puede proporcionar automáticamente un Caso de Uso si tiene una sola implementación. Para asegurar que el Caso de Uso viva tanto como el ViewModel, anótalo con <code>**@ViewModelScoped**</code>. Esto asegura que la instancia del Caso de Uso se <strong>cree una vez</strong> cuando se inicializa el ViewModel y permanezca igual durante todo el ciclo de vida del ViewModel, evitando recreaciones innecesarias.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@ViewModelScoped</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">GetCustomerBagUseCase</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span></code></pre></div>
+<p>Algunos Casos de Uso pueden beneficiarse de tener un alcance <code>**@Singleton**</code>, lo que asegura que existe una única instancia durante el ciclo de vida de la app. Esto puede ser útil para lógica de negocio persistente como la autenticación.</p>
+<p>Si un Caso de Uso tiene múltiples implementaciones o sigue una abstracción basada en interfaces, vincula la implementación en un <code>@Module</code> e instálalo en <code>ViewModelComponent</code>.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@Module</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nd">@InstallIn</span><span class="p">(</span><span class="n">ViewModelComponent</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">BagModule</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nd">@Binds</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nd">@ViewModelScoped</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">bindGetCustomerBagUseCase</span><span class="p">(</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="n">impl</span><span class="p">:</span><span class="w"> </span><span class="n">GetCustomerBagUseCaseImpl</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">):</span><span class="w"> </span><span class="n">GetCustomerBagUseCase</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="metodos-de-inyeccion-estandar-vs-lazy">Métodos de Inyección: Estándar vs Lazy<a class="headerlink" href="#metodos-de-inyeccion-estandar-vs-lazy" title="Permanent link">¶</a></h3>
+<p>Hay dos formas principales de inyectar Casos de Uso:</p>
+<ul>
+<li><strong>Inyección estándar</strong> para Casos de Uso usados frecuentemente</li>
+<li><strong>Inyección diferida (Lazy)</strong> para Casos de Uso que solo se necesitan condicionalmente</li>
+</ul>
+<h3 id="1-inyeccion-estandar-para-casos-de-uso-usados-frecuentemente">1. Inyección Estándar (Para Casos de Uso Usados Frecuentemente)<a class="headerlink" href="#1-inyeccion-estandar-para-casos-de-uso-usados-frecuentemente" title="Permanent link">¶</a></h3>
+<p>Para Casos de Uso que se usan frecuentemente, podemos inyectarlos en el constructor directamente en el ViewModel. La instancia se crea una vez cuando se inicializa el ViewModel y permanece activa durante todo el ciclo de vida del ViewModel.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@HiltViewModel</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">BagViewModel</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">getCustomerBagUseCase</span><span class="p">:</span><span class="w"> </span><span class="n">GetCustomerBagUseCase</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_customerBag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">CustomerBag?&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">customerBag</span><span class="p">:</span><span class="w"> </span><span class="n">StateFlow</span><span class="o">&lt;</span><span class="n">CustomerBag?&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_customerBag</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getCustomerBag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="n">_customerBag</span><span class="p">.</span><span class="na">update</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getCustomerBagUseCase</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="2-inyeccion-lazy-para-casos-de-uso-usados-selectivamente">2. Inyección Lazy (Para Casos de Uso Usados Selectivamente)<a class="headerlink" href="#2-inyeccion-lazy-para-casos-de-uso-usados-selectivamente" title="Permanent link">¶</a></h3>
+<p>Para Casos de Uso que solo se usan en escenarios específicos, la inyección lazy retrasa la instanciación hasta que se necesita. Esto reduce la creación de objetos innecesarios y evita inyectar dependencias que podrían no usarse.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">dagger.Lazy</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nd">@HiltViewModel</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kd">class</span><span class="w"> </span><span class="nc">BagViewModel</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">saveItemToWishListUseCase</span><span class="p">:</span><span class="w"> </span><span class="n">Lazy</span><span class="o">&lt;</span><span class="n">SaveItemToWishListUseCase</span><span class="o">&gt;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">saveItemToWishList</span><span class="p">(</span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="n">Item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">            </span><span class="n">saveItemToWishListUseCase</span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">invoke</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Aquí, <code>SaveItemToWishListUseCase</code> no se instancia hasta que se llama a <code>get()</code>, reduciendo el uso de memoria y mejorando el rendimiento de la app cuando el Caso de Uso no siempre es necesario.</p>
+<h3 id="usa-viewmodelscope-para-gestion-de-corrutinas">Usa <code>viewModelScope</code> para Gestión de Corrutinas 🚀<a class="headerlink" href="#usa-viewmodelscope-para-gestion-de-corrutinas" title="Permanent link">¶</a></h3>
+<p>Al ejecutar Casos de Uso dentro de un ViewModel, usa siempre <code>viewModelScope.launch{}</code>. Esto asegura:</p>
+<ul>
+<li>Las Corrutinas se cancelan automáticamente cuando se destruye el ViewModel, previniendo fugas de memoria.</li>
+<li>Las tareas en segundo plano terminan correctamente cuando la UI ya no está activa.</li>
+</ul>
+<p>Por defecto, <code>viewModelScope.launch{}</code> usa el <strong>Main Dispatcher</strong>, haciéndolo ideal para operaciones relacionadas con la UI.</p>
+<blockquote>
+<p>Ten en cuenta que <code>_@ViewModelScoped_</code> controla el ciclo de vida de la instancia del Caso de Uso. Asegura una única instancia de Caso de Uso por ciclo de vida del ViewModel, mientras que <code>_viewModelScope.launch{}_</code> gestiona la ejecución y cancelación de Corrutinas. Aunque se nombran de forma similar, son preocupaciones separadas.</p>
+</blockquote>
+<h3 id="puntos-clave">Puntos Clave<a class="headerlink" href="#puntos-clave" title="Permanent link">¶</a></h3>
+<p>✅ <strong>Los Casos de Uso persisten con el ViewModel</strong>
+Dar un alcance a un Caso de Uso con <code>@ViewModelScoped</code> asegura que viva tanto como el ViewModel, evitando recreaciones innecesarias.</p>
+<p>✅ <strong>Aprovecha</strong> <code>**viewModelScope.launch{}**</code> <strong>en ViewModels</strong>
+Se ejecuta en el Main Dispatcher por defecto, haciéndolo adecuado para operaciones de UI y garantiza la cancelación automática de Corrutinas cuando se borra el ViewModel, previniendo fugas de memoria.</p>
+<p>✅ <strong>Elige el método de inyección correcto basado en el uso</strong>
+Inyección estándar para Casos de Uso usados frecuentemente e inyección lazy para Casos de Uso opcionales para diferir la instanciación y reducir la sobrecarga de memoria.</p>
+<p>❌ <strong>No inyectes Casos de Uso en la Capa de Datos</strong>
+Los Casos de Uso pertenecen a la Capa de Dominio y deben ser invocados desde la Capa de Presentación u otros Casos de Uso cuando sea necesario. <strong>No</strong> deben inyectarse en la <a href="/asos-techblog/android-clean-architecture-understanding-the-data-layer-a8df03b508c2">Capa de Datos</a> (por ejemplo, Repositorios, Fuentes de Datos o Mappers) ya que esto viola los principios de Clean Architecture al introducir dependencias innecesarias y aumentar el acoplamiento entre capas.</p>
+<hr>
+<h2 id="restricciones-de-acceso-a-datos-en-la-capa-de-dominio">Restricciones de Acceso a Datos en la Capa de Dominio<a class="headerlink" href="#restricciones-de-acceso-a-datos-en-la-capa-de-dominio" title="Permanent link">¶</a></h2>
+<p>Una pregunta común en Clean Architecture es:</p>
+<blockquote>
+<p>¿Deberían los ViewModels y otros componentes de la Capa de Presentación acceder directamente a los Repositorios, o todo el acceso a datos debería pasar por Casos de Uso?</p>
+</blockquote>
+<p>Restringir el acceso a datos a la Capa de Dominio tiene sus ventajas y desventajas:</p>
+<p>✅ <strong>Asegura una Ejecución Consistente de la Lógica de Negocio</strong>
+Los Casos de Uso hacen cumplir reglas como el seguimiento de análisis, validación y transformaciones de datos, asegurando que la lógica de negocio se aplique consistentemente y previniendo el acceso inconsistente a datos brutos de la Capa de Datos.</p>
+<p>✅ <strong>Soporta la Modularización</strong>
+En proyectos <a href="/asos-techblog/slaying-the-monolith-api-implementation-modularisation-pattern-in-android-development-22a07c24e9dd">modularizados por API/Implementación</a>, los módulos de características exponen interfaces de Caso de Uso en el módulo <code>:api</code>. Esto mantiene mínimas las dependencias entre módulos y simplifica la arquitectura general.</p>
+<p>✅ <strong>Simplifica las Pruebas de ViewModel</strong>
+Dado que los ViewModels dependen solo de Casos de Uso en lugar de Repositorios, las pruebas se vuelven más fáciles. No hay necesidad de simular Repositorios en pruebas de ViewModel, permitiendo pruebas unitarias más aisladas, enfocadas y mantenibles.</p>
+<p>❌ <strong>Introduce Sobrecarga para Obtenciones Simples</strong>
+Cuando un Caso de Uso simplemente envuelve una llamada a Repositorio sin agregar lógica de negocio, puede sentirse redundante e introducir complejidad innecesaria.</p>
+<p>En ASOS, seguimos la estrategia de <a href="/asos-techblog/slaying-the-monolith-api-implementation-modularisation-pattern-in-android-development-22a07c24e9dd"><strong>modularización API/Implementación</strong></a>, donde restringir el acceso directo a datos a la Capa de Dominio se alinea naturalmente con nuestra arquitectura. Esto asegura un manejo consistente de datos, reduce el acoplamiento y simplifica la mantenibilidad a largo plazo a medida que el proyecto escala.</p>
+<h2 id="estructura-de-paquetes">Estructura de Paquetes<a class="headerlink" href="#estructura-de-paquetes" title="Permanent link">¶</a></h2>
+<p>A continuación se muestra un ejemplo de cómo se puede estructurar la Capa de Dominio. Esta es una representación simple y podría cambiar en una app modularizada.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>📂 domain
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├── 📂 model
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>│    ├── ProductsWithBagCount.kt
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│    ├── Bag.kt
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│    ├── Product.kt
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>├── 📂 repository
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>│    ├── ProductsRepository.kt  //interface
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>│    ├── BagRepository.kt  //interface
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>│
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>├── 📂 usecase
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>│    ├── AddItemToBagUseCase.kt
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>│    ├── RemoveItemFromBagUseCase.kt
+</span></code></pre></div>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h2>
+<p>Incorporar la Capa de Dominio en tu aplicación Android ofrece numerosos beneficios, incluyendo escalabilidad, testabilidad y mantenibilidad. Al aislar la lógica de negocio dentro de la Capa de Dominio, aseguras que el ViewModel y otros componentes de UI permanezcan ligeros y centrados únicamente en renderizar la UI, sin la carga de operaciones complejas o gestión de datos. Esta separación de preocupaciones ayuda a crear una arquitectura robusta y fácilmente extensible, especialmente a medida que la app crece en tamaño y complejidad.</p>
+<p>Al estructurar adecuadamente los Casos de Uso, manejar la hilería eficientemente y decidir sabiamente sobre las restricciones de acceso, puedes construir una arquitectura de app mantenible que resista el paso del tiempo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:&lt;jssgarcia.docente@gmail.com&gt;" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
