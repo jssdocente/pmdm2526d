@@ -62,6 +62,10 @@ nav:
       - "3.3.1. Introducción": temas/03/3.3-arquitectura.md
       - "3.3.2. Capa de UI": temas/03/3.3.2-arquitectura.capa-ui
       - "3.3.3. Capas Datos/Dominio": temas/03/3.3.3-arquitectura.capa-datos.md
+      - "3.3.4. Clean Architecture":
+        - "Capa de Dominio": temas/03/3.3.3.2-CapaDominio-es.md
+        - "Capa de Datos": temas/03/3.3.3.3-CapaDatos-es.md
+
   - "UT4 - Persistencia": 
     - "Introducción": temas/04/4.0-persistencia.md
     - "4.1. Room": temas/04/4.1-room.md
