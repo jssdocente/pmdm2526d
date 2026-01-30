@@ -71,6 +71,11 @@ nav:
     - "4.1. Room": temas/04/4.1-room.md
     - "4.2. Conexión a Internet": temas/04/4.2-conexion-internet.md
     #- "3.3. Arquitectura": temas/03/3.3-arquitectura.md
+
+  - "Proyecto Guía":
+    - "Introducción": temas/proyectos/GameVault/index.md
+    - "Configuración proyecto": temas/proyectos/GameVault/01-configuracion-proyecto.md
+    #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
   #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
