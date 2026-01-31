@@ -138,14 +138,7 @@ app/
    │  │     │  ├─ db/                  (RoomDatabase)
    │  │     │  └─ dao/                 (DAOs)
    │  │     └─ repository/             (impl. de repositorios)
-   │  └─ res/
-   │     ├─ drawable/                   (assets vectoriales/shape)
-   │     ├─ drawable-night/             (variantes oscuras)                      [opcional en V1]
-   │     ├─ mipmap-*/                   (iconos de launcher)
-   │     ├─ values/                     (colors, strings, themes)
-   │     ├─ values-night/               (valores para tema oscuro)               [opcional en V1]
-   │     ├─ values-es/                  (strings en español)                     [opcional en V1]
-   │     └─ xml/                        (backup_rules.xml, data_extraction_rules.xml)
+   │  
    ├─ test/java/com/pmdm/mygamestore/        (tests unitarios)
    └─ androidTest/java/com/pmdm/mygamestore/ (tests instrumentados)
 ```
@@ -182,11 +175,40 @@ Concepto clave: `sealed` permite que el compilador conozca todas las variantes y
 
 ---
 
-### 4) Motor de navegación formativo: `NavDisplay` + `entryProvider`
+### 4) Motor de navegación: `Navigation v3`
 
-Creamos un pequeño motor que recibe el `backStack` (lista de rutas), una acción de back y un `entryProvider` que mapea cada ruta a su pantalla.
+Navigation v3 simplifica la navegación tratando las rutas como un estado (una lista de objetos). Sus componentes principales son:
 
-Necesitamos incluir ahora el grafo de navegación, que es una tabla de rutas a pantallas. Este grafo ahora mismo es básico, simplemente vamos a tener cada de las pantallas en su propia clase. (más adelante se mejorará).
+*   **`NavKey`**: Interfaz que deben implementar nuestras rutas (como `AppRoutes`).
+*   **`NavDisplay`**: El componente de UI que observa el `backStack` y muestra la pantalla correspondiente.
+*   **`entryProvider`**: Mapea cada ruta a su pantalla.
+
+
+!!! info "Video explicación de Navigation 3 en Compose"
+
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/DHoKUZvkfEs" title="Navigation 3 en Jetpack Compose" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figcaption>
+  <img src="res/img/01.1-navegacionA.png" width="120%" align="center"  alt="">
+  <p style="text-align: center; font-style: italic;">Navegación explicada a nivel de estructura usada</p>
+</figcaption>
+
+
+**¿Cómo funcion la navegación?**
+
+- Se define un grafo de navegación que mapea cada ruta a su pantalla. 
+- Se define un `NavDisplay` que observa el `backStack` y muestra la pantalla correspondiente.
+- En el `NavDisplay` se define un `entryProvider` que mapea, con una `NavKey` (que es la ruta), cada ruta a su pantalla.
+
+El funcionamiento es sencillo:
+
+- El `rememberNavBackStack` es una lista y a su vez un estado que permite recomposición, cada vez que se modifique esta lista.
+- Para ir hacía atrás, se utiliza la acción de back, eliminando el último elemento de la lista.
+- Para navegar hacia adelante, simplemente se añade la ruta a la lista, y se recompone la pantalla. El NavDisplay tiene un `entryProvider` para cada una de esas rutas, y devuelve un `Composable` que se encarga de mostrar la pantalla correspondiente.
+
+> Por ahora, la navegación es básica, más adelante se incorporarán más funcionalidades.
+
 
 ```kotlin
 // app/src/main/java/com/pmdm/mygamestore/presentation/ui/navigation/NavGraph.kt
@@ -275,6 +297,14 @@ Sugerencia didáctica: añade botones en pantallas para empujar nuevas rutas al 
 ---
 
 ### 6) Tema y diseño adaptativo: `Dimens` + inyección
+
+La `inyección` de información en el contexto en Android es una técnica muy utilizada para pasar elementos a través del todo el árbol de elementos de la interfaz.
+
+<figcaption>
+  <img src="res/img/01.2-arbol-contexto.png" width="80%" align="center"  alt="">
+  <p style="text-align: center; font-style: italic;">Paso de información a través del árbol de Compose</p>
+</figcaption>
+
 
 Queremos que la UI adapte espacios/paddings según el ancho de pantalla. Creamos un set de dimensiones y lo inyectamos por `CompositionLocal`.
 
@@ -374,7 +404,32 @@ fun ProvideDimensions(
 }
 ```
 
-Uso en pantallas:
+Además para facilitar el acceso a las dimensiones desde cualquier parte de la app, se crea el `LocalDimens`:
+
+```kotlin
+// app/src/main/java/com/pmdm/mygamestore/presentation/ui/theme/Dimens.kt
+/**
+ * CompositionLocal que permite propagar las dimensiones a través del árbol de Compose
+ * sin tener que pasarlas manualmente como parámetros en cada función.
+ */
+private val LocalDimens = staticCompositionLocalOf { Dimens() }
+```
+
+y además se crea una propiedad de extensión para MaterialTheme que permite acceder a nuestras dimensiones
+personalizadas de forma sencilla: MaterialTheme.dimens.paddingMedium
+
+```kotlin
+/**
+ * Propiedad de extensión para MaterialTheme que permite acceder a nuestras dimensiones
+ * personalizadas de forma sencilla: MaterialTheme.dimens.paddingMedium
+ */
+val MaterialTheme.dimens: Dimens
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalDimens.current
+```
+
+y uso en pantallas:
 
 ```kotlin
 Text(
@@ -382,6 +437,106 @@ Text(
     modifier = Modifier.padding(MaterialTheme.dimens.paddingMedium)
 )
 ```
+
+y por último lo único que queda es `Envolver` con un nuevo `contexto`, MaterialTheme proveyendo las Dimensiones a todo el árbol de Compose.
+
+<figcaption>
+  <img src="res/img/01.3-arbol-contexto-real.png" width="80%" align="center"  alt="">
+  <p style="text-align: center; font-style: italic;">Paso de información a través del árbol de Compose</p>
+</figcaption>
+
+De tal forma, que el fichero `Theme` quedará de la siguiente forma:
+
+```kotlin
+/**
+ * CompositionLocal que permite propagar las dimensiones a través del árbol de Compose
+ * sin tener que pasarlas manualmente como parámetros en cada función.
+ */
+private val LocalDimens = staticCompositionLocalOf { Dimens() }
+
+/**
+ * Provides a custom set of dimensions to the CompositionLocal hierarchy.
+ * This allows child composables to access and use specific dimension configurations
+ * such as padding, spacing, or elevation, tailored for the screen size or design requirements.
+ *
+ * @param dimens A `Dimens` instance defining the dimension values to provide.
+ * @param content A composable lambda that will have access to the provided dimensions.
+ */
+@Composable
+fun ProvideDimensions(
+    dimens: Dimens,
+    content: @Composable () -> Unit) {
+
+    val dimensionSet = remember { dimens }
+
+    // Permite proporcionar las dimensiones a lo largo del arbol de compose.
+    CompositionLocalProvider(LocalDimens provides dimensionSet, content = content)
+}
+
+/**
+ * Función Composable que proporciona el tema principal de la aplicación MyGameStore.
+ * Gestiona el esquema de colores (incluyendo colores dinámicos en Android 12+) 
+ * y las dimensiones adaptativas según el tamaño de la pantalla.
+ *
+ * @param darkTheme Indica si se debe usar el tema oscuro. Por defecto usa la configuración del sistema.
+ * @param dynamicColor Indica si se deben usar colores dinámicos (disponible en Android 12+).
+ * @param content El contenido Composable que será envuelto por este tema.
+ */
+@Composable
+fun MyGameStoreTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    // Los colores dinámicos están disponibles a partir de Android 12 (S)
+    dynamicColor: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    // Selección del esquema de colores
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+
+    // Lógica para diseño adaptativo: seleccionamos dimensiones según el ancho de la pantalla
+    // Siguiendo las recomendaciones de Material Design (Window Size Classes)
+    val density = LocalDensity.current
+    val windowInfo = LocalWindowInfo.current
+    val screenWidthDp = with(density) {
+        windowInfo.containerSize.width.toDp()
+    }
+
+    val dimens = when {
+        screenWidthDp < 600.dp -> CompactDimens
+        screenWidthDp < 840.dp -> MediumDimens
+        else -> ExpandedDimens
+    }
+
+    // CompositionLocalProvider inyecta las dimensiones en el árbol de Compose
+    ProvideDimensions(
+        dimens = dimens,
+        content = {
+            MaterialTheme(
+                colorScheme = colorScheme,
+                typography = Typography,
+                content = content
+            )
+        }
+    )
+}
+
+/**
+ * Propiedad de extensión para MaterialTheme que permite acceder a nuestras dimensiones
+ * personalizadas de forma sencilla: MaterialTheme.dimens.paddingMedium
+ */
+val MaterialTheme.dimens: Dimens
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalDimens.current
+```
+
 
 ---
 
