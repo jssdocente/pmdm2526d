@@ -544,45 +544,112 @@ val MaterialTheme.dimens: Dimens
 
 Sustituimos los colores de plantilla por una paleta propia. Define los colores en `Color.kt` y, opcionalmente, en `colors.xml` si necesitas recursos XML.
 
-Ejemplo en `Color.kt`:
+Se deben definir los colores de nuestra App tanto en modo claro como modo oscuro. Estos colores los definiremos según el rol que tendrán en la App.
+
+En `Color.kt`:
 
 ```kotlin
-// app/src/main/java/com/pmdm/mygamestore/presentation/ui/theme/Color.kt
-val GreenPrimary40 = Color(0xFF1DB954)   // primario
-val GreenPrimary80 = Color(0xFF4BE07A)   // primario (dark)
-val GreyBg = Color(0xFF121212)           // background/surface dark
-val GreySurface = Color(0xFF1E1E1E)
-val OnDark = Color(0xFFFFFFFF)
-val OnLight = Color(0xFF000000)
+// Brand — MyGameStore. Colores compartidos para modo Light y modo Dark
+val GsPurple = Color(0xFF7C2CF2)          // Primary
+val GsPurpleDark = Color(0xFF6D28D9)      // Tertiary / énfasis
+val GsPurpleLight = Color(0xFFA78BFA)     // Secondary
+
+// **** MODO LIGHT ****
+
+// Containers & variants
+val GsPurpleContainer = Color(0xFFE7D7FF) // PrimaryContainer
+val GsPurpleContainerOn = Color(0xFF2E1065) // onPrimaryContainer
+val GsSecondaryContainer = Color(0xFFF1EAFE) // SecondaryContainer
+val GsOnSecondaryContainer = Color(0xFF2E1065)
+
+// Superficies
+val GsBackground = Color(0xFFF7F3FA)
+val GsSurface = Color(0xFFF7F3FA)
+val GsSurfaceVariant = Color(0xFFE9DEF6)
+
+// Texto
+val GsOnPrimary = Color(0xFFFFFFFF)
+val GsOnBackground = Color(0xFF1B1B1F)
+val GsOnSurface = Color(0xFF1B1B1F)
+val GsOnSurfaceVariant = Color(0xFF4A4458)
+
+// Borde
+val GsOutline = Color(0xFFD9C7F0)
+
+
+// **** MODO DARK ****
+
+// Superficies (dark)
+val GsDarkBackground = Color(0xFF15101B)
+val GsDarkSurface = Color(0xFF15101B)
+val GsDarkSurfaceVariant = Color(0xFF2A2133)
+
+// Texto (dark)
+val GsDarkOnBackground = Color(0xFFEAE6F0)
+val GsDarkOnSurface = Color(0xFFEAE6F0)
+val GsDarkOnSurfaceVariant = Color(0xFFC9BEDA)
+
+// Containers (opcionales usados por campos/tonos sutiles en dark)
+val GsDarkPrimaryContainer = Color(0xFF3A2459)
+val GsDarkOnPrimaryContainer = Color(0xFFECDCFF)
+val GsDarkSecondary = Color(0xFFC4B1FF)
+val GsDarkSecondaryContainer = Color(0xFF35274F)
+val GsDarkOnSecondaryContainer = Color(0xFFECDCFF)
+
+// Borde (dark)
+val GsDarkOutline = Color(0xFF4A3A55)
 ```
+> Se definen los colores para el modo Dark y modo Ligth. El prefijo `Gs` es un acrónimo de GameStore.
 
 Mapea en `Theme.kt` los esquemas Light/Dark:
 
 ```kotlin
 private val DarkColorScheme = darkColorScheme(
-    primary = GreenPrimary80,
-    secondary = GreenPrimary80,
-    tertiary = GreenPrimary80,
-    background = GreyBg,
-    surface = GreySurface,
-    onPrimary = OnDark,
-    onSecondary = OnDark,
-    onTertiary = OnDark,
-    onBackground = OnDark,
-    onSurface = OnDark
+    primary = GsPurple,
+    onPrimary = GsOnPrimary,
+    primaryContainer = GsDarkPrimaryContainer,
+    onPrimaryContainer = GsDarkOnPrimaryContainer,
+
+    background = GsDarkBackground,
+    onBackground = GsDarkOnBackground,
+
+    surface = GsDarkSurface,
+    onSurface = GsDarkOnSurface,
+    surfaceVariant = GsDarkSurfaceVariant,
+    onSurfaceVariant = GsDarkOnSurfaceVariant,
+    outline = GsDarkOutline,
+
+    secondary = GsDarkSecondary,
+    onSecondary = Color(0xFF1B1329),
+    secondaryContainer = GsDarkSecondaryContainer,
+    onSecondaryContainer = GsDarkOnSecondaryContainer,
+
+    tertiary = GsPurpleDark,
+    onTertiary = Color(0xFFFFFFFF)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = GreenPrimary40,
-    secondary = GreenPrimary40,
-    tertiary = GreenPrimary40,
-    background = Color(0xFFFDFDFD),
-    surface = Color(0xFFFFFFFF),
-    onPrimary = OnLight,
-    onSecondary = OnLight,
-    onTertiary = OnLight,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F)
+    primary = GsPurple,
+    onPrimary = GsOnPrimary,
+    primaryContainer = GsPurpleContainer,
+    onPrimaryContainer = GsPurpleContainerOn,
+
+    background = GsBackground,
+    onBackground = GsOnBackground,
+
+    surface = GsSurface,
+    onSurface = GsOnSurface,
+    surfaceVariant = GsSurfaceVariant,
+    onSurfaceVariant = GsOnSurfaceVariant,
+    outline = GsOutline,
+
+    secondary = GsPurpleLight,
+    onSecondary = Color(0xFF1F1147),
+    secondaryContainer = GsSecondaryContainer,
+    onSecondaryContainer = GsOnSecondaryContainer,
+
+    tertiary = GsPurpleDark,
+    onTertiary = Color(0xFFFFFFFF)
 )
 ```
 
@@ -590,17 +657,43 @@ Si usas recursos XML, añade en `app/src/main/res/values/colors.xml`:
 
 ```xml
 <resources>
-    <color name="green_primary_40">#1DB954</color>
-    <color name="green_primary_80">#4BE07A</color>
-    <color name="grey_bg">#121212</color>
-    <color name="grey_surface">#1E1E1E</color>
-    <color name="on_dark">#FFFFFFFF</color>
-    <color name="on_light">#FF000000</color>
-    <!-- elimina los purple/teal por defecto si no se usan -->
+    <!-- MyGameStore — Light scheme -->
+    <color name="gs_purple">#FF7C2CF2</color>
+    <color name="gs_purple_dark">#FF6D28D9</color>
+    <color name="gs_purple_light">#FFA78BFA</color>
+
+    <color name="gs_on_primary">#FFFFFFFF</color>
+
+    <color name="gs_purple_container">#FFE7D7FF</color>
+    <color name="gs_purple_container_on">#FF2E1065</color>
+    <color name="gs_secondary_container">#FFF1EAFE</color>
+    <color name="gs_on_secondary_container">#FF2E1065</color>
+
+    <color name="gs_background">#FFF7F3FA</color>
+    <color name="gs_surface">#FFF7F3FA</color>
+    <color name="gs_surface_variant">#FFE9DEF6</color>
+    <color name="gs_on_background">#FF1B1B1F</color>
+    <color name="gs_on_surface">#FF1B1B1F</color>
+    <color name="gs_on_surface_variant">#FF4A4458</color>
+    <color name="gs_outline">#FFD9C7F0</color>
+
+    <!-- GameVault — Dark scheme -->
+    <color name="gs_dark_background">#FF15101B</color>
+    <color name="gs_dark_surface">#FF15101B</color>
+    <color name="gs_dark_surface_variant">#FF2A2133</color>
+    <color name="gs_dark_on_background">#FFEAE6F0</color>
+    <color name="gs_dark_on_surface">#FFEAE6F0</color>
+    <color name="gs_dark_on_surface_variant">#FFC9BEDA</color>
+
+    <color name="gs_dark_primary_container">#FF3A2459</color>
+    <color name="gs_dark_on_primary_container">#FFECDCFF</color>
+    <color name="gs_dark_secondary">#FFC4B1FF</color>
+    <color name="gs_dark_secondary_container">#FF35274F</color>
+    <color name="gs_dark_on_secondary_container">#FFECDCFF</color>
+    <color name="gs_dark_outline">#FF4A3A55</color>
+
   </resources>
 ```
-
-Objetivo didáctico: entender el mapeo entre paleta y `colorScheme` de Material 3.
 
 ---
 
