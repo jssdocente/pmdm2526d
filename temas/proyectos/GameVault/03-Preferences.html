@@ -11,6 +11,8 @@
         <link rel="prev" href="02-LoginScreen.html">
       
       
+        <link rel="next" href="04-Register-logout.html">
+      
       
         
       
@@ -89,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#persistencia-y-navegacion-completa-del-login" class="md-skip">
+        <a href="#3-persistencia-y-navegacion-completa-del-login" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -2572,6 +2574,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-Register-logout.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Registro y logout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2880,7 +2910,7 @@
 
 
 
-<h1 id="persistencia-y-navegacion-completa-del-login">Persistencia y Navegación Completa del Login<a class="headerlink" href="#persistencia-y-navegacion-completa-del-login" title="Permanent link">¶</a></h1>
+<h1 id="3-persistencia-y-navegacion-completa-del-login"><strong>3. Persistencia y Navegación Completa del Login</strong><a class="headerlink" href="#3-persistencia-y-navegacion-completa-del-login" title="Permanent link">¶</a></h1>
 <p>En esta 3ª parte del proyecto, vamos a resolver cómo y donde almacenar la información de la sesión del usuario, y cómo integrarla dentro de la App, teniendo en cuenta los casos de uso del Login e inicio de la App en función de si el usuario está logueado o no.</p>
 <h4 id="resumen-de-lo-que-incluye-v1">Resumen de lo que incluye V1<a class="headerlink" href="#resumen-de-lo-que-incluye-v1" title="Permanent link">¶</a></h4>
 <ol>
@@ -3396,8 +3426,8 @@ Esta delegación garantiza tres aspectos críticos: </p>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.lifecycle.ViewModel</span>
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.lifecycle.viewModelScope</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.local.SessionManager</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.local.SessionManagerImpl</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.SessionManager</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.SessionManagerImpl</span>
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.AuthRepository</span>
 </span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.AuthRepositoryImpl</span>
 </span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.LoginResult</span>
