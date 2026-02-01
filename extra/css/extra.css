@@ -9,3 +9,21 @@
 .text-small {
   font-size: small;
 }
+
+/* Grids personalizados */
+@media screen and (min-width: 60em) {
+  /* Distribución 75% - 25% */
+  .md-typeset .grid.grid-75-25 {
+      grid-template-columns: 3fr 1fr;
+  }
+
+   /* Distribución 33% - 33% - 33% */
+  .md-typeset .grid.grid3 {
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  /* Distribución 66% - 33% */
+  .md-typeset .grid.grid-66-33 {
+      grid-template-columns: 2fr 1fr;
+  }
+}
