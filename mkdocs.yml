@@ -77,6 +77,7 @@ nav:
     - "1. Configuración proyecto": temas/proyectos/GameVault/01-configuracion-proyecto.md
     - "2. Pantalla Login": temas/proyectos/GameVault/02-LoginScreen.md
     - "3. Preferencias": temas/proyectos/GameVault/03-Preferences.md
+    - "4. Registro y logout": temas/proyectos/GameVault/04-Register-logout.md
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
