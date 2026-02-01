@@ -190,7 +190,7 @@ Navigation v3 simplifica la navegación tratando las rutas como un estado (una l
     <iframe width="560" height="315" src="https://www.youtube.com/embed/DHoKUZvkfEs" title="Navigation 3 en Jetpack Compose" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <figcaption>
-  <img src="res/img/01.1-navegacionA.png" width="120%" align="center"  alt="">
+  <img src="res/img/1-config/01.1-navegacionA.png" width="120%" align="center"  alt="">
   <p style="text-align: center; font-style: italic;">Navegación explicada a nivel de estructura usada</p>
 </figcaption>
 
@@ -301,7 +301,7 @@ Sugerencia didáctica: añade botones en pantallas para empujar nuevas rutas al 
 La `inyección` de información en el contexto en Android es una técnica muy utilizada para pasar elementos a través del todo el árbol de elementos de la interfaz.
 
 <figcaption>
-  <img src="res/img/01.2-arbol-contexto.png" width="80%" align="center"  alt="">
+  <img src="res/img/1-config/01.2-arbol-contexto.png" width="80%" align="center"  alt="">
   <p style="text-align: center; font-style: italic;">Paso de información a través del árbol de Compose</p>
 </figcaption>
 
@@ -441,7 +441,7 @@ Text(
 y por último lo único que queda es `Envolver` con un nuevo `contexto`, MaterialTheme proveyendo las Dimensiones a todo el árbol de Compose.
 
 <figcaption>
-  <img src="res/img/01.3-arbol-contexto-real.png" width="80%" align="center"  alt="">
+  <img src="res/img/1-config/01.3-arbol-contexto-real.png" width="80%" align="center"  alt="">
   <p style="text-align: center; font-style: italic;">Paso de información a través del árbol de Compose</p>
 </figcaption>
 
