@@ -1,3 +1,5 @@
 FROM squidfunk/mkdocs-material
 ADD user-requirements.txt .
+# necesario para que docker detecte los cambios en los archivos
+RUN pip install "click<8.2.2". 
 RUN pip install -r user-requirements.txt
