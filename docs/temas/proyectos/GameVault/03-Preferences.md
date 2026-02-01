@@ -1,4 +1,4 @@
-# Persistencia y Navegación Completa del Login
+# **3. Persistencia y Navegación Completa del Login**
 
 En esta 3ª parte del proyecto, vamos a resolver cómo y donde almacenar la información de la sesión del usuario, y cómo integrarla dentro de la App, teniendo en cuenta los casos de uso del Login e inicio de la App en función de si el usuario está logueado o no.
 
@@ -529,8 +529,8 @@ package com.pmdm.mygamestore.presentation.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pmdm.mygamestore.data.local.SessionManager
-import com.pmdm.mygamestore.data.local.SessionManagerImpl
+import com.pmdm.mygamestore.data.repository.SessionManager
+import com.pmdm.mygamestore.data.repository.SessionManagerImpl
 import com.pmdm.mygamestore.data.repository.AuthRepository
 import com.pmdm.mygamestore.data.repository.AuthRepositoryImpl
 import com.pmdm.mygamestore.data.repository.LoginResult

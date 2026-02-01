@@ -1,4 +1,4 @@
-# Guía práctica MyGameStore
+# **2. Funcionalidad completa de Login**
 
 En esta 2ª parte del proyecto, vamos a crear la pantalla de login, desde el diseño de la interfaz hasta la implementación de la lógica, la navegación.
 

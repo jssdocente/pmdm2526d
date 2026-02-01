@@ -1,4 +1,4 @@
-# Guía práctica MyGameStore
+# **1. Configuración de proyecto y primeros pasos**
 
 ## 1. Introducción
 
