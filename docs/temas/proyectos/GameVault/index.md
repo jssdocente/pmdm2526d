@@ -1,5 +1,9 @@
 # 📄 Proyecto "MyGameStore"
 
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+    
+
 ## 1. Visión General
 
 **MyGameStore** es una aplicación nativa de Android diseñada para amantes de los videojuegos. El objetivo principal es ofrecer un catálogo online actualizado (consultando la API de RAWG) y permitir a los usuarios gestionar su propia **biblioteca personal** de forma local.

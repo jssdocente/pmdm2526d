@@ -1,5 +1,8 @@
 # **1. Configuración de proyecto y primeros pasos**
 
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+
 ## 1. Introducción
 
 Esta guía describe paso a paso cómo completar configuración del proyecto de MyGameStore. Incluye dependencias, estructura de carpetas, rutas de navegación, integración en MainActivity, tema con diseño adaptativo (Dimens) y el esqueleto de pantallas.

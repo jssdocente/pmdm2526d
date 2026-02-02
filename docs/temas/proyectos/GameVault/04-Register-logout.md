@@ -2,6 +2,9 @@
 
 En esta 4ª parte del proyecto, vamos a crear la pantalla de registro de un nuevo usuario, integrarla en el flujo de navegación y crear la funcionalidad de logout.
 
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+
 #### Resumen
 
 1. Crear pantalla de registro con funcionalidad completa

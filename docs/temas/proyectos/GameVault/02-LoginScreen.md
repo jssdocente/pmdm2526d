@@ -2,7 +2,10 @@
 
 En esta 2ª parte del proyecto, vamos a crear la pantalla de login, desde el diseño de la interfaz hasta la implementación de la lógica, la navegación.
 
-#### Resumen de lo que incluye V1
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+
+#### Resumen
 
 1. Crear la pantalla de login
 2. Extraer componentes comunes
@@ -298,6 +301,11 @@ graph LR
     B -->|estado| A
 ```
 
+!!! info "Arquitectura MVVM en Android"
+    
+    - [Video: Arquitectura MVVM en Android](https://www.youtube.com/watch?v=KQDeY7oIxp4)
+    - [Video: Aplicando MVVM y State Básico en Jetpack Compose](https://youtu.be/X4gFllRa1_0)
+
 !!! success "Ventajas de MVVM"
     - ✅ **Separación de responsabilidades**: UI solo renderiza, ViewModel maneja lógica
     - ✅ **Supervivencia al ciclo de vida**: El estado sobrevive a rotaciones
@@ -401,6 +409,10 @@ class LoginViewModel : ViewModel() {
     - 🎯 Proporciona `viewModelScope` para coroutines
 
 **Paso 2: Crear el StateFlow**
+
+!!! info "Guía completa de Kotlin Flows"
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vGgB4wBjM-c" title="Guía Completa de Kotlin Flows: Flows, StateFlows y SharedFlows" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ```kotlin
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -694,9 +706,8 @@ fun LoginScreen(viewModel: LoginViewModel = viewModel()) {
 graph LR
     A[ViewModel emite nuevo estado] --> B[StateFlow]
     B --> C[collectAsState]
-    C --> D[State de Compose]
-    D --> E[Compose detecta cambio]
-    E --> F[Recomposición automática ✨]
+    C --> D[Compose detecta cambio]
+    D --> E[Recomposición automática ✨]
 ```
 
 **Paso 3: Vincular el estado con la UI**
@@ -951,6 +962,10 @@ sequenceDiagram
 
 !!! tip "Concepto clave"
     El **Repository** es una capa de abstracción que se encarga de manejar el acceso y la gestión de datos. Actúa como intermediario entre el ViewModel y las fuentes de datos, permitiendo que el ViewModel no necesite saber de dónde provienen los datos ni cómo se obtienen.
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7FvfFab9-8M" title="🔸 Cómo estructurar la CAPA de DATOS - Repositories y DataSources" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 **Analogía simple:**
 

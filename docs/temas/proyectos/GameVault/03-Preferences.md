@@ -2,7 +2,10 @@
 
 En esta 3ª parte del proyecto, vamos a resolver cómo y donde almacenar la información de la sesión del usuario, y cómo integrarla dentro de la App, teniendo en cuenta los casos de uso del Login e inicio de la App en función de si el usuario está logueado o no.
 
-#### Resumen de lo que incluye V1
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+
+#### Resumen
 
 1. Guardar preferencias de Usuario con DataStore
 2. Integrar la navegación en el flujo del Login
