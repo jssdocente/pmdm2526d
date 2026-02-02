@@ -2447,6 +2447,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-HomeScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. HomeScreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2602,7 +2630,11 @@
 
 <h1 id="2-funcionalidad-completa-de-login"><strong>2. Funcionalidad completa de Login</strong><a class="headerlink" href="#2-funcionalidad-completa-de-login" title="Permanent link">¶</a></h1>
 <p>En esta 2ª parte del proyecto, vamos a crear la pantalla de login, desde el diseño de la interfaz hasta la implementación de la lógica, la navegación.</p>
-<h4 id="resumen-de-lo-que-incluye-v1">Resumen de lo que incluye V1<a class="headerlink" href="#resumen-de-lo-que-incluye-v1" title="Permanent link">¶</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Repositorio de la Aplicación</p>
+<p>El código fuente de la aplicación se encuentra en el repositorio de GitHub: <a href="https://github.com/jssdocente/MyGameStore">MyGameStore</a></p>
+</div>
+<h4 id="resumen">Resumen<a class="headerlink" href="#resumen" title="Permanent link">¶</a></h4>
 <ol>
 <li>Crear la pantalla de login</li>
 <li>Extraer componentes comunes</li>
@@ -2884,6 +2916,13 @@
     B --&gt;|usa| C[Repository]
     A --&gt;|eventos| B
     B --&gt;|estado| A</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Arquitectura MVVM en Android</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=KQDeY7oIxp4">Video: Arquitectura MVVM en Android</a></li>
+<li><a href="https://youtu.be/X4gFllRa1_0">Video: Aplicando MVVM y State Básico en Jetpack Compose</a></li>
+</ul>
+</div>
 <div class="admonition success">
 <p class="admonition-title">Ventajas de MVVM</p>
 <ul>
@@ -2986,6 +3025,10 @@
 </ul>
 </div>
 <p><strong>Paso 2: Crear el StateFlow</strong></p>
+<div class="admonition info">
+<p class="admonition-title">Guía completa de Kotlin Flows</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/vGgB4wBjM-c" title="Guía Completa de Kotlin Flows: Flows, StateFlows y SharedFlows" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</div>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.MutableStateFlow</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.StateFlow</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.asStateFlow</span>
@@ -3251,9 +3294,8 @@
 <pre class="mermaid"><code>graph LR
     A[ViewModel emite nuevo estado] --&gt; B[StateFlow]
     B --&gt; C[collectAsState]
-    C --&gt; D[State de Compose]
-    D --&gt; E[Compose detecta cambio]
-    E --&gt; F[Recomposición automática ✨]</code></pre>
+    C --&gt; D[Compose detecta cambio]
+    D --&gt; E[Recomposición automática ✨]</code></pre>
 <p><strong>Paso 3: Vincular el estado con la UI</strong></p>
 <div class="language-kotlin highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nd">@Composable</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LoginScreen</span><span class="p">(</span><span class="n">viewModel</span><span class="p">:</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viewModel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -3487,6 +3529,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Concepto clave</p>
 <p>El <strong>Repository</strong> es una capa de abstracción que se encarga de manejar el acceso y la gestión de datos. Actúa como intermediario entre el ViewModel y las fuentes de datos, permitiendo que el ViewModel no necesite saber de dónde provienen los datos ni cómo se obtienen.</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/7FvfFab9-8M" title="🔸 Cómo estructurar la CAPA de DATOS - Repositories y DataSources" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
 </div>
 <p><strong>Analogía simple:</strong></p>
 <p>Imagina que el <strong>ViewModel</strong> es un chef de cocina y el <strong>Repository</strong> es el almacén de ingredientes. El chef no necesita saber si los ingredientes vienen del mercado local, de un proveedor internacional o del huerto del restaurante. Solo pide "tomates" y el almacén se encarga de conseguirlos.</p>
