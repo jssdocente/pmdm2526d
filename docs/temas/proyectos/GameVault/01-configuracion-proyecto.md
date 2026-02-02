@@ -7,7 +7,7 @@
 
 Esta guía describe paso a paso cómo completar configuración del proyecto de MyGameStore. Incluye dependencias, estructura de carpetas, rutas de navegación, integración en MainActivity, tema con diseño adaptativo (Dimens) y el esqueleto de pantallas.
 
-#### Resumen de lo que incluye V1
+#### Resumen
 
 - Proyecto base con Jetpack Compose y Material 3
 - Navigation 3
@@ -23,7 +23,7 @@ Esta guía describe paso a paso cómo completar configuración del proyecto de M
 
 Usaremos Version Catalog (archivo `gradle/libs.versions.toml`) para gestionar versiones y coordenadas.
 
-1.1. Edita `gradle/libs.versions.toml` y asegúrate de tener (o añade) estas versiones y librerías mínimas para V1:
+1.1. Edita `gradle/libs.versions.toml` y asegúrate de tener (o añade) estas versiones y librerías mínimas para la parte 1ª:
 
 ```toml
 [versions]
@@ -71,7 +71,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 
 ```
 
-Nota: en este proyecto trabajamos la navegación con un `NavDisplay` propio para entender conceptos base. La dependencia `navigation-compose` puede añadirse ya (para futuras versiones o comparativas), pero en V1 no es estrictamente necesaria.
+Nota: en este proyecto trabajamos la navegación con un `NavDisplay` propio para entender conceptos base. La dependencia `navigation-compose` puede añadirse ya (para futuras versiones o comparativas), pero en esta 1ª parte no es estrictamente necesaria.
 
 1.2. Revisa `app/build.gradle.kts` del módulo `app`. Debe incluir Compose y Material 3, más (opcionalmente) Navigation:
 
@@ -111,7 +111,7 @@ dependencies {
 
 ### 2) Estructura de carpetas (Clean Architecture — esqueleto completo)
 
-Para que los alumnos visualicen desde el principio la organización, creamos TODAS las carpetas, aunque en V1 varias quedarán vacías. En esta versión sólo utilizaremos activamente `presentation/ui`.
+Para que los alumnos visualicen desde el principio la organización, creamos TODAS las carpetas, aunque en esta 1ª parte varias quedarán vacías. En esta versión sólo utilizaremos activamente `presentation/ui`.
 
 Sugerencia: cuando una carpeta vaya a quedar vacía, crea un archivo `.keep` (vacío) o `README.md` con 1–2 líneas para que el control de versiones conserve el directorio.
 
@@ -126,14 +126,14 @@ app/
    │  │  │  ├─ ui/
    │  │  │  │  ├─ navigation/          (AppRoutes, NavDisplay)
    │  │  │  │  ├─ screens/             (Splash, Login, Register, Home, Library, Profile, Detail)
-   │  │  │  │  ├─ components/          (componentes reutilizables)              [vacío en V1]
+   │  │  │  │  ├─ components/          (componentes reutilizables)              [vacío en esta 1ª parte]
    │  │  │  │  └─ theme/               (Color, Dimens, Theme, Type)
-   │  │  │  └─ viewmodel/              (ViewModels)                             [vacío en V1]
-   │  │  ├─ domain/                     (capa de dominio)                        [vacío en V1]
+   │  │  │  └─ viewmodel/              (ViewModels)                             [vacío en esta 1ª parte]
+   │  │  ├─ domain/                     (capa de dominio)                        [vacío en esta 1ª parte]
    │  │  │  ├─ model/                  (entidades del dominio)
    │  │  │  ├─ repository/             (contratos de repositorios)
    │  │  │  └─ usecase/                (casos de uso)
-   │  │  └─ data/                       (capa de datos)                           [vacío en V1]
+   │  │  └─ data/                       (capa de datos)                           [vacío en esta 1ª parte]
    │  │     ├─ remote/
    │  │     │  ├─ api/                 (interfaces Retrofit)
    │  │     │  └─ dto/                 (modelos de red)
@@ -146,7 +146,7 @@ app/
    └─ androidTest/java/com/pmdm/mygamestore/ (tests instrumentados)
 ```
 
-Objetivo didáctico: presentar capas desde el inicio. En V1 no hay lógica de `domain` ni `data`, pero se dejan listas las carpetas para versiones posteriores.
+Objetivo didáctico: presentar capas desde el inicio. En esta 1ª parte no hay lógica de `domain` ni `data`, pero se dejan listas las carpetas para versiones posteriores.
 
 ---
 
@@ -314,7 +314,7 @@ Queremos que la UI adapte espacios/paddings según el ancho de pantalla. Creamos
 ```kotlin
 // app/src/main/java/com/pmdm/mygamestore/presentation/ui/theme/Dimens.kt
 data class Dimens(
-    val extraSmall: Dp = 4.dp,
+ val extraSmall: Dp = 4.dp,
     val small: Dp = 8.dp,
     val medium: Dp = 16.dp,
     val large: Dp = 24.dp,
@@ -322,25 +322,89 @@ data class Dimens(
     val paddingSmall: Dp = 8.dp,
     val paddingMedium: Dp = 16.dp,
     val paddingLarge: Dp = 24.dp,
-    val cardElevation: Dp = 4.dp
+    val cardElevation: Dp = 4.dp,
+
+    // Alturas de botones
+    val buttonHeightSmall: Dp = 36.dp,      // Botones pequeños/compactos
+    val buttonHeightMedium: Dp = 48.dp,     // Altura estándar (recomendada)
+    val buttonHeightLarge: Dp = 56.dp,      // Botones destacados
+
+    // Esquinas redondeadas de botones
+    val buttonCornerRadius: Dp = 20.dp,     // Para botones estándar
+    val buttonCornerRadiusSmall: Dp = 12.dp, // Para botones pequeños
+
+    // Padding interno del botón
+    val buttonPaddingHorizontal: Dp = 24.dp,
+    val buttonPaddingVertical: Dp = 10.dp,
+
+    // Espaciado entre botones
+    val buttonSpacing: Dp = 12.dp
 )
 
 val CompactDimens = Dimens(
+    extraSmall = 4.dp,
+    small = 8.dp,
+    medium = 16.dp,
+    large = 24.dp,
+    extraLarge = 32.dp,
     paddingSmall = 8.dp,
     paddingMedium = 16.dp,
-    paddingLarge = 24.dp
+    paddingLarge = 24.dp,
+    cardElevation = 4.dp,
+
+    // Botones para móviles
+    buttonHeightSmall = 36.dp,
+    buttonHeightMedium = 48.dp,      // Altura mínima táctil recomendada
+    buttonHeightLarge = 56.dp,
+    buttonCornerRadius = 20.dp,
+    buttonCornerRadiusSmall = 12.dp,
+    buttonPaddingHorizontal = 24.dp,
+    buttonPaddingVertical = 10.dp,
+    buttonSpacing = 12.dp
 )
 
 val MediumDimens = Dimens(
+     extraSmall = 6.dp,
+    small = 12.dp,
+    medium = 20.dp,
+    large = 28.dp,
+    extraLarge = 40.dp,
     paddingSmall = 12.dp,
     paddingMedium = 24.dp,
-    paddingLarge = 36.dp
+    paddingLarge = 36.dp,
+    cardElevation = 6.dp,
+
+    // Botones para tablets pequeñas
+    buttonHeightSmall = 40.dp,
+    buttonHeightMedium = 52.dp,
+    buttonHeightLarge = 60.dp,
+    buttonCornerRadius = 24.dp,
+    buttonCornerRadiusSmall = 14.dp,
+    buttonPaddingHorizontal = 28.dp,
+    buttonPaddingVertical = 12.dp,
+    buttonSpacing = 16.dp
 )
 
 val ExpandedDimens = Dimens(
+    extraSmall = 8.dp,
+    small = 16.dp,
+    medium = 24.dp,
+    large = 32.dp,
+    extraLarge = 48.dp,
     paddingSmall = 16.dp,
     paddingMedium = 32.dp,
-    paddingLarge = 48.dp
+    paddingLarge = 48.dp,
+    cardElevation = 8.dp,
+
+    // Botones para tablets grandes/escritorio
+    buttonHeightSmall = 44.dp,
+    buttonHeightMedium = 56.dp,
+    buttonHeightLarge = 64.dp,
+    buttonCornerRadius = 28.dp,
+    buttonCornerRadiusSmall = 16.dp,
+    buttonPaddingHorizontal = 32.dp,
+    buttonPaddingVertical = 14.dp,
+    buttonSpacing = 20.dp
 )
 ```
 
@@ -756,12 +820,11 @@ fun HomeScreen(onNavigateToDetail: (Int) -> Unit = {}) {
         }
     }
 }
-```
 
 
 ### 9) Pantallas de prototipado rápido (Home, Library y Profile con BottomBar)
 
-Para comprobar la lógica de navegación, es útil tener versiones mínimas pero funcionales de algunas pantallas. Ya que en V1 el foco es la navegación y el diseño adaptativo, vamos a usar `Scaffold`, `NavigationBar` (BottomBar) y `MaterialTheme.dimens`.
+Para comprobar la lógica de navegación, es útil tener versiones mínimas pero funcionales de algunas pantallas. Ya que en esta 1ª parte el foco es la navegación y el diseño adaptativo, vamos a usar `Scaffold`, `NavigationBar` (BottomBar) y `MaterialTheme.dimens`.
 
 Objetivo didáctico: practicar el patrón “pantallas principales con BottomBar” y cómo se empujan rutas con `LocalNavStack`.
 
