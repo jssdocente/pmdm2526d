@@ -1,4 +1,9 @@
-# 📚 Guía Práctica: Implementación de HomeScreen con Catálogo de Juegos
+# **5. Implementación de la Paantalla de HomeScreen con Catálogo de Juegos**
+
+En esta 5ª parte del proyecto, vamos a implementar la pantalla de inicio de la aplicación, que mostrará un catálogo de juegos con funcionalidades de búsqueda, filtrado y navegación.
+
+!!! tip "Repositorio de la Aplicación"
+    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
 
 ## 📖 Índice
 
@@ -22,7 +27,7 @@ En esta guía implementaremos la **pantalla principal (HomeScreen)** de MyGameSt
 
 ### ¿Qué vamos a construir?
 
-Una pantalla de catálogo profesional con las siguientes capacidades:
+Una pantalla con las siguientes capacidades:
 
 - ✅ **Búsqueda en tiempo real**: Los usuarios podrán buscar juegos por título o descripción
 - ✅ **Filtrado por categorías**: ACTION, RPG, ADVENTURE, STRATEGY, SPORTS, etc.
@@ -70,7 +75,7 @@ Esta implementación sigue **Clean Architecture** con separación clara en tres 
 
 ## 🎓 Objetivos de Aprendizaje {#objetivos-de-aprendizaje}
 
-Al completar esta guía, habrás aprendido:
+Al completar esta parte del proyecto, habrás aprendido:
 
 ### 🏗️ Arquitectura y Patrones
 
@@ -197,19 +202,23 @@ Repository → UseCase → ViewModel → UI State → HomeScreen (recomposición
 
 ---
 
-## 📦 FASE 1: Capa de Datos - Models y Repository {#fase-1-capa-de-datos}
+##  FASE 1: Capa de Datos - Models y Repository {#fase-1-capa-de-datos}
 
 La capa de datos es responsable de **obtener y gestionar los datos** de la aplicación. En esta fase crearemos:
 
 1. Modelos de dominio (Game, GameCategory, Platform, DateInterval)
-2. Interfaz del Repository
-3. Implementación mock del Repository
+2. Resource y AppError para manejo de estados
+3. MockGamesDataSource con datos de prueba
+4. Interfaz del Repository
+5. Implementación mock del Repository
 
-### 📝 Paso 1.1: Crear el modelo Game
+---
+
+###  Paso 1.1: Crear el modelo Game
 
 El modelo `Game` representa un videojuego en nuestro catálogo. Es una **entidad de dominio**, lo que significa que pertenece a la lógica de negocio y es independiente de frameworks.
 
-<u>ubicación</u>:: `app/src/main/java/com/pmdm/mygamestore/domain/model/Game.kt`
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/domain/model/Game.kt`
 
 ```kotlin
 package com.pmdm.mygamestore.domain.model
@@ -217,7 +226,7 @@ package com.pmdm.mygamestore.domain.model
 import kotlinx.serialization.Serializable
 
 /**
- * 🎮 Modelo de dominio que representa un juego en el catálogo
+ *  Modelo de dominio que representa un juego en el catálogo
  *
  * CARACTERÍSTICAS:
  * - Inmutable (val): No se puede modificar después de creación
@@ -251,19 +260,45 @@ data class Game(
 )
 ```
 
+
+**Conceptos clave:**
+
+**Data class en Kotlin:**
+```kotlin
+// Kotlin genera automáticamente:
+// - equals(): compara por contenido
+// - hashCode(): para usar en colecciones
+// - toString(): representación en String
+// - copy(): crea copias con modificaciones
+
+val game1 = Game(id = 1, title = "Witcher", ...)
+val game2 = game1.copy(price = 29.99) // Copia modificando solo el precio
+```
+
+
+**@Serializable:**
+- Permite convertir el objeto a/desde JSON o otros formatos
+- Necesario para navegación con parámetros tipo-safe
+- Usado por la librería navigation3
+
+**Inmutabilidad (val):**
+- Los datos no cambian después de creación
+- Previene bugs por modificaciones accidentales
+- Ideal para arquitecturas reactivas (StateFlow, Flow)
+
 ---
 
-### 📝 Paso 1.2: Crear enums para categorías, plataformas e intervalos
+###  Paso 1.2: Crear enums para categorías, plataformas e intervalos
 
 Los **enums** nos permiten definir conjuntos cerrados de valores posibles, proporcionando type-safety y evitando errores.
 
-<u>ubicación</u>:: `app/src/main/java/com/pmdm/mygamestore/domain/model/GameEnums.kt`
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/domain/model/GameEnums.kt`
 
 ```kotlin
 package com.pmdm.mygamestore.domain.model
 
 /**
- * 🎯 Categorías principales de juegos
+ *  Categorías principales de juegos
  *
  * Representa los géneros principales disponibles en el catálogo.
  * Usado para filtrar juegos por categoría.
@@ -280,7 +315,7 @@ enum class GameCategory {
 }
 
 /**
- * 🎮 Plataformas de videojuegos
+ *  Plataformas de videojuegos
  *
  * Representa las plataformas en las que un juego está disponible.
  * Usado para filtrar juegos por plataforma.
@@ -295,7 +330,7 @@ enum class Platform {
 }
 
 /**
- * 📅 Intervalos de fechas para filtrar lanzamientos
+ *  Intervalos de fechas para filtrar lanzamientos
  *
  * Permite filtrar juegos según cuándo fueron lanzados.
  * Útil para secciones como "Novedades de la semana" o "Lanzamientos recientes".
@@ -309,7 +344,7 @@ enum class DateInterval {
 ```
 
 
-**💡 ¿Por qué usar enums?**
+** ¿Por qué usar enums?**
 
 **Ventajas:**
 
@@ -341,10 +376,6 @@ val cat = GameCategory. // IDE muestra: ALL, ACTION, RPG, etc.
 
 
 4. **Refactoring seguro**: Renombrar un valor actualiza todo el código
-```kotlin
-// Cambiar ACTION a ACTION_ADVENTURE actualiza todas las referencias
-```
-
 
 5. **Iterable**: Podemos iterar sobre todos los valores
 ```kotlin
@@ -356,188 +387,333 @@ GameCategory.entries.forEach { category ->
 
 ---
 
-### 📝 Paso 1.3: Crear interfaz del Repository
+###  Paso 1.3: Crear Resource y AppError para manejo de estados
 
-El **patrón Repository** abstrae el origen de los datos. La UI no sabe (ni debe saber) si los datos vienen de:
+Antes de crear el Repository, definimos cómo manejaremos estados y errores de forma robusta y type-safe.
 
-- Mock hardcodeado ✅ (lo que haremos ahora)
-- API REST 🌐
-- Base de datos local 💾
-- Caché híbrida 🔄
-
-<u>ubicación</u>:: `app/src/main/java/com/pmdm/mygamestore/data/repository/GamesRepository.kt`
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/domain/model/Resource.kt`
 
 ```kotlin
-package com.pmdm.mygamestore.data.repository
-
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
-import com.pmdm.mygamestore.domain.model.Platform
-import kotlinx.coroutines.flow.Flow
+package com.pmdm.mygamestore.domain.model
 
 /**
- * 📋 Interfaz que define las operaciones del repositorio de juegos
+ *  Sealed class que representa el estado de una operación
  *
- * PATRÓN REPOSITORY:
- * ✅ Abstrae la fuente de datos
- * ✅ Permite cambiar implementación sin afectar el resto del código
- * ✅ Facilita testing con implementaciones mock
- * ✅ Aplica el principio de Inversión de Dependencias (SOLID)
+ * PATRÓN RESOURCE/RESULT:
+ * ✅ Manejo explícito de estados (Loading, Success, Error)
+ * ✅ Type-safe: El compilador obliga a manejar todos los casos
+ * ✅ Errores tipados con información específica
+ * ✅ Elimina null checks y excepciones no controladas
  *
- * BENEFICIOS:
- * - Desacoplamiento: La UI no sabe de dónde vienen los datos
- * - Testing: Fácil crear mocks para tests
- * - Flexibilidad: Cambiar de mock a API sin modificar UseCases
- * - Mantenibilidad: Un solo punto de cambio para el origen de datos
+ * VENTAJAS:
+ * - Exhaustive when: El compilador verifica todos los casos
+ * - Sin null: Evita NullPointerException
+ * - Errores descriptivos: Sabemos qué falló exactamente
+ * - UI reactiva: La UI puede reaccionar a cada estado
+ *
+ * FLUJO TÍPICO:
+ * 1. Loading → Mostrar spinner
+ * 2. Success → Mostrar datos
+ * 3. Error → Mostrar mensaje de error
+ *
+ * @param T Tipo de dato que contiene en caso de éxito
  */
-interface GamesRepository {
-
+sealed class Resource<out T> {
+    
     /**
-     * Obtiene todos los juegos disponibles en el catálogo
+     * ⏳ Estado: Operación en progreso
      *
-     * @return Flow que emite la lista completa de juegos
-     *
-     * Ejemplo de uso:
-     * ```
-     * gamesRepository.getAllGames().collect { games ->
-     *     println("Total games: ${games.size}")
-     * }
-     * ```
-     */
-    fun getAllGames(): Flow<List<Game>>
-
-    /**
-     * Filtra juegos por categoría
-     *
-     * @param category Categoría a filtrar (ACTION, RPG, etc.)
-     * @return Flow con juegos de la categoría especificada
-     *
-     * Casos de uso:
-     * - Usuario selecciona "RPG" en filtros
-     * - Sección "Juegos de acción"
-     *
-     * Nota: Si category es ALL, devuelve todos los juegos
-     */
-    fun getGamesByCategory(category: GameCategory): Flow<List<Game>>
-
-    /**
-     * Filtra juegos por intervalo de fecha de lanzamiento
-     *
-     * @param interval Intervalo de tiempo (LAST_WEEK, LAST_30_DAYS, etc.)
-     * @return Flow con juegos lanzados en el intervalo
-     *
-     * Casos de uso:
-     * - Sección "Novedades de la semana"
-     * - "Lanzamientos del mes"
-     * - "Próximos lanzamientos"
-     */
-    fun getGamesByInterval(interval: DateInterval): Flow<List<Game>>
-
-    /**
-     * Filtra juegos por plataforma
-     *
-     * @param platform Plataforma deseada (PC, PLAYSTATION, etc.)
-     * @return Flow con juegos disponibles en la plataforma
-     *
-     * Caso de uso:
-     * - Usuario con PlayStation quiere ver solo juegos de su plataforma
-     */
-    fun getGamesByPlatform(platform: Platform): Flow<List<Game>>
-
-    /**
-     * Filtra juegos por géneros
-     *
-     * @param genres Lista de géneros a buscar (ej: ["RPG", "Open World"])
-     * @return Flow con juegos que contengan al menos uno de los géneros
-     *
-     * Caso de uso:
-     * - Búsqueda multi-género: "RPG" + "Open World"
-     *
-     * Nota: El filtro es inclusivo (OR), no exclusivo (AND)
-     */
-    fun getGamesByGenres(genres: List<String>): Flow<List<Game>>
-
-    /**
-     * Busca juegos por texto en título o descripción
-     *
-     * @param query Texto a buscar (case-insensitive)
-     * @return Flow con juegos que coincidan con la búsqueda
-     *
-     * Búsqueda en:
-     * - Título del juego
-     * - Descripción
+     * Se emite al iniciar una operación asíncrona.
+     * La UI muestra loading indicator.
      *
      * Ejemplo:
      * ```
-     * searchGames("witcher") // Encuentra "The Witcher 3"
+     * when (resource) {
+     *     is Resource.Loading -> showLoadingSpinner()
+     * }
      * ```
      */
-    fun searchGames(query: String): Flow<List<Game>>
-
+    data object Loading : Resource<Nothing>()
+    
     /**
-     * Obtiene un juego específico por su ID
+     * ✅ Estado: Operación completada exitosamente
      *
-     * @param id Identificador del juego
-     * @return Juego encontrado o null si no existe
+     * Contiene los datos solicitados.
      *
-     * Casos de uso:
-     * - Pantalla de detalles
-     * - Deep linking a un juego específico
-     * - Compartir enlace de juego
+     * @param data Datos obtenidos de la operación
      *
-     * Nota: Es suspend porque puede requerir operaciones I/O
+     * Ejemplo:
+     * ```
+     * when (resource) {
+     *     is Resource.Success -> {
+     *         val games = resource.data
+     *         showGames(games)
+     *     }
+     * }
+     * ```
      */
-    suspend fun getGameById(id: Int): Game?
+    data class Success<T>(val data: T) : Resource<T>()
+    
+    /**
+     * ❌ Estado: Operación falló
+     *
+     * Contiene información detallada del error.
+     *
+     * @param error Error específico que ocurrió
+     *
+     * Ejemplo:
+     * ```
+     * when (resource) {
+     *     is Resource.Error -> {
+     *         when (resource.error) {
+     *             is AppError.NetworkError -> showNoInternetMessage()
+     *             is AppError.NotFound -> showNotFoundMessage()
+     *         }
+     *     }
+     * }
+     * ```
+     */
+    data class Error(val error: AppError) : Resource<Nothing>()
+}
+
+/**
+ *  Sealed class que representa errores específicos de la app
+ *
+ * Permite manejar diferentes tipos de errores de forma específica:
+ * - Errores de red (sin conexión, timeout)
+ * - Errores de base de datos (corrupción, falta de espacio)
+ * - Errores de negocio (no encontrado, no autorizado)
+ * - Errores de validación
+ * - Errores desconocidos
+ *
+ * VENTAJAS:
+ * ✅ Errores tipados y específicos
+ * ✅ La UI puede mostrar mensajes personalizados
+ * ✅ Fácil logging y analytics
+ * ✅ Manejo exhaustivo con when
+ */
+sealed class AppError {
+    
+    /**
+     *  Error de red
+     *
+     * Ocurre cuando:
+     * - No hay conexión a Internet
+     * - Timeout de la petición
+     * - Error del servidor (5xx)
+     *
+     * @param message Descripción del error
+     *
+     * Ejemplo de uso:
+     * ```
+     * when (error) {
+     *     is AppError.NetworkError -> {
+     *         showSnackbar("Check your internet connection")
+     *     }
+     * }
+     * ```
+     */
+    data class NetworkError(val message: String) : AppError()
+    
+    /**
+     *  Error de base de datos
+     *
+     * Ocurre cuando:
+     * - No se puede acceder a la base de datos
+     * - Datos corruptos
+     * - Falta de espacio en disco
+     *
+     * @param message Descripción del error
+     */
+    data class DatabaseError(val message: String) : AppError()
+    
+    /**
+     *  Recurso no encontrado (404)
+     *
+     * Ocurre cuando:
+     * - El juego con ID especificado no existe
+     * - La búsqueda no tiene resultados
+     * - La categoría no tiene juegos
+     *
+     * Ejemplo de uso:
+     * ```
+     * when (error) {
+     *     is AppError.NotFound -> {
+     *         showEmptyState("No games found")
+     *     }
+     * }
+     * ```
+     */
+    data object NotFound : AppError()
+    
+    /**
+     *  No autorizado (401/403)
+     *
+     * Ocurre cuando:
+     * - El usuario no tiene sesión activa
+     * - El token de autenticación expiró
+     * - No tiene permisos para la operación
+     *
+     * Ejemplo de uso:
+     * ```
+     * when (error) {
+     *     is AppError.Unauthorized -> {
+     *         navigateToLogin()
+     *     }
+     * }
+     * ```
+     */
+    data object Unauthorized : AppError()
+    
+    /**
+     * ⚠️ Error de validación
+     *
+     * Ocurre cuando:
+     * - Query de búsqueda inválido
+     * - Parámetros fuera de rango
+     * - Formato de datos incorrecto
+     *
+     * @param message Descripción del error de validación
+     *
+     * Ejemplo de uso:
+     * ```
+     * when (error) {
+     *     is AppError.ValidationError -> {
+     *         showError(error.message)
+     *     }
+     * }
+     * ```
+     */
+    data class ValidationError(val message: String) : AppError()
+    
+    /**
+     * ❓ Error desconocido
+     *
+     * Ocurre cuando:
+     * - Excepción no prevista
+     * - Error sin categoría específica
+     *
+     * @param message Descripción del error
+     *
+     * Ejemplo de uso:
+     * ```
+     * when (error) {
+     *     is AppError.Unknown -> {
+     *         logError(error.message)
+     *         showGenericError()
+     *     }
+     * }
+     * ```
+     */
+    data class Unknown(val message: String) : AppError()
 }
 ```
 
----
 
-### 📝 Paso 1.4: Implementar el Repository con datos mock
+**Conceptos clave de Resource:**
 
-Ahora crearemos la implementación concreta del repository usando **datos hardcodeados** (mock). Más adelante, podremos reemplazar esto con una implementación que llame a una API real.
-
-<u>ubicación</u>:: `app/src/main/java/com/pmdm/mygamestore/data/repository/GamesRepositoryImpl.kt`
+**1. ¿Por qué Resource<T> y no solo T?**
 
 ```kotlin
-package com.pmdm.mygamestore.data.repository
+// ❌ Sin Resource: No sabemos si está cargando, si falló, etc.
+fun getAllGames(): Flow<List<Game>>
+
+// ✅ Con Resource: Estados explícitos
+fun getAllGames(): Flow<Resource<List<Game>>>
+```
+
+
+**2. Pattern matching con when exhaustivo:**
+
+```kotlin
+when (val result = resource) {
+    is Resource.Loading -> {
+        // Mostrar loading
+        showLoadingIndicator()
+    }
+    is Resource.Success -> {
+        val games = result.data
+        // Mostrar juegos
+        displayGames(games)
+    }
+    is Resource.Error -> {
+        when (result.error) {
+            is AppError.NetworkError -> showNoInternetDialog()
+            is AppError.NotFound -> showEmptyState()
+            is AppError.Unknown -> showGenericError()
+            // El compilador obliga a manejar todos los casos
+        }
+    }
+}
+```
+
+
+**3. Type-safety en errores:**
+
+```kotlin
+// ❌ Sin tipos: ambiguo, difícil de manejar
+throw Exception("Network error")
+
+// ✅ Con tipos: claro y específico
+AppError.NetworkError("No internet connection")
+```
+
+
+---
+
+###  Paso 1.4: Crear MockGamesDataSource
+
+Separamos los datos mock en su propia clase para mantener limpio el repository y facilitar la migración a API real.
+
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/data/local/MockGamesDataSource.kt`
+
+```kotlin
+package com.pmdm.mygamestore.data.local
 
 import com.pmdm.mygamestore.domain.model.Game
 import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
 import com.pmdm.mygamestore.domain.model.Platform
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 /**
- * 🔧 Implementación local del repositorio de juegos
+ *  Fuente de datos mock para desarrollo
  *
- * IMPORTANTE:
- * - Esta implementación usa datos MOCK (hardcodeados)
- * - Simula delays de red para hacer realista la experiencia
- * - En producción, esto se reemplazaría por llamadas a API
+ * RESPONSABILIDAD:
+ * - Proveer datos de prueba para desarrollo sin depender de API
+ * - Simular respuesta de una base de datos o API
  *
- * ESCENARIOS REALES:
- * 🌐 API REST: Usar Retrofit para llamar a backend
- * 💾 Base de datos: Usar Room para persistencia local
- * ☁️ Firebase: Usar Firestore para datos en la nube
- * 🔄 Híbrido: Combinar caché local + API (patrón caché-first)
+ * VENTAJAS:
+ * ✅ Separación de datos del repository
+ * ✅ Desarrollo sin depender de backend
+ * ✅ Fácil cambiar a fuente real (API, DB)
+ * ✅ Reutilizable en tests
+ * ✅ Datos centralizados
+ *
+ * MIGRACIÓN A PRODUCCIÓN:
+ * Cuando conectes a API real:
+ * 1. Crear GamesApiService con Retrofit
+ * 2. Crear GamesRepositoryImpl que use GamesApiService
+ * 3. MockGamesRepositoryImpl queda solo para desarrollo/testing
+ *
+ * ```
+ * // Desarrollo
+ * val repository = MockGamesRepositoryImpl(MockGamesDataSource)
+ *
+ * // Producción
+ * val repository = GamesRepositoryImpl(GamesApiService)
+ * ```
  */
-class GamesRepositoryImpl : GamesRepository {
-
+object MockGamesDataSource {
+    
     /**
-     * 🎮 Base de datos simulada de juegos
+     *  Lista de juegos mock para desarrollo
      *
-     * En una app real, esto vendría de:
-     * - API: https://api.rawg.io/api/games
-     * - Database: Room con @Entity Game
+     * En producción real, esto vendría de:
+     * - API REST: GET https://api.example.com/games
+     * - Base de datos: Room + SQLite
      * - Firebase: Firestore collection "games"
+     * - Caché híbrida: Room + Retrofit con política de caché
      */
-    private val mockGames = listOf(
+    val games = listOf(
         Game(
             id = 1,
             title = "The Witcher 3: Wild Hunt",
@@ -683,13 +859,232 @@ class GamesRepositoryImpl : GamesRepository {
             genres = listOf("FPS", "Military", "Multiplayer")
         )
     )
+}
+```
+
+
+---
+
+###  Paso 1.5: Crear interfaz GamesRepository
+
+El **patrón Repository** abstrae el origen de los datos. Definimos un contrato que cualquier implementación (mock o real) debe cumplir.
+
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/data/repository/GamesRepository.kt`
+
+```kotlin
+package com.pmdm.mygamestore.data.repository
+
+import com.pmdm.mygamestore.domain.model.Game
+import com.pmdm.mygamestore.domain.model.GameCategory
+import com.pmdm.mygamestore.domain.model.DateInterval
+import com.pmdm.mygamestore.domain.model.Platform
+import com.pmdm.mygamestore.domain.model.Resource
+import kotlinx.coroutines.flow.Flow
+
+/**
+ *  Interfaz que define el contrato del repositorio de juegos
+ *
+ * PATRÓN REPOSITORY:
+ * ✅ Abstrae la fuente de datos (API, DB, Mock)
+ * ✅ Permite múltiples implementaciones
+ * ✅ Facilita testing con mocks
+ * ✅ Aplica principio de Inversión de Dependencias (SOLID)
+ *
+ * IMPLEMENTACIONES:
+ * 1. MockGamesRepositoryImpl → Desarrollo local, filtra en memoria
+ * 2. GamesRepositoryImpl → Producción, filtra en API/backend
+ *
+ * BENEFICIOS:
+ * - Desacoplamiento: UseCases no saben de dónde vienen los datos
+ * - Testing: Fácil crear implementaciones de prueba
+ * - Flexibilidad: Cambiar de mock a API sin modificar UseCases
+ * - Mantenibilidad: Un solo punto de cambio para origen de datos
+ *
+ * IMPORTANTE - Resource Pattern:
+ * Todos los métodos devuelven Flow<Resource<T>> para manejar:
+ * - Loading: Operación en progreso
+ * - Success: Datos obtenidos correctamente
+ * - Error: Algo falló con información específica
+ */
+interface GamesRepository {
 
     /**
-     * ⏱️ Simula delay de red para hacer realista la experiencia
+     * Obtiene todos los juegos disponibles en el catálogo
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Devuelve MockGamesDataSource.games
+     * - API: GET /api/games
+     *
+     * @return Flow que emite Resource con estados:
+     *         - Loading: Mientras se obtienen los datos
+     *         - Success: Con la lista completa de juegos
+     *         - Error: Si falla la operación
+     *
+     * Ejemplo de uso:
+     * ```
+     * repository.getAllGames().collect { resource ->
+     *     when (resource) {
+     *         is Resource.Loading -> showLoader()
+     *         is Resource.Success -> displayGames(resource.data)
+     *         is Resource.Error -> showError(resource.error)
+     *     }
+     * }
+     * ```
+     */
+    fun getAllGames(): Flow<Resource<List<Game>>>
+
+    /**
+     * Filtra juegos por categoría
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Filtra mockGames en memoria
+     * - API: GET /api/games?category=RPG
+     *
+     * @param category Categoría a filtrar (ACTION, RPG, etc.)
+     * @return Flow<Resource<List<Game>>>
+     */
+    fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>>
+
+    /**
+     * Filtra juegos por intervalo de fecha de lanzamiento
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Filtra mockGames por fecha en memoria
+     * - API: GET /api/games?interval=LAST_WEEK
+     *
+     * @param interval Intervalo de tiempo (LAST_WEEK, LAST_30_DAYS, etc.)
+     * @return Flow<Resource<List<Game>>>
+     */
+    fun getGamesByInterval(interval: DateInterval): Flow<Resource<List<Game>>>
+
+    /**
+     * Filtra juegos por plataforma
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Filtra mockGames en memoria
+     * - API: GET /api/games?platform=PLAYSTATION
+     *
+     * @param platform Plataforma deseada (PC, PLAYSTATION, etc.)
+     * @return Flow<Resource<List<Game>>>
+     */
+    fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>>
+
+    /**
+     * Filtra juegos por géneros
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Filtra mockGames en memoria
+     * - API: GET /api/games?genres=RPG,Fantasy
+     *
+     * @param genres Lista de géneros a buscar
+     * @return Flow<Resource<List<Game>>>
+     */
+    fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>>
+
+    /**
+     * Busca juegos por texto en título o descripción
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Busca en mockGames con contains()
+     * - API: GET /api/games/search?q=witcher
+     *
+     * @param query Texto a buscar (case-insensitive)
+     * @return Flow<Resource<List<Game>>>
+     */
+    fun searchGames(query: String): Flow<Resource<List<Game>>>
+
+    /**
+     * Obtiene un juego específico por su ID
+     *
+     * IMPLEMENTACIONES:
+     * - Mock: Busca en mockGames con find()
+     * - API: GET /api/games/{id}
+     *
+     * @param id Identificador del juego
+     * @return Resource con el juego o error NotFound
+     */
+    suspend fun getGameById(id: Int): Resource<Game>
+}
+```
+
+
+---
+
+###  Paso 1.6: Implementar MockGamesRepositoryImpl
+
+Esta implementación **simula** lo que haría una API real, pero filtrando datos en memoria. Es para desarrollo sin depender de backend.
+
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/data/repository/MockGamesRepositoryImpl.kt`
+
+```kotlin
+package com.pmdm.mygamestore.data.repository
+
+import com.pmdm.mygamestore.data.local.MockGamesDataSource
+import com.pmdm.mygamestore.domain.model.AppError
+import com.pmdm.mygamestore.domain.model.Game
+import com.pmdm.mygamestore.domain.model.GameCategory
+import com.pmdm.mygamestore.domain.model.DateInterval
+import com.pmdm.mygamestore.domain.model.Platform
+import com.pmdm.mygamestore.domain.model.Resource
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
+/**
+ *  Implementación MOCK del repositorio de juegos
+ *
+ * PROPÓSITO:
+ * - Desarrollo sin depender de backend/API
+ * - Testing con datos controlados
+ * - Simular comportamiento de API real
+ *
+ * CARACTERÍSTICAS:
+ * ✅ Filtra datos en MEMORIA (no en servidor)
+ * ✅ Simula delays de red para testing realista
+ * ✅ Devuelve Resource (Loading → Success/Error)
+ * ✅ Maneja errores con try-catch
+ *
+ * IMPORTANTE - Filtros locales:
+ * Esta implementación filtra MockGamesDataSource en el DISPOSITIVO.
+ * En una API real, los filtros se ejecutarían en el BACKEND.
+ *
+ * Ejemplo de diferencia:
+ * ```
+ * // MockGamesRepositoryImpl (esta clase)
+ * fun searchGames(query) {
+ *     val filtered = mockGames.filter { it.title.contains(query) } // ← Cliente filtra
+ * }
+ *
+ * // GamesRepositoryImpl (futuro, con API)
+ * fun searchGames(query) {
+ *     val response = api.searchGames(query) // ← Servidor filtra
+ * }
+ * ```
+ *
+ * CUÁNDO USAR:
+ * ✅ Desarrollo inicial sin API
+ * ✅ Testing de UseCases y ViewModels
+ * ✅ Demos y prototipos
+ *
+ * CUÁNDO NO USAR:
+ * ❌ Producción con datos reales
+ * ❌ Grandes volúmenes de datos (lento filtrar en cliente)
+ */
+class MockGamesRepositoryImpl : GamesRepository {
+
+    /**
+     *  Fuente de datos mock
+     */
+    private val dataSource = MockGamesDataSource
+
+    /**
+     * ⏱️ Simula delay de red
      *
      * En una app real, esto sería:
-     * - El tiempo de respuesta del servidor (100-2000ms)
-     * - El tiempo de lectura de base de datos (10-100ms)
+     * - Tiempo de respuesta del servidor (100-2000ms)
+     * - Tiempo de lectura de base de datos (10-100ms)
      *
      * Beneficios de simular delay:
      * ✅ Testear estados de loading
@@ -697,184 +1092,214 @@ class GamesRepositoryImpl : GamesRepository {
      * ✅ Simular condiciones de red lenta
      */
     private suspend fun simulateNetworkDelay() {
-        delay(800) // 800ms de delay simulado
+        delay(800) // 800ms
     }
 
-    override fun getAllGames(): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        emit(mockGames)
-    }
-
-    override fun getGamesByCategory(category: GameCategory): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        
-        val filtered = if (category == GameCategory.ALL) {
-            mockGames
-        } else {
-            mockGames.filter { it.category == category }
+    override fun getAllGames(): Flow<Resource<List<Game>>> = flow {
+        try {
+            // 1️⃣ Emitir estado Loading
+            emit(Resource.Loading)
+            
+            // 2️⃣ Simular operación asíncrona (red/DB)
+            simulateNetworkDelay()
+            
+            // 3️⃣ Obtener datos
+            val games = dataSource.games
+            
+            // 4️⃣ Emitir Success con datos
+            emit(Resource.Success(games))
+            
+        } catch (e: Exception) {
+            // 5️⃣ Si algo falla, emitir Error
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Unknown error")))
         }
-        
-        emit(filtered)
     }
 
-    override fun getGamesByInterval(interval: DateInterval): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        
-        val now = LocalDate.now()
-        val filtered = when (interval) {
-            DateInterval.ALL_TIME -> mockGames
+    override fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>> = flow {
+        try {
+            emit(Resource.Loading)
+            simulateNetworkDelay()
             
-            DateInterval.LAST_WEEK -> mockGames.filter {
-                val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                gameDate.isAfter(now.minusWeeks(1))
-            }
-            
-            DateInterval.LAST_30_DAYS -> mockGames.filter {
-                val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                gameDate.isAfter(now.minusDays(30))
+            // Filtrar en memoria (simula lo que haría la API)
+            val filtered = if (category == GameCategory.ALL) {
+                dataSource.games
+            } else {
+                dataSource.games.filter { it.category == category }
             }
             
-            DateInterval.LAST_90_DAYS -> mockGames.filter {
-                val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                gameDate.isAfter(now.minusDays(90))
+            emit(Resource.Success(filtered))
+            
+        } catch (e: Exception) {
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by category")))
+        }
+    }
+
+    override fun getGamesByInterval(interval: DateInterval): Flow<Resource<List<Game>>> = flow {
+        try {
+            emit(Resource.Loading)
+            simulateNetworkDelay()
+            
+            // Filtrar por fecha en memoria
+            val now = LocalDate.now()
+            val filtered = when (interval) {
+                DateInterval.ALL_TIME -> dataSource.games
+                
+                DateInterval.LAST_WEEK -> dataSource.games.filter {
+                    val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
+                    gameDate.isAfter(now.minusWeeks(1))
+                }
+                
+                DateInterval.LAST_30_DAYS -> dataSource.games.filter {
+                    val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
+                    gameDate.isAfter(now.minusDays(30))
+                }
+                
+                DateInterval.LAST_90_DAYS -> dataSource.games.filter {
+                    val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
+                    gameDate.isAfter(now.minusDays(90))
+                }
             }
+            
+            emit(Resource.Success(filtered))
+            
+        } catch (e: Exception) {
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by date")))
         }
-        
-        emit(filtered)
     }
 
-    override fun getGamesByPlatform(platform: Platform): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        
-        val filtered = if (platform == Platform.ALL) {
-            mockGames
-        } else {
-            mockGames.filter { it.platform == platform }
-        }
-        
-        emit(filtered)
-    }
-
-    override fun getGamesByGenres(genres: List<String>): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        
-        val filtered = mockGames.filter { game ->
-            // Retorna true si el juego tiene al menos uno de los géneros buscados
-            game.genres.any { genre -> 
-                genres.any { it.equals(genre, ignoreCase = true) }
+    override fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>> = flow {
+        try {
+            emit(Resource.Loading)
+            simulateNetworkDelay()
+            
+            // Filtrar por plataforma en memoria
+            val filtered = if (platform == Platform.ALL) {
+                dataSource.games
+            } else {
+                dataSource.games.filter { it.platform == platform }
             }
+            
+            emit(Resource.Success(filtered))
+            
+        } catch (e: Exception) {
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by platform")))
         }
-        
-        emit(filtered)
     }
 
-    override fun searchGames(query: String): Flow<List<Game>> = flow {
-        simulateNetworkDelay()
-        
-        val filtered = mockGames.filter { game ->
-            game.title.contains(query, ignoreCase = true) ||
-            game.description.contains(query, ignoreCase = true)
+    override fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>> = flow {
+        try {
+            emit(Resource.Loading)
+            simulateNetworkDelay()
+            
+            // Filtrar por géneros en memoria (OR: al menos uno coincide)
+            val filtered = dataSource.games.filter { game ->
+                game.genres.any { genre -> 
+                    genres.any { it.equals(genre, ignoreCase = true) }
+                }
+            }
+            
+            emit(Resource.Success(filtered))
+            
+        } catch (e: Exception) {
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by genres")))
         }
-        
-        emit(filtered)
     }
 
-    override suspend fun getGameById(id: Int): Game? {
-        simulateNetworkDelay()
-        return mockGames.find { it.id == id }
+    override fun searchGames(query: String): Flow<Resource<List<Game>>> = flow {
+        try {
+            emit(Resource.Loading)
+            simulateNetworkDelay()
+            
+            // Buscar en memoria (título y descripción)
+            val filtered = dataSource.games.filter { game ->
+                game.title.contains(query, ignoreCase = true) ||
+                game.description.contains(query, ignoreCase = true)
+            }
+            
+            emit(Resource.Success(filtered))
+            
+        } catch (e: Exception) {
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error searching games")))
+        }
     }
-}
-```
 
-
-**📚 Conceptos importantes del Repository:**
-
-**1. Flow builder (flow { })**
-
-```kotlin
-fun getAllGames(): Flow<List<Game>> = flow {
-    // Código asíncrono
-    delay(1000)
-    
-    // Emitir valores
-    emit(mockGames)
-}
-```
-
-
-- `flow { }` crea un Flow **cold** (frío)
-- Solo se ejecuta cuando alguien hace `collect()`
-- Permite múltiples collectors
-- Se cancela automáticamente
-
-**2. emit() vs return**
-
-```kotlin
-// ❌ No puedes usar return en Flow
-fun getData(): Flow<String> = flow {
-    return "Data" // ❌ Error de compilación
-}
-
-// ✅ Usa emit
-fun getData(): Flow<String> = flow {
-    emit("Data") // ✅ Correcto
-}
-```
-
-
-**3. filter() y operadores de colecciones**
-
-```kotlin
-// filter: Filtra elementos que cumplen condición
-val rpgGames = mockGames.filter { it.category == GameCategory.RPG }
-
-// find: Encuentra el primer elemento que cumple condición
-val game = mockGames.find { it.id == 5 }
-
-// any: Verifica si al menos un elemento cumple condición
-val hasRpg = mockGames.any { it.category == GameCategory.RPG }
-
-// map: Transforma cada elemento
-val titles = mockGames.map { it.title }
-```
-
-
-**4. LocalDate para manejo de fechas**
-
-```kotlin
-import java.time.LocalDate
-
-val now = LocalDate.now() // Fecha actual
-val lastWeek = now.minusWeeks(1) // Hace 1 semana
-val gameDate = LocalDate.parse("2024-01-15") // Parsear fecha
-val isRecent = gameDate.isAfter(lastWeek) // Comparar
-```
-
-
-**5. Simulación de API real**
-
-En producción, esto cambiaría a:
-
-```kotlin
-// Con Retrofit
-@GET("games")
-suspend fun getAllGames(): Response<List<GameDto>>
-
-// Implementación
-override fun getAllGames(): Flow<List<Game>> = flow {
-    val response = api.getAllGames()
-    if (response.isSuccessful) {
-        val games = response.body()?.map { it.toDomain() }
-        emit(games ?: emptyList())
-    } else {
-        throw Exception("Error: ${response.code()}")
+    override suspend fun getGameById(id: Int): Resource<Game> {
+        return try {
+            simulateNetworkDelay()
+            
+            // Buscar por ID en memoria
+            val game = dataSource.games.find { it.id == id }
+            
+            if (game != null) {
+                Resource.Success(game)
+            } else {
+                // Juego no encontrado
+                Resource.Error(AppError.NotFound)
+            }
+            
+        } catch (e: Exception) {
+            Resource.Error(AppError.Unknown(e.message ?: "Error getting game"))
+        }
     }
 }
 ```
+
+
+**Conceptos clave del MockRepository:**
+
+**1. Flow builder con try-catch:**
+
+```kotlin
+fun getData(): Flow<Resource<T>> = flow {
+    try {
+        emit(Resource.Loading)
+        // Operación que puede fallar
+        val data = fetchData()
+        emit(Resource.Success(data))
+    } catch (e: Exception) {
+        emit(Resource.Error(AppError.Unknown(e.message)))
+    }
+}
+```
+
+
+**2. Patrón de emisión estándar:**
+
+```
+Loading → (operación) → Success/Error
+```
+
+
+Siempre en este orden para que la UI pueda reaccionar correctamente.
+
+**3. Filtrado local vs remoto:**
+
+```kotlin
+// Mock: Filtra TODOS los juegos en memoria
+val filtered = mockGames.filter { condition }
+
+// API (futuro): Servidor filtra y devuelve solo resultados
+val response = api.getGames(filter = "RPG") // Solo envía RPGs
+```
+
 
 ---
 
-## 🎯 FASE 2: Capa de Dominio - UseCases {#fase-2-capa-de-dominio}
+### ✅ Resumen de la Fase 1
+
+Has completado la **capa de datos** con:
+
+1. ✅ **Modelo Game** con propiedades completas
+2. ✅ **Enums** (GameCategory, Platform, DateInterval) para type-safety
+3. ✅ **Resource<T>** para manejar estados (Loading, Success, Error)
+4. ✅ **AppError** con errores específicos y tipados
+5. ✅ **MockGamesDataSource** con 12 juegos de prueba
+6. ✅ **GamesRepository** (interfaz) que define el contrato
+7. ✅ **MockGamesRepositoryImpl** que filtra en memoria
+
+---
+
+##  **FASE 2: Capa de Dominio - UseCases** {#fase-2-capa-de-dominio}
 
 La capa de dominio contiene la **lógica de negocio** de la aplicación. Los UseCases son el corazón de esta capa y representan las acciones que un usuario puede realizar.
 
@@ -884,7 +1309,7 @@ Los **UseCases** (Casos de Uso) son clases que:
 
 - ✅ Encapsulan lógica de negocio específica
 - ✅ Orquestan llamadas a repositories
-- ✅ Transforman y procesan datos según las reglas de negocio
+- ✅ Transforman y procesan datos según reglas de negocio
 - ✅ Son independientes del framework (Android, iOS, Web)
 
 ### Arquitectura de nuestros UseCases
@@ -892,14 +1317,41 @@ Los **UseCases** (Casos de Uso) son clases que:
 En este proyecto, los UseCases están **agrupados por funcionalidad**:
 
 ```
-📁 domain/usecase/
-   📄 GameUseCases.kt      ← Todos los casos de uso de Game
-   📄 LibraryUseCases.kt   ← (Futuro) Casos de uso de Library
-   📄 UserUseCases.kt      ← (Futuro) Casos de uso de User
+domain/usecase/
+  ├─ GameUseCases.kt      ← Todos los casos de uso de Game
+  ├─ LibraryUseCases.kt   ← (Futuro) Casos de uso de Library
+  └─ UserUseCases.kt      ← (Futuro) Casos de uso de User
+```
+
+### Responsabilidades de UseCases vs Repository
+
+```
+┌─────────────────────────────────────────┐
+│         GAMEUSECASES                    │
+│  (Lógica de negocio + Transformación)   │
+│                                         │
+│  ✅ Ordenar por rating                  │
+│  ✅ Ordenar por relevancia              │
+│  ✅ Combinar múltiples filtros          │
+│  ✅ Aplicar reglas de negocio           │
+│  ✅ Transformar Resource<T>             │
+└──────────────┬──────────────────────────┘
+               │
+┌──────────────▼──────────────────────────┐
+│        GAMESREPOSITORY                  │
+│     (Acceso a datos puro)               │
+│                                         │
+│  ✅ Obtener datos (mock/API)            │
+│  ✅ Filtrar datos básico                │
+│  ✅ Emitir Resource states              │
+│  ❌ NO tiene lógica de ordenamiento     │
+└─────────────────────────────────────────┘
 ```
 
 
-### 📝 Paso 2.1: Crear clase GameUseCases
+---
+
+###  Paso 2.1: Crear clase GameUseCases
 
 Esta clase agrupa **todos los casos de uso relacionados con juegos**. Cada método representa una acción específica que el usuario puede realizar.
 
@@ -913,11 +1365,12 @@ import com.pmdm.mygamestore.domain.model.Game
 import com.pmdm.mygamestore.domain.model.GameCategory
 import com.pmdm.mygamestore.domain.model.DateInterval
 import com.pmdm.mygamestore.domain.model.Platform
+import com.pmdm.mygamestore.domain.model.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 /**
- * 🎯 Casos de uso agrupados para operaciones con juegos
+ *  Casos de uso agrupados para operaciones con juegos
  *
  * PATRÓN USE CASE:
  * - Encapsula lógica de negocio específica de la aplicación
@@ -928,7 +1381,14 @@ import kotlinx.coroutines.flow.map
  * ORGANIZACIÓN:
  * ✅ Una clase por entidad/funcionalidad (GameUseCases, LibraryUseCases, etc.)
  * ✅ Cada método es un caso de uso concreto
+ * ✅ NO usamos operator invoke() (llamada directa al método)
  * ✅ Preparado para inyección de dependencias con Koin
+ *
+ * MANEJO DE RESOURCE:
+ * ✅ Recibe Flow<Resource<List<Game>>> del repository
+ * ✅ Aplica lógica solo a Resource.Success
+ * ✅ Propaga Loading y Error sin modificar
+ * ✅ Devuelve Flow<Resource<List<Game>>> al ViewModel
  *
  * IMPORTANTE - Sin DI por ahora:
  * - Esta clase se instancia directamente en el ViewModel
@@ -941,7 +1401,7 @@ class GameUseCases(
 ) {
 
     /**
-     * 📋 UC-001: Obtiene todos los juegos del catálogo
+     *  UC-001: Obtiene todos los juegos del catálogo
      *
      * CASO DE USO:
      * - Usuario abre la app
@@ -950,51 +1410,65 @@ class GameUseCases(
      *
      * LÓGICA DE NEGOCIO:
      * - Obtiene todos los juegos sin filtrar
-     * - En el futuro podría agregar ordenamiento por defecto
+     * - Sin ordenamiento adicional (orden natural)
      *
-     * @return Flow con la lista completa de juegos
+     * @return Flow<Resource<List<Game>>>
+     *         - Loading: Mientras obtiene datos
+     *         - Success: Con lista completa de juegos
+     *         - Error: Si falla la operación
      *
      * Ejemplo de uso:
      * ```kotlin
-     * gameUseCases.getAllGames().collect { games ->
-     *     println("Total de juegos: ${games.size}")
+     * gameUseCases.getAllGames().collect { resource ->
+     *     when (resource) {
+     *         is Resource.Loading -> showLoader()
+     *         is Resource.Success -> displayGames(resource.data)
+     *         is Resource.Error -> showError(resource.error)
+     *     }
      * }
      * ```
      */
-    fun getAllGames(): Flow<List<Game>> {
+    fun getAllGames(): Flow<Resource<List<Game>>> {
         return gamesRepository.getAllGames()
     }
 
     /**
-     * 🎮 UC-002: Filtra juegos por categoría
+     *  UC-002: Filtra juegos por categoría y ordena por rating
      *
      * CASO DE USO:
      * - Usuario hace click en chip "RPG"
      * - Usuario navega a sección "Juegos de Acción"
      *
      * LÓGICA DE NEGOCIO:
-     * - Si category es ALL, devuelve todos los juegos
-     * - Si no, filtra por categoría específica
-     * - Ordena por rating (mejor valorados primero)
+     * - Repository filtra por categoría
+     * - UseCase ordena por rating (mejor valorados primero)
      *
      * ¿Por qué ordenar por rating?
-     * - Mejora la experiencia: usuarios ven primero los mejores juegos
+     * - Mejora experiencia: usuarios ven mejores juegos primero
      * - Aumenta probabilidad de compra
-     * - Es una práctica común en tiendas (Steam, Epic, PlayStation Store)
+     * - Práctica común en tiendas (Steam, Epic, PlayStation Store)
      *
      * @param category Categoría a filtrar (ACTION, RPG, etc.)
-     * @return Flow con juegos filtrados y ordenados por rating
+     * @return Flow<Resource<List<Game>>> ordenados por rating descendente
      */
-    fun getGamesByCategory(category: GameCategory): Flow<List<Game>> {
+    fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>> {
         return gamesRepository.getGamesByCategory(category)
-            .map { games ->
-                // Lógica adicional: ordenar por rating descendente
-                games.sortedByDescending { it.rating }
+            .map { resource ->
+                // Solo aplicar lógica si es Success
+                when (resource) {
+                    is Resource.Success -> {
+                        // Ordenar por rating (mayor a menor)
+                        val sortedGames = resource.data.sortedByDescending { it.rating }
+                        Resource.Success(sortedGames)
+                    }
+                    is Resource.Loading -> resource // Propagar sin cambios
+                    is Resource.Error -> resource   // Propagar sin cambios
+                }
             }
     }
 
     /**
-     * 📅 UC-003: Filtra juegos por intervalo de fecha de lanzamiento
+     *  UC-003: Filtra por intervalo de fecha y ordena por fecha
      *
      * CASOS DE USO:
      * - Sección "Novedades de la semana"
@@ -1002,58 +1476,65 @@ class GameUseCases(
      * - Filtro "Últimos 90 días"
      *
      * LÓGICA DE NEGOCIO:
-     * - Filtra según el intervalo seleccionado
-     * - Ordena por fecha de lanzamiento (más recientes primero)
+     * - Repository filtra por intervalo de fecha
+     * - UseCase ordena por fecha (más recientes primero)
      *
      * REGLAS DE NEGOCIO:
-     * - LAST_WEEK: Juegos lanzados en los últimos 7 días
-     * - LAST_30_DAYS: Juegos lanzados en el último mes
-     * - LAST_90_DAYS: Juegos lanzados en los últimos 3 meses
-     * - ALL_TIME: Todos los juegos sin filtro de fecha
+     * - LAST_WEEK: Últimos 7 días
+     * - LAST_30_DAYS: Último mes
+     * - LAST_90_DAYS: Últimos 3 meses
+     * - ALL_TIME: Sin filtro de fecha
      *
      * @param interval Intervalo de tiempo
-     * @return Flow con juegos lanzados en el intervalo, ordenados por fecha
+     * @return Flow<Resource<List<Game>>> ordenados por fecha descendente
      */
-    fun getGamesInterval(interval: DateInterval): Flow<List<Game>> {
+    fun getGamesInterval(interval: DateInterval): Flow<Resource<List<Game>>> {
         return gamesRepository.getGamesByInterval(interval)
-            .map { games ->
-                // Ordenar por fecha de lanzamiento (más recientes primero)
-                games.sortedByDescending { it.releaseDate }
+            .map { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        // Ordenar por fecha de lanzamiento (más recientes primero)
+                        val sortedGames = resource.data.sortedByDescending { it.releaseDate }
+                        Resource.Success(sortedGames)
+                    }
+                    is Resource.Loading -> resource
+                    is Resource.Error -> resource
+                }
             }
     }
 
     /**
-     * 🎮 UC-004: Filtra juegos por plataforma
+     *  UC-004: Filtra juegos por plataforma
      *
      * CASO DE USO:
-     * - Usuario tiene PlayStation y solo quiere ver juegos compatibles
+     * - Usuario tiene PlayStation y solo quiere juegos compatibles
      * - Filtro de plataforma en la UI
      *
      * LÓGICA DE NEGOCIO:
-     * - Si platform es ALL, devuelve todos
-     * - Si no, filtra por plataforma específica
+     * - Repository filtra por plataforma
+     * - Sin ordenamiento adicional
      *
      * MEJORA FUTURA:
-     * - Podría ordenar por popularidad en esa plataforma
+     * - Ordenar por popularidad en esa plataforma
      * - Mostrar exclusivos primero
      *
-     * @param platform Plataforma deseada (PC, PLAYSTATION, etc.)
-     * @return Flow con juegos de la plataforma
+     * @param platform Plataforma (PC, PLAYSTATION, XBOX, etc.)
+     * @return Flow<Resource<List<Game>>>
      */
-    fun getGamesByPlatform(platform: Platform): Flow<List<Game>> {
+    fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>> {
         return gamesRepository.getGamesByPlatform(platform)
     }
 
     /**
-     * 🏷️ UC-005: Filtra juegos por géneros
+     * ️ UC-005: Filtra juegos por géneros
      *
      * CASO DE USO:
      * - Usuario busca juegos con etiquetas específicas
      * - Búsqueda multi-género: "RPG" + "Open World"
      *
      * LÓGICA DE NEGOCIO:
-     * - Filtro inclusivo (OR): El juego debe tener AL MENOS uno de los géneros
-     * - No es exclusivo (AND): No requiere tener TODOS los géneros
+     * - Filtro inclusivo (OR): Juego debe tener AL MENOS uno de los géneros
+     * - No es exclusivo (AND): No requiere TODOS los géneros
      *
      * Ejemplo:
      * - Buscar ["RPG", "Fantasy"]
@@ -1062,14 +1543,14 @@ class GameUseCases(
      * - "FIFA" (Sports) → ❌ Excluido
      *
      * @param genres Lista de géneros a buscar
-     * @return Flow con juegos que contengan al menos un género
+     * @return Flow<Resource<List<Game>>>
      */
-    fun getGamesByGenres(genres: List<String>): Flow<List<Game>> {
+    fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>> {
         return gamesRepository.getGamesByGenres(genres)
     }
 
     /**
-     * 🔍 UC-006: Busca juegos por texto
+     *  UC-006: Busca juegos por texto y ordena por relevancia
      *
      * CASO DE USO:
      * - Usuario escribe "witcher" en la barra de búsqueda
@@ -1078,83 +1559,99 @@ class GameUseCases(
      * LÓGICA DE NEGOCIO:
      * - Si query está vacío → devuelve todos los juegos
      * - Si no → busca en título y descripción
-     * - Ordena por relevancia (coincidencias en título primero)
+     * - Ordena por RELEVANCIA (coincidencias en título primero)
      *
      * ORDENAMIENTO POR RELEVANCIA:
-     * 1. Coincidencia en título (prioridad 2)
-     * 2. Coincidencia en descripción (prioridad 1)
+     * 1. Título contiene query (prioridad 2)
+     * 2. Descripción contiene query (prioridad 1)
      * 3. Sin coincidencia (prioridad 0)
      *
      * ¿Por qué este orden?
-     * - El título es más relevante que la descripción
-     * - Mejora la experiencia del usuario
+     * - Título es más relevante que descripción
+     * - Mejora experiencia del usuario
      * - Similar a buscadores como Google
      *
      * @param query Texto a buscar (case-insensitive)
-     * @return Flow con resultados ordenados por relevancia
+     * @return Flow<Resource<List<Game>>> ordenados por relevancia
      *
      * Ejemplo:
      * ```kotlin
-     * searchGames("god").collect { games ->
-     *     // "God of War" aparecerá primero (coincidencia en título)
-     *     // Juegos con "god" en descripción aparecerán después
+     * searchGames("god").collect { resource ->
+     *     when (resource) {
+     *         is Resource.Success -> {
+     *             // "God of War" aparece primero (coincidencia en título)
+     *             // Juegos con "god" en descripción aparecen después
+     *         }
+     *     }
      * }
      * ```
      */
-    fun searchGames(query: String): Flow<List<Game>> {
+    fun searchGames(query: String): Flow<Resource<List<Game>>> {
         // Si la búsqueda está vacía, devolver todos
         if (query.isBlank()) {
             return gamesRepository.getAllGames()
         }
         
         return gamesRepository.searchGames(query)
-            .map { games ->
-                // Ordenar por relevancia:
-                // - Primero los que coincidan en título
-                // - Luego los que coincidan en descripción
-                games.sortedByDescending { game ->
-                    when {
-                        game.title.contains(query, ignoreCase = true) -> 2
-                        game.description.contains(query, ignoreCase = true) -> 1
-                        else -> 0
+            .map { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        // Ordenar por relevancia
+                        val sortedGames = resource.data.sortedByDescending { game ->
+                            when {
+                                game.title.contains(query, ignoreCase = true) -> 2
+                                game.description.contains(query, ignoreCase = true) -> 1
+                                else -> 0
+                            }
+                        }
+                        Resource.Success(sortedGames)
                     }
+                    is Resource.Loading -> resource
+                    is Resource.Error -> resource
                 }
             }
     }
 
     /**
-     * 🎯 UC-007: Obtiene un juego específico por ID
+     *  UC-007: Obtiene un juego específico por ID
      *
      * CASOS DE USO:
-     * - Usuario hace click en un juego → navega a DetailScreen
+     * - Usuario hace click en juego → navega a DetailScreen
      * - Deep linking: abrir app directamente en un juego
      * - Compartir enlace de juego
      * - Notificación push sobre un juego específico
      *
      * LÓGICA DE NEGOCIO:
-     * - Busca el juego por ID único
-     * - Devuelve null si no existe
+     * - Busca juego por ID único
+     * - Devuelve Resource.Success con juego
+     * - O Resource.Error con AppError.NotFound
      *
      * Es suspend porque:
      * - Puede requerir operaciones I/O (DB, API)
-     * - No es un Flow porque solo devuelve un valor
+     * - No es Flow porque solo devuelve un valor
      *
      * @param id Identificador único del juego
-     * @return Juego encontrado o null si no existe
+     * @return Resource<Game>
+     *         - Success: Con el juego encontrado
+     *         - Error(NotFound): Si no existe
+     *         - Error(Unknown): Si falla la operación
      *
      * Ejemplo:
      * ```kotlin
      * viewModelScope.launch {
-     *     val game = gameUseCases.getGameById(5)
-     *     if (game != null) {
-     *         // Mostrar detalles
-     *     } else {
-     *         // Mostrar error "Juego no encontrado"
+     *     when (val result = gameUseCases.getGameById(5)) {
+     *         is Resource.Success -> showDetails(result.data)
+     *         is Resource.Error -> {
+     *             when (result.error) {
+     *                 is AppError.NotFound -> showNotFoundError()
+     *                 else -> showGenericError()
+     *             }
+     *         }
      *     }
      * }
      * ```
      */
-    suspend fun getGameById(id: Int): Game? {
+    suspend fun getGameById(id: Int): Resource<Game> {
         return gamesRepository.getGameById(id)
     }
 
@@ -1162,32 +1659,41 @@ class GameUseCases(
      * ⭐ UC-008: Obtiene juegos mejor valorados
      *
      * CASO DE USO:
-     * - Sección "Top Rated" en la home
+     * - Sección "Top Rated" en home
      * - Sección "Mejor valorados de la semana"
      * - Recomendaciones de alta calidad
      *
      * LÓGICA DE NEGOCIO:
-     * - Filtra juegos con rating >= minRating (por defecto 4.5)
-     * - Ordena por rating descendente
+     * - Obtiene todos los juegos
+     * - Filtra: rating >= minRating (por defecto 4.5)
+     * - Ordena: por rating descendente
      *
      * ¿Por qué rating 4.5?
-     * - Es el estándar de la industria para "excelente"
-     * - Steam usa 4.5/5 estrellas para "Overwhelmingly Positive"
-     * - PlayStation Store destaca juegos con 4.5+
+     * - Estándar industria para "excelente"
+     * - Steam: 4.5/5 = "Overwhelmingly Positive"
+     * - PlayStation Store destaca juegos 4.5+
      *
      * @param minRating Rating mínimo (por defecto 4.5 de 5.0)
-     * @return Flow con juegos altamente valorados
+     * @return Flow<Resource<List<Game>>>
      */
-    fun getTopRatedGames(minRating: Double = 4.5): Flow<List<Game>> {
+    fun getTopRatedGames(minRating: Double = 4.5): Flow<Resource<List<Game>>> {
         return gamesRepository.getAllGames()
-            .map { games ->
-                games.filter { it.rating >= minRating }
-                    .sortedByDescending { it.rating }
+            .map { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        val topGames = resource.data
+                            .filter { it.rating >= minRating }
+                            .sortedByDescending { it.rating }
+                        Resource.Success(topGames)
+                    }
+                    is Resource.Loading -> resource
+                    is Resource.Error -> resource
+                }
             }
     }
 
     /**
-     * 💰 UC-009: Filtra juegos por rango de precio
+     *  UC-009: Filtra juegos por rango de precio
      *
      * CASO DE USO:
      * - Usuario busca juegos baratos (< $20)
@@ -1195,55 +1701,78 @@ class GameUseCases(
      * - Filtro de presupuesto
      *
      * LÓGICA DE NEGOCIO:
-     * - Filtra juegos con price <= maxPrice
-     * - Ordena por precio ascendente (más baratos primero)
+     * - Filtra: price <= maxPrice
+     * - Ordena: por precio ascendente (más baratos primero)
      *
      * MEJORA FUTURA:
-     * - Agregar minPrice para rangos (ej: $20-$40)
+     * - Agregar minPrice para rangos ($20-$40)
      * - Calcular descuentos
      * - Destacar ofertas limitadas
      *
      * @param maxPrice Precio máximo en dólares
-     * @return Flow con juegos dentro del presupuesto
+     * @return Flow<Resource<List<Game>>>
      *
      * Ejemplo:
      * ```kotlin
      * // Juegos de menos de $30
-     * gameUseCases.getGamesByPriceRange(30.0).collect { games ->
-     *     println("Encontrados ${games.size} juegos económicos")
+     * gameUseCases.getGamesByPriceRange(30.0).collect { resource ->
+     *     when (resource) {
+     *         is Resource.Success -> {
+     *             println("${resource.data.size} juegos económicos")
+     *         }
+     *     }
      * }
      * ```
      */
-    fun getGamesByPriceRange(maxPrice: Double): Flow<List<Game>> {
+    fun getGamesByPriceRange(maxPrice: Double): Flow<Resource<List<Game>>> {
         return gamesRepository.getAllGames()
-            .map { games ->
-                games.filter { it.price <= maxPrice }
-                    .sortedBy { it.price } // Más baratos primero
+            .map { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        val filtered = resource.data
+                            .filter { it.price <= maxPrice }
+                            .sortedBy { it.price } // Más baratos primero
+                        Resource.Success(filtered)
+                    }
+                    is Resource.Loading -> resource
+                    is Resource.Error -> resource
+                }
             }
     }
 
     /**
-     * 🔥 UC-010: Obtiene juegos populares (más vendidos)
+     *  UC-010: Obtiene juegos populares (trending)
      *
      * CASO DE USO:
      * - Sección "Trending Now"
      * - "Lo más vendido de la semana"
+     * - Carrusel de juegos destacados
      *
-     * NOTA: Actualmente ordenamos por rating
-     * En producción real:
-     * - Requeriría campo "salesCount" en Game
-     * - O llamada a API de estadísticas de ventas
+     * NOTA IMPORTANTE:
+     * - Actualmente ordenamos por rating
+     * - En producción real requeriría:
+     *   * Campo "salesCount" en Game
+     *   * O llamada a API de estadísticas de ventas
+     *   * O analytics de visualizaciones
      *
-     * @param limit Número máximo de juegos a devolver
-     * @return Flow con los juegos más populares
+     * @param limit Número máximo de juegos a devolver (por defecto 10)
+     * @return Flow<Resource<List<Game>>>
      */
-    fun getPopularGames(limit: Int = 10): Flow<List<Game>> {
+    fun getPopularGames(limit: Int = 10): Flow<Resource<List<Game>>> {
         return gamesRepository.getAllGames()
-            .map { games ->
-                // Simulación: ordenar por rating
-                // En producción: ordenar por ventas
-                games.sortedByDescending { it.rating }
-                    .take(limit) // Tomar solo los primeros N
+            .map { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        // Simulación: ordenar por rating
+                        // En producción: ordenar por ventas/popularidad
+                        val popular = resource.data
+                            .sortedByDescending { it.rating }
+                            .take(limit) // Tomar solo los primeros N
+                        Resource.Success(popular)
+                    }
+                    is Resource.Loading -> resource
+                    is Resource.Error -> resource
+                }
             }
     }
 }
@@ -1252,27 +1781,32 @@ class GameUseCases(
 
 ---
 
-### 📚 Conceptos clave de los UseCases
+###  Conceptos clave de los UseCases
 
-#### 1. **Flow.map { } para transformar datos**
+#### 1. **Flow.map { } para transformar Resource**
 
 ```kotlin
-fun getTopRatedGames(): Flow<List<Game>> {
+fun getTopRatedGames(): Flow<Resource<List<Game>>> {
     return repository.getAllGames()
-        .map { games ->
-            // Transformar la lista de juegos
-            games.filter { it.rating >= 4.5 }
-                 .sortedByDescending { it.rating }
+        .map { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    // Transformar SOLO los datos de Success
+                    val filtered = resource.data.filter { it.rating >= 4.5 }
+                    Resource.Success(filtered)
+                }
+                is Resource.Loading -> resource // Propagar
+                is Resource.Error -> resource   // Propagar
+            }
         }
 }
 ```
 
 
-**¿Qué hace map?**
-
-- Transforma cada emisión del Flow
-- No modifica el Flow original
-- Devuelve un nuevo Flow transformado
+**¿Por qué este patrón?**
+- ✅ La lógica solo se aplica a datos exitosos
+- ✅ Loading y Error se propagan sin modificar
+- ✅ La UI recibe estados correctos
 
 #### 2. **sortedBy vs sortedByDescending**
 
@@ -1296,7 +1830,7 @@ val topGames = games.filter { it.rating >= 4.5 }
 // Filtrar juegos baratos
 val cheapGames = games.filter { it.price <= 20.0 }
 
-// Filtrar por múltiples condiciones
+// Filtrar por múltiples condiciones (AND)
 val filtered = games.filter { 
     it.rating >= 4.0 && it.price <= 40.0 
 }
@@ -1309,16 +1843,37 @@ val filtered = games.filter {
 // Tomar los primeros 5 elementos
 val top5 = games.take(5)
 
-// Tomar los últimos 3 elementos
+// Tomar los últimos 3
 val last3 = games.takeLast(3)
 
 // Tomar mientras se cumpla condición
-val whileExpensive = games.takeWhile { it.price > 50.0 }
+val expensive = games.takeWhile { it.price > 50.0 }
 ```
+
+
+#### 5. **Diferencia entre suspend fun y Flow**
+
+```kotlin
+// suspend fun: Devuelve UN valor
+suspend fun getGameById(id: Int): Resource<Game>
+
+// Flow: Puede emitir MÚLTIPLES valores en el tiempo
+fun getAllGames(): Flow<Resource<List<Game>>>
+```
+
+
+**¿Cuándo usar cada uno?**
+
+| Caso | Usar |
+|------|------|
+| Una sola respuesta | `suspend fun` |
+| Stream de datos | `Flow` |
+| Datos que cambian | `Flow` |
+| Operación única | `suspend fun` |
 
 ---
 
-### 🔄 Flujo completo de un caso de uso
+###  Flujo completo de un caso de uso con Resource
 
 ```
 1. Usuario escribe "witcher" en búsqueda
@@ -1333,14 +1888,24 @@ val whileExpensive = games.takeWhile { it.price > 50.0 }
 4. GameUseCases → gamesRepository.searchGames("witcher")
    │                    .map { ordenar por relevancia }
    ▼
-5. GamesRepositoryImpl → filtra mockGames
-   │                     → emit(filteredGames)
+5. MockGamesRepositoryImpl:
+   │  emit(Resource.Loading)          ← UI muestra spinner
+   │  delay(800)                       ← Simula red
+   │  val filtered = mockGames.filter()
+   │  emit(Resource.Success(filtered)) ← UI muestra juegos
    ▼
-6. Flow regresa por las capas:
-   Repository → UseCase → ViewModel → UI
-   │
+6. GameUseCases.map:
+   │  when (Resource.Success) {
+   │    ordenar por relevancia
+   │    devolver Resource.Success(sorted)
+   │  }
    ▼
-7. HomeScreen se recompone con nuevos datos
+7. HomeViewModel.collect:
+   │  when (Resource.Success) {
+   │    _uiState.update { games = result.data }
+   │  }
+   ▼
+8. HomeScreen recompone con nuevos datos
 ```
 
 
@@ -1348,27 +1913,655 @@ val whileExpensive = games.takeWhile { it.price > 50.0 }
 
 ### ✅ Resumen de la Fase 2
 
-Has completado la **capa de dominio** con:
+Se ha completado la **capa de dominio** con:
 
 1. ✅ **Clase GameUseCases** con 10 casos de uso:
-   - UC-001: getAllGames
-   - UC-002: getGamesByCategory (con ordenamiento)
-   - UC-003: getGamesInterval (con ordenamiento)
-   - UC-004: getGamesByPlatform
-   - UC-005: getGamesByGenres
-   - UC-006: searchGames (con relevancia)
-   - UC-007: getGameById
-   - UC-008: getTopRatedGames
-   - UC-009: getGamesByPriceRange
-   - UC-010: getPopularGames
+2. ✅ **Lógica de negocio** implementada.
 
-2. ✅ **Lógica de negocio** implementada:
-   - Ordenamiento por rating
-   - Ordenamiento por relevancia en búsqueda
-   - Filtrado por rango de precio
-   - Limitación de resultados
 
-3. ✅ **Preparado para DI**: La clase recibe repository por constructor
+##  **FASE 3: Capa de Presentación - ViewModel** {#fase-3-capa-de-presentación}
 
-**Próximo paso**: Crear el ViewModel que usará estos UseCases para gestionar el estado de la UI.
+La capa de presentación gestiona el **estado de la UI** y coordina la lógica de presentación. El ViewModel es el componente central que conecta la UI con los casos de uso.
 
+### ¿Qué es un ViewModel?
+
+El **ViewModel** en MVVM:
+
+- ✅ Gestiona el estado de la UI (HomeUiState)
+- ✅ Sobrevive a cambios de configuración (rotación de pantalla)
+- ✅ Coordina casos de uso (GameUseCases)
+- ✅ Transforma datos del dominio para la UI
+- ✅ Maneja eventos del usuario (clicks, búsquedas)
+- ✅ NO tiene referencias a Views/Composables (evita memory leaks)
+
+### Arquitectura MVVM
+
+```
+┌────────────────────────────────────────┐
+│          VIEW (UI)                     │
+│      HomeScreen (Composable)           │
+│                                        │
+│  - Observa uiState                     │
+│  - Renderiza según estado              │
+│  - Emite eventos al ViewModel          │
+└──────────────┬─────────────────────────┘
+               │ collectAsState()
+               │ viewModel.onEvent()
+┌──────────────▼─────────────────────────┐
+│         VIEWMODEL                      │
+│        HomeViewModel                   │
+│                                        │
+│  - StateFlow<HomeUiState>              │
+│  - Coordina GameUseCases               │
+│  - Maneja Resource states              │
+│  - Actualiza UI state                  │
+└──────────────┬─────────────────────────┘
+               │ gameUseCases.method()
+┌──────────────▼─────────────────────────┐
+│         USE CASES                      │
+│        GameUseCases                    │
+│                                        │
+│  - Lógica de negocio                   │
+│  - Transforma datos                    │
+└────────────────────────────────────────┘
+```
+
+
+---
+
+###  Paso 3.1: Crear HomeUiState
+
+El estado UI es un **data class inmutable** que representa TODO lo que la UI necesita para renderizarse.
+
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/presentation/viewmodel/HomeViewModel.kt`
+
+```kotlin
+package com.pmdm.mygamestore.presentation.viewmodel
+
+import android.content.Context
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.pmdm.mygamestore.data.repository.GamesRepository
+import com.pmdm.mygamestore.data.repository.MockGamesRepositoryImpl
+import com.pmdm.mygamestore.data.repository.SessionManager
+import com.pmdm.mygamestore.data.repository.SessionManagerImpl
+import com.pmdm.mygamestore.domain.model.AppError
+import com.pmdm.mygamestore.domain.model.Game
+import com.pmdm.mygamestore.domain.model.GameCategory
+import com.pmdm.mygamestore.domain.model.DateInterval
+import com.pmdm.mygamestore.domain.model.Platform
+import com.pmdm.mygamestore.domain.model.Resource
+import com.pmdm.mygamestore.domain.usecase.GameUseCases
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+/**
+ *  Estado UI de la pantalla Home
+ *
+ * PATRÓN: Single Source of Truth
+ * - Toda la información de la UI está en un solo objeto
+ * - La UI es función del estado: UI = f(state)
+ * - Cambio de estado → Recomposición automática
+ *
+ * Representa TODO lo que la UI necesita para renderizarse.
+ *
+ * INMUTABILIDAD:
+ * - Es data class con val (inmutable)
+ * - No se modifica directamente
+ * - Se crea nueva instancia con copy()
+ *
+ * @property games Lista de juegos a mostrar en el grid
+ * @property isLoading Indica si hay una operación en progreso
+ * @property errorMessage Mensaje de error a mostrar (null si no hay)
+ * @property username Nombre del usuario logueado (para TopBar)
+ * @property searchQuery Texto actual de búsqueda
+ * @property selectedCategory Categoría seleccionada en filtros
+ * @property selectedPlatform Plataforma seleccionada en filtros
+ * @property selectedInterval Intervalo de fechas seleccionado en filtros
+ */
+data class HomeUiState(
+    val games: List<Game> = emptyList(),
+    val isLoading: Boolean = false,
+    val errorMessage: String? = null,
+    val username: String? = null,
+    
+    // Filtros activos
+    val searchQuery: String = "",
+    val selectedCategory: GameCategory = GameCategory.ALL,
+    val selectedPlatform: Platform = Platform.ALL,
+    val selectedInterval: DateInterval = DateInterval.ALL_TIME,
+)
+```
+
+
+**Conceptos del Estado UI:**
+
+**1. ¿Por qué data class?**
+```kotlin
+// data class genera automáticamente:
+val state1 = HomeUiState(games = listOf())
+val state2 = state1.copy(isLoading = true) // ✅ Copia con cambios
+
+// equals(): compara por contenido
+state1 == state2 // false (isLoading es diferente)
+
+// toString(): para debugging
+println(state1) // HomeUiState(games=[], isLoading=false, ...)
+```
+
+
+**2. Single Source of Truth:**
+```kotlin
+// ❌ MAL: Estado disperso
+var games: List<Game> = emptyList()
+var isLoading = false
+var error: String? = null
+// Difícil de sincronizar
+
+// ✅ BIEN: Estado centralizado
+val uiState = HomeUiState(
+    games = emptyList(),
+    isLoading = false,
+    errorMessage = null
+)
+```
+
+
+---
+
+###  Paso 3.2: Crear HomeViewModel
+
+El ViewModel coordina toda la lógica de la pantalla Home.
+
+```kotlin
+/**
+ *  ViewModel para la pantalla Home
+ *
+ * PATRÓN MVVM:
+ * - Model: Game, GameUseCases, GamesRepository
+ * - View: HomeScreen (Composable)
+ * - ViewModel: HomeViewModel (esta clase)
+ *
+ * RESPONSABILIDADES:
+ * ✅ Gestionar el estado de la UI (HomeUiState)
+ * ✅ Coordinar casos de uso (GameUseCases)
+ * ✅ Manejar eventos del usuario (búsqueda, filtros, clicks)
+ * ✅ Transformar Resource en estado UI
+ * ✅ Gestionar corrutinas con viewModelScope
+ * ✅ NO tiene referencias a Views (evita memory leaks)
+ *
+ * MANEJO DE RESOURCE:
+ * - Resource.Loading → uiState.isLoading = true
+ * - Resource.Success → uiState.games = data
+ * - Resource.Error → uiState.errorMessage = error
+ *
+ * IMPORTANTE - Sin DI por ahora:
+ * - gameUseCases se instancia directamente aquí
+ * - sessionManager se instancia directamente aquí
+ * - Cuando se implemente Koin, se recibirán por constructor
+ *
+ * @param context Contexto de Android (para SessionManager)
+ */
+class HomeViewModel(
+    context: Context
+) : ViewModel() {
+
+    //  Dependencias instanciadas directamente (temporal, antes de Koin)
+    // Cuando implementes Koin DI, estas líneas se eliminarán
+    // y las dependencias se recibirán por constructor
+    private val gamesRepository: GamesRepository = MockGamesRepositoryImpl()
+    private val gameUseCases = GameUseCases(gamesRepository)
+    private val sessionManager: SessionManager = SessionManagerImpl(context)
+
+    //  Estado privado mutable (solo modificable desde el ViewModel)
+    private val _uiState = MutableStateFlow(HomeUiState())
+    
+    //  Estado público inmutable (expuesto a la UI)
+    val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
+
+    init {
+        //  Cargar datos iniciales al crear el ViewModel
+        loadUsername()
+        loadGames()
+    }
+
+    /**
+     *  Carga el nombre del usuario desde SessionManager
+     *
+     * Se ejecuta en paralelo con loadGames() gracias a viewModelScope.
+     * Cada launch crea una corrutina independiente.
+     */
+    private fun loadUsername() {
+        viewModelScope.launch {
+            sessionManager.getUsername()
+                .catch { exception ->
+                    // Manejo de errores en el Flow
+                    // No bloqueamos la carga de juegos si falla esto
+                    println("Error loading username: ${exception.message}")
+                }
+                .collect { username ->
+                    _uiState.update { it.copy(username = username) }
+                }
+        }
+    }
+
+    /**
+     *  Carga los juegos aplicando filtros activos
+     *
+     * LÓGICA DE PRIORIDAD DE FILTROS:
+     * 1. Búsqueda por texto (mayor prioridad)
+     * 2. Intervalo de fechas
+     * 3. Plataforma
+     * 4. Categoría
+     * 5. Todos los juegos (sin filtros)
+     *
+     * MANEJO DE RESOURCE:
+     * - Loading → Mostrar spinner
+     * - Success → Mostrar juegos
+     * - Error → Mostrar mensaje
+     */
+    fun loadGames() {
+        viewModelScope.launch {
+            val currentState = _uiState.value
+            
+            // Determinar qué UseCase llamar según filtros activos
+            val gamesFlow = when {
+                //  Prioridad 1: Búsqueda por texto
+                currentState.searchQuery.isNotBlank() -> {
+                    gameUseCases.searchGames(currentState.searchQuery)
+                }
+                
+                //  Prioridad 2: Filtro por intervalo de fechas
+                currentState.selectedInterval != DateInterval.ALL_TIME -> {
+                    gameUseCases.getGamesInterval(currentState.selectedInterval)
+                }
+                
+                //  Prioridad 3: Filtro por plataforma
+                currentState.selectedPlatform != Platform.ALL -> {
+                    gameUseCases.getGamesByPlatform(currentState.selectedPlatform)
+                }
+                
+                //  Prioridad 4: Filtro por categoría
+                currentState.selectedCategory != GameCategory.ALL -> {
+                    gameUseCases.getGamesByCategory(currentState.selectedCategory)
+                }
+                
+                //  Por defecto: Todos los juegos
+                else -> {
+                    gameUseCases.getAllGames()
+                }
+            }
+
+            //  Recolectar el Flow y manejar Resource
+            gamesFlow.collect { resource ->
+                when (resource) {
+                    is Resource.Loading -> {
+                        // ⏳ Estado Loading: Mostrar spinner
+                        _uiState.update { 
+                            it.copy(
+                                isLoading = true,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                    
+                    is Resource.Success -> {
+                        // ✅ Estado Success: Mostrar juegos
+                        _uiState.update { 
+                            it.copy(
+                                games = resource.data,
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                    
+                    is Resource.Error -> {
+                        // ❌ Estado Error: Mostrar mensaje
+                        val errorMsg = when (resource.error) {
+                            is AppError.NetworkError -> 
+                                "No internet connection. Please check your network."
+                            is AppError.NotFound -> 
+                                "No games found."
+                            is AppError.DatabaseError -> 
+                                "Database error. Please try again."
+                            is AppError.Unauthorized -> 
+                                "You need to login to access this content."
+                            is AppError.ValidationError -> 
+                                resource.error.message
+                            is AppError.Unknown -> 
+                                resource.error.message
+                        }
+                        
+                        _uiState.update {
+                            it.copy(
+                                isLoading = false,
+                                errorMessage = errorMsg
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     *  Evento: Usuario escribe en la búsqueda
+     *
+     * @param query Nuevo texto de búsqueda
+     */
+    fun onSearchQueryChange(query: String) {
+        _uiState.update { it.copy(searchQuery = query) }
+        loadGames() // Recargar con nuevo criterio
+    }
+
+    /**
+     *  Evento: Usuario selecciona una categoría
+     *
+     * @param category Nueva categoría
+     */
+    fun onCategorySelected(category: GameCategory) {
+        _uiState.update { 
+            it.copy(
+                selectedCategory = category,
+                // Limpiar otros filtros al seleccionar categoría
+                searchQuery = "",
+                selectedInterval = DateInterval.ALL_TIME,
+                selectedPlatform = Platform.ALL
+            )
+        }
+        loadGames()
+    }
+
+    /**
+     *  Evento: Usuario selecciona una plataforma
+     *
+     * @param platform Nueva plataforma
+     */
+    fun onPlatformSelected(platform: Platform) {
+        _uiState.update { 
+            it.copy(
+                selectedPlatform = platform,
+                searchQuery = "",
+                selectedInterval = DateInterval.ALL_TIME,
+                selectedCategory = GameCategory.ALL
+            )
+        }
+        loadGames()
+    }
+
+    /**
+     *  Evento: Usuario selecciona un intervalo de fechas
+     *
+     * @param interval Nuevo intervalo
+     */
+    fun onIntervalSelected(interval: DateInterval) {
+        _uiState.update { 
+            it.copy(
+                selectedInterval = interval,
+                searchQuery = "",
+                selectedCategory = GameCategory.ALL,
+                selectedPlatform = Platform.ALL
+            )
+        }
+        loadGames()
+    }
+
+    /**
+     *  Evento: Usuario hace pull-to-refresh
+     */
+    fun refreshGames() {
+        loadGames()
+    }
+
+    /**
+     * ❌ Limpia el mensaje de error después de mostrarlo
+     */
+    fun clearError() {
+        _uiState.update { it.copy(errorMessage = null) }
+    }
+
+    /**
+     *  Limpia todos los filtros y vuelve a estado inicial
+     */
+    fun clearAllFilters() {
+        _uiState.update {
+            it.copy(
+                searchQuery = "",
+                selectedCategory = GameCategory.ALL,
+                selectedPlatform = Platform.ALL,
+                selectedInterval = DateInterval.ALL_TIME
+            )
+        }
+        loadGames()
+    }
+}
+```
+
+
+---
+
+###  Paso 3.3: Crear HomeViewModelFactory
+
+El Factory es necesario porque HomeViewModel necesita Context, que no se puede pasar directamente.
+
+```kotlin
+/**
+ *  Factory para crear HomeViewModel
+ *
+ * PROPÓSITO:
+ * - ViewModel necesita Context para SessionManager
+ * - ViewModelProvider.Factory permite pasar parámetros al constructor
+ *
+ * IMPORTANTE - TEMPORAL:
+ * ✅ Esta factory es TEMPORAL
+ * ✅ Solo existe porque HomeViewModel necesita Context
+ * ✅ Cuando se implemente Koin DI, esta clase se ELIMINARÁ
+ * ✅ En su lugar: viewModel = koinViewModel()
+ *
+ * MIGRACIÓN A KOIN:
+ * ```kotlin
+ * // Antes (con Factory)
+ * val viewModel: HomeViewModel = viewModel(
+ *     factory = HomeViewModelFactory(context)
+ * )
+ *
+ * // Después (con Koin)
+ * val viewModel: HomeViewModel = koinViewModel()
+ * ```
+ *
+ * @param context Contexto de Android
+ */
+class HomeViewModelFactory(
+    private val context: Context
+) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(context) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+    }
+}
+```
+
+
+---
+
+###  Conceptos clave del ViewModel
+
+#### 1. **StateFlow vs MutableStateFlow**
+
+```kotlin
+// Privado: Solo el ViewModel puede modificar
+private val _uiState = MutableStateFlow(HomeUiState())
+
+// Público: La UI solo puede observar (read-only)
+val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
+```
+
+
+**¿Por qué este patrón?**
+- ✅ Encapsulación: La UI no puede modificar el estado
+- ✅ Unidirectional Data Flow: Solo el ViewModel actualiza
+- ✅ Previene bugs: Cambios solo desde un lugar
+
+#### 2. **update { } vs value =**
+
+```kotlin
+// ❌ Menos seguro en concurrencia
+_uiState.value = _uiState.value.copy(isLoading = true)
+
+// ✅ Thread-safe, atómico
+_uiState.update { it.copy(isLoading = true) }
+```
+
+
+**update()** garantiza que:
+- Las actualizaciones son atómicas
+- No se pierde ningún cambio en concurrencia
+- Sintaxis más limpia
+
+#### 3. **viewModelScope**
+
+```kotlin
+// ✅ Se cancela automáticamente cuando ViewModel se destruye
+viewModelScope.launch {
+    // Operaciones asíncronas
+}
+
+// ❌ No uses GlobalScope (no se cancela nunca)
+GlobalScope.launch { ... }
+```
+
+
+**Ventajas de viewModelScope:**
+- Vinculado al ciclo de vida del ViewModel
+- Se cancela automáticamente en onCleared()
+- Previene memory leaks
+
+#### 4. **Flow.collect vs Flow.collectLatest**
+
+```kotlin
+// collect: Procesa cada emisión completa
+flow.collect { value ->
+    // Se ejecuta para cada valor
+}
+
+// collectLatest: Cancela emisión anterior si llega una nueva
+flow.collectLatest { value ->
+    // Solo procesa el valor más reciente
+    // Útil para búsquedas en tiempo real
+}
+```
+
+
+#### 5. **catch operator para manejo de errores**
+
+```kotlin
+flow
+    .catch { exception ->
+        // Maneja errores en el Flow
+        emit(defaultValue)
+    }
+    .collect { value ->
+        // Procesar valor
+    }
+```
+
+
+---
+
+###  Flujo completo de datos con Resource
+
+```
+┌─────────────────────────────────────────────────┐
+│  1. Usuario escribe "zelda" en búsqueda         │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  2. HomeScreen llama:                           │
+│     viewModel.onSearchQueryChange("zelda")      │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  3. HomeViewModel:                              │
+│     _uiState.update { searchQuery = "zelda" }   │
+│     loadGames()                                 │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  4. loadGames() determina UseCase:              │
+│     gameUseCases.searchGames("zelda")           │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  5. GameUseCases:                               │
+│     gamesRepository.searchGames("zelda")        │
+│     .map { ordenar por relevancia }             │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  6. MockGamesRepositoryImpl:                    │
+│     emit(Resource.Loading)                      │
+│     delay(800)                                  │
+│     val filtered = mockGames.filter()           │
+│     emit(Resource.Success(filtered))            │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  7. GameUseCases.map:                           │
+│     when (Resource.Success) {                   │
+│       ordenar por relevancia                    │
+│       Resource.Success(sorted)                  │
+│     }                                           │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  8. HomeViewModel.collect:                      │
+│     when (resource) {                           │
+│       Loading → isLoading = true                │
+│       Success → games = resource.data           │
+│       Error → errorMessage = ...                │
+│     }                                           │
+└────────────────┬────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────┐
+│  9. HomeScreen recompone:                       │
+│     val uiState by viewModel.uiState            │
+│                    .collectAsState()            │
+│     LazyVerticalGrid(uiState.games)             │
+└─────────────────────────────────────────────────┘
+```
+
+
+---
+
+### ✅ Resumen de la Fase 3
+
+Has completado la **capa de presentación - ViewModel** con:
+
+1. ✅ **HomeUiState** con todos los datos necesarios para la UI:
+
+    - Lista de juegos
+    - Estados de loading y error
+    - Username del usuario
+    - Filtros activos (búsqueda, categoría, plataforma, intervalo)
+
+2. ✅ **HomeViewModel** con funcionalidades completas:
+
+    - Gestión de estado con StateFlow
+    - Coordinación de GameUseCases
+    - Manejo de Resource (Loading, Success, Error)
+    - Eventos del usuario (búsqueda, filtros)
+    - Integración con SessionManager
+    - Prioridad de filtros lógica
+
+3. ✅ **HomeViewModelFactory** temporal para inyección de Context
+4. ✅ **Manejo robusto de errores** con mensajes específicos por tipo
