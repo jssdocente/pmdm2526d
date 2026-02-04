@@ -2565,3 +2565,413 @@ Has completado la **capa de presentación - ViewModel** con:
 
 3. ✅ **HomeViewModelFactory** temporal para inyección de Context
 4. ✅ **Manejo robusto de errores** con mensajes específicos por tipo
+
+
+## **FASE 4: Componentes UI Reutilizables** {#fase-4-componentes-ui}
+
+Esta fase se centra en crear componentes Compose reutilizables, stateless y bien organizados para construir la interfaz de HomeScreen.
+
+---
+
+!!! info "Dependencia de Coil"
+     Antes de crear los componentes UI, necesitamos agregar **Coil** para cargar imágenes desde URLs externas.
+
+    *¿Qué es Coil?*
+
+    **Coil** (Coroutine Image Loader) es una librería moderna de carga de imágenes para Android que:
+
+    - ✅ Está optimizada para Kotlin y Coroutines
+    - ✅ Es ligera y rápida
+    - ✅ Tiene soporte nativo para Jetpack Compose
+    - ✅ Cachea imágenes automáticamente (memoria + disco)
+    - ✅ Maneja placeholders, error states y transformaciones
+
+    *Agregar Dependencia*
+
+    **Ubicación**: `app/build.gradle.kts`
+
+    ```kotlin
+    dependencies {
+        // ... otras dependencias existentes
+
+        // Coil para carga de imágenes
+        implementation("io.coil-kt:coil-compose:2.5.0")
+    }
+    ```
+
+
+    *Sincronizar Proyecto*
+
+    Después de agregar la dependencia:
+
+    1. Click en **"Sync Now"** en la barra superior
+    2. O ejecuta: **File → Sync Project with Gradle Files**
+
+    *Uso Básico en Compose*
+
+    Una vez instalada, puedes usar `AsyncImage` en tus composables:
+
+    ```kotlin
+    import coil.compose.AsyncImage
+
+    @Composable
+    fun GameImage(imageUrl: String) {
+        AsyncImage(
+            model = imageUrl,
+            contentDescription = "Game cover",
+            modifier = Modifier.size(200.dp),
+            contentScale = ContentScale.Crop,
+            placeholder = painterResource(R.drawable.placeholder), // Opcional
+            error = painterResource(R.drawable.error_image)        // Opcional
+        )
+    }
+    ```
+
+
+    *Características de AsyncImage*
+
+    - **Automática**: Descarga, cachea y muestra la imagen
+    - **Placeholders**: Muestra imagen temporal mientras carga
+    - **Error handling**: Muestra imagen de error si falla
+    - **Content scale**: Crop, Fit, FillBounds, etc.
+    - **Transformations**: Círculo, bordes redondeados, blur, etc.
+
+    ---
+
+    *✅ Verificación*
+
+    Para verificar que Coil está correctamente instalado:
+
+    ```kotlin
+    // En cualquier @Composable
+    AsyncImage(
+        model = "https://picsum.photos/400/600",
+        contentDescription = null
+    )
+    ```
+
+
+    Si la imagen se muestra correctamente, **Coil está listo para usar** en los componentes GameCard y GameGrid.
+
+---
+
+### 📁 Paso 4.1: Estructura de Carpetas
+
+Organizar los componentes en la carpeta existente `presentation/ui/componentes`:
+
+```
+presentation/ui/componentes/
+  ├─ BotonGS.kt              ← Ya existe (reutilizar)
+  ├─ TextFieldGS.kt          ← Ya existe (reutilizar para SearchBar)
+  ├─ LoadingIndicator.kt     ← Nuevo
+  ├─ ErrorMessage.kt         ← Nuevo
+  ├─ EmptyState.kt           ← Nuevo
+  ├─ CategoryChipsRow.kt     ← Nuevo
+  ├─ GameCard.kt             ← Nuevo
+  └─ GameGrid.kt             ← Nuevo
+```
+
+
+---
+
+### 🔍 Paso 4.2: SearchBar Component (Reutilizando TextFieldGS)
+
+**Ubicación**: Usar directamente `TextFieldGS` en HomeScreen
+
+No necesitas crear un componente nuevo, usa `TextFieldGS` existente:
+
+```kotlin
+// En HomeScreen.kt
+TextFieldGS(
+    value = searchQuery,
+    onValueChange = onSearchQueryChange,
+    placeholder = "Search games...",
+    modifier = Modifier.fillMaxWidth(),
+    singleLine = true
+)
+```
+
+
+**Ventajas de reutilizar**:
+- ✅ Ya tiene el estilo personalizado del proyecto
+- ✅ Colores y forma consistentes con el tema
+- ✅ Menos código duplicado
+
+---
+
+### 🏷️ Paso 4.3: CategoryChipsRow Component
+
+**Ubicación**: `presentation/ui/componentes/CategoryChipsRow.kt`
+
+```kotlin
+@Composable
+fun CategoryChipsRow(
+    selectedCategory: GameCategory,
+    onCategorySelected: (GameCategory) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) {
+        items(GameCategory.entries) { category ->
+            FilterChip(
+                selected = category == selectedCategory,
+                onClick = { onCategorySelected(category) },
+                label = { Text(category.name) }
+            )
+        }
+    }
+}
+```
+
+
+---
+
+### 🎮 Paso 4.4: GameCard Component
+
+**Ubicación**: `presentation/ui/componentes/GameCard.kt`
+
+```kotlin
+@Composable
+fun GameCard(
+    game: Game,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+        Column {
+            // Imagen con Coil
+            AsyncImage(
+                model = game.imageUrl,
+                contentDescription = game.title,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp),
+                contentScale = ContentScale.Crop
+            )
+            
+            Column(modifier = Modifier.padding(12.dp)) {
+                Text(
+                    text = game.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                
+                Spacer(modifier = Modifier.height(4.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    // Rating
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            Icons.Default.Star,
+                            contentDescription = null,
+                            tint = Color(0xFFFFD700),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Text(
+                            text = game.rating.toString(),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    
+                    // Precio
+                    Text(
+                        text = "$${game.price}",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+    }
+}
+```
+
+
+---
+
+### 📱 Paso 4.5: GameGrid Component
+
+**Ubicación**: `presentation/ui/componentes/GameGrid.kt`
+
+```kotlin
+@Composable
+fun GameGrid(
+    games: List<Game>,
+    onGameClick: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(
+            items = games,
+            key = { game -> game.id }
+        ) { game ->
+            GameCard(
+                game = game,
+                onClick = { onGameClick(game.id) }
+            )
+        }
+    }
+}
+```
+
+
+---
+
+### 🔄 Paso 4.6: LoadingIndicator Component
+
+**Ubicación**: `presentation/ui/componentes/LoadingIndicator.kt`
+
+```kotlin
+@Composable
+fun LoadingIndicator(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator()
+    }
+}
+```
+
+
+---
+
+### ⚠️ Paso 4.7: ErrorMessage Component (Reutilizando BotonGS)
+
+**Ubicación**: `presentation/ui/componentes/ErrorMessage.kt`
+
+```kotlin
+@Composable
+fun ErrorMessage(
+    message: String,
+    onRetry: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Icon(
+            Icons.Default.Error,
+            contentDescription = null,
+            modifier = Modifier.size(64.dp),
+            tint = MaterialTheme.colorScheme.error
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Text(
+            text = message,
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        // Reutilizando BotonGS existente
+        BotonGS(
+            texto = "Retry",
+            onClick = onRetry
+        )
+    }
+}
+```
+
+
+---
+
+### 📭 Paso 4.8: EmptyState Component (Reutilizando BotonGS)
+
+**Ubicación**: `presentation/ui/componentes/EmptyState.kt`
+
+```kotlin
+@Composable
+fun EmptyState(
+    message: String = "No games found",
+    onClearFilters: (() -> Unit)? = null,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Icon(
+            Icons.Default.SearchOff,
+            contentDescription = null,
+            modifier = Modifier.size(64.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Text(
+            text = message,
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center
+        )
+        
+        onClearFilters?.let {
+            Spacer(modifier = Modifier.height(16.dp))
+            // Reutilizando BotonGS existente
+            BotonGS(
+                texto = "Clear Filters",
+                onClick = it
+            )
+        }
+    }
+}
+```
+
+!!! note "Iconos"
+    Se ha utilizado el icono `Icons.Default.SearchOff` que viene dentro de los iconos extendidos de Material Design, que se encuentran en el paquete `androidx.compose.material.icons.extended`.<br>
+    Es necesario agregar la dependencia de `androidx.compose.material.icons.extended` en el archivo `build.gradle` del módulo `app`.
+
+    ```gradle
+    implementation "androidx.compose.material:material-icons-extended:1.7.6"
+    ```
+    
+
+
+---
+
+### ✅ Resumen de la Fase 4
+
+Has creado componentes UI reutilizables aprovechando los existentes:
+
+**Componentes reutilizados del proyecto**:
+
+- ✅ **TextFieldGS** - Para SearchBar (sin crear componente nuevo)
+- ✅ **BotonGS** - Para botones Retry y Clear Filters
+
+**Componentes nuevos creados**:
+
+- ✅ **CategoryChipsRow** - Filtros de categorías
+- ✅ **GameCard** - Tarjeta individual con Coil
+- ✅ **GameGrid** - Grid de 2 columnas
+- ✅ **LoadingIndicator** - Spinner centrado
+- ✅ **ErrorMessage** - Error con BotonGS
+- ✅ **EmptyState** - Estado vacío con BotonGS
