@@ -3,21 +3,17 @@
 En esta 5ª parte del proyecto, vamos a implementar la pantalla de inicio de la aplicación, que mostrará un catálogo de juegos con funcionalidades de búsqueda, filtrado y navegación.
 
 !!! tip "Repositorio de la Aplicación"
-    El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
+El código fuente de la aplicación se encuentra en el repositorio de GitHub: [MyGameStore](https://github.com/jssdocente/MyGameStore)
 
 ## 📖 Índice
 
 1. [Introducción](#introducción)
-2. [Objetivos de Aprendizaje](#objetivos-de-aprendizaje)
-3. [Arquitectura General](#arquitectura-general)
-4. [Fase 1: Capa de Datos - Models y Repository](#fase-1-capa-de-datos)
-5. [Fase 2: Capa de Dominio - UseCases](#fase-2-capa-de-dominio)
-6. [Fase 3: Capa de Presentación - ViewModel](#fase-3-capa-de-presentación)
-7. [Fase 4: Componentes UI Reutilizables](#fase-4-componentes-ui)
-8. [Fase 5: HomeScreen Completa](#fase-5-homescreen)
-9. [Fase 6: Integración con Navegación](#fase-6-navegación)
-10. [Preparación para Inyección de Dependencias](#preparación-di)
-11. [Resumen y Próximos Pasos](#resumen)
+2. [Arquitectura General](#arquitectura-general)
+3. [Fase 1: Capa de Datos - Models y Repository](#fase-1-capa-de-datos)
+4. [Fase 2: Capa de Dominio - UseCases](#fase-2-capa-de-dominio)
+5. [Fase 3: Capa de Presentación - ViewModel](#fase-3-capa-de-presentación)
+6. [Fase 4: Componentes UI Reutilizables](#fase-4-componentes-ui)
+7. [Fase 5: HomeScreen Completa](#fase-5-homescreen)
 
 ---
 
@@ -70,45 +66,6 @@ Esta implementación sigue **Clean Architecture** con separación clara en tres 
 - **Mantenible**: Cambios en una capa no afectan a otras
 - **Escalable**: Preparado para crecer (API real, más funcionalidades)
 - **Independiente del framework**: La lógica de negocio no depende de Android
-
----
-
-## 🎓 Objetivos de Aprendizaje {#objetivos-de-aprendizaje}
-
-Al completar esta parte del proyecto, habrás aprendido:
-
-### 🏗️ Arquitectura y Patrones
-
-- ✨ Implementar **Clean Architecture** con capas separadas
-- ✨ Aplicar el **patrón Repository** para abstracción de datos
-- ✨ Crear **UseCases agrupados** por funcionalidad (sin operator invoke)
-- ✨ Implementar **MVVM pattern** con ViewModel
-
-### 📊 Gestión de Estado
-
-- ✨ Gestionar **estado complejo** con StateFlow
-- ✨ Usar **MutableStateFlow** vs **StateFlow** correctamente
-- ✨ Combinar múltiples flujos de datos con **Flow operators**
-- ✨ Manejar estados: Loading, Success, Empty, Error
-
-### 🎨 Jetpack Compose
-
-- ✨ Crear **componentes UI reutilizables** y stateless
-- ✨ Trabajar con **LazyVerticalGrid** para listas eficientes
-- ✨ Implementar **búsqueda reactiva** en tiempo real
-- ✨ Usar **LaunchedEffect** para side-effects
-- ✨ Integrar **Coil** para carga de imágenes
-
-### 🧭 Navegación
-
-- ✨ Implementar **navegación con parámetros** (gameId)
-- ✨ Crear **BottomNavigationBar** funcional
-- ✨ Gestionar **backStack** correctamente
-
-### 🔧 Preparación para DI
-
-- ✨ Estructurar código listo para **Inyección de Dependencias con Koin**
-- ✨ Entender cuándo instanciar directamente vs. inyectar por constructor
 
 ---
 
@@ -235,6 +192,7 @@ import kotlinx.serialization.Serializable
  * - Domain model: Pertenece a la capa de dominio, no a UI ni datos
  *
  * @property id Identificador único del juego (usado como key en listas)
+ * @property slug Identificador único en formato URL-friendly
  * @property title Título del juego
  * @property description Descripción detallada del juego
  * @property imageUrl URL de la imagen de portada (cargada con Coil)
@@ -242,12 +200,20 @@ import kotlinx.serialization.Serializable
  * @property rating Valoración de 0.0 a 5.0 (ej: 4.8)
  * @property releaseDate Fecha de lanzamiento en formato ISO (yyyy-MM-dd): "2024-01-15"
  * @property category Categoría principal del juego (ACTION, RPG, etc.)
- * @property platform Plataforma en la que está disponible
- * @property genres Lista de géneros asociados (["RPG", "Open World", "Fantasy"])
+ * @property platforms Lista de plataformas en las que está disponible
+ * @property genres Lista de géneros del juego
+ * @property stores Lista de tiendas donde está disponible
+ * @property tags Lista de etiquetas/tags del juego
+ * @property screenshots Lista de capturas de pantalla
+ * @property metacritic Puntuación de Metacritic (0-100)
+ * @property playtime Tiempo de juego promedio en horas
+ * @property ratingsCount Número total de valoraciones
+ * @property esrbRating Clasificación ESRB del juego
  */
 @Serializable
 data class Game(
     val id: Int,
+    val slug: String? = null,
     val title: String,
     val description: String,
     val imageUrl: String,
@@ -255,8 +221,15 @@ data class Game(
     val rating: Double,
     val releaseDate: String,
     val category: GameCategory,
-    val platform: Platform,
-    val genres: List<String>
+    val platforms: List<Platform> = emptyList(),
+    val genres: List<Genre> = emptyList(),
+    val stores: List<Store> = emptyList(),
+    val tags: List<Tag> = emptyList(),
+    val screenshots: List<Screenshot> = emptyList(),
+    val metacritic: Int? = null,
+    val playtime: Int? = null,
+    val ratingsCount: Int? = null,
+    val esrbRating: EsrbRating? = null
 )
 ```
 
@@ -665,45 +638,28 @@ AppError.NetworkError("No internet connection")
 
 Separamos los datos mock en su propia clase para mantener limpio el repository y facilitar la migración a API real.
 
-**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/data/local/MockGamesDataSource.kt`
+**Ubicación**: `app/src/main/java/com/pmdm/mygamestore/data/local/MockDataSource.kt`
 
 ```kotlin
 package com.pmdm.mygamestore.data.local
 
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.Platform
-
 /**
- *  Fuente de datos mock para desarrollo
+ * MockDataSource es un objeto que simula una fuente de datos para una aplicación centrada en videojuegos.
+ * Sirve como recurso inicial para proporcionar información estática relacionada con géneros, plataformas,
+ * editores, tiendas, etiquetas y juegos.
  *
- * RESPONSABILIDAD:
- * - Proveer datos de prueba para desarrollo sin depender de API
- * - Simular respuesta de una base de datos o API
- *
- * VENTAJAS:
- * ✅ Separación de datos del repository
- * ✅ Desarrollo sin depender de backend
- * ✅ Fácil cambiar a fuente real (API, DB)
- * ✅ Reutilizable en tests
- * ✅ Datos centralizados
- *
- * MIGRACIÓN A PRODUCCIÓN:
- * Cuando conectes a API real:
- * 1. Crear GamesApiService con Retrofit
- * 2. Crear GamesRepositoryImpl que use GamesApiService
- * 3. MockGamesRepositoryImpl queda solo para desarrollo/testing
- *
- * ```
- * // Desarrollo
- * val repository = MockGamesRepositoryImpl(MockGamesDataSource)
- *
- * // Producción
- * val repository = GamesRepositoryImpl(GamesApiService)
- * ```
+ * Datos proveídos:
+ * - `genres`: Lista de géneros populares de videojuegos, definidos por un identificador único, nombre y slug.
+ * - `platforms`: Lista de plataformas disponibles para videojuegos, con su respectivo identificador, nombre y slug.
+ * - `publishers`: Lista de editores de videojuegos reconocidos, identificados por un ID, nombre y slug.
+ * - `stores`: Lista de tiendas en las que se pueden adquirir juegos o contenido relacionado, con su correspondiente identificador, nombre y slug.
+ * - `tags`: Lista de etiquetas (tags) relevantes para clasificar los videojuegos, definidas por ID, nombre y slug.
+ * - `games`: Lista de detalles de juegos predefinidos, incluyendo información como título, descripción, precio, calificación, fecha de lanzamiento,
+ *  plataformas soportadas, géneros relacionados, tiendas donde están disponibles, etiquetas asociadas, capturas de pantalla, entre otros atributos específicos
+ * .
  */
-object MockGamesDataSource {
-    
+object MockDataSource {
+
     /**
      *  Lista de juegos mock para desarrollo
      *
@@ -714,150 +670,73 @@ object MockGamesDataSource {
      * - Caché híbrida: Room + Retrofit con política de caché
      */
     val games = listOf(
-        Game(
-            id = 1,
-            title = "The Witcher 3: Wild Hunt",
-            description = "An epic open-world RPG adventure set in a fantasy universe. Hunt monsters, make choices that matter, and explore a vast world filled with quests.",
-            imageUrl = "https://picsum.photos/400/600?random=1",
-            price = 39.99,
-            rating = 4.8,
-            releaseDate = "2024-01-15",
-            category = GameCategory.RPG,
-            platform = Platform.PC,
-            genres = listOf("RPG", "Open World", "Fantasy")
-        ),
-        Game(
-            id = 2,
-            title = "God of War Ragnarök",
-            description = "Continue Kratos and Atreus' Norse adventure in this breathtaking sequel. Epic battles, emotional storytelling, and stunning visuals await.",
-            imageUrl = "https://picsum.photos/400/600?random=2",
-            price = 59.99,
-            rating = 4.9,
-            releaseDate = "2024-02-01",
-            category = GameCategory.ACTION,
-            platform = Platform.PLAYSTATION,
-            genres = listOf("Action", "Adventure", "Mythology")
-        ),
-        Game(
-            id = 3,
-            title = "Halo Infinite",
-            description = "Master Chief returns in this epic FPS adventure. Experience the next chapter of the legendary Halo saga with new gameplay and multiplayer.",
-            imageUrl = "https://picsum.photos/400/600?random=3",
-            price = 49.99,
-            rating = 4.5,
-            releaseDate = "2023-12-10",
-            category = GameCategory.ACTION,
-            platform = Platform.XBOX,
-            genres = listOf("FPS", "Sci-Fi", "Multiplayer")
-        ),
-        Game(
-            id = 4,
-            title = "The Legend of Zelda: TOTK",
-            description = "Explore Hyrule like never before in this groundbreaking adventure. Discover new abilities, solve puzzles, and uncover ancient secrets.",
-            imageUrl = "https://picsum.photos/400/600?random=4",
-            price = 59.99,
-            rating = 5.0,
-            releaseDate = "2024-01-20",
-            category = GameCategory.ADVENTURE,
-            platform = Platform.NINTENDO,
-            genres = listOf("Adventure", "Puzzle", "Open World")
-        ),
-        Game(
-            id = 5,
-            title = "Stardew Valley",
-            description = "Build your dream farm in this relaxing and addictive simulation. Grow crops, raise animals, go fishing, and become part of the community.",
-            imageUrl = "https://picsum.photos/400/600?random=5",
-            price = 14.99,
-            rating = 4.7,
-            releaseDate = "2023-11-05",
-            category = GameCategory.SIMULATION,
-            platform = Platform.MOBILE,
-            genres = listOf("Simulation", "Farming", "Indie")
-        ),
-        Game(
-            id = 6,
-            title = "FIFA 24",
-            description = "The ultimate football experience with realistic gameplay, updated rosters, and exciting new game modes for solo and multiplayer.",
-            imageUrl = "https://picsum.photos/400/600?random=6",
-            price = 69.99,
-            rating = 4.2,
-            releaseDate = "2024-02-10",
-            category = GameCategory.SPORTS,
-            platform = Platform.PC,
-            genres = listOf("Sports", "Simulation", "Multiplayer")
-        ),
-        Game(
-            id = 7,
-            title = "Civilization VI",
-            description = "Build an empire to stand the test of time. Lead your civilization from the Stone Age to the Information Age in this turn-based strategy masterpiece.",
-            imageUrl = "https://picsum.photos/400/600?random=7",
-            price = 29.99,
-            rating = 4.6,
-            releaseDate = "2023-10-20",
-            category = GameCategory.STRATEGY,
-            platform = Platform.PC,
-            genres = listOf("Strategy", "Turn-Based", "Historical")
-        ),
-        Game(
-            id = 8,
-            title = "Tetris Effect",
-            description = "Experience Tetris like never before with stunning visuals and an incredible soundtrack that reacts to your gameplay in real-time.",
-            imageUrl = "https://picsum.photos/400/600?random=8",
-            price = 19.99,
-            rating = 4.4,
-            releaseDate = "2024-01-05",
-            category = GameCategory.PUZZLE,
-            platform = Platform.MOBILE,
-            genres = listOf("Puzzle", "Music", "Casual")
-        ),
-        Game(
-            id = 9,
-            title = "Elden Ring",
-            description = "From FromSoftware and George R.R. Martin comes a dark fantasy epic. Explore a vast interconnected world filled with danger and mystery.",
-            imageUrl = "https://picsum.photos/400/600?random=9",
-            price = 59.99,
-            rating = 4.9,
-            releaseDate = "2024-01-25",
-            category = GameCategory.RPG,
-            platform = Platform.PLAYSTATION,
-            genres = listOf("RPG", "Souls-like", "Dark Fantasy")
-        ),
-        Game(
-            id = 10,
-            title = "Forza Horizon 5",
-            description = "Open-world racing in beautiful Mexico. Drive hundreds of the world's greatest cars through stunning environments and dynamic seasons.",
-            imageUrl = "https://picsum.photos/400/600?random=10",
-            price = 49.99,
-            rating = 4.7,
-            releaseDate = "2023-12-15",
-            category = GameCategory.SPORTS,
-            platform = Platform.XBOX,
-            genres = listOf("Racing", "Open World", "Arcade")
-        ),
-        Game(
-            id = 11,
-            title = "Minecraft",
-            description = "Create and explore infinite worlds. Build anything you can imagine in this blocky sandbox adventure that has captured millions of players.",
-            imageUrl = "https://picsum.photos/400/600?random=11",
-            price = 26.95,
-            rating = 4.8,
-            releaseDate = "2023-11-12",
-            category = GameCategory.SIMULATION,
-            platform = Platform.MOBILE,
-            genres = listOf("Sandbox", "Survival", "Creative")
-        ),
-        Game(
-            id = 12,
-            title = "Call of Duty: MW3",
-            description = "The iconic FPS returns with intense multiplayer action and a gripping campaign. Join the fight in the latest Modern Warfare installment.",
-            imageUrl = "https://picsum.photos/400/600?random=12",
-            price = 69.99,
-            rating = 4.3,
-            releaseDate = "2024-02-05",
-            category = GameCategory.ACTION,
-            platform = Platform.PC,
-            genres = listOf("FPS", "Military", "Multiplayer")
-        )
+        // ... contenido
+    )
+
+    val platforms = listOf(
+        Platform(id = 4, name = "PC", slug = "pc"),
+        Platform(id = 187, name = "PlayStation 5", slug = "playstation5"),
+        Platform(id = 18, name = "PlayStation 4", slug = "playstation4"),
+        Platform(id = 1, name = "PlayStation 3", slug = "playstation3"),
+        Platform(id = 186, name = "Xbox Series S/X", slug = "xbox-series-x"),
+        Platform(id = 14, name = "Xbox One", slug = "xbox-one"),
+        Platform(id = 80, name = "Xbox 360", slug = "xbox360"),
+        Platform(id = 7, name = "Nintendo Switch", slug = "nintendo-switch"),
+        Platform(id = 3, name = "iOS", slug = "ios"),
+        Platform(id = 21, name = "Android", slug = "android")
+    )
+
+    val publishers = listOf(
+        Publisher(id = 354, name = "Electronic Arts", slug = "electronic-arts"),
+        Publisher(id = 3408, name = "Ubisoft Entertainment", slug = "ubisoft-entertainment"),
+        Publisher(id = 339, name = "Bethesda Softworks", slug = "bethesda-softworks"),
+        Publisher(id = 3399, name = "Rockstar Games", slug = "rockstar-games"),
+        Publisher(id = 33, name = "Warner Bros. Interactive", slug = "warner-bros-interactive"),
+        Publisher(id = 209, name = "Sony Interactive Entertainment", slug = "sony-interactive-entertainment"),
+        Publisher(id = 45, name = "Microsoft Xbox Game Studios", slug = "microsoft-xbox-game-studios"),
+        Publisher(id = 16257, name = "Nintendo", slug = "nintendo"),
+        Publisher(id = 9191, name = "Sega", slug = "sega-2"),
+        Publisher(id = 3390, name = "Square Enix", slug = "square-enix"),
+        Publisher(id = 347, name = "Capcom", slug = "capcom"),
+        Publisher(id = 345, name = "Activision Blizzard", slug = "activision-blizzard"),
+        Publisher(id = 25, name = "2K Games", slug = "2k-games"),
+        Publisher(id = 208, name = "Bandai Namco Entertainment", slug = "bandai-namco-entertainment"),
+        Publisher(id = 3410, name = "Deep Silver", slug = "deep-silver")
+    )
+
+    val stores = listOf(
+        Store(id = 1, name = "Steam", slug = "steam"),
+        Store(id = 3, name = "PlayStation Store", slug = "playstation-store"),
+        Store(id = 2, name = "Xbox Store", slug = "xbox-store"),
+        Store(id = 4, name = "App Store", slug = "apple-appstore"),
+        Store(id = 8, name = "Google Play", slug = "google-play"),
+        Store(id = 5, name = "GOG", slug = "gog"),
+        Store(id = 6, name = "Nintendo Store", slug = "nintendo"),
+        Store(id = 7, name = "Xbox 360 Store", slug = "xbox360"),
+        Store(id = 9, name = "itch.io", slug = "itch"),
+        Store(id = 11, name = "Epic Games", slug = "epic-games")
+    )
+
+    val tags = listOf(
+        Tag(id = 31, name = "Singleplayer", slug = "singleplayer"),
+        Tag(id = 40836, name = "Full controller support", slug = "full-controller-support"),
+        Tag(id = 7, name = "Multiplayer", slug = "multiplayer"),
+        Tag(id = 40847, name = "Steam Achievements", slug = "steam-achievements"),
+        Tag(id = 13, name = "Atmospheric", slug = "atmospheric"),
+        Tag(id = 40849, name = "Steam Cloud", slug = "steam-cloud"),
+        Tag(id = 42, name = "Great Soundtrack", slug = "great-soundtrack"),
+        Tag(id = 24, name = "RPG", slug = "rpg"),
+        Tag(id = 18, name = "Co-op", slug = "co-op"),
+        Tag(id = 118, name = "Story Rich", slug = "story-rich"),
+        Tag(id = 411, name = "Cooperative", slug = "cooperative"),
+        Tag(id = 8, name = "First-Person", slug = "first-person"),
+        Tag(id = 32, name = "Sci-fi", slug = "sci-fi"),
+        Tag(id = 149, name = "Third Person", slug = "third-person"),
+        Tag(id = 4, name = "Funny", slug = "funny"),
+        Tag(id = 37, name = "Sandbox", slug = "sandbox"),
+        Tag(id = 123, name = "Comedy", slug = "comedy"),
+        Tag(id = 64, name = "Fantasy", slug = "fantasy"),
+        Tag(id = 147, name = "2D", slug = "2d")
     )
 }
 ```
@@ -873,13 +752,6 @@ El **patrón Repository** abstrae el origen de los datos. Definimos un contrato 
 
 ```kotlin
 package com.pmdm.mygamestore.data.repository
-
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
-import com.pmdm.mygamestore.domain.model.Platform
-import com.pmdm.mygamestore.domain.model.Resource
-import kotlinx.coroutines.flow.Flow
 
 /**
  *  Interfaz que define el contrato del repositorio de juegos
@@ -907,101 +779,23 @@ import kotlinx.coroutines.flow.Flow
  * - Error: Algo falló con información específica
  */
 interface GamesRepository {
-
     /**
-     * Obtiene todos los juegos disponibles en el catálogo
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Devuelve MockGamesDataSource.games
-     * - API: GET /api/games
-     *
-     * @return Flow que emite Resource con estados:
-     *         - Loading: Mientras se obtienen los datos
-     *         - Success: Con la lista completa de juegos
-     *         - Error: Si falla la operación
-     *
-     * Ejemplo de uso:
-     * ```
-     * repository.getAllGames().collect { resource ->
-     *     when (resource) {
-     *         is Resource.Loading -> showLoader()
-     *         is Resource.Success -> displayGames(resource.data)
-     *         is Resource.Error -> showError(resource.error)
-     *     }
-     * }
-     * ```
-     */
+    * Obtiene todos los juegos disponibles en el catálogo
+    */
     fun getAllGames(): Flow<Resource<List<Game>>>
 
     /**
-     * Filtra juegos por categoría
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Filtra mockGames en memoria
-     * - API: GET /api/games?category=RPG
-     *
-     * @param category Categoría a filtrar (ACTION, RPG, etc.)
-     * @return Flow<Resource<List<Game>>>
+     * Busca juegos combinando múltiples criterios de filtrado
      */
-    fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>>
-
-    /**
-     * Filtra juegos por intervalo de fecha de lanzamiento
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Filtra mockGames por fecha en memoria
-     * - API: GET /api/games?interval=LAST_WEEK
-     *
-     * @param interval Intervalo de tiempo (LAST_WEEK, LAST_30_DAYS, etc.)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getGamesByInterval(interval: DateInterval): Flow<Resource<List<Game>>>
-
-    /**
-     * Filtra juegos por plataforma
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Filtra mockGames en memoria
-     * - API: GET /api/games?platform=PLAYSTATION
-     *
-     * @param platform Plataforma deseada (PC, PLAYSTATION, etc.)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>>
-
-    /**
-     * Filtra juegos por géneros
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Filtra mockGames en memoria
-     * - API: GET /api/games?genres=RPG,Fantasy
-     *
-     * @param genres Lista de géneros a buscar
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>>
-
-    /**
-     * Busca juegos por texto en título o descripción
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Busca en mockGames con contains()
-     * - API: GET /api/games/search?q=witcher
-     *
-     * @param query Texto a buscar (case-insensitive)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun searchGames(query: String): Flow<Resource<List<Game>>>
+    fun getFilteredGames(
+        query: String = "",
+        category: GameCategory = GameCategory.ALL,
+        platform: PlatformEnum = PlatformEnum.ALL,
+        interval: DateInterval = DateInterval.ALL_TIME
+    ): Flow<Resource<List<Game>>>
 
     /**
      * Obtiene un juego específico por su ID
-     *
-     * IMPLEMENTACIONES:
-     * - Mock: Busca en mockGames con find()
-     * - API: GET /api/games/{id}
-     *
-     * @param id Identificador del juego
-     * @return Resource con el juego o error NotFound
      */
     suspend fun getGameById(id: Int): Resource<Game>
 }
@@ -1018,19 +812,6 @@ Esta implementación **simula** lo que haría una API real, pero filtrando datos
 
 ```kotlin
 package com.pmdm.mygamestore.data.repository
-
-import com.pmdm.mygamestore.data.local.MockGamesDataSource
-import com.pmdm.mygamestore.domain.model.AppError
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
-import com.pmdm.mygamestore.domain.model.Platform
-import com.pmdm.mygamestore.domain.model.Resource
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 /**
  *  Implementación MOCK del repositorio de juegos
@@ -1051,192 +832,97 @@ import java.time.format.DateTimeFormatter
  * En una API real, los filtros se ejecutarían en el BACKEND.
  *
  * Ejemplo de diferencia:
- * ```
- * // MockGamesRepositoryImpl (esta clase)
- * fun searchGames(query) {
- *     val filtered = mockGames.filter { it.title.contains(query) } // ← Cliente filtra
- * }
- *
- * // GamesRepositoryImpl (futuro, con API)
- * fun searchGames(query) {
- *     val response = api.searchGames(query) // ← Servidor filtra
- * }
- * ```
- *
- * CUÁNDO USAR:
- * ✅ Desarrollo inicial sin API
- * ✅ Testing de UseCases y ViewModels
- * ✅ Demos y prototipos
- *
- * CUÁNDO NO USAR:
- * ❌ Producción con datos reales
- * ❌ Grandes volúmenes de datos (lento filtrar en cliente)
  */
 class MockGamesRepositoryImpl : GamesRepository {
+    private val dataSource = MockDataSource
 
-    /**
-     *  Fuente de datos mock
-     */
-    private val dataSource = MockGamesDataSource
-
-    /**
-     * ⏱️ Simula delay de red
-     *
-     * En una app real, esto sería:
-     * - Tiempo de respuesta del servidor (100-2000ms)
-     * - Tiempo de lectura de base de datos (10-100ms)
-     *
-     * Beneficios de simular delay:
-     * ✅ Testear estados de loading
-     * ✅ Ver cómo se comporta la UI durante cargas
-     * ✅ Simular condiciones de red lenta
-     */
     private suspend fun simulateNetworkDelay() {
-        delay(800) // 800ms
+        delay(800)
     }
 
     override fun getAllGames(): Flow<Resource<List<Game>>> = flow {
         try {
-            // 1️⃣ Emitir estado Loading
             emit(Resource.Loading)
-            
-            // 2️⃣ Simular operación asíncrona (red/DB)
             simulateNetworkDelay()
-            
-            // 3️⃣ Obtener datos
-            val games = dataSource.games
-            
-            // 4️⃣ Emitir Success con datos
-            emit(Resource.Success(games))
-            
+            emit(Resource.Success(dataSource.games))
         } catch (e: Exception) {
-            // 5️⃣ Si algo falla, emitir Error
             emit(Resource.Error(AppError.Unknown(e.message ?: "Unknown error")))
         }
     }
 
-    override fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>> = flow {
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun getFilteredGames(
+        query: String,
+        category: GameCategory,
+        platform: PlatformEnum,
+        interval: DateInterval
+    ): Flow<Resource<List<Game>>> = flow {
         try {
             emit(Resource.Loading)
             simulateNetworkDelay()
-            
-            // Filtrar en memoria (simula lo que haría la API)
-            val filtered = if (category == GameCategory.ALL) {
-                dataSource.games
-            } else {
-                dataSource.games.filter { it.category == category }
-            }
-            
-            emit(Resource.Success(filtered))
-            
-        } catch (e: Exception) {
-            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by category")))
-        }
-    }
 
-    override fun getGamesByInterval(interval: DateInterval): Flow<Resource<List<Game>>> = flow {
-        try {
-            emit(Resource.Loading)
-            simulateNetworkDelay()
-            
-            // Filtrar por fecha en memoria
-            val now = LocalDate.now()
-            val filtered = when (interval) {
-                DateInterval.ALL_TIME -> dataSource.games
-                
-                DateInterval.LAST_WEEK -> dataSource.games.filter {
+            var filtered = dataSource.games
+
+            // Filtro por Query
+            if (query.isNotBlank()) {
+                filtered = filtered.filter { game ->
+                    game.title.contains(query, ignoreCase = true) ||
+                            game.description.contains(query, ignoreCase = true)
+                }
+            }
+
+            // Filtro por Categoría
+            if (category != GameCategory.ALL) {
+                filtered = filtered.filter { it.category == category }
+            }
+
+            // Filtro por Plataforma
+            if (platform != PlatformEnum.ALL) {
+                filtered = filtered.filter { game ->
+                    game.platforms.any { p ->
+                        when (platform) {
+                            PlatformEnum.PC -> p.slug.contains("pc", ignoreCase = true)
+                            PlatformEnum.PLAYSTATION -> p.slug.contains("playstation", ignoreCase = true)
+                            PlatformEnum.XBOX -> p.slug.contains("xbox", ignoreCase = true)
+                            PlatformEnum.NINTENDO -> p.slug.contains("nintendo", ignoreCase = true)
+                            PlatformEnum.MOBILE -> p.slug.contains("android", ignoreCase = true) || p.slug.contains("ios", ignoreCase = true)
+                            else -> false
+                        }
+                    }
+                }
+            }
+
+            // Filtro por Intervalo
+            if (interval != DateInterval.ALL_TIME) {
+                val now = LocalDate.now()
+                filtered = filtered.filter {
                     val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                    gameDate.isAfter(now.minusWeeks(1))
-                }
-                
-                DateInterval.LAST_30_DAYS -> dataSource.games.filter {
-                    val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                    gameDate.isAfter(now.minusDays(30))
-                }
-                
-                DateInterval.LAST_90_DAYS -> dataSource.games.filter {
-                    val gameDate = LocalDate.parse(it.releaseDate, DateTimeFormatter.ISO_DATE)
-                    gameDate.isAfter(now.minusDays(90))
+                    when (interval) {
+                        DateInterval.LAST_WEEK -> gameDate.isAfter(now.minusWeeks(1))
+                        DateInterval.LAST_30_DAYS -> gameDate.isAfter(now.minusDays(30))
+                        DateInterval.LAST_90_DAYS -> gameDate.isAfter(now.minusDays(90))
+                        else -> true
+                    }
                 }
             }
-            
-            emit(Resource.Success(filtered))
-            
-        } catch (e: Exception) {
-            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by date")))
-        }
-    }
 
-    override fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>> = flow {
-        try {
-            emit(Resource.Loading)
-            simulateNetworkDelay()
-            
-            // Filtrar por plataforma en memoria
-            val filtered = if (platform == Platform.ALL) {
-                dataSource.games
-            } else {
-                dataSource.games.filter { it.platform == platform }
-            }
-            
             emit(Resource.Success(filtered))
-            
         } catch (e: Exception) {
-            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by platform")))
-        }
-    }
-
-    override fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>> = flow {
-        try {
-            emit(Resource.Loading)
-            simulateNetworkDelay()
-            
-            // Filtrar por géneros en memoria (OR: al menos uno coincide)
-            val filtered = dataSource.games.filter { game ->
-                game.genres.any { genre -> 
-                    genres.any { it.equals(genre, ignoreCase = true) }
-                }
-            }
-            
-            emit(Resource.Success(filtered))
-            
-        } catch (e: Exception) {
-            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering by genres")))
-        }
-    }
-
-    override fun searchGames(query: String): Flow<Resource<List<Game>>> = flow {
-        try {
-            emit(Resource.Loading)
-            simulateNetworkDelay()
-            
-            // Buscar en memoria (título y descripción)
-            val filtered = dataSource.games.filter { game ->
-                game.title.contains(query, ignoreCase = true) ||
-                game.description.contains(query, ignoreCase = true)
-            }
-            
-            emit(Resource.Success(filtered))
-            
-        } catch (e: Exception) {
-            emit(Resource.Error(AppError.Unknown(e.message ?: "Error searching games")))
+            emit(Resource.Error(AppError.Unknown(e.message ?: "Error filtering games")))
         }
     }
 
     override suspend fun getGameById(id: Int): Resource<Game> {
         return try {
             simulateNetworkDelay()
-            
-            // Buscar por ID en memoria
+
             val game = dataSource.games.find { it.id == id }
-            
+
             if (game != null) {
                 Resource.Success(game)
             } else {
-                // Juego no encontrado
                 Resource.Error(AppError.NotFound)
             }
-            
         } catch (e: Exception) {
             Resource.Error(AppError.Unknown(e.message ?: "Error getting game"))
         }
@@ -1269,7 +955,6 @@ fun getData(): Flow<Resource<T>> = flow {
 Loading → (operación) → Success/Error
 ```
 
-
 Siempre en este orden para que la UI pueda reaccionar correctamente.
 
 **3. Filtrado local vs remoto:**
@@ -1285,7 +970,7 @@ val response = api.getGames(filter = "RPG") // Solo envía RPGs
 
 ---
 
-### ✅ Resumen de la Fase 1
+<u>✅ Resumen de la Fase 1</u>
 
 Has completado la **capa de datos** con:
 
@@ -1360,15 +1045,6 @@ Esta clase agrupa **todos los casos de uso relacionados con juegos**. Cada méto
 ```kotlin
 package com.pmdm.mygamestore.domain.usecase
 
-import com.pmdm.mygamestore.data.repository.GamesRepository
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
-import com.pmdm.mygamestore.domain.model.Platform
-import com.pmdm.mygamestore.domain.model.Resource
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-
 /**
  *  Casos de uso agrupados para operaciones con juegos
  *
@@ -1390,393 +1066,17 @@ import kotlinx.coroutines.flow.map
  * ✅ Propaga Loading y Error sin modificar
  * ✅ Devuelve Flow<Resource<List<Game>>> al ViewModel
  *
- * IMPORTANTE - Sin DI por ahora:
- * - Esta clase se instancia directamente en el ViewModel
- * - Cuando se implemente Koin, se recibirá por constructor en el ViewModel
- *
  * @property gamesRepository Repository para acceder a los datos de juegos
  */
 class GameUseCases(
     private val gamesRepository: GamesRepository
 ) {
-
-    /**
-     *  UC-001: Obtiene todos los juegos del catálogo
-     *
-     * CASO DE USO:
-     * - Usuario abre la app
-     * - Usuario limpia todos los filtros
-     * - Vista por defecto del catálogo
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Obtiene todos los juegos sin filtrar
-     * - Sin ordenamiento adicional (orden natural)
-     *
-     * @return Flow<Resource<List<Game>>>
-     *         - Loading: Mientras obtiene datos
-     *         - Success: Con lista completa de juegos
-     *         - Error: Si falla la operación
-     *
-     * Ejemplo de uso:
-     * ```kotlin
-     * gameUseCases.getAllGames().collect { resource ->
-     *     when (resource) {
-     *         is Resource.Loading -> showLoader()
-     *         is Resource.Success -> displayGames(resource.data)
-     *         is Resource.Error -> showError(resource.error)
-     *     }
-     * }
-     * ```
-     */
-    fun getAllGames(): Flow<Resource<List<Game>>> {
-        return gamesRepository.getAllGames()
-    }
-
-    /**
-     *  UC-002: Filtra juegos por categoría y ordena por rating
-     *
-     * CASO DE USO:
-     * - Usuario hace click en chip "RPG"
-     * - Usuario navega a sección "Juegos de Acción"
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Repository filtra por categoría
-     * - UseCase ordena por rating (mejor valorados primero)
-     *
-     * ¿Por qué ordenar por rating?
-     * - Mejora experiencia: usuarios ven mejores juegos primero
-     * - Aumenta probabilidad de compra
-     * - Práctica común en tiendas (Steam, Epic, PlayStation Store)
-     *
-     * @param category Categoría a filtrar (ACTION, RPG, etc.)
-     * @return Flow<Resource<List<Game>>> ordenados por rating descendente
-     */
-    fun getGamesByCategory(category: GameCategory): Flow<Resource<List<Game>>> {
-        return gamesRepository.getGamesByCategory(category)
-            .map { resource ->
-                // Solo aplicar lógica si es Success
-                when (resource) {
-                    is Resource.Success -> {
-                        // Ordenar por rating (mayor a menor)
-                        val sortedGames = resource.data.sortedByDescending { it.rating }
-                        Resource.Success(sortedGames)
-                    }
-                    is Resource.Loading -> resource // Propagar sin cambios
-                    is Resource.Error -> resource   // Propagar sin cambios
-                }
-            }
-    }
-
-    /**
-     *  UC-003: Filtra por intervalo de fecha y ordena por fecha
-     *
-     * CASOS DE USO:
-     * - Sección "Novedades de la semana"
-     * - Sección "Lanzamientos del mes"
-     * - Filtro "Últimos 90 días"
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Repository filtra por intervalo de fecha
-     * - UseCase ordena por fecha (más recientes primero)
-     *
-     * REGLAS DE NEGOCIO:
-     * - LAST_WEEK: Últimos 7 días
-     * - LAST_30_DAYS: Último mes
-     * - LAST_90_DAYS: Últimos 3 meses
-     * - ALL_TIME: Sin filtro de fecha
-     *
-     * @param interval Intervalo de tiempo
-     * @return Flow<Resource<List<Game>>> ordenados por fecha descendente
-     */
-    fun getGamesInterval(interval: DateInterval): Flow<Resource<List<Game>>> {
-        return gamesRepository.getGamesByInterval(interval)
-            .map { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        // Ordenar por fecha de lanzamiento (más recientes primero)
-                        val sortedGames = resource.data.sortedByDescending { it.releaseDate }
-                        Resource.Success(sortedGames)
-                    }
-                    is Resource.Loading -> resource
-                    is Resource.Error -> resource
-                }
-            }
-    }
-
-    /**
-     *  UC-004: Filtra juegos por plataforma
-     *
-     * CASO DE USO:
-     * - Usuario tiene PlayStation y solo quiere juegos compatibles
-     * - Filtro de plataforma en la UI
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Repository filtra por plataforma
-     * - Sin ordenamiento adicional
-     *
-     * MEJORA FUTURA:
-     * - Ordenar por popularidad en esa plataforma
-     * - Mostrar exclusivos primero
-     *
-     * @param platform Plataforma (PC, PLAYSTATION, XBOX, etc.)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getGamesByPlatform(platform: Platform): Flow<Resource<List<Game>>> {
-        return gamesRepository.getGamesByPlatform(platform)
-    }
-
-    /**
-     * ️ UC-005: Filtra juegos por géneros
-     *
-     * CASO DE USO:
-     * - Usuario busca juegos con etiquetas específicas
-     * - Búsqueda multi-género: "RPG" + "Open World"
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Filtro inclusivo (OR): Juego debe tener AL MENOS uno de los géneros
-     * - No es exclusivo (AND): No requiere TODOS los géneros
-     *
-     * Ejemplo:
-     * - Buscar ["RPG", "Fantasy"]
-     * - "The Witcher" (RPG + Fantasy) → ✅ Incluido
-     * - "Elden Ring" (RPG + Dark Fantasy) → ✅ Incluido
-     * - "FIFA" (Sports) → ❌ Excluido
-     *
-     * @param genres Lista de géneros a buscar
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getGamesByGenres(genres: List<String>): Flow<Resource<List<Game>>> {
-        return gamesRepository.getGamesByGenres(genres)
-    }
-
-    /**
-     *  UC-006: Busca juegos por texto y ordena por relevancia
-     *
-     * CASO DE USO:
-     * - Usuario escribe "witcher" en la barra de búsqueda
-     * - Búsqueda en tiempo real mientras escribe
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Si query está vacío → devuelve todos los juegos
-     * - Si no → busca en título y descripción
-     * - Ordena por RELEVANCIA (coincidencias en título primero)
-     *
-     * ORDENAMIENTO POR RELEVANCIA:
-     * 1. Título contiene query (prioridad 2)
-     * 2. Descripción contiene query (prioridad 1)
-     * 3. Sin coincidencia (prioridad 0)
-     *
-     * ¿Por qué este orden?
-     * - Título es más relevante que descripción
-     * - Mejora experiencia del usuario
-     * - Similar a buscadores como Google
-     *
-     * @param query Texto a buscar (case-insensitive)
-     * @return Flow<Resource<List<Game>>> ordenados por relevancia
-     *
-     * Ejemplo:
-     * ```kotlin
-     * searchGames("god").collect { resource ->
-     *     when (resource) {
-     *         is Resource.Success -> {
-     *             // "God of War" aparece primero (coincidencia en título)
-     *             // Juegos con "god" en descripción aparecen después
-     *         }
-     *     }
-     * }
-     * ```
-     */
-    fun searchGames(query: String): Flow<Resource<List<Game>>> {
-        // Si la búsqueda está vacía, devolver todos
-        if (query.isBlank()) {
-            return gamesRepository.getAllGames()
-        }
-        
-        return gamesRepository.searchGames(query)
-            .map { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        // Ordenar por relevancia
-                        val sortedGames = resource.data.sortedByDescending { game ->
-                            when {
-                                game.title.contains(query, ignoreCase = true) -> 2
-                                game.description.contains(query, ignoreCase = true) -> 1
-                                else -> 0
-                            }
-                        }
-                        Resource.Success(sortedGames)
-                    }
-                    is Resource.Loading -> resource
-                    is Resource.Error -> resource
-                }
-            }
-    }
-
-    /**
-     *  UC-007: Obtiene un juego específico por ID
-     *
-     * CASOS DE USO:
-     * - Usuario hace click en juego → navega a DetailScreen
-     * - Deep linking: abrir app directamente en un juego
-     * - Compartir enlace de juego
-     * - Notificación push sobre un juego específico
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Busca juego por ID único
-     * - Devuelve Resource.Success con juego
-     * - O Resource.Error con AppError.NotFound
-     *
-     * Es suspend porque:
-     * - Puede requerir operaciones I/O (DB, API)
-     * - No es Flow porque solo devuelve un valor
-     *
-     * @param id Identificador único del juego
-     * @return Resource<Game>
-     *         - Success: Con el juego encontrado
-     *         - Error(NotFound): Si no existe
-     *         - Error(Unknown): Si falla la operación
-     *
-     * Ejemplo:
-     * ```kotlin
-     * viewModelScope.launch {
-     *     when (val result = gameUseCases.getGameById(5)) {
-     *         is Resource.Success -> showDetails(result.data)
-     *         is Resource.Error -> {
-     *             when (result.error) {
-     *                 is AppError.NotFound -> showNotFoundError()
-     *                 else -> showGenericError()
-     *             }
-     *         }
-     *     }
-     * }
-     * ```
-     */
-    suspend fun getGameById(id: Int): Resource<Game> {
-        return gamesRepository.getGameById(id)
-    }
-
-    /**
-     * ⭐ UC-008: Obtiene juegos mejor valorados
-     *
-     * CASO DE USO:
-     * - Sección "Top Rated" en home
-     * - Sección "Mejor valorados de la semana"
-     * - Recomendaciones de alta calidad
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Obtiene todos los juegos
-     * - Filtra: rating >= minRating (por defecto 4.5)
-     * - Ordena: por rating descendente
-     *
-     * ¿Por qué rating 4.5?
-     * - Estándar industria para "excelente"
-     * - Steam: 4.5/5 = "Overwhelmingly Positive"
-     * - PlayStation Store destaca juegos 4.5+
-     *
-     * @param minRating Rating mínimo (por defecto 4.5 de 5.0)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getTopRatedGames(minRating: Double = 4.5): Flow<Resource<List<Game>>> {
-        return gamesRepository.getAllGames()
-            .map { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        val topGames = resource.data
-                            .filter { it.rating >= minRating }
-                            .sortedByDescending { it.rating }
-                        Resource.Success(topGames)
-                    }
-                    is Resource.Loading -> resource
-                    is Resource.Error -> resource
-                }
-            }
-    }
-
-    /**
-     *  UC-009: Filtra juegos por rango de precio
-     *
-     * CASO DE USO:
-     * - Usuario busca juegos baratos (< $20)
-     * - Sección "Juegos en oferta"
-     * - Filtro de presupuesto
-     *
-     * LÓGICA DE NEGOCIO:
-     * - Filtra: price <= maxPrice
-     * - Ordena: por precio ascendente (más baratos primero)
-     *
-     * MEJORA FUTURA:
-     * - Agregar minPrice para rangos ($20-$40)
-     * - Calcular descuentos
-     * - Destacar ofertas limitadas
-     *
-     * @param maxPrice Precio máximo en dólares
-     * @return Flow<Resource<List<Game>>>
-     *
-     * Ejemplo:
-     * ```kotlin
-     * // Juegos de menos de $30
-     * gameUseCases.getGamesByPriceRange(30.0).collect { resource ->
-     *     when (resource) {
-     *         is Resource.Success -> {
-     *             println("${resource.data.size} juegos económicos")
-     *         }
-     *     }
-     * }
-     * ```
-     */
-    fun getGamesByPriceRange(maxPrice: Double): Flow<Resource<List<Game>>> {
-        return gamesRepository.getAllGames()
-            .map { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        val filtered = resource.data
-                            .filter { it.price <= maxPrice }
-                            .sortedBy { it.price } // Más baratos primero
-                        Resource.Success(filtered)
-                    }
-                    is Resource.Loading -> resource
-                    is Resource.Error -> resource
-                }
-            }
-    }
-
-    /**
-     *  UC-010: Obtiene juegos populares (trending)
-     *
-     * CASO DE USO:
-     * - Sección "Trending Now"
-     * - "Lo más vendido de la semana"
-     * - Carrusel de juegos destacados
-     *
-     * NOTA IMPORTANTE:
-     * - Actualmente ordenamos por rating
-     * - En producción real requeriría:
-     *   * Campo "salesCount" en Game
-     *   * O llamada a API de estadísticas de ventas
-     *   * O analytics de visualizaciones
-     *
-     * @param limit Número máximo de juegos a devolver (por defecto 10)
-     * @return Flow<Resource<List<Game>>>
-     */
-    fun getPopularGames(limit: Int = 10): Flow<Resource<List<Game>>> {
-        return gamesRepository.getAllGames()
-            .map { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        // Simulación: ordenar por rating
-                        // En producción: ordenar por ventas/popularidad
-                        val popular = resource.data
-                            .sortedByDescending { it.rating }
-                            .take(limit) // Tomar solo los primeros N
-                        Resource.Success(popular)
-                    }
-                    is Resource.Loading -> resource
-                    is Resource.Error -> resource
-                }
-            }
-    }
+     // ... contenido 
 }
 ```
+
+> [!TIP]
+> > Puedes revisar el contenido en `presentation/domain/usercase/GameUseCases.kt`.
 
 
 ---
@@ -1827,9 +1127,6 @@ games.sortedByDescending { it.rating }
 // Filtrar juegos con rating >= 4.5
 val topGames = games.filter { it.rating >= 4.5 }
 
-// Filtrar juegos baratos
-val cheapGames = games.filter { it.price <= 20.0 }
-
 // Filtrar por múltiples condiciones (AND)
 val filtered = games.filter { 
     it.rating >= 4.0 && it.price <= 40.0 
@@ -1860,16 +1157,6 @@ suspend fun getGameById(id: Int): Resource<Game>
 // Flow: Puede emitir MÚLTIPLES valores en el tiempo
 fun getAllGames(): Flow<Resource<List<Game>>>
 ```
-
-
-**¿Cuándo usar cada uno?**
-
-| Caso | Usar |
-|------|------|
-| Una sola respuesta | `suspend fun` |
-| Stream de datos | `Flow` |
-| Datos que cambian | `Flow` |
-| Operación única | `suspend fun` |
 
 ---
 
@@ -1908,16 +1195,14 @@ fun getAllGames(): Flow<Resource<List<Game>>>
 8. HomeScreen recompone con nuevos datos
 ```
 
-
----
-
-### ✅ Resumen de la Fase 2
+<u>✅ Resumen de la Fase 2</u>
 
 Se ha completado la **capa de dominio** con:
 
 1. ✅ **Clase GameUseCases** con 10 casos de uso:
 2. ✅ **Lógica de negocio** implementada.
 
+---
 
 ##  **FASE 3: Capa de Presentación - ViewModel** {#fase-3-capa-de-presentación}
 
@@ -1978,62 +1263,38 @@ El estado UI es un **data class inmutable** que representa TODO lo que la UI nec
 ```kotlin
 package com.pmdm.mygamestore.presentation.viewmodel
 
-import android.content.Context
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import com.pmdm.mygamestore.data.repository.GamesRepository
-import com.pmdm.mygamestore.data.repository.MockGamesRepositoryImpl
-import com.pmdm.mygamestore.data.repository.SessionManager
-import com.pmdm.mygamestore.data.repository.SessionManagerImpl
-import com.pmdm.mygamestore.domain.model.AppError
-import com.pmdm.mygamestore.domain.model.Game
-import com.pmdm.mygamestore.domain.model.GameCategory
-import com.pmdm.mygamestore.domain.model.DateInterval
-import com.pmdm.mygamestore.domain.model.Platform
-import com.pmdm.mygamestore.domain.model.Resource
-import com.pmdm.mygamestore.domain.usecase.GameUseCases
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-
 /**
- *  Estado UI de la pantalla Home
+ * Clase que modela el estado de la interfaz de usuario para la pantalla principal.
  *
- * PATRÓN: Single Source of Truth
- * - Toda la información de la UI está en un solo objeto
- * - La UI es función del estado: UI = f(state)
- * - Cambio de estado → Recomposición automática
+ * Proporciona información sobre los juegos cargados, el estado de la carga,
+ * mensajes de error y el estado actual de la búsqueda y los filtros aplicados.
  *
- * Representa TODO lo que la UI necesita para renderizarse.
+ * Propiedades:
+ * - `games`: Lista de juegos disponibles en la interfaz.
+ * - `isLoading`: Indica si el contenido está en proceso de ser cargado.
+ * - `errorMessage`: Mensaje de error devuelto en caso de fallo.
+ * - `username`: Nombre del usuario actualmente autenticado.
  *
- * INMUTABILIDAD:
- * - Es data class con val (inmutable)
- * - No se modifica directamente
- * - Se crea nueva instancia con copy()
- *
- * @property games Lista de juegos a mostrar en el grid
- * @property isLoading Indica si hay una operación en progreso
- * @property errorMessage Mensaje de error a mostrar (null si no hay)
- * @property username Nombre del usuario logueado (para TopBar)
- * @property searchQuery Texto actual de búsqueda
- * @property selectedCategory Categoría seleccionada en filtros
- * @property selectedPlatform Plataforma seleccionada en filtros
- * @property selectedInterval Intervalo de fechas seleccionado en filtros
+ * Opciones de búsqueda y filtros:
+ * - `isSearchMode`: Indica si el modo de búsqueda está activado.
+ * - `isFilterVisible`: Indica si el panel de filtros está visible.
+ * - `searchQuery`: Texto de búsqueda introducido por el usuario.
+ * - `selectedCategory`: Categoría seleccionada para filtrar juegos.
+ * - `selectedPlatform`: Plataforma seleccionada para filtrar los juegos.
+ * - `selectedInterval`: Intervalo de fechas seleccionado para filtrar juegos.
  */
 data class HomeUiState(
     val games: List<Game> = emptyList(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
     val username: String? = null,
-    
-    // Filtros activos
+
+    // Búsqueda y Filtros
+    val isSearchMode: Boolean = false,
+    val isFilterVisible: Boolean = false,
     val searchQuery: String = "",
     val selectedCategory: GameCategory = GameCategory.ALL,
-    val selectedPlatform: Platform = Platform.ALL,
+    val selectedPlatform: PlatformEnum = PlatformEnum.ALL,
     val selectedInterval: DateInterval = DateInterval.ALL_TIME,
 )
 ```
@@ -2080,68 +1341,62 @@ El ViewModel coordina toda la lógica de la pantalla Home.
 
 ```kotlin
 /**
- *  ViewModel para la pantalla Home
+ * ViewModel para gestionar el estado de la pantalla principal, específicamente para cargar,
+ * filtrar y gestionar una lista de juegos, así como también administrar elementos relacionados
+ * con la sesión del usuario.
  *
- * PATRÓN MVVM:
- * - Model: Game, GameUseCases, GamesRepository
- * - View: HomeScreen (Composable)
- * - ViewModel: HomeViewModel (esta clase)
+ * Este ViewModel encapsula la lógica de negocio necesaria para interactuar con los datos de juegos,
+ * incluidos filtros, modos de búsqueda y control de errores. Además, interactúa con un gestor de sesión
+ * para manejar datos del usuario como el nombre de usuario.
  *
- * RESPONSABILIDADES:
- * ✅ Gestionar el estado de la UI (HomeUiState)
- * ✅ Coordinar casos de uso (GameUseCases)
- * ✅ Manejar eventos del usuario (búsqueda, filtros, clicks)
- * ✅ Transformar Resource en estado UI
- * ✅ Gestionar corrutinas con viewModelScope
- * ✅ NO tiene referencias a Views (evita memory leaks)
+ * Principales responsabilidades:
+ * - Gestionar el estado inmutable y mutable de la vista utilizando `StateFlow`.
+ * - Cargar los juegos aplicando diferentes tipos de filtros, búsqueda y criterios temporales.
+ * - Soportar funcionalidades de gestión, incluyendo modos de búsqueda, visibilidad de filtros y limpieza de errores.
+ * - Administrar estados de carga y manejo de errores, proporcionando mensajes de error descriptivos basados en diferentes fallos.
  *
- * MANEJO DE RESOURCE:
- * - Resource.Loading → uiState.isLoading = true
- * - Resource.Success → uiState.games = data
- * - Resource.Error → uiState.errorMessage = error
+ * Dependencias internas utilizadas:
+ * - `GamesRepository`: Para obtener la lista de juegos y aplicar filtros sobre estos.
+ * - `GameUseCases`: Un conjunto de casos de uso relacionados con juegos.
+ * - `SessionManager`: Para gestionar información de la sesión de usuario, como el nombre de usuario.
  *
- * IMPORTANTE - Sin DI por ahora:
- * - gameUseCases se instancia directamente aquí
- * - sessionManager se instancia directamente aquí
- * - Cuando se implemente Koin, se recibirán por constructor
+ * Métodos principales:
+ * - `loadGames`: Carga y filtra juegos según los criterios actuales.
+ * - `onSearchQueryChange`: Actualiza la query de búsqueda y recarga los juegos.
+ * - `toggleSearchMode`: Activa o desactiva el modo de búsqueda y ajusta otros estados con base en esta acción.
+ * - `toggleFilterVisibility`: Muestra u oculta el panel de filtros.
+ * - `onCategorySelected`, `onPlatformSelected`, `onIntervalSelected`: Aplica filtros específicos y recarga los juegos.
+ * - `refreshGames`: Recarga la lista de juegos, útil para acciones como pull-to-refresh.
+ * - `clearError`: Limpia cualquier mensaje de error activo.
+ * - `clearAllFilters`: Reinicia todos los filtros a sus valores por defecto y recarga los juegos.
  *
- * @param context Contexto de Android (para SessionManager)
+ * Esta clase promueve la separación de responsabilidades y coordina entre la capa de datos
+ * (repositorios y casos de uso) y la capa de presentación (UI).
  */
 class HomeViewModel(
     context: Context
 ) : ViewModel() {
 
     //  Dependencias instanciadas directamente (temporal, antes de Koin)
-    // Cuando implementes Koin DI, estas líneas se eliminarán
-    // y las dependencias se recibirán por constructor
     private val gamesRepository: GamesRepository = MockGamesRepositoryImpl()
     private val gameUseCases = GameUseCases(gamesRepository)
     private val sessionManager: SessionManager = SessionManagerImpl(context)
 
-    //  Estado privado mutable (solo modificable desde el ViewModel)
+    //  Estado privado mutable
     private val _uiState = MutableStateFlow(HomeUiState())
-    
-    //  Estado público inmutable (expuesto a la UI)
+
+    //  Estado público inmutable
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
-        //  Cargar datos iniciales al crear el ViewModel
         loadUsername()
         loadGames()
     }
 
-    /**
-     *  Carga el nombre del usuario desde SessionManager
-     *
-     * Se ejecuta en paralelo con loadGames() gracias a viewModelScope.
-     * Cada launch crea una corrutina independiente.
-     */
     private fun loadUsername() {
         viewModelScope.launch {
             sessionManager.getUsername()
                 .catch { exception ->
-                    // Manejo de errores en el Flow
-                    // No bloqueamos la carga de juegos si falla esto
                     println("Error loading username: ${exception.message}")
                 }
                 .collect { username ->
@@ -2150,69 +1405,30 @@ class HomeViewModel(
         }
     }
 
-    /**
-     *  Carga los juegos aplicando filtros activos
-     *
-     * LÓGICA DE PRIORIDAD DE FILTROS:
-     * 1. Búsqueda por texto (mayor prioridad)
-     * 2. Intervalo de fechas
-     * 3. Plataforma
-     * 4. Categoría
-     * 5. Todos los juegos (sin filtros)
-     *
-     * MANEJO DE RESOURCE:
-     * - Loading → Mostrar spinner
-     * - Success → Mostrar juegos
-     * - Error → Mostrar mensaje
-     */
     fun loadGames() {
         viewModelScope.launch {
             val currentState = _uiState.value
-            
-            // Determinar qué UseCase llamar según filtros activos
-            val gamesFlow = when {
-                //  Prioridad 1: Búsqueda por texto
-                currentState.searchQuery.isNotBlank() -> {
-                    gameUseCases.searchGames(currentState.searchQuery)
-                }
-                
-                //  Prioridad 2: Filtro por intervalo de fechas
-                currentState.selectedInterval != DateInterval.ALL_TIME -> {
-                    gameUseCases.getGamesInterval(currentState.selectedInterval)
-                }
-                
-                //  Prioridad 3: Filtro por plataforma
-                currentState.selectedPlatform != Platform.ALL -> {
-                    gameUseCases.getGamesByPlatform(currentState.selectedPlatform)
-                }
-                
-                //  Prioridad 4: Filtro por categoría
-                currentState.selectedCategory != GameCategory.ALL -> {
-                    gameUseCases.getGamesByCategory(currentState.selectedCategory)
-                }
-                
-                //  Por defecto: Todos los juegos
-                else -> {
-                    gameUseCases.getAllGames()
-                }
-            }
 
-            //  Recolectar el Flow y manejar Resource
+            val gamesFlow = gameUseCases.getFilteredGames(
+                query = currentState.searchQuery,
+                category = currentState.selectedCategory,
+                platform = currentState.selectedPlatform,
+                interval = currentState.selectedInterval
+            )
+
             gamesFlow.collect { resource ->
                 when (resource) {
                     is Resource.Loading -> {
-                        // ⏳ Estado Loading: Mostrar spinner
-                        _uiState.update { 
+                        _uiState.update {
                             it.copy(
                                 isLoading = true,
                                 errorMessage = null
                             )
                         }
                     }
-                    
+
                     is Resource.Success -> {
-                        // ✅ Estado Success: Mostrar juegos
-                        _uiState.update { 
+                        _uiState.update {
                             it.copy(
                                 games = resource.data,
                                 isLoading = false,
@@ -2220,24 +1436,23 @@ class HomeViewModel(
                             )
                         }
                     }
-                    
+
                     is Resource.Error -> {
-                        // ❌ Estado Error: Mostrar mensaje
                         val errorMsg = when (resource.error) {
-                            is AppError.NetworkError -> 
+                            is AppError.NetworkError ->
                                 "No internet connection. Please check your network."
-                            is AppError.NotFound -> 
+                            is AppError.NotFound ->
                                 "No games found."
-                            is AppError.DatabaseError -> 
+                            is AppError.DatabaseError ->
                                 "Database error. Please try again."
-                            is AppError.Unauthorized -> 
+                            is AppError.Unauthorized ->
                                 "You need to login to access this content."
-                            is AppError.ValidationError -> 
+                            is AppError.ValidationError ->
                                 resource.error.message
-                            is AppError.Unknown -> 
+                            is AppError.Unknown ->
                                 resource.error.message
                         }
-                        
+
                         _uiState.update {
                             it.copy(
                                 isLoading = false,
@@ -2250,91 +1465,69 @@ class HomeViewModel(
         }
     }
 
-    /**
-     *  Evento: Usuario escribe en la búsqueda
-     *
-     * @param query Nuevo texto de búsqueda
-     */
     fun onSearchQueryChange(query: String) {
         _uiState.update { it.copy(searchQuery = query) }
-        loadGames() // Recargar con nuevo criterio
+        loadGames()
     }
 
-    /**
-     *  Evento: Usuario selecciona una categoría
-     *
-     * @param category Nueva categoría
-     */
+    fun toggleSearchMode() {
+        _uiState.update {
+            val newSearchMode = !it.isSearchMode
+            it.copy(
+                isSearchMode = newSearchMode,
+                // Si abrimos búsqueda, cerramos filtros
+                isFilterVisible = if (newSearchMode) false else it.isFilterVisible,
+                // Si cerramos la búsqueda, limpiamos la query
+                searchQuery = if (!newSearchMode) "" else it.searchQuery
+            )
+        }
+        // Si acabamos de limpiar la búsqueda al cerrar el modo, recargamos juegos
+        if (!_uiState.value.isSearchMode) {
+            loadGames()
+        }
+    }
+
+    fun toggleFilterVisibility() {
+        _uiState.update {
+            it.copy(isFilterVisible = !it.isFilterVisible)
+        }
+    }
+
     fun onCategorySelected(category: GameCategory) {
-        _uiState.update { 
-            it.copy(
-                selectedCategory = category,
-                // Limpiar otros filtros al seleccionar categoría
-                searchQuery = "",
-                selectedInterval = DateInterval.ALL_TIME,
-                selectedPlatform = Platform.ALL
-            )
+        _uiState.update {
+            it.copy(selectedCategory = category)
         }
         loadGames()
     }
 
-    /**
-     *  Evento: Usuario selecciona una plataforma
-     *
-     * @param platform Nueva plataforma
-     */
-    fun onPlatformSelected(platform: Platform) {
-        _uiState.update { 
-            it.copy(
-                selectedPlatform = platform,
-                searchQuery = "",
-                selectedInterval = DateInterval.ALL_TIME,
-                selectedCategory = GameCategory.ALL
-            )
+    fun onPlatformSelected(platform: PlatformEnum) {
+        _uiState.update {
+            it.copy(selectedPlatform = platform)
         }
         loadGames()
     }
 
-    /**
-     *  Evento: Usuario selecciona un intervalo de fechas
-     *
-     * @param interval Nuevo intervalo
-     */
     fun onIntervalSelected(interval: DateInterval) {
-        _uiState.update { 
-            it.copy(
-                selectedInterval = interval,
-                searchQuery = "",
-                selectedCategory = GameCategory.ALL,
-                selectedPlatform = Platform.ALL
-            )
+        _uiState.update {
+            it.copy(selectedInterval = interval)
         }
         loadGames()
     }
 
-    /**
-     *  Evento: Usuario hace pull-to-refresh
-     */
     fun refreshGames() {
         loadGames()
     }
 
-    /**
-     * ❌ Limpia el mensaje de error después de mostrarlo
-     */
     fun clearError() {
         _uiState.update { it.copy(errorMessage = null) }
     }
 
-    /**
-     *  Limpia todos los filtros y vuelve a estado inicial
-     */
     fun clearAllFilters() {
         _uiState.update {
             it.copy(
                 searchQuery = "",
                 selectedCategory = GameCategory.ALL,
-                selectedPlatform = Platform.ALL,
+                selectedPlatform = PlatformEnum.ALL,
                 selectedInterval = DateInterval.ALL_TIME
             )
         }
@@ -2357,25 +1550,8 @@ El Factory es necesario porque HomeViewModel necesita Context, que no se puede p
  * PROPÓSITO:
  * - ViewModel necesita Context para SessionManager
  * - ViewModelProvider.Factory permite pasar parámetros al constructor
- *
- * IMPORTANTE - TEMPORAL:
- * ✅ Esta factory es TEMPORAL
- * ✅ Solo existe porque HomeViewModel necesita Context
- * ✅ Cuando se implemente Koin DI, esta clase se ELIMINARÁ
- * ✅ En su lugar: viewModel = koinViewModel()
- *
- * MIGRACIÓN A KOIN:
- * ```kotlin
- * // Antes (con Factory)
- * val viewModel: HomeViewModel = viewModel(
- *     factory = HomeViewModelFactory(context)
- * )
- *
- * // Después (con Koin)
- * val viewModel: HomeViewModel = koinViewModel()
- * ```
- *
- * @param context Contexto de Android
+*
+* @param context Contexto de Android
  */
 class HomeViewModelFactory(
     private val context: Context
@@ -2543,7 +1719,7 @@ flow
 
 ---
 
-### ✅ Resumen de la Fase 3
+<u>✅ Resumen de la Fase 3</u>
 
 Has completado la **capa de presentación - ViewModel** con:
 
@@ -2569,169 +1745,32 @@ Has completado la **capa de presentación - ViewModel** con:
 
 ## **FASE 4: Componentes UI Reutilizables** {#fase-4-componentes-ui}
 
-Esta fase se centra en crear componentes Compose reutilizables, stateless y bien organizados para construir la interfaz de HomeScreen.
+Esta fase se centra en crear componentes Compose reutilizables, stateless y bien organizados. Un componente **stateless** es aquel que no gestiona su propio estado, sino que lo recibe por parámetros, lo que facilita enormemente su testeo y reutilización en diferentes partes de la app.
 
 ---
 
-!!! info "Dependencia de Coil"
-     Antes de crear los componentes UI, necesitamos agregar **Coil** para cargar imágenes desde URLs externas.
-
-    *¿Qué es Coil?*
-
-    **Coil** (Coroutine Image Loader) es una librería moderna de carga de imágenes para Android que:
-
-    - ✅ Está optimizada para Kotlin y Coroutines
-    - ✅ Es ligera y rápida
-    - ✅ Tiene soporte nativo para Jetpack Compose
-    - ✅ Cachea imágenes automáticamente (memoria + disco)
-    - ✅ Maneja placeholders, error states y transformaciones
-
-    *Agregar Dependencia*
+!!! info "Dependencia de Coil y Material Icons Extended"
+    Para esta fase necesitamos dos librerías fundamentales:
+    1. **Coil**: Para cargar las imágenes de los juegos de forma asíncrona y eficiente.
+    2. **Material Icons Extended**: Para acceder a una biblioteca más amplia de iconos (como el de Windows para PC o SearchOff).
 
     **Ubicación**: `app/build.gradle.kts`
-
     ```kotlin
     dependencies {
-        // ... otras dependencias existentes
-
-        // Coil para carga de imágenes
         implementation("io.coil-kt:coil-compose:2.5.0")
+        implementation("androidx.compose.material:material-icons-extended:1.7.6")
     }
     ```
 
-
-    *Sincronizar Proyecto*
-
-    Después de agregar la dependencia:
-
-    1. Click en **"Sync Now"** en la barra superior
-    2. O ejecuta: **File → Sync Project with Gradle Files**
-
-    *Uso Básico en Compose*
-
-    Una vez instalada, puedes usar `AsyncImage` en tus composables:
-
-    ```kotlin
-    import coil.compose.AsyncImage
-
-    @Composable
-    fun GameImage(imageUrl: String) {
-        AsyncImage(
-            model = imageUrl,
-            contentDescription = "Game cover",
-            modifier = Modifier.size(200.dp),
-            contentScale = ContentScale.Crop,
-            placeholder = painterResource(R.drawable.placeholder), // Opcional
-            error = painterResource(R.drawable.error_image)        // Opcional
-        )
-    }
-    ```
-
-
-    *Características de AsyncImage*
-
-    - **Automática**: Descarga, cachea y muestra la imagen
-    - **Placeholders**: Muestra imagen temporal mientras carga
-    - **Error handling**: Muestra imagen de error si falla
-    - **Content scale**: Crop, Fit, FillBounds, etc.
-    - **Transformations**: Círculo, bordes redondeados, blur, etc.
-
-    ---
-
-    *✅ Verificación*
-
-    Para verificar que Coil está correctamente instalado:
-
-    ```kotlin
-    // En cualquier @Composable
-    AsyncImage(
-        model = "https://picsum.photos/400/600",
-        contentDescription = null
-    )
-    ```
-
-
-    Si la imagen se muestra correctamente, **Coil está listo para usar** en los componentes GameCard y GameGrid.
-
 ---
 
-### 📁 Paso 4.1: Estructura de Carpetas
+### 1. GameCard: La tarjeta del catálogo
+Es el componente visual más importante. Debe ser atractivo y mostrar información clave de un vistazo sin saturar al usuario.
 
-Organizar los componentes en la carpeta existente `presentation/ui/componentes`:
-
-```
-presentation/ui/componentes/
-  ├─ BotonGS.kt              ← Ya existe (reutilizar)
-  ├─ TextFieldGS.kt          ← Ya existe (reutilizar para SearchBar)
-  ├─ LoadingIndicator.kt     ← Nuevo
-  ├─ ErrorMessage.kt         ← Nuevo
-  ├─ EmptyState.kt           ← Nuevo
-  ├─ CategoryChipsRow.kt     ← Nuevo
-  ├─ GameCard.kt             ← Nuevo
-  └─ GameGrid.kt             ← Nuevo
-```
-
-
----
-
-### 🔍 Paso 4.2: SearchBar Component (Reutilizando TextFieldGS)
-
-**Ubicación**: Usar directamente `TextFieldGS` en HomeScreen
-
-No necesitas crear un componente nuevo, usa `TextFieldGS` existente:
-
-```kotlin
-// En HomeScreen.kt
-TextFieldGS(
-    value = searchQuery,
-    onValueChange = onSearchQueryChange,
-    placeholder = "Search games...",
-    modifier = Modifier.fillMaxWidth(),
-    singleLine = true
-)
-```
-
-
-**Ventajas de reutilizar**:
-- ✅ Ya tiene el estilo personalizado del proyecto
-- ✅ Colores y forma consistentes con el tema
-- ✅ Menos código duplicado
-
----
-
-### 🏷️ Paso 4.3: CategoryChipsRow Component
-
-**Ubicación**: `presentation/ui/componentes/CategoryChipsRow.kt`
-
-```kotlin
-@Composable
-fun CategoryChipsRow(
-    selectedCategory: GameCategory,
-    onCategorySelected: (GameCategory) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    LazyRow(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp)
-    ) {
-        items(GameCategory.entries) { category ->
-            FilterChip(
-                selected = category == selectedCategory,
-                onClick = { onCategorySelected(category) },
-                label = { Text(category.name) }
-            )
-        }
-    }
-}
-```
-
-
----
-
-### 🎮 Paso 4.4: GameCard Component
-
-**Ubicación**: `presentation/ui/componentes/GameCard.kt`
+**¿Qué aprende el alumno aquí?**
+- **HorizontalPager**: Para crear carruseles de imágenes deslizables.
+- **Mapeo Dinámico**: Traducir datos del modelo (`slugs`) a elementos visuales (`Icons`).
+- **Diseño Adaptativo**: Controlar el desbordamiento de texto con `maxLines` y `Ellipsis`.
 
 ```kotlin
 @Composable
@@ -2743,235 +1782,214 @@ fun GameCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
+            .height(260.dp) // Altura optimizada para el grid
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column {
-            // Imagen con Coil
-            AsyncImage(
-                model = game.imageUrl,
-                contentDescription = game.title,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp),
-                contentScale = ContentScale.Crop
-            )
+            // Carrusel de imágenes (Uso de HorizontalPager)
+            // ... (Ver implementación completa en el repositorio)
             
+            // Información del juego
             Column(modifier = Modifier.padding(12.dp)) {
-                Text(
-                    text = game.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                
-                Spacer(modifier = Modifier.height(4.dp))
-                
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    // Rating
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            Icons.Default.Star,
-                            contentDescription = null,
-                            tint = Color(0xFFFFD700),
-                            modifier = Modifier.size(16.dp)
-                        )
-                        Text(
-                            text = game.rating.toString(),
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                    
-                    // Precio
-                    Text(
-                        text = "$${game.price}",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
+                    // Iconos de Plataforma (Windows, PS, Xbox...)
+                    PlatformIconsRow(platforms = game.platforms)
+                    // Rating con estrella
+                    // ...
                 }
+                // Título (Limitado a 1 línea para mantener simetría)
+                Text(text = game.title, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
     }
 }
 ```
-
+> [!TIP]
+> Puedes revisar la implementación completa del carrusel y el mapeo de iconos en `presentation/ui/componentes/GameCard.kt`.
 
 ---
 
-### 📱 Paso 4.5: GameGrid Component
+### 2. FilterSystem: Gestión de filtros compleja
+Para evitar ocupar demasiado espacio, usamos una fila única de chips que despliega un panel inferior (**ModalBottomSheet**).
 
-**Ubicación**: `presentation/ui/componentes/GameGrid.kt`
+**Propósito pedagógico:**
+- **UX Limpia**: No abrumar al usuario con 3 filas de filtros.
+- **Interacción Avanzada**: Uso de `ModalBottomSheet` para selecciones cómodas.
+- **Feedback Visual**: Los chips cambian de color e incluyen un icono de "check" cuando están activos.
 
 ```kotlin
 @Composable
-fun GameGrid(
-    games: List<Game>,
-    onGameClick: (Int) -> Unit,
-    modifier: Modifier = Modifier
+fun FilterSystem(
+    selectedCategory: GameCategory,
+    onCategorySelected: (GameCategory) -> Unit,
+    // ... otros filtros
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = modifier,
-        contentPadding = PaddingValues(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        items(
-            items = games,
-            key = { game -> game.id }
-        ) { game ->
-            GameCard(
-                game = game,
-                onClick = { onGameClick(game.id) }
+    // Fila horizontal de chips compactos
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        item {
+            CompactFilterChip(
+                label = "Categoría",
+                isSelected = selectedCategory != GameCategory.ALL,
+                onClick = { /* Abrir BottomSheet */ }
             )
+        }
+        // ... otros chips
+    }
+
+    // El BottomSheet se encarga de mostrar las opciones sin tapar el catálogo
+    if (showSheet) {
+        ModalBottomSheet(onDismissRequest = { showSheet = false }) {
+            // Lista de opciones para elegir
         }
     }
 }
 ```
 
-
 ---
 
-### 🔄 Paso 4.6: LoadingIndicator Component
+### 3. Estados de la Interfaz (UX de calidad)
+Una aplicación profesional siempre informa al usuario de lo que está pasando.
 
-**Ubicación**: `presentation/ui/componentes/LoadingIndicator.kt`
-
-```kotlin
-@Composable
-fun LoadingIndicator(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator()
-    }
-}
-```
-
-
----
-
-### ⚠️ Paso 4.7: ErrorMessage Component (Reutilizando BotonGS)
-
-**Ubicación**: `presentation/ui/componentes/ErrorMessage.kt`
-
-```kotlin
-@Composable
-fun ErrorMessage(
-    message: String,
-    onRetry: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            Icons.Default.Error,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.error
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
-        
-        Text(
-            text = message,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
-        
-        // Reutilizando BotonGS existente
-        BotonGS(
-            texto = "Retry",
-            onClick = onRetry
-        )
-    }
-}
-```
-
-
----
-
-### 📭 Paso 4.8: EmptyState Component (Reutilizando BotonGS)
-
-**Ubicación**: `presentation/ui/componentes/EmptyState.kt`
+- **LoadingIndicator**: Un spinner centrado para evitar una pantalla blanca durante la carga.
+- **ErrorMessage**: Incluye un botón de "Retry" para que el usuario pueda recuperarse de un fallo de red.
+- **EmptyState**: Se muestra cuando no hay resultados (ej: al buscar algo que no existe), permitiendo limpiar los filtros con un solo clic.
 
 ```kotlin
 @Composable
 fun EmptyState(
     message: String = "No games found",
-    onClearFilters: (() -> Unit)? = null,
-    modifier: Modifier = Modifier
+    onClearFilters: (() -> Unit)? = null
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            Icons.Default.SearchOff,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
-        
-        Text(
-            text = message,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
-        )
-        
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(Icons.Default.SearchOff, modifier = Modifier.size(64.dp))
+        Text(text = message)
         onClearFilters?.let {
-            Spacer(modifier = Modifier.height(16.dp))
-            // Reutilizando BotonGS existente
-            BotonGS(
-                texto = "Clear Filters",
-                onClick = it
-            )
+            BotonGS(texto = "Clear Filters", onClick = it)
         }
     }
 }
 ```
 
-!!! note "Iconos"
-    Se ha utilizado el icono `Icons.Default.SearchOff` que viene dentro de los iconos extendidos de Material Design, que se encuentran en el paquete `androidx.compose.material.icons.extended`.<br>
-    Es necesario agregar la dependencia de `androidx.compose.material.icons.extended` en el archivo `build.gradle` del módulo `app`.
+---
 
-    ```gradle
-    implementation "androidx.compose.material:material-icons-extended:1.7.6"
-    ```
-    
+<u>✅ Resumen de la Fase 4</u>
 
+Has creado una biblioteca de componentes robustos y educativos:
+
+- ✅ **GameCard**: Con carrusel interactivo e iconos de plataforma inteligentes.
+- ✅ **FilterSystem**: Compacto y basado en Material Design 3 (`ModalBottomSheet`).
+- ✅ **GameGrid**: Organización eficiente en 2 columnas.
+- ✅ **Gestión de Estados**: Feedback visual completo para Loading, Error y Empty.
 
 ---
 
-### ✅ Resumen de la Fase 4
+## **FASE 5: HomeScreen Completa** {#fase-5-homescreen}
 
-Has creado componentes UI reutilizables aprovechando los existentes:
+En esta fase final, uniremos todas las piezas que hemos construido: el **ViewModel** como cerebro de la pantalla, los **UseCases** como lógica de negocio, y la biblioteca de **Componentes UI** que diseñamos en la Fase 4.
 
-**Componentes reutilizados del proyecto**:
+La `HomeScreen` es el "orquestador". Su responsabilidad no es dibujar cada detalle, sino organizar los componentes y pasarles los datos y eventos necesarios.
 
-- ✅ **TextFieldGS** - Para SearchBar (sin crear componente nuevo)
-- ✅ **BotonGS** - Para botones Retry y Clear Filters
+### 1. La TopAppBar Dinámica (Búsqueda integrada)
 
-**Componentes nuevos creados**:
+Una de las características más profesionales de nuestra app es la barra superior que se transforma. En lugar de tener un campo de búsqueda estático que roba espacio, usamos un icono que activa el modo búsqueda.
 
-- ✅ **CategoryChipsRow** - Filtros de categorías
-- ✅ **GameCard** - Tarjeta individual con Coil
-- ✅ **GameGrid** - Grid de 2 columnas
-- ✅ **LoadingIndicator** - Spinner centrado
-- ✅ **ErrorMessage** - Error con BotonGS
-- ✅ **EmptyState** - Estado vacío con BotonGS
+**Conceptos clave para el alumno:**
+- **Estado Visual**: Usamos `uiState.isSearchMode` para decidir qué versión de la `TopAppBar` mostrar.
+- **Auto-focus**: Al abrir la búsqueda, usamos un `FocusRequester` para que el teclado aparezca automáticamente.
+
+```kotlin
+@Composable
+fun HomeScreen() {
+    // ... inicialización de ViewModel y State
+    val focusRequester = remember { FocusRequester() }
+
+    Scaffold(
+        topBar = {
+            if (uiState.isSearchMode) {
+                // Barra con campo de texto (TextField)
+                SearchTopBar(
+                    query = uiState.searchQuery,
+                    onQueryChange = { viewModel.onSearchQueryChange(it) },
+                    onClose = { viewModel.toggleSearchMode() },
+                    focusRequester = focusRequester
+                )
+            } else {
+                // Barra estándar con título y botones de acción
+                MainTopBar(
+                    onToggleFilters = { viewModel.toggleFilterVisibility() },
+                    onOpenSearch = { viewModel.toggleSearchMode() }
+                )
+            }
+        },
+        bottomBar = {
+            // Navegación principal de la app
+            BottomNavigationBar(currentRoute = AppRoutes.Home, onNavigate = { /* ... */ })
+        }
+    ) { innerPadding ->
+        // Contenido...
+    }
+}
+```
+
+> [!TIP]
+> Puedes revisar la implementación completa de la HomeScreen y el mapeo de iconos en `presentation/ui/screens/HomeScreen.kt`.
+
+### 2. Animaciones de Visibilidad (`AnimatedVisibility`)
+
+Para que la interfaz no sea "tosca", los filtros aparecen y desaparecen con una suave animación de persiana justo debajo de la barra superior.
+
+```kotlin
+AnimatedVisibility(
+    visible = uiState.isFilterVisible,
+    enter = expandVertically() + fadeIn(),
+    exit = shrinkVertically() + fadeOut()
+) {
+    FilterSystem(
+        selectedCategory = uiState.selectedCategory,
+        // ... pasamos los callbacks del ViewModel
+    )
+}
+```
+
+### 3. El patrón "When" para la Gestión de Estados
+
+El corazón del contenido de la pantalla utiliza la potencia de Kotlin para manejar los 4 estados fundamentales de cualquier aplicación moderna:
+
+1.  **Cargando (`isLoading`)**: El usuario nunca debe ver una pantalla en blanco.
+2.  **Error (`errorMessage`)**: Siempre debemos dar una explicación y un botón de reintento.
+3.  **Vacío (`isEmpty`)**: Si no hay resultados (ej: una búsqueda sin éxito), ayudamos al usuario a limpiar sus filtros.
+4.  **Éxito (`Success`)**: Mostramos la cuadrícula de juegos (`GameGrid`).
+
+```kotlin
+Box(modifier = Modifier.fillMaxSize()) {
+    when {
+        uiState.isLoading -> LoadingIndicator()
+        uiState.errorMessage != null -> ErrorMessage(onRetry = { viewModel.refreshGames() })
+        uiState.games.isEmpty() -> EmptyState(onClearFilters = { viewModel.clearAllFilters() })
+        else -> GameGrid(games = uiState.games, onGameClick = { /* Navegar al detalle */ })
+    }
+}
+```
+
+### 4. Navegación e Integración Global
+
+Finalmente, incluimos el componente **`BottomNavigationBar`**. Este componente es vital para la experiencia de usuario (UX), ya que permite saltar entre las secciones principales (Home, Biblioteca, Perfil) desde cualquier lugar.
+
+**Consejo didáctico**: Fíjate cómo la `HomeScreen` no navega por sí misma, sino que utiliza el `LocalNavStack.current` para delegar la navegación a la infraestructura que definimos en el `NavGraph`.
+
+---
+
+<u>✅ Resumen de la Fase 5</u>
+
+¡Enhorabuena! Has construido una pantalla de alta complejidad siguiendo los estándares de la industria:
+
+- **Modular**: Componentes pequeños y reutilizables.
+- **Reactiva**: Basada en estados de `HomeViewModel`.
+- **UX Optimizada**: Búsqueda integrada, filtros inteligentes y animaciones fluidas.
+- **Limpia**: Separación total entre la lógica de datos (Repository) y la visual (Compose).
+
+Puedes revisar el código completo y los detalles de implementación en el archivo `presentation/ui/screens/HomeScreen.kt`.
