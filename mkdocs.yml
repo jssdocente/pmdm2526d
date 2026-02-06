@@ -81,6 +81,7 @@ nav:
     - "5. HomeScreen": temas/proyectos/GameVault/05-HomeScreen.md
     - "6. Detalles de un juego": temas/proyectos/GameVault/06-DetailScreen.md
     - "7. Persistencia con Room": temas/proyectos/GameVault/07-RoomPersistence.md
+    - "8. Biblioteca y detalles avanzados": temas/proyectos/GameVault/08-LibraryAndDetailAdvanced.md
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
