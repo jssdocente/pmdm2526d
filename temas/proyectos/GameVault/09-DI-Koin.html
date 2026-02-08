@@ -1,0 +1,4052 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/09-DI-Koin.html">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>9. Inyección de Dependencias con Koin - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17%2013h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-inyeccion-de-dependencias-con-koin" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Inyección de Dependencias con Koin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo noche" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo día" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El lenguaje kotlin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    El lenguaje kotlin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expresiones vs Sentencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/12.1-when.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones y lambdas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Null safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colecciones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Colecciones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/43-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/44-sets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetos anónimos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enum classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genéricos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clases selladas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/52-corrutinas-sencillo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrutinas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Herramientas Proyecto Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Herramientas Proyecto Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/01-gradle-agp-estructura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/02-build-gradle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/03-android-manifest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichero Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/21-composable-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones componibles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/22-state-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/23-listas-cuadriculas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/24-navegacion-rutas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegación Rutas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/25-material-design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/99-glosario-android.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glosario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 - Visión General y Entorno de desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.1-primeros-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Primeros pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2. Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.3-primera-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Primera aplicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.4-gestion-estado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4. Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.5-mejorando-codigo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5. Mejorando el código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.6-mostrar-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6. Manejo de listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 - Interfaz de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 - Interfaz de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.1-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.2-temas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2. Temas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3. Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3. Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.2-arquitectura.capa-ui" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.2. Capa de UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3-arquitectura.capa-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.3. Capas Datos/Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.4. Clean Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3.4. Clean Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3.2-CapaDominio-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3.3-CapaDatos-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4 - Persistencia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT4 - Persistencia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.0-persistencia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.1-room.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1. Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.2-conexion-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2. Conexión a Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto Guía
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Proyecto Guía
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-configuracion-proyecto.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Configuración proyecto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-LoginScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Pantalla Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preferencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-Register-logout.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Registro y logout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-HomeScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. HomeScreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-DetailScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Detalles de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-RoomPersistence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Persistencia con Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-LibraryAndDetailAdvanced.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Biblioteca y detalles avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-fundamentos-inversion-de-control-ioc-e-inyeccion-de-dependencias-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Fundamentos: Inversión de Control (IoC) e Inyección de Dependencias (DI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Fundamentos: Inversión de Control (IoC) e Inyección de Dependencias (DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-el-problema-de-las-dependencias-hardcoded-a-fuego-en-el-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1. El Problema de las Dependencias Hardcoded (a fuego en el código)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-que-es-la-inversion-de-control-ioc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.2. ¿Qué es la Inversión de Control (IoC)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-que-es-la-inyeccion-de-dependencias-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3 . ¿Qué es la Inyección de Dependencias (DI)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-el-principio-de-inversion-de-dependencias-dip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4. El Principio de Inversión de Dependencias (DIP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-contenedores-de-inyeccion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5. Contenedores de Inyección de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-contenedores-populares-en-el-ecosistema-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.6. Contenedores populares en el ecosistema Android
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-ioc-y-di-en-clean-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7. IoC y DI en Clean Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-beneficios-de-ioc-y-di-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8. Beneficios de IoC y DI en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-como-usar-la-di-en-este-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Cómo usar la DI en este proyecto?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Cómo usar la DI en este proyecto?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-el-problema-actual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. El problema actual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-la-solucion-inyeccion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. La solución: Inyección de Dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-por-que-koin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. ¿Por qué Koin?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-conceptos-clave-de-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Conceptos clave de DI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-flujo-de-di-con-koin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Flujo de DI con Koin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-de-koin-en-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración de Koin en el proyecto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuración de Koin en el proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-agregar-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Agregar dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-crear-la-clase-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Crear la clase Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-conceptos-de-la-inicializacion-de-koin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Conceptos de la inicialización de Koin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-verificacion-de-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Verificación de la configuración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-comparacion-antes-vs-despues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Comparación: Antes vs Después
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-creacion-de-modulos-de-koin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Creación de módulos de Koin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Creación de módulos de Koin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-organizacion-de-modulos-por-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Organización de módulos por capas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-datamodule-capa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. DataModule - Capa de Datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-domainmodule-capa-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. DomainModule - Capa de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-presentationmodule-capa-de-presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. PresentationModule - Capa de Presentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-registrar-los-modulos-en-mygamestoreapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Registrar los módulos en MyGameStoreApp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-refactorizacion-de-viewmodels-y-screens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Refactorización de ViewModels y Screens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Refactorización de ViewModels y Screens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-refactorizar-viewmodels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Refactorizar ViewModels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-eliminar-viewmodelfactories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Eliminar ViewModelFactories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-actualizar-screens-para-usar-koinviewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Actualizar Screens para usar koinViewModel()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ventajas-y-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Ventajas y Buenas Prácticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Ventajas y Buenas Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ventajas-alcanzadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Ventajas alcanzadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-buenas-practicas-con-koin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Buenas Prácticas con Koin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-preparacion-para-firebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Preparación para Firebase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-del-capitulo-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Conclusión del Capítulo 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-inyeccion-de-dependencias-con-koin"><strong>9. Inyección de Dependencias con Koin</strong><a class="headerlink" href="#9-inyeccion-de-dependencias-con-koin" title="Permanent link">¶</a></h1>
+<p>En esta 9ª parte del proyecto, refactorizaremos nuestra aplicación para implementar <strong>Inyección de Dependencias (DI)</strong> utilizando <strong>Koin</strong>. Este cambio arquitectónico es fundamental antes de integrar servicios externos como Firebase, ya que nos permitirá gestionar las dependencias de forma centralizada, testeable y escalable.</p>
+<div class="admonition tip">
+<p class="admonition-title">Repositorio de la Aplicación</p>
+<p>El código fuente de la aplicación se encuentra en el repositorio de GitHub: <a href="https://github.com/jssdocente/MyGameStore">MyGameStore</a></p>
+</div>
+<h4 id="resumen">Resumen<a class="headerlink" href="#resumen" title="Permanent link">¶</a></h4>
+<ol start="0">
+<li>Fundamentos: Inversión de Control (IoC) e Inyección de Dependencias (DI)</li>
+<li>¿Qué es la Inyección de Dependencias y por qué usarla?</li>
+<li>Configuración de Koin en el proyecto</li>
+<li>Creación de módulos de Koin</li>
+<li>Refactorización de ViewModels y Repositorios</li>
+<li>Ventajas y buenas prácticas</li>
+</ol>
+<hr>
+<h2 id="0-fundamentos-inversion-de-control-ioc-e-inyeccion-de-dependencias-di"><strong>0. Fundamentos: Inversión de Control (IoC) e Inyección de Dependencias (DI)</strong><a class="headerlink" href="#0-fundamentos-inversion-de-control-ioc-e-inyeccion-de-dependencias-di" title="Permanent link">¶</a></h2>
+<p>Antes de implementar cualquier framework de DI, es fundamental comprender los principios arquitectónicos que lo sustentan. En esta sección exploraremos conceptos que van más allá de Android y son aplicables a cualquier lenguaje de programación orientado a objetos.</p>
+<hr>
+<h3 id="01-el-problema-de-las-dependencias-hardcoded-a-fuego-en-el-codigo">0.1. El Problema de las Dependencias Hardcoded (a fuego en el código)<a class="headerlink" href="#01-el-problema-de-las-dependencias-hardcoded-a-fuego-en-el-codigo" title="Permanent link">¶</a></h3>
+<p>Imagina que estás construyendo un coche. En un diseño tradicional (sin IoC), cada componente crearía sus propias piezas:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// ❌ Diseño acoplado - Ejemplo conceptual</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Coche</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MotorDiesel</span><span class="p">()</span><span class="w">      </span><span class="c1">// Crea su propio motor</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">ruedas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RuedasMichelin</span><span class="p">()</span><span class="w">  </span><span class="c1">// Crea sus propias ruedas</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">arrancar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">motor</span><span class="p">.</span><span class="na">encender</span><span class="p">()</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Problemas evidentes:</strong></p>
+<ol>
+<li><strong>Acoplamiento rígido</strong>: <code>Coche</code> está "soldado" a <code>MotorDiesel</code>. Si quieres un motor eléctrico, tienes que modificar la clase <code>Coche</code>.</li>
+<li><strong>Imposible testear</strong>: No puedes probar <code>Coche</code> con un <code>MotorFalso</code> que simule fallos.</li>
+<li><strong>Reutilización nula</strong>: No puedes usar el mismo <code>Coche</code> con diferentes motores.</li>
+<li><strong>Violación de principios SOLID</strong>: Específicamente el <strong>Principio de Inversión de Dependencias</strong> (la "D" de SOLID).</li>
+</ol>
+<hr>
+<h3 id="02-que-es-la-inversion-de-control-ioc">0.2. ¿Qué es la Inversión de Control (IoC)?<a class="headerlink" href="#02-que-es-la-inversion-de-control-ioc" title="Permanent link">¶</a></h3>
+<p><strong>Inversión de Control (IoC)</strong> es un <strong>principio de diseño</strong> donde el flujo de control de una aplicación se invierte: en lugar de que tu código llame al framework, el framework llama a tu código.</p>
+<h4 id="analogia-el-restaurante">Analogía: El Restaurante<a class="headerlink" href="#analogia-el-restaurante" title="Permanent link">¶</a></h4>
+<p>Piensa en dos modelos de restaurante:</p>
+<p><strong>Sin IoC (Control tradicional):</strong>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Tú (el código) → Vas a la cocina
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                → Eliges ingredientes
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                → Cocinas el plato
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                → Te lo sirves
+</span></code></pre></div><p></p>
+<p>Tú controlas todo el proceso.</p>
+<p><strong>Con IoC (Control invertido):</strong>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Tú (el código) → Pides el plato al camarero
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Framework      → Decide cómo cocinarlo
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>               → Te lo sirve listo
+</span></code></pre></div><p></p>
+<p>El framework controla el proceso, tú solo defines qué necesitas.</p>
+<h4 id="implementacion-tecnica">Implementación técnica<a class="headerlink" href="#implementacion-tecnica" title="Permanent link">¶</a></h4>
+<p>En programación, IoC se manifiesta en varios patrones:</p>
+<ol>
+<li><strong>Template Method Pattern</strong>: El framework define el esqueleto del algoritmo.</li>
+<li><strong>Observer Pattern</strong>: Los objetos se registran para ser notificados.</li>
+<li><strong>Dependency Injection</strong>: Las dependencias se "inyectan" desde fuera.</li>
+</ol>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// ✅ Con IoC - Ejemplo conceptual</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Coche</span><span class="p">(</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">motor</span><span class="p">:</span><span class="w"> </span><span class="n">Motor</span><span class="p">,</span><span class="w">      </span><span class="c1">// Recibe el motor desde fuera</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">ruedas</span><span class="p">:</span><span class="w"> </span><span class="n">Ruedas</span><span class="w">     </span><span class="c1">// Recibe las ruedas desde fuera</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">arrancar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">motor</span><span class="p">.</span><span class="na">encender</span><span class="p">()</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// Ahora el "framework" (o contenedor) controla la creación:</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kd">val</span><span class="w"> </span><span class="nv">cocheElectrico</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Coche</span><span class="p">(</span><span class="n">MotorElectrico</span><span class="p">(),</span><span class="w"> </span><span class="n">RuedasGoodYear</span><span class="p">())</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="kd">val</span><span class="w"> </span><span class="nv">cocheDiesel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Coche</span><span class="p">(</span><span class="n">MotorDiesel</span><span class="p">(),</span><span class="w"> </span><span class="n">RuedasMichelin</span><span class="p">())</span>
+</span></code></pre></div>
+<p><strong>Ventaja clave:</strong> <code>Coche</code> ya no controla su construcción, solo define qué necesita.</p>
+<hr>
+<h3 id="03-que-es-la-inyeccion-de-dependencias-di">0.3 . ¿Qué es la Inyección de Dependencias (DI)?<a class="headerlink" href="#03-que-es-la-inyeccion-de-dependencias-di" title="Permanent link">¶</a></h3>
+<p><strong>Inyección de Dependencias (DI)</strong> es una <strong>implementación específica</strong> del principio IoC. Es la técnica de "pasar" las dependencias de una clase desde el exterior, en lugar de que la clase las cree internamente.</p>
+<h4 id="los-tres-tipos-de-inyeccion-de-dependencias">Los tres tipos de Inyección de Dependencias<a class="headerlink" href="#los-tres-tipos-de-inyeccion-de-dependencias" title="Permanent link">¶</a></h4>
+<p><strong>1. Inyección por Constructor (Constructor Injection)</strong> - <strong>⭐ Recomendada</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">,</span><span class="w">  </span><span class="c1">// ← Inyectada</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w">   </span><span class="c1">// ← Inyectada</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Ventajas:</strong>
+- ✅ Dependencias obligatorias (no pueden ser null)
+- ✅ Inmutabilidad (<code>val</code>)
+- ✅ Facilita testing</p>
+<hr>
+<p><strong>2. Inyección por Setter (Setter Injection)</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w">  </span><span class="c1">// ← Se asigna después</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">setAuthRepository</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">authRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Desventajas:</strong>
+- ⚠️ Dependencias opcionales (pueden quedar sin inicializar)
+- ⚠️ Mutabilidad
+- ❌ Poco común en Android moderno</p>
+<hr>
+<p><strong>3. Inyección por Interfaz (Interface Injection)</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">AuthRepositoryInjector</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">inject</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">(),</span><span class="w"> </span><span class="n">AuthRepositoryInjector</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">inject</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">authRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Uso:</strong> Muy raro, principalmente en frameworks legacy.</p>
+<hr>
+<h3 id="04-el-principio-de-inversion-de-dependencias-dip">0.4. El Principio de Inversión de Dependencias (DIP)<a class="headerlink" href="#04-el-principio-de-inversion-de-dependencias-dip" title="Permanent link">¶</a></h3>
+<p>La Inyección de Dependencias está estrechamente relacionada con el <strong>Principio de Inversión de Dependencias</strong>, la "D" de <strong>SOLID</strong>:</p>
+<div class="admonition quote">
+<p class="admonition-title">Principio de Inversión de Dependencias (Robert C. Martin)</p>
+<p><strong>A.</strong> Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de abstracciones.</p>
+<p><strong>B.</strong> Las abstracciones no deben depender de detalles. Los detalles deben depender de abstracciones.</p>
+</div>
+<h4 id="aplicado-a-nuestro-proyecto">Aplicado a nuestro proyecto<a class="headerlink" href="#aplicado-a-nuestro-proyecto" title="Permanent link">¶</a></h4>
+<p><strong>❌ Violación del DIP (Código actual):</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(),</span><span class="w">  </span><span class="c1">// ← Depende de implementación</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Problema:</strong> <code>LoginViewModel</code> (módulo de alto nivel) depende de <code>AuthRepositoryImpl</code> (módulo de bajo nivel concreto).</p>
+<hr>
+<p><strong>✅ Cumplimiento del DIP (Con DI):</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">,</span><span class="w">  </span><span class="c1">// ← Depende de abstracción</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w">   </span><span class="c1">// ← Depende de abstracción</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Solución:</strong> <code>LoginViewModel</code> depende de las <strong>interfaces</strong> (<code>AuthRepository</code>, <code>SessionManager</code>), no de las implementaciones.</p>
+<h4 id="diagrama-de-dependencias">Diagrama de dependencias<a class="headerlink" href="#diagrama-de-dependencias" title="Permanent link">¶</a></h4>
+<pre class="mermaid"><code>graph TD
+    subgraph "❌ Sin DIP"
+        A1[LoginViewModel&lt;br/&gt;Alto Nivel] --&gt;|depende| B1[AuthRepositoryImpl&lt;br/&gt;Bajo Nivel]
+        B1 --&gt;|depende| C1[AppDatabase&lt;br/&gt;Detalle]
+    end
+
+    subgraph "✅ Con DIP + DI"
+        A2[LoginViewModel&lt;br/&gt;Alto Nivel] --&gt;|depende| I[AuthRepository&lt;br/&gt;Abstracción]
+        B2[AuthRepositoryImpl&lt;br/&gt;Bajo Nivel] -.-&gt;|implementa| I
+        B2 --&gt;|depende| D[AppDatabase&lt;br/&gt;Detalle]
+    end
+
+    style A1 fill:#ff6b6b
+    style A2 fill:#6bcf7f
+    style I fill:#4d96ff</code></pre>
+<p><strong>Observa:</strong> En el diseño correcto, las flechas de dependencia apuntan <strong>hacia arriba</strong> (hacia las abstracciones), no hacia abajo (hacia los detalles).</p>
+<hr>
+<h3 id="05-contenedores-de-inyeccion-de-dependencias">0.5. Contenedores de Inyección de Dependencias<a class="headerlink" href="#05-contenedores-de-inyeccion-de-dependencias" title="Permanent link">¶</a></h3>
+<p>Hasta ahora hemos visto <strong>qué</strong> es DI, pero no <strong>cómo</strong> gestionarla. Aquí es donde entran los <strong>Contenedores de DI</strong> (también llamados <strong>IoC Containers</strong>).</p>
+<h4 id="que-es-un-contenedor-de-di">¿Qué es un Contenedor de DI?<a class="headerlink" href="#que-es-un-contenedor-de-di" title="Permanent link">¶</a></h4>
+<p>Un contenedor de DI es un <strong>"almacén inteligente"</strong> que:</p>
+<ol>
+<li><strong>Registra</strong> cómo crear cada dependencia (configuración)</li>
+<li><strong>Resuelve</strong> las dependencias cuando alguien las solicita</li>
+<li><strong>Gestiona</strong> el ciclo de vida (singleton, factory, scoped)</li>
+<li><strong>Inyecta</strong> automáticamente en constructores</li>
+</ol>
+<h4 id="ejemplo-manual-vs-con-contenedor">Ejemplo manual vs con Contenedor<a class="headerlink" href="#ejemplo-manual-vs-con-contenedor" title="Permanent link">¶</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1"><strong>Sin Contenedor (Manual DI):</strong></label><label for="__tabbed_1_2"><strong>Con Contenedor (Koin):</strong></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p></p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// En cada Screen, creamos manualmente el árbol de dependencias</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nd">@Composable</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LoginScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyGameStoreApp</span><span class="p">.</span><span class="na">database</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">viewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="p">(</span><span class="n">authRepository</span><span class="p">,</span><span class="w"> </span><span class="n">sessionManager</span><span class="p">)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="c1">// ... UI ...</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<strong>Problemas:</strong><p></p>
+<ul>
+<li>😓 Repetitivo (cada Screen hace lo mismo)</li>
+<li>🐛 Propenso a errores (olvidar una dependencia)</li>
+<li>🔄 Difícil cambiar implementaciones</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Configuración única en un módulo</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">appModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppDatabase</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">SessionManager</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(</span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">viewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">(),</span><span class="w"> </span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">// En la Screen, solo pedimos el ViewModel</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nd">@Composable</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LoginScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">viewModel</span><span class="p">:</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">koinViewModel</span><span class="p">()</span><span class="w">  </span><span class="c1">// ¡Koin resuelve todo!</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="c1">// ... UI ...</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ventajas:</strong></p>
+<ul>
+<li>✅ Configuración centralizada</li>
+<li>✅ Resolución automática de dependencias</li>
+<li>✅ Gestión de ciclo de vida</li>
+<li>✅ Fácil cambiar implementaciones</li>
+</ul>
+<hr>
+<h3 id="06-contenedores-populares-en-el-ecosistema-android">0.6. Contenedores populares en el ecosistema Android<a class="headerlink" href="#06-contenedores-populares-en-el-ecosistema-android" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th><strong>Koin</strong></th>
+<th><strong>Hilt</strong></th>
+<th><strong>Dagger 2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paradigma</strong></td>
+<td>Service Locator</td>
+<td>DI real</td>
+<td>DI real</td>
+</tr>
+<tr>
+<td><strong>Compilación</strong></td>
+<td>Runtime</td>
+<td>Compile-time</td>
+<td>Compile-time</td>
+</tr>
+<tr>
+<td><strong>Curva aprendizaje</strong></td>
+<td>⭐ Baja</td>
+<td>⭐⭐ Media</td>
+<td>⭐⭐⭐ Alta</td>
+</tr>
+<tr>
+<td><strong>Configuración</strong></td>
+<td>DSL Kotlin</td>
+<td>Anotaciones</td>
+<td>Anotaciones</td>
+</tr>
+<tr>
+<td><strong>Velocidad compilación</strong></td>
+<td>Rápida</td>
+<td>Media</td>
+<td>Lenta</td>
+</tr>
+<tr>
+<td><strong>Detección de errores</strong></td>
+<td>Runtime ⚠️</td>
+<td>Compilación ✅</td>
+<td>Compilación ✅</td>
+</tr>
+<tr>
+<td><strong>Ideal para</strong></td>
+<td>Apps medianas, aprendizaje</td>
+<td>Apps enterprise con ViewModel</td>
+<td>Apps enterprise grandes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Para este proyecto elegimos Koin porque:</strong></p>
+<ol>
+<li>📚 Curva de aprendizaje suave (ideal para estudiantes)</li>
+<li>🚀 Configuración rápida (en minutos)</li>
+<li>🎯 DSL Kotlin nativo (más idiomático)</li>
+<li>🔧 Suficientemente potente para apps reales</li>
+</ol>
+<hr>
+<h3 id="07-ioc-y-di-en-clean-architecture">0.7. IoC y DI en Clean Architecture<a class="headerlink" href="#07-ioc-y-di-en-clean-architecture" title="Permanent link">¶</a></h3>
+<p>En nuestro proyecto seguimos <strong>Clean Architecture</strong>, donde la DI juega un papel fundamental para cumplir la <strong>Regla de Dependencia</strong>:</p>
+<h4 id="diagrama-de-capas-con-di">Diagrama de capas con DI<a class="headerlink" href="#diagrama-de-capas-con-di" title="Permanent link">¶</a></h4>
+<pre class="mermaid"><code>graph TB
+    subgraph "Presentation Layer"
+        UI[HomeScreen]
+        VM[HomeViewModel]
+    end
+
+    subgraph "Domain Layer"
+        UC[GameUseCases]
+        I[AuthRepository Interface]
+    end
+
+    subgraph "Data Layer"
+        REPO[AuthRepositoryImpl]
+        DB[AppDatabase]
+    end
+
+    UI --&gt;|observa| VM
+    VM --&gt;|usa| UC
+    UC --&gt;|usa| I
+    REPO -.-&gt;|implementa| I
+    REPO --&gt;|accede| DB
+
+    K[Koin Container]
+    K -.-&gt;|inyecta| VM
+    K -.-&gt;|inyecta| UC
+    K -.-&gt;|inyecta| REPO
+    K -.-&gt;|inyecta| DB
+
+    style UI fill:#4d96ff
+    style VM fill:#6bcf7f
+    style UC fill:#ffd93d
+    style I fill:#ff6b6b
+    style K fill:#a29bfe</code></pre>
+<p><strong>Observa:</strong></p>
+<ul>
+<li>Las flechas sólidas (dependencias) siempre apuntan <strong>hacia abstracciones</strong></li>
+<li>Koin (líneas punteadas) inyecta en todas las capas, <strong>sin violar</strong> las dependencias</li>
+</ul>
+<hr>
+<h3 id="08-beneficios-de-ioc-y-di-en-el-mundo-real">0.8. Beneficios de IoC y DI en el Mundo Real<a class="headerlink" href="#08-beneficios-de-ioc-y-di-en-el-mundo-real" title="Permanent link">¶</a></h3>
+<h4 id="1-testing-mas-facil">1. <strong>Testing más fácil</strong><a class="headerlink" href="#1-testing-mas-facil" title="Permanent link">¶</a></h4>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Producción: Usa base de datos real</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">productionModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(</span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1">// Testing: Usa mock</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="kd">val</span><span class="w"> </span><span class="nv">testModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">FakeAuthRepository</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="2-multiples-implementaciones-sin-cambiar-codigo">2. <strong>Múltiples implementaciones sin cambiar código</strong><a class="headerlink" href="#2-multiples-implementaciones-sin-cambiar-codigo" title="Permanent link">¶</a></h4>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Desarrollo local</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MockAuthRepositoryImpl</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">// Producción con Firebase</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">FirebaseAuthRepositoryImpl</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">// ¡LoginViewModel no cambia en absoluto!</span>
+</span></code></pre></div>
+<h4 id="3-gestion-automatica-de-recursos">3. <strong>Gestión automática de recursos</strong><a class="headerlink" href="#3-gestion-automatica-de-recursos" title="Permanent link">¶</a></h4>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// Koin asegura una única instancia de AppDatabase (singleton)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppDatabase</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">// Sin DI, podrías crear múltiples instancias accidentalmente → crash</span>
+</span></code></pre></div>
+<hr>
+<h2 id="1-como-usar-la-di-en-este-proyecto"><strong>1. ¿Cómo usar la DI en este proyecto?</strong><a class="headerlink" href="#1-como-usar-la-di-en-este-proyecto" title="Permanent link">¶</a></h2>
+<h3 id="11-el-problema-actual">1.1. El problema actual<a class="headerlink" href="#11-el-problema-actual" title="Permanent link">¶</a></h3>
+<p>Actualmente, nuestros ViewModels crean sus propias dependencias de forma manual:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// ❌ Acoplamiento directo - Código actual</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(),</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Problemas de este enfoque:</strong></p>
+<ol>
+<li><strong>Acoplamiento fuerte</strong>: El ViewModel "conoce" la implementación concreta (<code>AuthRepositoryImpl</code>)</li>
+<li><strong>Difícil de testear</strong>: No podemos inyectar un <code>FakeRepository</code> para pruebas</li>
+<li><strong>Violación de principios SOLID</strong>: Dependemos de implementaciones, no de abstracciones</li>
+<li><strong>Difícil de mantener</strong>: Cambiar la implementación requiere modificar múltiples clases</li>
+<li><strong>Gestión manual del ciclo de vida</strong>: Tenemos que crear y destruir instancias manualmente</li>
+</ol>
+<h3 id="12-la-solucion-inyeccion-de-dependencias">1.2. La solución: Inyección de Dependencias<a class="headerlink" href="#12-la-solucion-inyeccion-de-dependencias" title="Permanent link">¶</a></h3>
+<p>La <strong>Inyección de Dependencias</strong> es un patrón de diseño donde las dependencias de una clase se "inyectan" desde el exterior en lugar de crearlas internamente.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// ✅ Con DI - Código objetivo</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">,</span><span class="w">  </span><span class="c1">// Se inyecta</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w">   </span><span class="c1">// Se inyecta</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Ventajas:</strong></p>
+<ul>
+<li>✅ <strong>Desacoplamiento</strong>: El ViewModel solo conoce las interfaces</li>
+<li>✅ <strong>Testeable</strong>: Fácil inyectar mocks o fakes</li>
+<li>✅ <strong>Flexible</strong>: Cambiar implementaciones en un solo lugar</li>
+<li>✅ <strong>Reutilizable</strong>: Las dependencias se comparten entre clases</li>
+<li>✅ <strong>Mantenible</strong>: Código más limpio y organizado</li>
+</ul>
+<h3 id="13-por-que-koin">1.3. ¿Por qué Koin?<a class="headerlink" href="#13-por-que-koin" title="Permanent link">¶</a></h3>
+<p>Existen varias librerías de DI para Android, pero Koin destaca por:</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Koin</th>
+<th>Hilt/Dagger</th>
+<th>Manual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Curva de aprendizaje</strong></td>
+<td>⭐ Baja</td>
+<td>⭐⭐⭐ Alta</td>
+<td>⭐⭐ Media</td>
+</tr>
+<tr>
+<td><strong>Configuración</strong></td>
+<td>⭐⭐⭐ Mínima</td>
+<td>⭐ Compleja</td>
+<td>⭐⭐ Media</td>
+</tr>
+<tr>
+<td><strong>DSL Kotlin</strong></td>
+<td>✅ Nativo</td>
+<td>❌ Java</td>
+<td>❌ N/A</td>
+</tr>
+<tr>
+<td><strong>Tiempo de compilación</strong></td>
+<td>✅ Rápido</td>
+<td>❌ Lento</td>
+<td>✅ Rápido</td>
+</tr>
+<tr>
+<td><strong>Detección de errores</strong></td>
+<td>⚠️ Runtime</td>
+<td>✅ Compilación</td>
+<td>⚠️ Runtime</td>
+</tr>
+<tr>
+<td><strong>Ideal para</strong></td>
+<td>Apps medianas</td>
+<td>Apps enterprise</td>
+<td>Proyectos pequeños</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Para este proyecto, Koin es perfecto porque:</strong></p>
+<ul>
+<li>📚 Es fácil de aprender para estudiantes</li>
+<li>🚀 Configuración rápida (minutos, no horas)</li>
+<li>🎯 Sintaxis Kotlin idiomática (DSL)</li>
+<li>🔧 Suficientemente potente para apps reales</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Recursos adicionales</p>
+<ul>
+<li><a href="https://insert-koin.io/">Documentación oficial de Koin</a></li>
+<li><a href="https://medium.com/@farhanroy/koin-vs-hilt-dependency-injection-frameworks-in-android-73c63f6e7c63">Koin vs Hilt: Comparativa técnica</a></li>
+</ul>
+</div>
+<hr>
+<h3 id="14-conceptos-clave-de-di">1.4. Conceptos clave de DI<a class="headerlink" href="#14-conceptos-clave-de-di" title="Permanent link">¶</a></h3>
+<p>Antes de empezar con la implementación, es importante entender estos conceptos:</p>
+<h4 id="modulo-module"><strong>Módulo (Module)</strong><a class="headerlink" href="#modulo-module" title="Permanent link">¶</a></h4>
+<p>Es un contenedor lógico donde defines <strong>cómo</strong> crear las dependencias.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">dataModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">SessionManager</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="scope-ambito"><strong>Scope (Ámbito)</strong><a class="headerlink" href="#scope-ambito" title="Permanent link">¶</a></h4>
+<p>Define el <strong>ciclo de vida</strong> de una dependencia:</p>
+<ul>
+<li><code>single</code>: <strong>Singleton</strong> - Una sola instancia en toda la app</li>
+<li><code>factory</code>: <strong>Nueva instancia</strong> cada vez que se solicita</li>
+<li><code>viewModel</code>: <strong>Vinculada al ciclo de vida</strong> del ViewModel</li>
+</ul>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppDatabase</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Singleton</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">factory</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MyRepository</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w">                            </span><span class="c1">// Nueva instancia</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="n">viewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">HomeViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w">                    </span><span class="c1">// Tied to ViewModel lifecycle</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="inyeccion-injection"><strong>Inyección (Injection)</strong><a class="headerlink" href="#inyeccion-injection" title="Permanent link">¶</a></h4>
+<p>El <strong>acto de obtener</strong> una dependencia del contenedor de Koin:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w">  </span><span class="c1">// ← Inyectada por Koin</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div>
+<h4 id="resolucion-de-dependencias"><strong>Resolución de dependencias</strong><a class="headerlink" href="#resolucion-de-dependencias" title="Permanent link">¶</a></h4>
+<p>Koin resuelve automáticamente las dependencias transitivas:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// LoginViewModel necesita AuthRepository</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1">// AuthRepository necesita AppDatabase</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1">// Koin crea AppDatabase → AuthRepository → LoginViewModel</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">viewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// get() obtiene AuthRepository</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">single</span><span class="o">&lt;</span><span class="n">AuthRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(</span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// get() obtiene AppDatabase</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AppDatabase</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h3 id="15-flujo-de-di-con-koin">1.5. Flujo de DI con Koin<a class="headerlink" href="#15-flujo-de-di-con-koin" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[App inicia] --&gt; B[Koin.init en Application]
+    B --&gt; C[Registra módulos]
+    C --&gt; D[Módulos definen cómo crear dependencias]
+
+    E[Screen necesita ViewModel] --&gt; F[Koin busca en módulos]
+    F --&gt; G{¿Dependencia existe?}
+    G --&gt;|Sí| H[¿Ya fue creada?]
+    H --&gt;|Sí - single| I[Devuelve instancia existente]
+    H --&gt;|No - factory| J[Crea nueva instancia]
+    H --&gt;|No - single| K[Crea y guarda instancia]
+    G --&gt;|No| L[Error: No definition found]
+
+    I --&gt; M[Inyecta en constructor]
+    J --&gt; M
+    K --&gt; M
+
+    style A fill:#ffd93d
+    style B fill:#6bcf7f
+    style C fill:#4d96ff
+    style M fill:#ff6b6b</code></pre>
+<hr>
+<h2 id="2-configuracion-de-koin-en-el-proyecto"><strong>2. Configuración de Koin en el proyecto</strong><a class="headerlink" href="#2-configuracion-de-koin-en-el-proyecto" title="Permanent link">¶</a></h2>
+<p>Ahora que entendemos <strong>qué</strong> es DI y <strong>por qué</strong> usarla, vamos a configurar Koin en nuestro proyecto paso a paso.</p>
+<hr>
+<h3 id="21-agregar-dependencias">2.1. Agregar dependencias<a class="headerlink" href="#21-agregar-dependencias" title="Permanent link">¶</a></h3>
+<p>Primero, añadimos las librerías de Koin al proyecto.</p>
+<p><strong>Paso 1:</strong> Abre <code>gradle/libs.versions.toml</code> y agrega la versión de Koin:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">[versions]</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># ... otras versiones</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">koin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4.0.1"</span>
+</span></code></pre></div>
+<p><strong>Paso 2:</strong> Agrega las librerías en la sección <code>[libraries]</code>:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">[libraries]</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># ... otras librerías</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Koin para Android</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">koin-android</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"io.insert-koin"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"koin-android"</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">.</span><span class="n">ref</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"koin"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">koin-androidx-compose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"io.insert-koin"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"koin-androidx-compose"</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">.</span><span class="n">ref</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"koin"</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Paso 3:</strong> Abre <code>app/build.gradle.kts</code> y añade las dependencias:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="c1">// ... dependencias existentes</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="c1">// Koin</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">koin</span><span class="p">.</span><span class="na">android</span><span class="p">)</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">koin</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">)</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Paso 4:</strong> Sincroniza el proyecto haciendo clic en <strong>"Sync Now"</strong>.</p>
+<hr>
+<h3 id="22-crear-la-clase-application">2.2. Crear la clase Application<a class="headerlink" href="#22-crear-la-clase-application" title="Permanent link">¶</a></h3>
+<p>Para inicializar Koin, necesitamos una clase que extienda <code>Application</code>. Esta clase se ejecuta <strong>antes</strong> que cualquier Activity o Screen.</p>
+<p><strong>Ubicación:</strong> <code>app/src/main/java/com/pmdm/mygamestore/MyGameStoreApp.kt</code> (ya existe)</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.app.Application</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.room.Room</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.local.AppDatabase</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.android.ext.koin.androidContext</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.android.ext.koin.androidLogger</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.context.startKoin</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.logger.Level</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MyGameStoreApp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">    </span><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="err">{</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">        </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">database</span><span class="p">:</span><span class="w"> </span><span class="n">AppDatabase</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">            </span><span class="n">private</span><span class="w"> </span><span class="k">set</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">()</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">        </span><span class="c1">// Inicializar Room (ya existente)</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">        </span><span class="n">database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="na">databaseBuilder</span><span class="p">(</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="w">            </span><span class="n">applicationContext</span><span class="p">,</span>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="w">            </span><span class="n">AppDatabase</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">,</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="w">            </span><span class="s">"mygamestore_db"</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="w">        </span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a><span class="w">        </span><span class="c1">// 🆕 Inicializar Koin</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a><span class="w">        </span><span class="n">startKoin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="w">            </span><span class="c1">// Logger de Koin para debugging</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a><span class="w">            </span><span class="n">androidLogger</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">ERROR</span><span class="p">)</span>
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="w">            </span><span class="c1">// Contexto de Android</span>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="w">            </span><span class="n">androidContext</span><span class="p">(</span><span class="k">this</span><span class="nd">@MyGameStoreApp</span><span class="p">)</span>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="w">            </span><span class="c1">// Módulos de dependencias (los crearemos en el siguiente punto)</span>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="w">            </span><span class="n">modules</span><span class="p">(</span>
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="w">                </span><span class="c1">// dataModule,</span>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="w">                </span><span class="c1">// domainModule,</span>
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a><span class="w">                </span><span class="c1">// presentationModule</span>
+</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-23-42"><a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">No olvides registrar la clase Application</p>
+<p>Asegúrate de que tu <code>AndroidManifest.xml</code> tenga registrada esta clase:</p>
+</div>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nt">&lt;application</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">        </span><span class="na">android:name=</span><span class="s">".MyGameStoreApp"</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">        </span><span class="err">...</span><span class="nt">&gt;</span>
+</span></code></pre></div>
+<hr>
+<h3 id="23-conceptos-de-la-inicializacion-de-koin">2.3. Conceptos de la inicialización de Koin<a class="headerlink" href="#23-conceptos-de-la-inicializacion-de-koin" title="Permanent link">¶</a></h3>
+<h4 id="startkoin"><strong>startKoin { }</strong><a class="headerlink" href="#startkoin" title="Permanent link">¶</a></h4>
+<p>Es el punto de entrada de Koin. Se ejecuta <strong>una sola vez</strong> al iniciar la app.</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">startKoin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">androidLogger</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">DEBUG</span><span class="p">)</span><span class="w">  </span><span class="c1">// Logs para debugging</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="n">androidContext</span><span class="p">(</span><span class="k">this</span><span class="nd">@MyApp</span><span class="p">)</span><span class="w">  </span><span class="c1">// Contexto de Android</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="n">modules</span><span class="p">(</span><span class="n">myModule1</span><span class="p">,</span><span class="w"> </span><span class="n">myModule2</span><span class="p">)</span><span class="w">  </span><span class="c1">// Módulos con dependencias</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="androidcontext"><strong>androidContext()</strong><a class="headerlink" href="#androidcontext" title="Permanent link">¶</a></h4>
+<p>Proporciona el <code>Context</code> de Android a Koin. Esto permite que las dependencias que necesiten <code>Context</code> puedan obtenerlo:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">single</span><span class="o">&lt;</span><span class="n">SessionManager</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w">  </span><span class="c1">// ← androidContext() da acceso al Context</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="androidlogger"><strong>androidLogger()</strong><a class="headerlink" href="#androidlogger" title="Permanent link">¶</a></h4>
+<p>Configura el nivel de logs de Koin:</p>
+<ul>
+<li><code>Level.DEBUG</code>: Muestra todos los logs (útil en desarrollo)</li>
+<li><code>Level.ERROR</code>: Solo errores (recomendado en producción)</li>
+<li><code>Level.NONE</code>: Sin logs</li>
+</ul>
+<h4 id="modules"><strong>modules()</strong><a class="headerlink" href="#modules" title="Permanent link">¶</a></h4>
+<p>Lista de módulos donde defines las dependencias. Los veremos en detalle en el siguiente punto.</p>
+<hr>
+<h3 id="24-verificacion-de-la-configuracion">2.4. Verificación de la configuración<a class="headerlink" href="#24-verificacion-de-la-configuracion" title="Permanent link">¶</a></h3>
+<p>Para asegurarnos de que Koin está correctamente configurado, podemos crear un módulo de prueba temporal:</p>
+<p><strong>Ubicación temporal:</strong> <code>MyGameStoreApp.kt</code> (al final del archivo)</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// 🧪 Módulo de prueba temporal</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">testModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Koin funciona correctamente!"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">}</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="c1">// En onCreate(), agregar:</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">modules</span><span class="p">(</span><span class="n">testModule</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Para verificar</strong>, en cualquier Activity o Composable:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nd">@Composable</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">TestKoinScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">get</span><span class="p">()</span><span class="w">  </span><span class="c1">// Obtenemos el String del módulo</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w">  </span><span class="c1">// Debería mostrar "Koin funciona correctamente!"</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Si ves el mensaje, <strong>Koin está correctamente configurado</strong>. Ahora podemos eliminar este módulo de prueba y crear los módulos reales.</p>
+<hr>
+<h3 id="25-comparacion-antes-vs-despues">2.5. Comparación: Antes vs Después<a class="headerlink" href="#25-comparacion-antes-vs-despues" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph LR
+    subgraph "✅ Después (Con Koin)"
+        A2[LoginScreen] --&gt;|solicita| F[Koin Container]
+        F --&gt;|inyecta| B2[LoginViewModel]
+        F --&gt;|inyecta| C2[AuthRepository]
+        F --&gt;|inyecta| D2[SessionManager]
+        F --&gt;|inyecta| E2[AppDatabase]
+    end
+
+    subgraph "❌ Antes (Sin DI)"
+        A1[LoginScreen] --&gt;|crea| B1[LoginViewModel]
+        B1 --&gt;|crea| C1[AuthRepositoryImpl]
+        B1 --&gt;|crea| D1[SessionManagerImpl]
+        C1 --&gt;|crea| E1[AppDatabase]
+    end
+
+    style A1 fill:#ff6b6b
+    style A2 fill:#6bcf7f
+    style F fill:#4d96ff</code></pre>
+<p><strong>Ventajas visibles:</strong></p>
+<ol>
+<li><strong>Centralización</strong>: Todo se gestiona desde <code>startKoin { }</code></li>
+<li><strong>Reutilización</strong>: <code>AppDatabase</code> se crea una sola vez (singleton)</li>
+<li><strong>Testeable</strong>: Podemos reemplazar módulos con mocks</li>
+<li><strong>Mantenible</strong>: Cambiar implementaciones en un solo lugar</li>
+</ol>
+<hr>
+<h2 id="3-creacion-de-modulos-de-koin"><strong>3. Creación de módulos de Koin</strong><a class="headerlink" href="#3-creacion-de-modulos-de-koin" title="Permanent link">¶</a></h2>
+<p>Los módulos de Koin organizan las dependencias por capas arquitectónicas. Cada módulo agrupa las responsabilidades de una capa específica.</p>
+<h3 id="31-organizacion-de-modulos-por-capas">3.1. Organización de módulos por capas<a class="headerlink" href="#31-organizacion-de-modulos-por-capas" title="Permanent link">¶</a></h3>
+<p>Siguiendo Clean Architecture, crearemos tres módulos:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>di/
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>├─ DataModule.kt       → Capa de Datos (Repositories, Database, SessionManager)
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>├─ DomainModule.kt     → Capa de Dominio (UseCases)
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>└─ PresentationModule.kt → Capa de Presentación (ViewModels)
+</span></code></pre></div>
+<hr>
+<h3 id="32-datamodule-capa-de-datos">3.2. DataModule - Capa de Datos<a class="headerlink" href="#32-datamodule-capa-de-datos" title="Permanent link">¶</a></h3>
+<p>Este módulo gestiona el acceso a datos: repositories, base de datos y managers.</p>
+<p><strong>Ubicación</strong>: <code>app/src/main/java/com/pmdm/mygamestore/di/DataModule.kt</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.MyGameStoreApp</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.data.repository.*</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.android.ext.koin.androidContext</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.module.dsl.singleOf</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.dsl.bind</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.dsl.module</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="kd">val</span><span class="w"> </span><span class="nv">dataModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="w">    </span><span class="c1">// Database (Singleton - ya existe en MyGameStoreApp)</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="w">    </span><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MyGameStoreApp</span><span class="p">.</span><span class="na">database</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="w">    </span><span class="c1">// SessionManager (Singleton con binding automático)</span>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="w">    </span><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">SessionManagerImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">SessionManager</span><span class="o">::</span><span class="kd">class</span>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="w">    </span><span class="err">// </span><span class="nc">AuthRepository</span><span class="w"> </span><span class="p">(</span><span class="n">Singleton</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">binding</span><span class="w"> </span><span class="n">automático</span><span class="p">)</span>
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="w">    </span><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">AuthRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">AuthRepository</span><span class="o">::</span><span class="kd">class</span>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>
+</span><span id="__span-30-21"><a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="w">    </span><span class="err">// </span><span class="nc">GamesRepository</span><span class="w"> </span><span class="p">(</span><span class="n">Singleton</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">binding</span><span class="w"> </span><span class="n">automático</span><span class="p">)</span>
+</span><span id="__span-30-22"><a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="w">    </span><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">MockGamesRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">GamesRepository</span><span class="o">::</span><span class="kd">class</span>
+</span><span id="__span-30-23"><a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="err">}</span>
+</span></code></pre></div>
+<p><strong>Conceptos clave:</strong></p>
+<h4 id="singleof-con-bind"><strong>singleOf con bind</strong><a class="headerlink" href="#singleof-con-bind" title="Permanent link">¶</a></h4>
+<p>La sintaxis moderna de Koin 4.x utiliza <code>singleOf</code> con <code>bind</code> para simplificar el código:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1">// ❌ Sintaxis antigua (verbose)</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">single</span><span class="o">&lt;</span><span class="n">SessionManager</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">androidContext</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1">// ✅ Sintaxis moderna (concisa)</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">SessionManagerImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">SessionManager</span><span class="o">::</span><span class="kd">class</span>
+</span></code></pre></div>
+<p><strong>Ventajas:</strong></p>
+<ul>
+<li>✅ Menos código boilerplate</li>
+<li>✅ Type-safe (errores en compilación)</li>
+<li>✅ Constructor injection automático</li>
+<li>✅ <code>bind</code> asocia la implementación con la interfaz</li>
+</ul>
+<hr>
+<h3 id="33-domainmodule-capa-de-dominio">3.3. DomainModule - Capa de Dominio<a class="headerlink" href="#33-domainmodule-capa-de-dominio" title="Permanent link">¶</a></h3>
+<p>Este módulo contiene los casos de uso (UseCases) con la lógica de negocio.</p>
+<p><strong>Ubicación</strong>: <code>app/src/main/java/com/pmdm/mygamestore/di/DomainModule.kt</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.domain.usecase.GameUseCases</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.module.dsl.factoryOf</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.dsl.module</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="kd">val</span><span class="w"> </span><span class="nv">domainModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">    </span><span class="c1">// GameUseCases (Factory - nueva instancia cada vez)</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="w">    </span><span class="n">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="n">GameUseCases</span><span class="p">)</span>
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>¿Por qué <code>factory</code> en lugar de <code>single</code>?</strong></p>
+<p>Los UseCases suelen ser <strong>stateless</strong> (sin estado interno), por lo que no necesitamos compartir instancias:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1">// ✅ Factory: Nueva instancia cada vez (ligero)</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="n">GameUseCases</span><span class="p">)</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1">// ❌ Single: Compartir instancia (innecesario para UseCases)</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">GameUseCases</span><span class="p">)</span>
+</span></code></pre></div>
+<hr>
+<h3 id="34-presentationmodule-capa-de-presentacion">3.4. PresentationModule - Capa de Presentación<a class="headerlink" href="#34-presentationmodule-capa-de-presentacion" title="Permanent link">¶</a></h3>
+<p>Este módulo gestiona los ViewModels vinculados al ciclo de vida de las pantallas.</p>
+<p><strong>Ubicación</strong>: <code>app/src/main/java/com/pmdm/mygamestore/di/PresentationModule.kt</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.DetailViewModel</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.HomeViewModel</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.LibraryViewModel</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.LoginViewModel</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.RegisterViewModel</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.presentation.viewmodel.SplashViewModel</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.module.dsl.viewModelOf</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.dsl.module</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="kd">val</span><span class="w"> </span><span class="nv">presentationModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">    </span><span class="c1">// ViewModels con ciclo de vida automático</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">SplashViewModel</span><span class="p">)</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">LoginViewModel</span><span class="p">)</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">RegisterViewModel</span><span class="p">)</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">HomeViewModel</span><span class="p">)</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">DetailViewModel</span><span class="p">)</span><span class="w">  </span><span class="c1">// Acepta parámetros dinámicos</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">    </span><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">LibraryViewModel</span><span class="p">)</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Conceptos clave:</strong></p>
+<h4 id="viewmodelof"><strong>viewModelOf</strong><a class="headerlink" href="#viewmodelof" title="Permanent link">¶</a></h4>
+<p>La función <code>viewModelOf</code> simplifica la declaración de ViewModels:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1">// ❌ Sintaxis antigua</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">viewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">HomeViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">(),</span><span class="w"> </span><span class="k">get</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1">// ✅ Sintaxis moderna</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="n">viewModelOf</span><span class="p">(</span><span class="o">::</span><span class="n">HomeViewModel</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Koin resuelve automáticamente los parámetros del constructor usando <code>get()</code> interno.</p>
+<hr>
+<h3 id="35-registrar-los-modulos-en-mygamestoreapp">3.5. Registrar los módulos en MyGameStoreApp<a class="headerlink" href="#35-registrar-los-modulos-en-mygamestoreapp" title="Permanent link">¶</a></h3>
+<p>Ahora conectamos los módulos al inicializar Koin:</p>
+<p><strong>Ubicación</strong>: <code>app/src/main/java/com/pmdm/mygamestore/MyGameStoreApp.kt</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di.dataModule</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di.domainModule</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">com.pmdm.mygamestore.di.presentationModule</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MyGameStoreApp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">()</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">        </span><span class="c1">// Inicializar Room...</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">        </span><span class="c1">// Inicializar Koin</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">        </span><span class="n">startKoin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="w">            </span><span class="n">androidLogger</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">ERROR</span><span class="p">)</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="w">            </span><span class="n">androidContext</span><span class="p">(</span><span class="k">this</span><span class="nd">@MyGameStoreApp</span><span class="p">)</span>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a><span class="w">            </span><span class="c1">// 👇 Módulos organizados por capas</span>
+</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a><span class="w">            </span><span class="n">modules</span><span class="p">(</span>
+</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a><span class="w">                </span><span class="n">dataModule</span><span class="p">,</span>
+</span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a><span class="w">                </span><span class="n">domainModule</span><span class="p">,</span>
+</span><span id="__span-36-21"><a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a><span class="w">                </span><span class="n">presentationModule</span>
+</span><span id="__span-36-22"><a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-36-23"><a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-36-24"><a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-36-25"><a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<p><u>✅ Resumen del Punto 3</u></p>
+<p>Has creado los tres módulos fundamentales:</p>
+<ol>
+<li>✅ <strong>DataModule</strong>: Repositories, Database, SessionManager</li>
+<li>✅ <strong>DomainModule</strong>: GameUseCases</li>
+<li>✅ <strong>PresentationModule</strong>: Todos los ViewModels</li>
+<li>✅ <strong>Sintaxis moderna</strong>: <code>singleOf</code>, <code>factoryOf</code>, <code>viewModelOf</code></li>
+</ol>
+<hr>
+<h2 id="4-refactorizacion-de-viewmodels-y-screens"><strong>4. Refactorización de ViewModels y Screens</strong><a class="headerlink" href="#4-refactorizacion-de-viewmodels-y-screens" title="Permanent link">¶</a></h2>
+<p>Con los módulos configurados, ahora refactorizamos el código para usar Koin.</p>
+<h3 id="41-refactorizar-viewmodels">4.1. Refactorizar ViewModels<a class="headerlink" href="#41-refactorizar-viewmodels" title="Permanent link">¶</a></h3>
+<p>Los ViewModels ya no crean sus dependencias, solo las declaran en el constructor.</p>
+<h4 id="ejemplo-loginviewmodel">Ejemplo: LoginViewModel<a class="headerlink" href="#ejemplo-loginviewmodel" title="Permanent link">¶</a></h4>
+<p><strong>Antes (con valores por defecto):</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthRepositoryImpl</span><span class="p">(),</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SessionManagerImpl</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div><p></p>
+<p><strong>Después (solo declaración):</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="p">,</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sessionManager</span><span class="p">:</span><span class="w"> </span><span class="n">SessionManager</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</span></code></pre></div><p></p>
+<p><strong>Cambios aplicados:</strong></p>
+<ul>
+<li>❌ Eliminado <code>context: Context</code> (ya no se necesita)</li>
+<li>❌ Eliminados valores por defecto (<code>= AuthRepositoryImpl()</code>)</li>
+<li>✅ Solo declaración de interfaces</li>
+</ul>
+<hr>
+<h3 id="42-eliminar-viewmodelfactories">4.2. Eliminar ViewModelFactories<a class="headerlink" href="#42-eliminar-viewmodelfactories" title="Permanent link">¶</a></h3>
+<p>Las factories ya no son necesarias porque Koin gestiona la creación:</p>
+<p><strong>Archivos eliminados:</strong>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>presentation/viewmodel/
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>├─ LoginViewModelFactory.kt       ❌ Eliminado
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>├─ RegisterViewModelFactory.kt    ❌ Eliminado
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>├─ SplashViewModelFactory.kt      ❌ Eliminado
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>├─ HomeViewModelFactory.kt        ❌ Eliminado
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>├─ LibraryViewModelFactory.kt     ❌ Eliminado
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>└─ DetailViewModelFactory.kt      ❌ Eliminado
+</span></code></pre></div><p></p>
+<hr>
+<h3 id="43-actualizar-screens-para-usar-koinviewmodel">4.3. Actualizar Screens para usar koinViewModel()<a class="headerlink" href="#43-actualizar-screens-para-usar-koinviewmodel" title="Permanent link">¶</a></h3>
+<p>Las Screens ahora obtienen los ViewModels directamente desde Koin.</p>
+<h4 id="ejemplo-loginscreen">Ejemplo: LoginScreen<a class="headerlink" href="#ejemplo-loginscreen" title="Permanent link">¶</a></h4>
+<p><strong>Antes:</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nd">@Composable</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LoginScreen</span><span class="p">(</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">    </span><span class="n">viewModel</span><span class="p">:</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viewModel</span><span class="p">(</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">        </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoginViewModelFactory</span><span class="p">(</span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span><span class="p">)</span>
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">    </span><span class="p">),</span>
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="p">)</span>
+</span></code></pre></div><p></p>
+<p><strong>Después:</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.androidx.compose.koinViewModel</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="nd">@Composable</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LoginScreen</span><span class="p">(</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">    </span><span class="n">viewModel</span><span class="p">:</span><span class="w"> </span><span class="n">LoginViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">koinViewModel</span><span class="p">(),</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="p">)</span>
+</span></code></pre></div><p></p>
+<p><strong>Cambios:</strong></p>
+<ul>
+<li>❌ Eliminado <code>LocalContext.current</code></li>
+<li>❌ Eliminado <code>factory = LoginViewModelFactory(...)</code></li>
+<li>✅ Simplificado a <code>koinViewModel()</code></li>
+</ul>
+<hr>
+<h4 id="caso-especial-detailviewmodel-con-parametros">Caso especial: DetailViewModel con parámetros<a class="headerlink" href="#caso-especial-detailviewmodel-con-parametros" title="Permanent link">¶</a></h4>
+<p><strong>DetailViewModel necesita <code>gameId</code> dinámico</strong>, que se pasa desde la navegación:</p>
+<p><strong>Ubicación</strong>: <code>presentation/ui/screens/DetailScreen.kt</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.androidx.compose.koinViewModel</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.koin.core.parameter.parametersOf</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="nd">@Composable</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">DetailScreen</span><span class="p">(</span>
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="w">    </span><span class="n">gameId</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="w">    </span><span class="n">onBack</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a><span class="w">    </span><span class="c1">// ViewModel con parámetro dinámico</span>
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">viewModel</span><span class="p">:</span><span class="w"> </span><span class="n">DetailViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">koinViewModel</span><span class="p">(</span>
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a><span class="w">        </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"DetailViewModel_</span><span class="si">$</span><span class="n">gameId</span><span class="s">"</span><span class="w">  </span><span class="c1">// Key única para cada juego</span>
+</span><span id="__span-42-12"><a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-42-13"><a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a><span class="w">        </span><span class="n">parametersOf</span><span class="p">(</span><span class="n">gameId</span><span class="p">)</span><span class="w">  </span><span class="c1">// Pasar gameId como parámetro</span>
+</span><span id="__span-42-14"><a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-42-15"><a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>
+</span><span id="__span-42-16"><a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a><span class="w">    </span><span class="c1">// ... resto del código</span>
+</span><span id="__span-42-17"><a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Conceptos clave:</strong></p>
+<ul>
+<li><strong><code>key</code></strong>: Fuerza a Koin a crear un nuevo ViewModel si el <code>gameId</code> cambia</li>
+<li><strong><code>parametersOf(gameId)</code></strong>: Pasa el parámetro al constructor del ViewModel</li>
+</ul>
+<hr>
+<p><u>✅ Resumen del Punto 4</u></p>
+<p>Has refactorizado completamente el código:</p>
+<ol>
+<li>✅ ViewModels sin valores por defecto</li>
+<li>✅ ViewModelFactories eliminadas (6 archivos)</li>
+<li>✅ Screens usando <code>koinViewModel()</code></li>
+<li>✅ Parámetros dinámicos con <code>parametersOf()</code></li>
+</ol>
+<hr>
+<h2 id="5-ventajas-y-buenas-practicas"><strong>5. Ventajas y Buenas Prácticas</strong><a class="headerlink" href="#5-ventajas-y-buenas-practicas" title="Permanent link">¶</a></h2>
+<h3 id="51-ventajas-alcanzadas">5.1. Ventajas alcanzadas<a class="headerlink" href="#51-ventajas-alcanzadas" title="Permanent link">¶</a></h3>
+<p>Con Koin implementado, nuestra aplicación ahora tiene:</p>
+<h4 id="1-desacoplamiento-total"><strong>1. Desacoplamiento total</strong><a class="headerlink" href="#1-desacoplamiento-total" title="Permanent link">¶</a></h4>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1">// ViewModel no sabe QUÉ implementación usa</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">LoginViewModel</span><span class="p">(</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">authRepository</span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w">  </span><span class="c1">// Interfaz, no implementación</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="p">)</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a><span class="c1">// Cambiar de Mock a Firebase: Solo editar DataModule</span>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">FirebaseAuthRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">AuthRepository</span><span class="o">::</span><span class="kd">class</span>
+</span></code></pre></div>
+<h4 id="2-testing-simplificado"><strong>2. Testing simplificado</strong><a class="headerlink" href="#2-testing-simplificado" title="Permanent link">¶</a></h4>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1">// Módulo de prueba</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">testModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="w">    </span><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">FakeAuthRepository</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">AuthRepository</span><span class="o">::</span><span class="kd">class</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="err">}</span>
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="c1">// En test, reemplazar módulos</span>
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="n">startKoin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a><span class="w">    </span><span class="n">modules</span><span class="p">(</span><span class="n">testModule</span><span class="p">)</span><span class="w">  </span><span class="c1">// Usa fakes en lugar de implementaciones reales</span>
+</span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="3-configuracion-centralizada"><strong>3. Configuración centralizada</strong><a class="headerlink" href="#3-configuracion-centralizada" title="Permanent link">¶</a></h4>
+<p>Cambiar de entorno (dev, staging, prod) en un solo lugar:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">dataModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">    </span><span class="n">single</span><span class="o">&lt;</span><span class="n">GamesRepository</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">            </span><span class="n">MockGamesRepositoryImpl</span><span class="p">()</span><span class="w">  </span><span class="c1">// Mock en desarrollo</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="w">            </span><span class="n">FirebaseGamesRepositoryImpl</span><span class="p">()</span><span class="w">  </span><span class="c1">// Firebase en producción</span>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-45-9"><a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h3 id="52-buenas-practicas-con-koin">5.2. Buenas Prácticas con Koin<a class="headerlink" href="#52-buenas-practicas-con-koin" title="Permanent link">¶</a></h3>
+<h4 id="1-organizar-modulos-por-feature-opcional"><strong>1. Organizar módulos por feature (opcional)</strong><a class="headerlink" href="#1-organizar-modulos-por-feature-opcional" title="Permanent link">¶</a></h4>
+<p>Para apps grandes, organizar por funcionalidad:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1">// di/features/</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="err">├─</span><span class="w"> </span><span class="n">AuthModule</span><span class="p">.</span><span class="na">kt</span><span class="w">      </span><span class="err">→</span><span class="w"> </span><span class="n">Login</span><span class="p">,</span><span class="w"> </span><span class="n">Register</span><span class="p">,</span><span class="w"> </span><span class="n">Session</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="err">├─</span><span class="w"> </span><span class="n">GamesModule</span><span class="p">.</span><span class="na">kt</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="n">Games</span><span class="p">,</span><span class="w"> </span><span class="n">Library</span><span class="p">,</span><span class="w"> </span><span class="n">Detail</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="err">└─</span><span class="w"> </span><span class="n">ProfileModule</span><span class="p">.</span><span class="na">kt</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="n">Profile</span><span class="p">,</span><span class="w"> </span><span class="n">Settings</span>
+</span></code></pre></div>
+<h4 id="2-logs-en-desarrollo"><strong>2. Logs en desarrollo</strong><a class="headerlink" href="#2-logs-en-desarrollo" title="Permanent link">¶</a></h4>
+<p>Configurar logs según el entorno:</p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">startKoin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="w">    </span><span class="n">androidLogger</span><span class="p">(</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="n">Level</span><span class="p">.</span><span class="na">DEBUG</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">Level</span><span class="p">.</span><span class="na">ERROR</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h3 id="53-preparacion-para-firebase">5.3. Preparación para Firebase<a class="headerlink" href="#53-preparacion-para-firebase" title="Permanent link">¶</a></h3>
+<p>Con Koin implementado, integrar Firebase será trivial:</p>
+<p><strong>Paso 1</strong>: Crear <code>FirebaseAuthRepositoryImpl</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">FirebaseAuthRepositoryImpl</span><span class="p">(</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">auth</span><span class="p">:</span><span class="w"> </span><span class="n">FirebaseAuth</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AuthRepository</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">LoginResult</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="w">        </span><span class="c1">// Implementación con Firebase</span>
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Paso 2</strong>: Actualizar <code>DataModule</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">dataModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="w">    </span><span class="c1">// Firebase Auth</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="w">    </span><span class="n">single</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Firebase</span><span class="p">.</span><span class="na">auth</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="w">    </span><span class="c1">// Cambiar implementación (¡sin tocar ViewModels!)</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a><span class="w">    </span><span class="n">singleOf</span><span class="p">(</span><span class="o">::</span><span class="n">FirebaseAuthRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="n">AuthRepository</span><span class="o">::</span><span class="kd">class</span>
+</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a><span class="err">}</span>
+</span></code></pre></div>
+<p><strong>¡Listo!</strong> Los ViewModels seguirán funcionando sin modificaciones.</p>
+<hr>
+<p><u>✅ Resumen del Punto 5</u></p>
+<ol>
+<li>✅ <strong>Desacoplamiento</strong>: Cambiar implementaciones sin tocar ViewModels</li>
+<li>✅ <strong>Testing</strong>: Inyectar fakes fácilmente</li>
+<li>✅ <strong>Configuración centralizada</strong>: Un solo lugar para cambios</li>
+<li>✅ <strong>Preparado para Firebase</strong>: Migración sin dolor</li>
+</ol>
+<hr>
+<h2 id="conclusion-del-capitulo-9"><strong>✅ Conclusión del Capítulo 9</strong><a class="headerlink" href="#conclusion-del-capitulo-9" title="Permanent link">¶</a></h2>
+<p>Has completado exitosamente la implementación de Inyección de Dependencias con Koin:</p>
+<ol>
+<li>✅ Configuración de Koin en el proyecto</li>
+<li>✅ Creación de módulos organizados por capas</li>
+<li>✅ Refactorización completa de ViewModels</li>
+<li>✅ Eliminación de Factories manuales</li>
+<li>✅ Screens simplificadas con <code>koinViewModel()</code></li>
+<li>✅ Arquitectura preparada para Firebase</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:&lt;jssgarcia.docente@gmail.com&gt;" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

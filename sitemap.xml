@@ -2,258 +2,270 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/02-arquitectura.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/03-capa-ui.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/21-composable-functions.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/22-state-management.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/23-listas-cuadriculas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/24-navegacion-rutas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/25-material-design.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-compose/99-glosario-android.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/01-sobre-kotlin.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/11-variables-tipos-datos.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/12-expresiones-vs-sentencias.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/12.1-when.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/13-funciones-lambdas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/14-null-safety.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/21-poo.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/22-objetos-anonimos.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/23-data-classes.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/24-enum-classes.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/25-genericos.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/26-sealed-classes.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/31-scope-functions.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/41-arrays.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/42-listas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/43-maps.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/44-sets.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/51-corrutinas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-kotlin/52-corrutinas-sencillo.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-tools/01-gradle-agp-estructura.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-tools/02-build-gradle.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/00-android/00-tools/03-android-manifest.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/01/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.1-primeros-pasos.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.2-ciclo-vida-app.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.3-primera-app.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.4-gestion-estado.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.5-mejorando-codigo.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/02/2.6-mostrar-listas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.1-intro.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.2-temas.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3-arquitectura.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3-elementos-menus.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3.2-arquitectura.capa-ui.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3-arquitectura.capa-datos.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3.2-CapaDominio-es.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/03/3.3.3.3-CapaDatos-es.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/04/4.0-persistencia.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/04/4.1-room.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/04/4.2-conexion-internet.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/04/4.4-Injeccion-dependencias.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/index.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/01-configuracion-proyecto.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/02-LoginScreen.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/03-Preferences.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/04-Register-logout.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/05-HomeScreen.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/06-DetailScreen.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/07-RoomPersistence.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
     </url>
     <url>
          <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/08-LibraryAndDetailAdvanced.html</loc>
-         <lastmod>2026-02-06</lastmod>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
+         <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/09-DI-Koin.html</loc>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
+         <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/10-Auth-firebase.html</loc>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
+         <loc>https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/11-Auth-google.html</loc>
+         <lastmod>2026-02-08</lastmod>
     </url>
 </urlset>
