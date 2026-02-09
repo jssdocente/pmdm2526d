@@ -8,6 +8,8 @@
         <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/11-Auth-google.html">
       
       
+        <link rel="prev" href="10-Auth-firebase.html">
+      
       
       
         
@@ -18,7 +20,7 @@
     
     
       
-        <title>Guía: Integración de Google Sign-In con Firebase en Android - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+        <title>11. Autenticación con Google - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
       
     
     
@@ -122,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guía: Integración de Google Sign-In con Firebase en Android
+              11. Autenticación con Google
             
           </span>
         </div>
@@ -2156,18 +2158,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2188,7 +2192,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2446,6 +2450,593 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-DI-Koin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Inyección de dependencias con Koin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-Auth-firebase.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Autenticación con Firebase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Autenticación con Google
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11-Auth-google.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Autenticación con Google
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Índice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducción" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Introducción
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-del-sistema-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura del sistema de autenticación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-configuración-en-firebase-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Paso 1: Configuración en Firebase Console
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Paso 1: Configuración en Firebase Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-habilitar-google-como-proveedor-de-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Habilitar Google como proveedor de autenticación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-configuración-en-google-cloud-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 Paso 2: Configuración en Google Cloud Console
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Paso 2: Configuración en Google Cloud Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-generar-sha-1-del-certificado-de-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Generar SHA-1 del certificado de debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-agregar-sha-1-a-firebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Agregar SHA-1 a Firebase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-descargar-nuevo-google-servicesjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Descargar nuevo google-services.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-agregar-dependencias-de-google-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Paso 3: Agregar dependencias de Google Sign-In
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Paso 3: Agregar dependencias de Google Sign-In">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-actualizar-libsversionstoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Actualizar libs.versions.toml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-actualizar-appbuildgradlekts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Actualizar app/build.gradle.kts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-crear-googlesigninmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 4: Crear GoogleSignInManager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 4: Crear GoogleSignInManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-donde-viene-default_web_client_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 ¿De dónde viene default_web_client_id?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacion-del-web-client-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Verificación del Web Client ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Errores comunes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-extender-firebaseauthrepositoryimpl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Paso 5: Extender FirebaseAuthRepositoryImpl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Paso 5: Extender FirebaseAuthRepositoryImpl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-agregar-metodo-en-la-interfaz-authrepository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Agregar método en la interfaz AuthRepository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-implementar-en-firebaseauthrepositoryimpl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Implementar en FirebaseAuthRepositoryImpl
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-actualizar-datamodule-con-googlesigninmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Paso 6: Actualizar DataModule con GoogleSignInManager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-7-actualizar-loginviewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 Paso 7: Actualizar LoginViewModel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Paso 7: Actualizar LoginViewModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-inyectar-googlesigninmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Inyectar GoogleSignInManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-agregar-funcion-para-iniciar-google-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Agregar función para iniciar Google Sign-In
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-agregar-funcion-para-manejar-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. Agregar función para manejar resultado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-actualizar-loginscreen-con-botón-de-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ Paso 8: Actualizar LoginScreen con botón de Google
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖼️ Paso 8: Actualizar LoginScreen con botón de Google">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-configurar-activityresultlauncher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. Configurar ActivityResultLauncher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-agregar-boton-de-google-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Agregar botón de Google Sign-In
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-9-agregar-ícono-de-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 Paso 9: Agregar ícono de Google
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Paso 9: Agregar ícono de Google">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-a-usar-material-icons-extended-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción A: Usar Material Icons Extended (Recomendado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-b-descargar-icono-oficial-de-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción B: Descargar ícono oficial de Google
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-10-actualizar-homeviewmodel-con-logout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚪 Paso 10: Actualizar HomeViewModel con logout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-11-testing-del-flujo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Paso 11: Testing del flujo completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Paso 11: Testing del flujo completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-escenarios-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. Escenarios de prueba
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📁 Resumen de archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-del-flujo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Diagrama del flujo completo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Conclusión
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2957,6 +3548,46 @@
 
   
 
+
+  <nav class="md-path" aria-label="Navegación">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Proyecto Guía
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
 
               
               <article class="md-content__inner md-typeset">
