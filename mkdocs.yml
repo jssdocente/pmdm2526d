@@ -85,6 +85,7 @@ nav:
     - "9. Inyección de dependencias con Koin": temas/proyectos/GameVault/09-DI-Koin.md
     - "10. Autenticación con Firebase": temas/proyectos/GameVault/10-Auth-firebase.md
     - "11. Autenticación con Google": temas/proyectos/GameVault/11-Auth-google.md
+
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
   #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
