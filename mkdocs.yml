@@ -86,6 +86,7 @@ nav:
     - "10. Autenticación con Firebase": temas/proyectos/GameVault/10-Auth-firebase.md
     - "11. Autenticación con Google": temas/proyectos/GameVault/11-Auth-google.md
     - "12. Implementar nueva Feature": temas/proyectos/GameVault/12-implementar-nueva-feature.md
+    - "13. Sistema de Logging": temas/proyectos/GameVault/13-Sistema-logging.md
 
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
