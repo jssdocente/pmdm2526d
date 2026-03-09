@@ -88,6 +88,7 @@ nav:
     - "12. Implementar nueva Feature": temas/proyectos/GameVault/12-implementar-nueva-feature.md
     - "13. Sistema de Logging": temas/proyectos/GameVault/13-Sistema-logging.md
     - "14. Consumo de APIs": temas/proyectos/GameVault/14-Consumo-apis.md
+    - "15. Soporte multiidioma": temas/proyectos/GameVault/15-Soporte-multilenguaje.md
 
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
