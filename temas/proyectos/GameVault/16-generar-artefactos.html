@@ -1,0 +1,4860 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jssdocente.github.io/pmdm2526d/temas/proyectos/GameVault/16-generar-artefactos.html">
+      
+      
+        <link rel="prev" href="15-Soporte-multilenguaje.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../imagenes/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>16. Compilación y Generación de Artefactos - 2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17%2013h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#16-compilacion-y-generacion-de-artefactos-en-android" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-header__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              16. Compilación y Generación de Artefactos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo noche" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="Teal" aria-label="Cambiar a modo día" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" class="md-nav__button md-logo" aria-label="2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26" data-md-component="logo">
+      
+  <img src="../../../imagenes/logofp.png" alt="logo">
+
+    </a>
+    2º DAM - Programación Multimedia y Desarrollo móvil - Curso 25/26
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El lenguaje kotlin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    El lenguaje kotlin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/11-variables-tipos-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/12-expresiones-vs-sentencias.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expresiones vs Sentencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/12.1-when.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/13-funciones-lambdas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones y lambdas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/14-null-safety.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Null safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colecciones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Colecciones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/41-arrays.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/42-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/43-maps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/44-sets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/21-poo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/22-objetos-anonimos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetos anónimos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/23-data-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/24-enum-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enum classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/25-genericos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genéricos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/26-sealed-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clases selladas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/31-scope-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-kotlin/52-corrutinas-sencillo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrutinas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Herramientas Proyecto Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Herramientas Proyecto Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/01-gradle-agp-estructura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/02-build-gradle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-gradle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-tools/03-android-manifest.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fichero Manifest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/21-composable-functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funciones componibles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/22-state-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/23-listas-cuadriculas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/24-navegacion-rutas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegación Rutas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/25-material-design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-android/00-compose/99-glosario-android.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glosario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1 - Visión General y Entorno de desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT2 - Programación de aplicaciones de móviles con Android
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.1-primeros-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Primeros pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.2-ciclo-vida-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2. Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.3-primera-app.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Primera aplicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.4-gestion-estado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4. Gestión del estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.5-mejorando-codigo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5. Mejorando el código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02/2.6-mostrar-listas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6. Manejo de listas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3 - Interfaz de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT3 - Interfaz de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.1-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.2-temas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2. Temas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3. Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3. Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3-arquitectura.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.2-arquitectura.capa-ui" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.2. Capa de UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3-arquitectura.capa-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.3. Capas Datos/Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_4" id="__nav_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.4. Clean Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.3.4. Clean Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3.2-CapaDominio-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Dominio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03/3.3.3.3-CapaDatos-es.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capa de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4 - Persistencia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UT4 - Persistencia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.0-persistencia.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.1-room.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1. Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04/4.2-conexion-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2. Conexión a Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto Guía
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Proyecto Guía
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-configuracion-proyecto.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Configuración proyecto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-LoginScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Pantalla Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-Preferences.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Preferencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-Register-logout.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Registro y logout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-HomeScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. HomeScreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-DetailScreen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Detalles de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-RoomPersistence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Persistencia con Room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-LibraryAndDetailAdvanced.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Biblioteca y detalles avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-DI-Koin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Inyección de dependencias con Koin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-Auth-firebase.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Autenticación con Firebase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-Auth-google.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Autenticación con Google
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-implementar-nueva-feature.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Implementar nueva Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-Sistema-logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Sistema de Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-Consumo-apis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Consumo de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-Soporte-multilenguaje.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Soporte multiidioma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Compilación y Generación de Artefactos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="16-generar-artefactos.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Compilación y Generación de Artefactos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de Aprendizaje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-conceptos-fundamentales-del-sistema-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conceptos Fundamentales del Sistema de Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Conceptos Fundamentales del Sistema de Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-el-sistema-de-build-de-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. ¿Qué es el Sistema de Build de Android?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-types-debug-vs-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Build Types: Debug vs Release
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Build Types: Debug vs Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-que-son-los-build-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. ¿Qué son los Build Types?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configuracion-en-buildgradlekts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Configuración en build.gradle.kts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-comparativa-detallada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Comparativa Detallada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-comandos-de-compilacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Comandos de Compilación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tipos-de-artefactos-finales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tipos de Artefactos Finales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tipos de Artefactos Finales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-apk-vs-aab-android-app-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. APK vs AAB (Android App Bundle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-comparativa-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Comparativa Técnica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-que-contiene-un-apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. ¿Qué contiene un APK?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-que-contiene-un-aab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. ¿Qué contiene un AAB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-comandos-de-generacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Comandos de Generación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-firma-de-aplicaciones-app-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Firma de Aplicaciones (App Signing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Firma de Aplicaciones (App Signing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-por-que-firmar-una-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. ¿Por qué firmar una aplicación?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tipos-de-keystore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Tipos de Keystore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-crear-un-keystore-de-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Crear un Keystore de Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-configurar-firma-en-buildgradlekts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Configurar Firma en build.gradle.kts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-optimizacion-con-proguardr8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optimización con ProGuard/R8
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Optimización con ProGuard/R8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-que-es-r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. ¿Qué es R8?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-efectos-de-r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Efectos de R8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configuracion-en-proguard-rulespro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Configuración en proguard-rules.pro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-verificar-ofuscacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Verificar Ofuscación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-variants-y-product-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Build Variants y Product Flavors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Build Variants y Product Flavors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-que-son-las-build-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. ¿Qué son las Build Variants?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ejemplo-de-product-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Ejemplo de Product Flavors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proceso-completo-de-generacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proceso Completo de Generación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Proceso Completo de Generación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-checklist-pre-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Checklist Pre-Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-antes-de-generar-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checklist antes de generar Release
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Checklist antes de generar Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contenido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimización
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-generar-aab-para-google-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Generar AAB para Google Play
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-testing-del-aab-localmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. Testing del AAB Localmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-distribucion-en-google-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Distribución en Google Play
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Distribución en Google Play">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-preparacion-de-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. Preparación de Assets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-proceso-de-subida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Proceso de Subida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-configuracion-de-app-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3. Configuración de App Signing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Recursos Adicionales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Recursos Adicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentación Oficial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramientas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Útiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos de Aprendizaje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-conceptos-fundamentales-del-sistema-de-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conceptos Fundamentales del Sistema de Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Conceptos Fundamentales del Sistema de Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-el-sistema-de-build-de-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. ¿Qué es el Sistema de Build de Android?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-build-types-debug-vs-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Build Types: Debug vs Release
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Build Types: Debug vs Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-que-son-los-build-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. ¿Qué son los Build Types?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configuracion-en-buildgradlekts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Configuración en build.gradle.kts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-comparativa-detallada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Comparativa Detallada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-comandos-de-compilacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Comandos de Compilación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tipos-de-artefactos-finales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tipos de Artefactos Finales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tipos de Artefactos Finales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-apk-vs-aab-android-app-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. APK vs AAB (Android App Bundle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-comparativa-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Comparativa Técnica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-que-contiene-un-apk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. ¿Qué contiene un APK?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-que-contiene-un-aab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. ¿Qué contiene un AAB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-comandos-de-generacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Comandos de Generación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-firma-de-aplicaciones-app-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Firma de Aplicaciones (App Signing)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Firma de Aplicaciones (App Signing)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-por-que-firmar-una-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. ¿Por qué firmar una aplicación?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tipos-de-keystore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Tipos de Keystore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-crear-un-keystore-de-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Crear un Keystore de Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-configurar-firma-en-buildgradlekts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Configurar Firma en build.gradle.kts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-optimizacion-con-proguardr8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optimización con ProGuard/R8
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Optimización con ProGuard/R8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-que-es-r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. ¿Qué es R8?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-efectos-de-r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Efectos de R8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configuracion-en-proguard-rulespro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Configuración en proguard-rules.pro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-verificar-ofuscacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Verificar Ofuscación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-variants-y-product-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Build Variants y Product Flavors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Build Variants y Product Flavors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-que-son-las-build-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. ¿Qué son las Build Variants?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-ejemplo-de-product-flavors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Ejemplo de Product Flavors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proceso-completo-de-generacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proceso Completo de Generación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Proceso Completo de Generación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-checklist-pre-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Checklist Pre-Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-antes-de-generar-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checklist antes de generar Release
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Checklist antes de generar Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contenido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimización
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-generar-aab-para-google-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Generar AAB para Google Play
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-testing-del-aab-localmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. Testing del AAB Localmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-distribucion-en-google-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Distribución en Google Play
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Distribución en Google Play">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-preparacion-de-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. Preparación de Assets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-proceso-de-subida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Proceso de Subida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-configuracion-de-app-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3. Configuración de App Signing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Recursos Adicionales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Recursos Adicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentación Oficial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramientas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Útiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumen Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegación">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Proyecto Guía
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="16-compilacion-y-generacion-de-artefactos-en-android">16. Compilación y Generación de Artefactos en Android<a class="headerlink" href="#16-compilacion-y-generacion-de-artefactos-en-android" title="Permanent link">¶</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Repositorio de la Aplicación</p>
+<p>El código fuente de la aplicación se encuentra en el repositorio de GitHub: <a href="https://github.com/jssdocente/MyGameStore">MyGameStore</a></p>
+</div>
+<h2 id="objetivos-de-aprendizaje"><strong>Objetivos de Aprendizaje</strong><a class="headerlink" href="#objetivos-de-aprendizaje" title="Permanent link">¶</a></h2>
+<p>Al finalizar esta sección, los alumnos serán capaces de:</p>
+<ol>
+<li>✅ Comprender los diferentes <strong>Build Types</strong> (Debug, Release)</li>
+<li>✅ Conocer los tipos de artefactos finales (<strong>APK vs AAB</strong>)</li>
+<li>✅ Configurar el proceso de <strong>firma de aplicaciones</strong></li>
+<li>✅ Generar builds optimizados con <strong>ProGuard/R8</strong></li>
+<li>✅ Entender las <strong>Build Variants</strong> y <strong>Product Flavors</strong></li>
+<li>✅ Preparar la app para <strong>distribución en Google Play</strong></li>
+</ol>
+<hr>
+<h2 id="1-conceptos-fundamentales-del-sistema-de-build"><strong>1. Conceptos Fundamentales del Sistema de Build</strong><a class="headerlink" href="#1-conceptos-fundamentales-del-sistema-de-build" title="Permanent link">¶</a></h2>
+<h3 id="11-que-es-el-sistema-de-build-de-android">1.1. ¿Qué es el Sistema de Build de Android?<a class="headerlink" href="#11-que-es-el-sistema-de-build-de-android" title="Permanent link">¶</a></h3>
+<p>Android utiliza <strong>Gradle</strong> como sistema de automatización de builds. El proceso convierte tu código fuente en un artefacto ejecutable.</p>
+<pre class="mermaid"><code>graph LR
+    A[📝 Código Fuente&lt;br/&gt;Kotlin/Java] --&gt; B[🔧 Gradle Build]
+    C[📦 Recursos&lt;br/&gt;XML, imágenes] --&gt; B
+    D[📋 Manifest] --&gt; B
+    E[📚 Dependencias&lt;br/&gt;librerías] --&gt; B
+    B --&gt; F[📱 APK/AAB]
+
+    style F fill:#4CAF50</code></pre>
+<p><strong>Archivos
+ clave del sistema de build:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Descripción</th>
+<th>Ubicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings.gradle.kts</code></td>
+<td>Configuración del proyecto</td>
+<td>Raíz del proyecto</td>
+</tr>
+<tr>
+<td><code>build.gradle.kts</code> (root)</td>
+<td>Build script del proyecto</td>
+<td>Raíz del proyecto</td>
+</tr>
+<tr>
+<td><code>build.gradle.kts</code> (app)</td>
+<td>Build script del módulo</td>
+<td><code>/app/</code></td>
+</tr>
+<tr>
+<td><code>gradle.properties</code></td>
+<td>Propiedades globales</td>
+<td>Raíz del proyecto</td>
+</tr>
+<tr>
+<td><code>local.properties</code></td>
+<td>Propiedades locales (SDK path)</td>
+<td>Raíz del proyecto</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-build-types-debug-vs-release"><strong>2. Build Types: Debug vs Release</strong><a class="headerlink" href="#2-build-types-debug-vs-release" title="Permanent link">¶</a></h2>
+<h3 id="21-que-son-los-build-types">2.1. ¿Qué son los Build Types?<a class="headerlink" href="#21-que-son-los-build-types" title="Permanent link">¶</a></h3>
+<p>Los <strong>Build Types</strong> son configuraciones predefinidas que determinan cómo se compila la aplicación. Por defecto, Android tiene dos:</p>
+<pre class="mermaid"><code>graph TB
+    subgraph "🐛 Debug Build"
+        D1[Depuración activada]
+        D2[Sin ofuscación]
+        D3[Firma automática]
+        D4[Logs visibles]
+        D5[APK más grande]
+    end
+
+    subgraph "🚀 Release Build"
+        R1[Depuración desactivada]
+        R2[Código ofuscado R8]
+        R3[Firma manual requerida]
+        R4[Logs eliminados]
+        R5[APK optimizado]
+    end
+
+    style D1 fill:#FFC107
+    style R1 fill:#4CAF50</code></pre>
+<h3 id="22-configuracion-en-buildgradlekts">2.2. Configuración en build.gradle.kts<a class="headerlink" href="#22-configuracion-en-buildgradlekts" title="Permanent link">¶</a></h3>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// ... otras configuraciones</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">buildTypes</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">debug</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="n">applicationIdSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".debug"</span><span class="w">  </span><span class="c1">// Permite instalar debug y release juntos</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="n">versionNameSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"-DEBUG"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="n">isDebuggable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1">// No optimizar código</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="n">isShrinkResources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1">// No eliminar recursos no usados</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="c1">// Configuración de ProGuard/R8</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">                </span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">"proguard-android.txt"</span><span class="p">),</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">                </span><span class="s">"proguard-rules.pro"</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="n">release</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="n">isDebuggable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// ✅ Optimizar y ofuscar código</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="n">isShrinkResources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// ✅ Eliminar recursos no usados</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">                </span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">"proguard-android-optimize.txt"</span><span class="p">),</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">                </span><span class="s">"proguard-rules.pro"</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="c1">// Firma (se verá en detalle más adelante)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="n">signingConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signingConfigs</span><span class="p">.</span><span class="na">getByName</span><span class="p">(</span><span class="s">"release"</span><span class="p">)</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="23-comparativa-detallada">2.3. Comparativa Detallada<a class="headerlink" href="#23-comparativa-detallada" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Debug</th>
+<th>Release</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Propósito</strong></td>
+<td>Desarrollo y testing</td>
+<td>Distribución a usuarios</td>
+</tr>
+<tr>
+<td><strong>Depuración</strong></td>
+<td>✅ Activada</td>
+<td>❌ Desactivada</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Todos visibles</td>
+<td>Solo errores críticos</td>
+</tr>
+<tr>
+<td><strong>Ofuscación</strong></td>
+<td>❌ No</td>
+<td>✅ Sí (R8)</td>
+</tr>
+<tr>
+<td><strong>Firma</strong></td>
+<td>Automática (debug.keystore)</td>
+<td>Manual (tu keystore)</td>
+</tr>
+<tr>
+<td><strong>Tamaño APK</strong></td>
+<td>~15-20 MB (ejemplo)</td>
+<td>~8-12 MB (optimizado)</td>
+</tr>
+<tr>
+<td><strong>Velocidad de build</strong></td>
+<td>Rápida</td>
+<td>Más lenta (optimizaciones)</td>
+</tr>
+<tr>
+<td><strong>Install ID</strong></td>
+<td><code>com.pmdm.mygamestore.debug</code></td>
+<td><code>com.pmdm.mygamestore</code></td>
+</tr>
+<tr>
+<td><strong>Icono</strong></td>
+<td>Puede tener badge "DEBUG"</td>
+<td>Icono final</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-comandos-de-compilacion">2.4. Comandos de Compilación<a class="headerlink" href="#24-comandos-de-compilacion" title="Permanent link">¶</a></h3>
+<p><strong>Desde Terminal:</strong></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Compilar Debug</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./gradlew<span class="w"> </span>assembleDebug
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Compilar Release</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>./gradlew<span class="w"> </span>assembleRelease
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Limpiar + compilar</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>./gradlew<span class="w"> </span>clean<span class="w"> </span>assembleRelease
+</span></code></pre></div>
+<p><strong>Desde Android Studio:</strong></p>
+<ol>
+<li><strong>Build → Select Build Variant</strong> (panel lateral)</li>
+<li>Seleccionar <code>debug</code> o <code>release</code></li>
+<li><strong>Build → Build Bundle(s) / APK(s)</strong></li>
+</ol>
+<hr>
+<h2 id="3-tipos-de-artefactos-finales"><strong>3. Tipos de Artefactos Finales</strong><a class="headerlink" href="#3-tipos-de-artefactos-finales" title="Permanent link">¶</a></h2>
+<h3 id="31-apk-vs-aab-android-app-bundle">3.1. APK vs AAB (Android App Bundle)<a class="headerlink" href="#31-apk-vs-aab-android-app-bundle" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TB
+    subgraph "📦 APK - Android Package"
+        A1[Contiene TODO el código]
+        A2[Recursos para TODAS las densidades]
+        A3[Bibliotecas nativas para TODAS las CPUs]
+        A4[Tamaño mayor]
+        A5[Instalación directa]
+    end
+
+    subgraph "🎁 AAB - App Bundle"
+        B1[Código modular]
+        B2[Google Play genera APKs optimizados]
+        B3[Solo recursos necesarios por dispositivo]
+        B4[Tamaño reducido 15-20%]
+        B5[Requiere Google Play]
+    end
+
+    style B1 fill:#4CAF50
+    style A1 fill:#2196F3</code></pre>
+<h3 id="32-comparativa-tecnica">3.2. Comparativa Técnica<a class="headerlink" href="#32-comparativa-tecnica" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>APK</th>
+<th>AAB (recomendado)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tamaño en almacenamiento</strong></td>
+<td>15 MB</td>
+<td>12 MB (ejemplo)</td>
+</tr>
+<tr>
+<td><strong>Tamaño descarga usuario</strong></td>
+<td>15 MB</td>
+<td>8-10 MB (optimizado por dispositivo)</td>
+</tr>
+<tr>
+<td><strong>Distribución</strong></td>
+<td>Directa, stores alternativos</td>
+<td>Google Play Store</td>
+</tr>
+<tr>
+<td><strong>Optimización</strong></td>
+<td>Manual</td>
+<td>Automática por Google Play</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>✅ Fácil (instalar directamente)</td>
+<td>Requiere Play Console o bundletool</td>
+</tr>
+<tr>
+<td><strong>Formato requerido Play</strong></td>
+<td>❌ Obsoleto desde 2021</td>
+<td>✅ Obligatorio</td>
+</tr>
+<tr>
+<td><strong>Soporte multi-módulo</strong></td>
+<td>❌ Limitado</td>
+<td>✅ Completo (Dynamic Features)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-que-contiene-un-apk">3.3. ¿Qué contiene un APK?<a class="headerlink" href="#33-que-contiene-un-apk" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>📦 app-release.apk
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── 📁 META-INF/              # Certificados y firma
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── CERT.SF
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   ├── CERT.RSA
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   └── MANIFEST.MF
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>├── 📁 res/                   # Recursos compilados
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   ├── drawable-hdpi/
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│   ├── drawable-xhdpi/
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│   └── ...
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>├── 📁 lib/                   # Bibliotecas nativas
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│   ├── arm64-v8a/           # CPU ARM 64-bit
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│   ├── armeabi-v7a/         # CPU ARM 32-bit
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│   └── x86_64/              # Emuladores
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>├── 📄 AndroidManifest.xml   # Manifest compilado (binario)
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>├── 📄 classes.dex           # Código compilado (Dalvik Executable)
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>├── 📄 resources.arsc        # Tabla de recursos
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>└── 📄 assets/               # Assets sin compilar
+</span></code></pre></div>
+<h3 id="34-que-contiene-un-aab">3.4. ¿Qué contiene un AAB?<a class="headerlink" href="#34-que-contiene-un-aab" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>🎁 app-release.aab
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── 📁 base/                 # Módulo base (obligatorio)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   ├── manifest/
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   ├── dex/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   ├── res/
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   └── assets/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>├── 📁 BUNDLE-METADATA/      # Metadatos
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   ├── com.android.tools.build.obfuscation/
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│   └── com.android.tools.build.libraries/
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>└── 📄 BundleConfig.pb      # Configuración del bundle
+</span></code></pre></div>
+<p><strong>Google Play genera APKs específicos:</strong></p>
+<pre class="mermaid"><code>graph LR
+    A[🎁 AAB Subido] --&gt; B[Google Play]
+    B --&gt; C[📱 Pixel 8&lt;br/&gt;arm64, xxhdpi&lt;br/&gt;→ 8 MB]
+    B --&gt; D[📱 Samsung S21&lt;br/&gt;arm64, xxxhdpi&lt;br/&gt;→ 9 MB]
+    B --&gt; E[📱 Tablet&lt;br/&gt;x86_64, xhdpi&lt;br/&gt;→ 7 MB]
+
+    style A fill:#4CAF50</code></pre>
+<h3 id="35-comandos-de-generacion">3.5. Comandos de Generación<a class="headerlink" href="#35-comandos-de-generacion" title="Permanent link">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Generar APK Debug</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>./gradlew<span class="w"> </span>assembleDebug
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Output: app/build/outputs/apk/debug/app-debug.apk</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Generar APK Release</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>./gradlew<span class="w"> </span>assembleRelease
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Output: app/build/outputs/apk/release/app-release.apk</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Generar AAB (Bundle) Release</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>./gradlew<span class="w"> </span>bundleRelease
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Output: app/build/outputs/bundle/release/app-release.aab</span>
+</span></code></pre></div>
+<p><strong>Desde Android Studio:</strong></p>
+<ul>
+<li><strong>APK:</strong> <code>Build → Build Bundle(s) / APK(s) → Build APK(s)</code></li>
+<li><strong>AAB:</strong> <code>Build → Build Bundle(s) / APK(s) → Build Bundle(s)</code></li>
+</ul>
+<hr>
+<h2 id="4-firma-de-aplicaciones-app-signing"><strong>4. Firma de Aplicaciones (App Signing)</strong><a class="headerlink" href="#4-firma-de-aplicaciones-app-signing" title="Permanent link">¶</a></h2>
+<h3 id="41-por-que-firmar-una-aplicacion">4.1. ¿Por qué firmar una aplicación?<a class="headerlink" href="#41-por-que-firmar-una-aplicacion" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TB
+    A[¿Por qué firmar?] --&gt; B[🔒 Seguridad]
+    A --&gt; C[✅ Autenticidad]
+    A --&gt; D[🔄 Actualizaciones]
+
+    B --&gt; B1[Garantiza que TÚ creaste la app]
+    C --&gt; C1[Verifica que no ha sido modificada]
+    D --&gt; D1[Solo el mismo certificado puede actualizar]
+
+    style A fill:#2196F3</code></pre>
+<p><strong>Sin firma correcta:</strong></p>
+<ul>
+<li>❌ No se puede instalar en dispositivos</li>
+<li>❌ Google Play rechaza la app</li>
+<li>❌ No se pueden publicar actualizaciones</li>
+</ul>
+<h3 id="42-tipos-de-keystore">4.2. Tipos de Keystore<a class="headerlink" href="#42-tipos-de-keystore" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Uso</th>
+<th>Ubicación</th>
+<th>Seguridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>debug.keystore</strong></td>
+<td>Desarrollo local</td>
+<td><code>~/.android/debug.keystore</code></td>
+<td>⚠️ Pública (todos la tienen)</td>
+</tr>
+<tr>
+<td><strong>release.keystore</strong></td>
+<td>Producción</td>
+<td>Tu eliges (segura)</td>
+<td>🔒 Privada (<strong>NO compartir</strong>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-crear-un-keystore-de-release">4.3. Crear un Keystore de Release<a class="headerlink" href="#43-crear-un-keystore-de-release" title="Permanent link">¶</a></h3>
+<p><strong>Opción 1: Desde Android Studio (recomendado)</strong></p>
+<ol>
+<li><code>Build → Generate Signed Bundle / APK</code></li>
+<li>Seleccionar <code>Android App Bundle</code> o <code>APK</code></li>
+<li>Click en <code>Create new...</code></li>
+<li>Rellenar el formulario:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Key store path: /ruta/segura/mygamestore-release.keystore
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Password: ********** (guárdala en lugar seguro!)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Alias: mygamestore
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Alias password: **********
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Validity: 25 años (mínimo)
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Certificate:
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  First and Last Name: Tu Nombre
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>  Organizational Unit: PMDM
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  Organization: Tu Escuela
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>  City: Tu Ciudad
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>  State: Tu Provincia
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>  Country Code: ES
+</span></code></pre></div>
+<p><strong>Opción 2: Desde Terminal</strong></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>keytool<span class="w"> </span>-genkey<span class="w"> </span>-v<span class="w"> </span>-keystore<span class="w"> </span>mygamestore-release.keystore<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>-alias<span class="w"> </span>mygamestore<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>-keyalg<span class="w"> </span>RSA<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>-keysize<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>-validity<span class="w"> </span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>-storepass<span class="w"> </span>TU_PASSWORD<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span>-keypass<span class="w"> </span>TU_PASSWORD
+</span></code></pre></div>
+<h3 id="44-configurar-firma-en-buildgradlekts">4.4. Configurar Firma en build.gradle.kts<a class="headerlink" href="#44-configurar-firma-en-buildgradlekts" title="Permanent link">¶</a></h3>
+<p><strong>⚠️ IMPORTANTE: NO incluir passwords en el código</strong></p>
+<p><strong>Paso 1:</strong> Crear archivo <code>keystore.properties</code> (en <code>.gitignore</code>)</p>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># keystore.properties (NO SUBIR A GIT)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">storeFile</span><span class="o">=</span><span class="s">../keystores/mygamestore-release.keystore</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">storePassword</span><span class="o">=</span><span class="s">tu_password_seguro</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">keyAlias</span><span class="o">=</span><span class="s">mygamestore</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="na">keyPassword</span><span class="o">=</span><span class="s">tu_password_seguro</span>
+</span></code></pre></div>
+<p><strong>Paso 2:</strong> Configurar en <code>build.gradle.kts</code></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.util.Properties</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.io.FileInputStream</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.pmdm.mygamestore"</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">36</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="c1">// Cargar propiedades del keystore</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">keystorePropertiesFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">"keystore.properties"</span><span class="p">)</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">keystoreProperties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Properties</span><span class="p">()</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">keystorePropertiesFile</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">        </span><span class="n">keystoreProperties</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">keystorePropertiesFile</span><span class="p">))</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="n">signingConfigs</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">        </span><span class="n">create</span><span class="p">(</span><span class="s">"release"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">            </span><span class="n">storeFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keystoreProperties</span><span class="o">[</span><span class="s">"storeFile"</span><span class="o">]?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">            </span><span class="n">storePassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keystoreProperties</span><span class="o">[</span><span class="s">"storePassword"</span><span class="o">]</span><span class="w"> </span><span class="k">as?</span><span class="w"> </span><span class="kt">String</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">            </span><span class="n">keyAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keystoreProperties</span><span class="o">[</span><span class="s">"keyAlias"</span><span class="o">]</span><span class="w"> </span><span class="k">as?</span><span class="w"> </span><span class="kt">String</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">            </span><span class="n">keyPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keystoreProperties</span><span class="o">[</span><span class="s">"keyPassword"</span><span class="o">]</span><span class="w"> </span><span class="k">as?</span><span class="w"> </span><span class="kt">String</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="n">buildTypes</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">        </span><span class="n">release</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">            </span><span class="n">isShrinkResources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">                </span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">"proguard-android-optimize.txt"</span><span class="p">),</span>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">                </span><span class="s">"proguard-rules.pro"</span>
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">            </span><span class="n">signingConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signingConfigs</span><span class="p">.</span><span class="na">getByName</span><span class="p">(</span><span class="s">"release"</span><span class="p">)</span>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Paso 3:</strong> Añadir a <code>.gitignore</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># Archivos sensibles
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>keystore.properties
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>*.keystore
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>*.jks
+</span></code></pre></div>
+<hr>
+<h2 id="5-optimizacion-con-proguardr8"><strong>5. Optimización con ProGuard/R8</strong><a class="headerlink" href="#5-optimizacion-con-proguardr8" title="Permanent link">¶</a></h2>
+<h3 id="51-que-es-r8">5.1. ¿Qué es R8?<a class="headerlink" href="#51-que-es-r8" title="Permanent link">¶</a></h3>
+<p><strong>R8</strong> es el optimizador de código de Android que reemplazó a ProGuard. Realiza 3 tareas principales:</p>
+<pre class="mermaid"><code>graph LR
+    A[📝 Código Original] --&gt; B[R8]
+    B --&gt; C[🗜️ Shrinking&lt;br/&gt;Elimina código no usado]
+    B --&gt; D[⚡ Optimization&lt;br/&gt;Optimiza bytecode]
+    B --&gt; E[🔒 Obfuscation&lt;br/&gt;Ofusca nombres]
+
+    C --&gt; F[📦 APK Optimizado]
+    D --&gt; F
+    E --&gt; F
+
+    style F fill:#4CAF50</code></pre>
+<h3 id="52-efectos-de-r8">5.2. Efectos de R8<a class="headerlink" href="#52-efectos-de-r8" title="Permanent link">¶</a></h3>
+<p><strong>Antes (Debug):</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Tamaño: 15 MB</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">GameRepository</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getGameById</span><span class="p">(</span><span class="n">gameId</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="n">Game</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getAllGames</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Game</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">helperMethodNotUsed</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// ← Será eliminado</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<p><strong>Después (Release con R8):</strong>
+</p><div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Tamaño: 8 MB</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">class</span><span class="w"> </span><span class="nc">a</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// ← Nombre ofuscado</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="n">b</span><span class="p">):</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// ← getGameById ofuscado</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">b</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">c</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// ← getAllGames ofuscado</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="c1">// helperMethodNotUsed eliminado ✂️</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<h3 id="53-configuracion-en-proguard-rulespro">5.3. Configuración en proguard-rules.pro<a class="headerlink" href="#53-configuracion-en-proguard-rulespro" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a># MyGameStore ProGuard Rules
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a># Mantener modelos de datos (para serialización)
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>-keep class com.pmdm.mygamestore.data.model.** { *; }
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>-keep class com.pmdm.mygamestore.domain.model.** { *; }
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a># Mantener entidades de Room
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>-keep @androidx.room.Entity class *
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>-keep class * extends androidx.room.RoomDatabase
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a># Kotlinx Serialization
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>-keepattributes *Annotation*, InnerClasses
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>-dontnote kotlinx.serialization.AnnotationsKt
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>-keepclassmembers class kotlinx.serialization.json.** {
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    *** Companion;
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>}
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>-keepclasseswithmembers class kotlinx.serialization.json.** {
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    kotlinx.serialization.KSerializer serializer(...);
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>}
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a># Retrofit
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>-keepattributes Signature, InnerClasses, EnclosingMethod
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>-keepclassmembers,allowshrinking,allowobfuscation interface * {
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>    @retrofit2.http.* &lt;methods&gt;;
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>}
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a># OkHttp
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>-dontwarn okhttp3.**
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>-dontwarn okio.**
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a># Koin
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>-keep class org.koin.** { *; }
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>-keep class com.pmdm.mygamestore.di.** { *; }
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a># Firebase
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>-keep class com.google.firebase.** { *; }
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>-keep class com.google.android.gms.** { *; }
+</span></code></pre></div>
+<h3 id="54-verificar-ofuscacion">5.4. Verificar Ofuscación<a class="headerlink" href="#54-verificar-ofuscacion" title="Permanent link">¶</a></h3>
+<p>Después de compilar release, revisa:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>app/build/outputs/mapping/release/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>├── mapping.txt       # Mapeo de nombres ofuscados → originales
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>├── seeds.txt         # Clases/métodos mantenidos por reglas
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>├── usage.txt         # Código eliminado
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>└── resources.txt     # Recursos eliminados
+</span></code></pre></div>
+<p><strong>Ejemplo de mapping.txt:</strong>
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>com.pmdm.mygamestore.data.repository.GameRepositoryImpl -&gt; a.b.c.d:
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    getGameById(int) -&gt; a
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    getAllGames() -&gt; b
+</span></code></pre></div><p></p>
+<hr>
+<h2 id="6-build-variants-y-product-flavors"><strong>6. Build Variants y Product Flavors</strong><a class="headerlink" href="#6-build-variants-y-product-flavors" title="Permanent link">¶</a></h2>
+<h3 id="61-que-son-las-build-variants">6.1. ¿Qué son las Build Variants?<a class="headerlink" href="#61-que-son-las-build-variants" title="Permanent link">¶</a></h3>
+<p>Las <strong>Build Variants</strong> son combinaciones de <strong>Build Types</strong> + <strong>Product Flavors</strong>.</p>
+<pre class="mermaid"><code>graph TB
+    A[Build Variants] --&gt; B[Build Types]
+    A --&gt; C[Product Flavors]
+
+    B --&gt; B1[debug]
+    B --&gt; B2[release]
+
+    C --&gt; C1[free]
+    C --&gt; C2[paid]
+
+    B1 &amp; C1 --&gt; V1[freeDebug]
+    B1 &amp; C2 --&gt; V2[paidDebug]
+    B2 &amp; C1 --&gt; V3[freeRelease]
+    B2 &amp; C2 --&gt; V4[paidRelease]
+
+    style V3 fill:#4CAF50</code></pre>
+<h3 id="62-ejemplo-de-product-flavors">6.2. Ejemplo de Product Flavors<a class="headerlink" href="#62-ejemplo-de-product-flavors" title="Permanent link">¶</a></h3>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="c1">// ... otras configuraciones</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="n">flavorDimensions</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"version"</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="n">productFlavors</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="n">create</span><span class="p">(</span><span class="s">"free"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"version"</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">            </span><span class="n">applicationIdSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".free"</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="n">versionNameSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"-free"</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">            </span><span class="n">buildConfigField</span><span class="p">(</span><span class="s">"Boolean"</span><span class="p">,</span><span class="w"> </span><span class="s">"SHOW_ADS"</span><span class="p">,</span><span class="w"> </span><span class="s">"true"</span><span class="p">)</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">            </span><span class="n">buildConfigField</span><span class="p">(</span><span class="s">"Boolean"</span><span class="p">,</span><span class="w"> </span><span class="s">"PREMIUM_FEATURES"</span><span class="p">,</span><span class="w"> </span><span class="s">"false"</span><span class="p">)</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">        </span><span class="n">create</span><span class="p">(</span><span class="s">"paid"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">            </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"version"</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">            </span><span class="n">applicationIdSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".paid"</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">            </span><span class="n">versionNameSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"-paid"</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">            </span><span class="n">buildConfigField</span><span class="p">(</span><span class="s">"Boolean"</span><span class="p">,</span><span class="w"> </span><span class="s">"SHOW_ADS"</span><span class="p">,</span><span class="w"> </span><span class="s">"false"</span><span class="p">)</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">            </span><span class="n">buildConfigField</span><span class="p">(</span><span class="s">"Boolean"</span><span class="p">,</span><span class="w"> </span><span class="s">"PREMIUM_FEATURES"</span><span class="p">,</span><span class="w"> </span><span class="s">"true"</span><span class="p">)</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Estructura de carpetas:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>app/src/
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>├── main/              # Código común
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>├── debug/             # Solo para debug builds
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>├── release/           # Solo para release builds
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>├── free/              # Solo para versión free
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>│   ├── res/
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>│   │   └── values/
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>│   │       └── strings.xml  # "MyGameStore Free"
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>│   └── java/
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>│       └── AdsManager.kt
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>└── paid/              # Solo para versión paid
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    ├── res/
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    │   └── values/
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    │       └── strings.xml  # "MyGameStore Premium"
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>    └── java/
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>        └── AdsManager.kt    # Implementación vacía
+</span></code></pre></div>
+<p><strong>Uso en código:</strong></p>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">SHOW_ADS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="c1">// Mostrar publicidad</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">AdManager</span><span class="p">.</span><span class="na">showInterstitial</span><span class="p">()</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">}</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BuildConfig</span><span class="p">.</span><span class="na">PREMIUM_FEATURES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="c1">// Habilitar features premium</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="n">binding</span><span class="p">.</span><span class="na">premiumButton</span><span class="p">.</span><span class="na">isVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<h2 id="7-proceso-completo-de-generacion"><strong>7. Proceso Completo de Generación</strong><a class="headerlink" href="#7-proceso-completo-de-generacion" title="Permanent link">¶</a></h2>
+<h3 id="71-checklist-pre-release">7.1. Checklist Pre-Release<a class="headerlink" href="#71-checklist-pre-release" title="Permanent link">¶</a></h3>
+<h2 id="checklist-antes-de-generar-release">✅ Checklist antes de generar Release<a class="headerlink" href="#checklist-antes-de-generar-release" title="Permanent link">¶</a></h2>
+<h3 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> <code>versionCode</code> incrementado</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> <code>versionName</code> actualizado</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Keystore configurado correctamente</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> ProGuard rules actualizadas</li>
+</ul>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Todos los tests unitarios pasan</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Tests de UI funcionan correctamente</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> App probada en dispositivos físicos</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Probada con build release (no solo debug)</li>
+</ul>
+<h3 id="contenido">Contenido<a class="headerlink" href="#contenido" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Recursos de alta calidad (iconos, imágenes)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Strings traducidos (si aplica)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Permisos del Manifest justificados</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> API Keys de producción configuradas</li>
+</ul>
+<h3 id="optimizacion">Optimización<a class="headerlink" href="#optimizacion" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> <code>minifyEnabled = true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> <code>shrinkResources = true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Tamaño del APK/AAB revisado</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Sin logs de debug en release</li>
+</ul>
+<h3 id="legal">Legal<a class="headerlink" href="#legal" title="Permanent link">¶</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Política de privacidad incluida</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Licencias de terceros documentadas</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Cumplimiento GDPR (si aplica)</li>
+</ul>
+<h3 id="72-generar-aab-para-google-play">7.2. Generar AAB para Google Play<a class="headerlink" href="#72-generar-aab-para-google-play" title="Permanent link">¶</a></h3>
+<p><strong>Paso a paso:</strong></p>
+<ol>
+<li><strong>Actualizar versión en build.gradle.kts:</strong></li>
+</ol>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">        </span><span class="n">versionCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="c1">// Incrementar en cada release</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">        </span><span class="n">versionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1.1.0"</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol start="2">
+<li><strong>Limpiar proyecto:</strong></li>
+</ol>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>./gradlew<span class="w"> </span>clean
+</span></code></pre></div>
+<ol start="3">
+<li><strong>Generar Bundle firmado:</strong></li>
+</ol>
+<p><strong>Desde Terminal:</strong>
+</p><div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>./gradlew<span class="w"> </span>bundleRelease
+</span></code></pre></div><p></p>
+<p><strong>Desde Android Studio:</strong>
+- <code>Build → Generate Signed Bundle / APK</code>
+- Seleccionar <code>Android App Bundle</code>
+- Elegir keystore y completar passwords
+- Seleccionar <code>release</code> build variant
+- Click <code>Finish</code></p>
+<ol start="4">
+<li><strong>Ubicación del archivo:</strong></li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>app/build/outputs/bundle/release/app-release.aab
+</span></code></pre></div>
+<ol start="5">
+<li><strong>Verificar el bundle:</strong></li>
+</ol>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Tamaño</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>ls<span class="w"> </span>-lh<span class="w"> </span>app/build/outputs/bundle/release/app-release.aab
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Contenido (usando bundletool)</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>java<span class="w"> </span>-jar<span class="w"> </span>bundletool.jar<span class="w"> </span>validate<span class="w"> </span>--bundle<span class="o">=</span>app-release.aab
+</span></code></pre></div>
+<h3 id="73-testing-del-aab-localmente">7.3. Testing del AAB Localmente<a class="headerlink" href="#73-testing-del-aab-localmente" title="Permanent link">¶</a></h3>
+<p><strong>Instalar bundletool:</strong></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Descargar</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>wget<span class="w"> </span>https://github.com/google/bundletool/releases/latest/download/bundletool-all.jar
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Generar APKs desde AAB</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>java<span class="w"> </span>-jar<span class="w"> </span>bundletool.jar<span class="w"> </span>build-apks<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">  </span>--bundle<span class="o">=</span>app-release.aab<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">  </span>--output<span class="o">=</span>app-release.apks<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">  </span>--ks<span class="o">=</span>mygamestore-release.keystore<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">  </span>--ks-key-alias<span class="o">=</span>mygamestore
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="c1"># Instalar en dispositivo conectado</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>java<span class="w"> </span>-jar<span class="w"> </span>bundletool.jar<span class="w"> </span>install-apks<span class="w"> </span>--apks<span class="o">=</span>app-release.apks
+</span></code></pre></div>
+<hr>
+<h2 id="8-distribucion-en-google-play"><strong>8. Distribución en Google Play</strong><a class="headerlink" href="#8-distribucion-en-google-play" title="Permanent link">¶</a></h2>
+<h3 id="81-preparacion-de-assets">8.1. Preparación de Assets<a class="headerlink" href="#81-preparacion-de-assets" title="Permanent link">¶</a></h3>
+<p><strong>Requisitos de Google Play Console:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Tamaño</th>
+<th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Icono de app</strong></td>
+<td>512x512 px</td>
+<td>PNG (32-bit)</td>
+</tr>
+<tr>
+<td><strong>Feature Graphic</strong></td>
+<td>1024x500 px</td>
+<td>JPG/PNG</td>
+</tr>
+<tr>
+<td><strong>Screenshots teléfono</strong></td>
+<td>Mín. 2, 16:9 o 9:16</td>
+<td>JPG/PNG</td>
+</tr>
+<tr>
+<td><strong>Screenshots tablet</strong></td>
+<td>Opcional</td>
+<td>JPG/PNG</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-proceso-de-subida">8.2. Proceso de Subida<a class="headerlink" href="#82-proceso-de-subida" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>graph TB
+    A[Crear App en Console] --&gt; B[Completar Cuestionario de Contenido]
+    B --&gt; C[Configurar Listado en Store]
+    C --&gt; D[Subir AAB]
+    D --&gt; E[Crear Release]
+    E --&gt; F[Testing Interno/Cerrado]
+    F --&gt; G[Revisión de Google]
+    G --&gt; H[Publicación]
+
+    style H fill:#4CAF50</code></pre>
+<h3 id="83-configuracion-de-app-signing">8.3. Configuración de App Signing<a class="headerlink" href="#83-configuracion-de-app-signing" title="Permanent link">¶</a></h3>
+<p><strong>Google Play App Signing (recomendado):</strong></p>
+<ol>
+<li>Google gestiona la clave de producción</li>
+<li>Tú firmas con una "upload key"</li>
+<li>Mayor seguridad (Google tiene backup)</li>
+</ol>
+<p><strong>Activar en Console:</strong>
+- <code>Release → Setup → App integrity</code>
+- <code>Use Google Play App Signing</code>
+- Subir certificado o crear nuevo</p>
+<hr>
+<h2 id="10-recursos-adicionales"><strong>10. Recursos Adicionales</strong><a class="headerlink" href="#10-recursos-adicionales" title="Permanent link">¶</a></h2>
+<h3 id="documentacion-oficial">Documentación Oficial<a class="headerlink" href="#documentacion-oficial" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://developer.android.com/build/build-variants#build-types">Build Types</a></li>
+<li><a href="https://developer.android.com/build/shrink-code">Shrink, obfuscate, and optimize (R8)</a></li>
+<li><a href="https://developer.android.com/studio/publish/app-signing">Sign your app</a></li>
+<li><a href="https://developer.android.com/guide/app-bundle">Android App Bundles</a></li>
+</ul>
+<h3 id="herramientas">Herramientas<a class="headerlink" href="#herramientas" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://github.com/google/bundletool">bundletool</a> - Testing de AABs</li>
+<li><a href="https://developer.android.com/studio/debug/apk-analyzer">APK Analyzer</a> - Analizar contenido de APKs</li>
+<li><a href="https://play.google.com/console">Play Console</a> - Publicación en Google Play</li>
+</ul>
+<h3 id="comandos-utiles">Comandos Útiles<a class="headerlink" href="#comandos-utiles" title="Permanent link">¶</a></h3>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Ver información del APK</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>aapt<span class="w"> </span>dump<span class="w"> </span>badging<span class="w"> </span>app-release.apk
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Verificar firma</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>jarsigner<span class="w"> </span>-verify<span class="w"> </span>-verbose<span class="w"> </span>-certs<span class="w"> </span>app-release.apk
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Tamaño de APK por componente</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>./gradlew<span class="w"> </span>:app:printApkSize<span class="w"> </span>--variant<span class="o">=</span>release
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c1"># Dependencias del proyecto</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>./gradlew<span class="w"> </span>:app:dependencies
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="c1"># Limpiar builds antiguos</span>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>./gradlew<span class="w"> </span>clean
+</span></code></pre></div>
+<hr>
+<h2 id="resumen-final"><strong>Resumen Final</strong><a class="headerlink" href="#resumen-final" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>graph LR
+    A[Código Fuente] --&gt; B{Build Type}
+    B --&gt;|Debug| C[APK Debug&lt;br/&gt;No firmado, sin optimizar]
+    B --&gt;|Release| D[R8 Optimization]
+    D --&gt; E[Firma con Keystore]
+    E --&gt; F{Artefacto}
+    F --&gt;|APK| G[app-release.apk&lt;br/&gt;Instalación directa]
+    F --&gt;|AAB| H[app-release.aab&lt;br/&gt;Google Play]
+
+    style H fill:#4CAF50</code></pre>
+<p>Los alumnos ahora comprenden:</p>
+<ul>
+<li>✅ Diferencias entre Debug y Release</li>
+<li>✅ Proceso de firma con Keystores</li>
+<li>✅ Optimización con R8/ProGuard</li>
+<li>✅ APK vs AAB</li>
+<li>✅ Product Flavors y Build Variants</li>
+<li>✅ Preparación para Google Play</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Jesús García - Licencia CC BY-NC-SA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:&lt;jssgarcia.docente@gmail.com&gt;" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.13c-.15.01-.29.06-.39.17l-1 1 2.05 2 1-1c.22-.21.22-.56 0-.77l-1.24-1.23a.56.56 0 0 0-.38-.17m-2 1.75L13 19.94V22h2.06l6.06-6.07M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v-.89l8.24-8.22c.47-.49 1.12-.76 1.8-.76.34 0 .68.06 1 .19V6c0-1.12-.92-2-2.04-2m0 4-8 5-8-5V6l8 5 8-5"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["header.autohide", "content.tabs.link", "content.code.copy", "content.code.select", "navigation.top", "content.code.annotate", "navigation.path", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
