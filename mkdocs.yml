@@ -89,6 +89,7 @@ nav:
     - "13. Sistema de Logging": temas/proyectos/GameVault/13-Sistema-logging.md
     - "14. Consumo de APIs": temas/proyectos/GameVault/14-Consumo-apis.md
     - "15. Soporte multiidioma": temas/proyectos/GameVault/15-Soporte-multilenguaje.md
+    - "16. Compilación y Generación de Artefactos": temas/proyectos/GameVault/16-generar-artefactos.md
 
     #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
     
