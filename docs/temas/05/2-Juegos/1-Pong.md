@@ -20,8 +20,8 @@ Partiremos de un proyecto vacío en Unity utilizando la plantilla de Universal 2
 Esta plantilla ya nos viene con una escena 2D que contiene una cámara y una luz de tipo **GlobalLight**, podemos cambiar el color de fondo de lo que muestra la cámara en su componente Camera y en concreto en la propiedad **Environment -> Background** (Siempre y cuándo el **Background Type** lo dejemos como viene por defecto, en *Solid Color*).
 
 <figure>
-    <img src="img/pong/pong_base.png" alt="Pong proyecto base">
-    <figcaption>Proyecto base de Pong</figcaption>
+  <img src="img/pong/pong_base.png" alt="Pong proyecto base" />
+  <figcaption>Proyecto base de Pong</figcaption>
 </figure>
 
 ### Creando el escenario
@@ -45,17 +45,15 @@ Para las palas de los jugadores vamos a hacer lo mismo que para las barras, pero
 
 Podemos jugar con la posición en el eje X de las palas y ponerlo a nuestro gusto, pero es importante que las palas no se salgan de la pantalla, ya que si la pelota colisiona con ellas y se sale de la pantalla, el juego no funcionará correctamente.
 
-:::note[Sobre los nombres de los GameObject]
-Es importante que los nombres de los GameObject sean descriptivos y claros, ya que nos ayudarán a identificarlos más fácilmente en la jerarquía y en el código.
-::: 
+!!! note "Sobre los nombres de los GameObject"
+    Es importante que los nombres de los GameObject sean descriptivos y claros, ya que nos ayudarán a identificarlos más fácilmente en la jerarquía y en el código.
 
-:::info[Sobre los colores y los tamaños]
-Podemos cambiar los colores de los objetos y ajustar los tamaños a nuestro gusto, pero es importante que las barras superior e inferior ocupen toda la pantalla y que las palas no se salgan de la pantalla.    
-:::
+!!! info "Sobre los colores y los tamaños"
+    Podemos cambiar los colores de los objetos y ajustar los tamaños a nuestro gusto, pero es importante que las barras superior e inferior ocupen toda la pantalla y que las palas no se salgan de la pantalla.    
 
 <figure>
-    <img src="img/pong/scenario1.png" alt="Escenario inicial">
-    <figcaption>Escenario inicial</figcaption>
+  <img src="img/pong/scenario1.png" alt="Escenario inicial" />
+  <figcaption>Escenario inicial</figcaption>
 </figure>
 
 #### Creando la pelota
@@ -69,20 +67,20 @@ Al igual que a las palas y a las barras, le añadimos un componente **Box Collid
 Podemos darle otro color a la pelota para que se distinga mejor de las palas y las barras, al hacerlo es posible que nos ocurra que queda "dibujada" por detrás de la línea central decorativa (si la hemos añadido). 
 
 <figure>
-    <img src="img/pong/scenario2.png" alt="Pelota en el escenario inicial">
-    <figcaption>Pelota en el escenario inicial</figcaption>
+  <img src="img/pong/scenario2.png" alt="Pelota en el escenario inicial" />
+  <figcaption>Pelota en el escenario inicial</figcaption>
 </figure>
 
 Para solucionar esto bastaría con seleccionar la línea central y en su componente **Sprite Renderer** darle un valor al **Order in Layer** inferior al de la pelota, por ejemplo, -1, ya que por defecto el resto de objetos deberían tener un valor 0.
 
 <figure>
-    <img src="img/pong/orderInLayer.png" alt="Order in Layer">
-    <figcaption>Order in Layer</figcaption>
+  <img src="img/pong/orderInLayer.png" alt="Order in Layer" />
+  <figcaption>Order in Layer</figcaption>
 </figure>
 
 <figure>
-    <img src="img/pong/scenario3.png" alt="Pelota y línea central">
-    <figcaption>Pelota y línea central</figcaption>
+  <img src="img/pong/scenario3.png" alt="Pelota y línea central" />
+  <figcaption>Pelota y línea central</figcaption>
 </figure>
 
 Llegados a este punto añadiremos un nuevo componente a las palas y a la pelota, el componente **Rigidbody 2D**. Este componente es el encargado de aplicar las físicas a los objetos, en este caso, a las palas y a la pelota.  
@@ -103,13 +101,11 @@ Lo ideal para mantener el proyecto organizado es crear una carpeta llamada **Scr
 
 Vamos a llamarlo **Ball** y lo abrimos con el editor de código que tengamos configurado. En mi caso Visual Studio.
 
-:::info[Sobre el editor de código]
-Unity nos permite configurar el editor de código que queramos, pero por defecto viene configurado con Visual Studio. Si no lo tenemos instalado, podemos descargarlo desde [la página oficial de Microsoft](https://visualstudio.microsoft.com/es/downloads/).
-:::
+!!! info "Sobre el editor de código"
+    Unity nos permite configurar el editor de código que queramos, pero por defecto viene configurado con Visual Studio. Si no lo tenemos instalado, podemos descargarlo desde [la página oficial de Microsoft](https://visualstudio.microsoft.com/es/downloads/).
 
-:::tip[Elegir un editor de código por defecto]
-Si no tenemos un editor de código por defecto, podemos elegir uno desde **Edit -> Preferences -> External Tools** y seleccionar el editor que queramos usar.
-:::
+!!! tip "Elegir un editor de código por defecto"
+    Si no tenemos un editor de código por defecto, podemos elegir uno desde **Edit -> Preferences -> External Tools** y seleccionar el editor que queramos usar.
 
 Partiremos de un MonoBehaviour básico, por lo que el código inicial será el siguiente:
 
@@ -132,13 +128,12 @@ public class Ball : MonoBehaviour
 }
 ```
 
-:::info[Sobre el MonoBehaviour]
-Al heredar de **MonoBehaviour** estamos creando un script que se ejecutará en el contexto de Unity. Esto significa que podemos utilizar las funciones de Unity, como **Start()** y **Update()**, para ejecutar código en momentos específicos del ciclo de vida del juego.
+!!! info "Sobre el MonoBehaviour"
+    Al heredar de **MonoBehaviour** estamos creando un script que se ejecutará en el contexto de Unity. Esto significa que podemos utilizar las funciones de Unity, como **Start()** y **Update()**, para ejecutar código en momentos específicos del ciclo de vida del juego.
 
-**Start()** se ejecuta una vez al inicio del juego, mientras que **Update()** se ejecuta una vez por cada frame del juego. Esto es útil para ejecutar código que necesita ser actualizado constantemente, como el movimiento de la pelota.  
+    **Start()** se ejecuta una vez al inicio del juego, mientras que **Update()** se ejecuta una vez por cada frame del juego. Esto es útil para ejecutar código que necesita ser actualizado constantemente, como el movimiento de la pelota.  
 
-Tenéis más información sobre el ciclo de vida de un MonoBehaviour en la documentación oficial de Unity y en la sección de [Scripting en Unity](../1-Unity/9-Scripting.mdx).
-:::
+    Tenéis más información sobre el ciclo de vida de un MonoBehaviour en la documentación oficial de Unity y en la sección de [Scripting en Unity](../1-Unity/9-Scripting.md).
 
 Podemos eliminar el método **Update()** por ahora, ya que no lo vamos a utilizar.
 
@@ -157,11 +152,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-  // highlight-start
     public float speed = 5.0f;
     public Rigidbody2D rb; // This is set in the inspector, represents the Rigidbody2D component of the ball
     private Vector2 startPos; // Represents the initial position of the ball
-  // highlight-end
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -171,11 +164,10 @@ public class Ball : MonoBehaviour
 }
 ```
 
-:::warning[Sobre las variables públicas]
-Las variables públicas son visibles en el editor de Unity y podemos modificarlas desde allí. Esto es útil para ajustar valores sin necesidad de modificar el código.
+!!! warning "Sobre las variables públicas"
+    Las variables públicas son visibles en el editor de Unity y podemos modificarlas desde allí. Esto es útil para ajustar valores sin necesidad de modificar el código.
 
-**Es importante tener en cuenta que si le damos un valor inicial en el script, este valor se sobrescribirá por el que le demos en el editor.**
-:::
+    **Es importante tener en cuenta que si le damos un valor inicial en el script, este valor se sobrescribirá por el que le demos en el editor.**
 
 Ahora, en el método **Start()** vamos a inicializar la variable **startPos** con la posición de la pelota. Para ello, utilizamos la propiedad **transform.position** de la pelota, que nos dará la posición actual del objeto en el espacio 2D.
 
@@ -191,17 +183,15 @@ public class Ball : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // highlight-next-line
         startPos = transform.position; // Initialize startPos with the current position of the ball
     }
 }
 ```
 
-:::info[Sobre la posición de los objetos]
-La posición de los objetos en Unity se representa mediante un vector de 3 dimensiones (X, Y, Z). En el caso de los objetos 2D, la dimensión Z no se utiliza y la posición se representa mediante un vector de 2 dimensiones (X, Y). 
+!!! info "Sobre la posición de los objetos"
+    La posición de los objetos en Unity se representa mediante un vector de 3 dimensiones (X, Y, Z). En el caso de los objetos 2D, la dimensión Z no se utiliza y la posición se representa mediante un vector de 2 dimensiones (X, Y). 
 
-La posición de los objetos se puede modificar mediante el componente **Transform** de cada objeto. Este componente contiene la posición, rotación y escala del objeto en el espacio 3D.
-:::
+    La posición de los objetos se puede modificar mediante el componente **Transform** de cada objeto. Este componente contiene la posición, rotación y escala del objeto en el espacio 3D.
 
 Una vez tenemos la posición inicial de la pelota almacenada, crearemos un método llamado **Launch()** para lanzar la pelota al comienzo del juevo. Este método se encargará de asignar la velocidad a la pelota y de darle una dirección aleatoria al lanzarla.
 
@@ -229,50 +219,43 @@ public class Ball : MonoBehaviour
     void Start()
     {
         startPos = transform.position;   
-        // highlight-next-line
         Launch(); // Call the Launch method to start the ball's movement
     }
     
-    // highlight-start
     public void Launch()
     {
         float xDir = Random.Range(0, 2) == 0 ? -1 : 1;
         float yDir = Random.Range(0, 2) == 0 ? -1 : 1;
         rb.linearVelocity = new Vector2(xDir * speed, yDir * speed); // This was "velocity" in previous Unity versions
     }
-    // highlight-end
 }
-
 ```
 
 Si ejecutamos el juego ahora, la pelota debería moverse en una dirección aleatoria al inicio del juego. Podemos probar varias veces para ver como la pelota se mueve en diferentes direcciones.
 
-:::warning[Si la pelota no se mueve]
-Si la pelota no se mueve, asegúrate de que el componente **Rigidbody2D** está asignado correctamente en el editor. Para ello, selecciona la pelota en la jerarquía y en el componente **Ball** arrastra el componente **Rigidbody2D** de la pelota al campo **rb** desde el propio inspector.
+!!! warning "Si la pelota no se mueve"
+    Si la pelota no se mueve, asegúrate de que el componente **Rigidbody2D** está asignado correctamente en el editor. Para ello, selecciona la pelota en la jerarquía y en el componente **Ball** arrastra el componente **Rigidbody2D** de la pelota al campo **rb** desde el propio inspector.
 
-En caso de ejecutar sin haberlo hecho Unity nos mostrará un error en la consola indicando que el componente **Rigidbody2D** no está asignado:
+    En caso de ejecutar sin haberlo hecho Unity nos mostrará un error en la consola indicando que el componente **Rigidbody2D** no está asignado:
 
-```plaintext
-UnassignedReferenceException: The variable rb of Ball has not been assigned.
-You probably need to assign the rb variable of the Ball script in the inspector.
-UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <84f0d810adef4e6c8deab33e4ae93f7c>:0)
-UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <84f0d810adef4e6c8deab33e4ae93f7c>:0)
-UnityEngine.Rigidbody2D.set_linearVelocity (UnityEngine.Vector2 value) (at <947c566dcd374e379abfce2ae0b65eaf>:0)
-Ball.Launch () (at Assets/Scripts/Ball.cs:21)
-Ball.Start () (at Assets/Scripts/Ball.cs:14)
-```
-:::
+    ```plaintext
+    UnassignedReferenceException: The variable rb of Ball has not been assigned.
+    You probably need to assign the rb variable of the Ball script in the inspector.
+    UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <84f0d810adef4e6c8deab33e4ae93f7c>:0)
+    UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <84f0d810adef4e6c8deab33e4ae93f7c>:0)
+    UnityEngine.Rigidbody2D.set_linearVelocity (UnityEngine.Vector2 value) (at <947c566dcd374e379abfce2ae0b65eaf>:0)
+    Ball.Launch () (at Assets/Scripts/Ball.cs:21)
+    Ball.Start () (at Assets/Scripts/Ball.cs:14)
+    ```
 
-:::info[Sobre el Rigidbody2D]
-El **Rigidbody2D** es un componente que permite simular la física en objetos 2D. Este componente nos permite aplicar fuerzas, colisiones y movimientos a los objetos de forma realista. 
-En este caso, estamos utilizando el **Rigidbody2D** para mover la pelota y hacer que colisione con las palas y las barras.
-:::
+!!! info "Sobre el Rigidbody2D"
+    El **Rigidbody2D** es un componente que permite simular la física en objetos 2D. Este componente nos permite aplicar fuerzas, colisiones y movimientos a los objetos de forma realista. 
+    En este caso, estamos utilizando el **Rigidbody2D** para mover la pelota y hacer que colisione con las palas y las barras.
 
-:::note[Sobre la propiedad linearVelocity]
-La propiedad **linearVelocity** es la velocidad lineal del objeto en el espacio 2D. Esta propiedad se utiliza para mover el objeto en una dirección específica y a una velocidad determinada.   
+!!! note "Sobre la propiedad linearVelocity"
+    La propiedad **linearVelocity** es la velocidad lineal del objeto en el espacio 2D. Esta propiedad se utiliza para mover el objeto en una dirección específica y a una velocidad determinada.   
 
-En versiones anteriores de Unity, esta propiedad se llamaba **velocity**. Si estás utilizando una versión anterior de Unity, puedes cambiar **linearVelocity** por **velocity** y debería funcionar sin problemas.
-:::
+    En versiones anteriores de Unity, esta propiedad se llamaba **velocity**. Si estás utilizando una versión anterior de Unity, puedes cambiar **linearVelocity** por **velocity** y debería funcionar sin problemas.
 
 Obviamente, la pelota sale disparada pero todavía no rebota como queremos si no que al chocar con las palas o las barras se va frenando.
 
@@ -285,8 +268,8 @@ La propiedad **Friction** es la fricción del material, que determina cuánto se
 Podemos dejar la fricción a 0 y la elasticidad a 1 para que la pelota rebote al máximo.
 
 <figure>
-    <img src="img/pong/ballMaterial.png" alt="BallMaterial">
-    <figcaption>BallMaterial</figcaption>
+  <img src="img/pong/ballMaterial.png" alt="BallMaterial" />
+  <figcaption>BallMaterial</figcaption>
 </figure>
 
 Una vez configurado el material, lo arrastramos al componente **Circle Collider 2D** de la pelota. Esto hará que la pelota rebote al chocar con las palas y las barras.
@@ -305,15 +288,13 @@ Esto, aunque visualmente no se note, hará que la pelota no rote al chocar con l
 
 Ahora, al ejecutar ya podemos ver como la pelota rebota al chocar con las palas y las barras, y las palas no se mueven en el eje X.
 
-:::info[Sobre los Constraints]
-Los **Constraints** son propiedades del componente **Rigidbody2D** que nos permiten restringir el movimiento y la rotación de los objetos. Esto es útil para evitar que los objetos se muevan o roten de forma no deseada al chocar con otros objetos.
-:::
+!!! info "Sobre los Constraints"
+    Los **Constraints** son propiedades del componente **Rigidbody2D** que nos permiten restringir el movimiento y la rotación de los objetos. Esto es útil para evitar que los objetos se muevan o roten de forma no deseada al chocar con otros objetos.
 
-:::note[Sobre el Freeze Position y Freeze Rotation]
-La propiedad **Freeze Position** es un constraint que nos permite restringir el movimiento de un objeto en un eje específico. En este caso, estamos restringiendo el movimiento de las palas en el eje X para que solo se muevan en el eje Y.
+!!! note "Sobre el Freeze Position y Freeze Rotation"
+    La propiedad **Freeze Position** es un constraint que nos permite restringir el movimiento de un objeto en un eje específico. En este caso, estamos restringiendo el movimiento de las palas en el eje X para que solo se muevan en el eje Y.
 
-La propiedad **Freeze Rotation** es un constraint que nos permite restringir la rotación de un objeto en un eje específico. En este caso, estamos restringiendo la rotación de la pelota en el eje Z para que no rote al chocar con las palas y las barras.
-:::
+    La propiedad **Freeze Rotation** es un constraint que nos permite restringir la rotación de un objeto en un eje específico. En este caso, estamos restringiendo la rotación de la pelota en el eje Z para que no rote al chocar con las palas y las barras.
 
 Antes de continuar, vamos a añadir un método en el Script de la pelota que nos permita reiniciar la posición de la pelota al inicio del juego.
 
@@ -355,18 +336,16 @@ Para el eje **VerticalLeft** vamos a cambiar el nombre a **VerticalLeft** y en l
 Para el eje **VerticalRight** vamos a cambiar el nombre a **VerticalRight** y en la propiedad **Positive Button** vamos a poner la tecla **up** y en la propiedad **Negative Button** vamos a poner la tecla **down**.
 
 <figure>
-    <img src="img/pong/inputManager.png" alt="Input Manager">
-    <figcaption>Input Manager</figcaption>
+  <img src="img/pong/inputManager.png" alt="Input Manager" />
+  <figcaption>Input Manager</figcaption>
 </figure>
 
-:::info[Sobre el Input Manager]
-El **Input Manager** es una herramienta de Unity que nos permite gestionar los ejes de entrada y las teclas que utilizaremos en el juego. Podemos crear nuevos ejes, duplicar ejes existentes y cambiar las propiedades de cada eje para ajustarlas a nuestras necesidades.
-:::
+!!! info "Sobre el Input Manager"
+    El **Input Manager** es una herramienta de Unity que nos permite gestionar los ejes de entrada y las teclas que utilizaremos en el juego. Podemos crear nuevos ejes, duplicar ejes existentes y cambiar las propiedades de cada eje para ajustarlas a nuestras necesidades.
 
-:::note[Sobre los ejes de entrada]
-Los ejes de entrada son una forma de gestionar las entradas del jugador en Unity. Estos ejes nos permiten asignar teclas y botones a acciones específicas en el juego. Por ejemplo, podemos asignar la tecla **w** para mover hacia arriba y la tecla **s** para mover hacia abajo. 
-Esto nos permite gestionar las entradas del jugador de forma más sencilla y flexible.
-:::
+!!! note "Sobre los ejes de entrada"
+    Los ejes de entrada son una forma de gestionar las entradas del jugador en Unity. Estos ejes nos permiten asignar teclas y botones a acciones específicas en el juego. Por ejemplo, podemos asignar la tecla **w** para mover hacia arriba y la tecla **s** para mover hacia abajo. 
+    Esto nos permite gestionar las entradas del jugador de forma más sencilla y flexible.
 
 #### Creando el Script de las palas
 
@@ -387,17 +366,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // highlight-start
     public float speed = 5f; // This is set in the inspector
     public Rigidbody2D rb; // This is set in the inspector
     private float verticalInput = 0f;
     private Vector2 startPos; // Represents the initial transform position of the gameobject
-    // highlight-end
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // highlight-next-line
         startPos = transform.position;
     }
 
@@ -417,33 +393,28 @@ Para ello, utilizamos la propiedad **linearVelocity** del **Rigidbody2D** de la 
 
 ```csharp title="Player.cs"
 ...
-    // highlight-start
     void Update()
     {
         verticalInput = Input.GetAxisRaw("VerticalLeft");
         rb.velocity = new Vector2(rb.linearVelocity.x, verticalInput * speed);
     }
-    // highlight-end
 }
 ```
 
-:::info[Sobre el Input.GetAxisRaw()]
-La función **Input.GetAxisRaw()** nos permite obtener la entrada del jugador de forma más precisa y rápida. Esta función devuelve un valor entre -1 y 1, donde -1 representa la entrada negativa (hacia abajo) y 1 representa la entrada positiva (hacia arriba).
-Esto nos permite mover la pala hacia arriba y hacia abajo de forma más precisa y rápida.
-:::
+!!! info "Sobre el Input.GetAxisRaw()"
+    La función **Input.GetAxisRaw()** nos permite obtener la entrada del jugador de forma más precisa y rápida. Esta función devuelve un valor entre -1 y 1, donde -1 representa la entrada negativa (hacia abajo) y 1 representa la entrada positiva (hacia arriba).
+    Esto nos permite mover la pala hacia arriba y hacia abajo de forma más precisa y rápida.
 
-:::nota[Input.GetAxisRaw() vs Input.GetAxis()]
-La función **Input.GetAxis()** nos permite obtener la entrada del jugador de forma más suave y gradual. Esta función devuelve un valor entre -1 y 1, donde -1 representa la entrada negativa (hacia abajo) y 1 representa la entrada positiva (hacia arriba).
-Sin embargo, esta función puede ser un poco más lenta y menos precisa que **Input.GetAxisRaw()**.
+!!! note "Input.GetAxisRaw() vs Input.GetAxis() (Original nota)"
+    La función **Input.GetAxis()** nos permite obtener la entrada del jugador de forma más suave y gradual. Esta función devuelve un valor entre -1 y 1, donde -1 representa la entrada negativa (hacia abajo) y 1 representa la entrada positiva (hacia arriba).
+    Sin embargo, esta función puede ser un poco más lenta y menos precisa que **Input.GetAxisRaw()**.
 
-Para este juego, utilizaremos **Input.GetAxisRaw()** para obtener la entrada del jugador de forma más precisa y rápida. Sin embargo, si queremos un movimiento más suave y gradual, podemos utilizar **Input.GetAxis()**.
-:::
+    Para este juego, utilizaremos **Input.GetAxisRaw()** para obtener la entrada del jugador de forma más precisa y rápida. Sin embargo, si queremos un movimiento más suave y gradual, podemos utilizar **Input.GetAxis()**.
 
 Si ejecutamos, veremos como podemos mover ambas palas con las teclas W y S.
 
-:::warning[Si no se mueve la pala]
-Si la pala no se mueve, asegúrate de que el componente **Rigidbody2D** está asignado correctamente en el editor. Para ello, selecciona la pala en la jerarquía y en el componente **Player** arrastra el componente **Rigidbody2D** de la pala al campo **rb** desde el propio inspector.
-:::
+!!! warning "Si no se mueve la pala"
+    Si la pala no se mueve, asegúrate de que el componente **Rigidbody2D** está asignado correctamente en el editor. Para ello, selecciona la pala en la jerarquía y en el componente **Player** arrastra el componente **Rigidbody2D** de la pala al campo **rb** desde el propio inspector.
 
 Vamos a separar los controles de las palas para que cada una tenga su propio control. Para ello, vamos a crear una variable pública de tipo **boolean** que llamaremos **isPlayerLeft**. Esta variable nos servirá para distinguir entre la pala izquierda y la pala derecha.
 Vamos a ponerla en **true** para la pala izquierda y en **false** para la pala derecha.
@@ -505,12 +476,11 @@ Además, vamos a añadir 3 variables de tipo **GameObject** que llamaremos **lef
 
 Vamos a añadir también dos variables públicas de tipo **TextMeshProUGUI** que llamaremos **leftScoreText** y **rightScoreText**. Estas variables se encargarán de almacenar las referencias a los textos que mostrarán la puntuación de cada jugador.
 
-:::info[Sobre el TextMeshProUGUI]
-El **TextMeshProUGUI** es un componente de Unity que nos permite mostrar texto en la pantalla de forma más avanzada y con más opciones de personalización que el componente **Text**. Este componente nos permite cambiar el tamaño, el color, la fuente y muchas otras propiedades del texto.  
-Para utilizar este componente, debemos importar el paquete **TextMeshPro** desde el **Package Manager** de Unity. Una vez importado, podemos añadir el componente **TextMeshProUGUI** a cualquier GameObject y utilizarlo para mostrar texto en la pantalla.    
-Podemos crear un nuevo objeto de tipo **TextMeshProUGUI** desde la pestaña de la jerarquía y seleccionando **UI -> Text - TextMeshPro**. Esto creará un nuevo objeto de texto en la escena. 
-Podemos cambiar el texto, el tamaño, el color y muchas otras propiedades desde el inspector.
-:::
+!!! info "Sobre el TextMeshProUGUI"
+    El **TextMeshProUGUI** es un componente de Unity que nos permite mostrar texto en la pantalla de forma más avanzada y con más opciones de personalización que el componente **Text**. Este componente nos permite cambiar el tamaño, el color, la fuente y muchas otras propiedades del texto.  
+    Para utilizar este componente, debemos importar el paquete **TextMeshPro** desde el **Package Manager** de Unity. Una vez importado, podemos añadir el componente **TextMeshProUGUI** a cualquier GameObject y utilizarlo para mostrar texto en la pantalla.    
+    Podemos crear un nuevo objeto de tipo **TextMeshProUGUI** desde la pestaña de la jerarquía y seleccionando **UI -> Text - TextMeshPro**. Esto creará un nuevo objeto de texto en la escena. 
+    Podemos cambiar el texto, el tamaño, el color y muchas otras propiedades desde el inspector.
 
 Las variables del script nos quedarán tal que así:
 
@@ -543,20 +513,17 @@ public class GameManager : MonoBehaviour
     // This method is called to reset the ball and players to their starting positions
     private void ReserPositions()
     {
-        // highlight-next-line
         ball.GetComponent<Ball>().Reset();
         playerLeft.GetComponent<Player>().Reset();
         playerRight.GetComponent<Player>().Reset();
     }
 }
-
 ```
 
-:::info[Sobre el GetComponent()]
-La función **GetComponent()** nos permite acceder a los componentes de un GameObject. Esto es útil para acceder a los métodos y propiedades de los componentes de un GameObject.
-En este caso, estamos utilizando **GetComponent\<Ball\>()** para acceder al componente **Ball** de la pelota y **GetComponent\<Player\>()** para acceder al componente **Player** de las palas. 
-Esto nos permite llamar a los métodos **Reset()** de las palas y la pelota desde el Script **GameManager**.
-:::
+!!! info "Sobre el GetComponent()"
+    La función **GetComponent()** nos permite acceder a los componentes de un GameObject. Esto es útil para acceder a los métodos y propiedades de los componentes de un GameObject.
+    En este caso, estamos utilizando **GetComponent<Ball>()** para acceder al componente **Ball** de la pelota y **GetComponent<Player>()** para acceder al componente **Player** de las palas. 
+    Esto nos permite llamar a los métodos **Reset()** de las palas y la pelota desde el Script **GameManager**.
 
 Con el método **ResetPositions()** creado, vamos a añadir un método que se encargue de marcar un punto al jugador que haya marcado el gol. Este método se llamará **ScorePoint()** y recibirá un parámetro de tipo **bool** que nos indicará si el jugador que ha marcado el gol es el izquierdo o el derecho.
 
@@ -605,15 +572,18 @@ En primer lugar crearemos las porterías si no las habíamos creado ya.
 
 Para ello, crearemos dos sprites rectangulares como los de las barras superior e inferior y los posicionaremos fuera de cámara. Uno a la izquierda de la pala izquierda y otro a la derecha de la pala derecha, de forma que sea imposible que la pelota pase por ahí tras rebotar sin que la pala lo toque.
 
-![Porterías](../../../static/img/apuntes_unity/pong/goals.png)
+<figure>
+  <img src="img/pong/goals.png" alt="Porterías" />
+</figure>
 
 Una vez tengamos las porterías colocadas, simplemente les añadiremos un componente **Box Collider 2D** y marcaremos la opción **Is Trigger**. Esto hará que el collider actúe como un trigger y no como un collider normal, es decir, no afectará a la física de los objetos que colisionen con él.
 
-![Is Trigger](../../../static/img/apuntes_unity/pong/goals_trigger.png)
+<figure>
+  <img src="img/pong/goals_trigger.png" alt="Is Trigger" />
+</figure>
 
-:::info[Sobre los triggers]
-Los **triggers** son colisionadores que no afectan a la física de los objetos que colisionan con ellos. Esto significa que los objetos pueden atravesar el trigger sin ser afectados por la física. Sin embargo, podemos detectar cuando un objeto entra o sale del trigger utilizando los métodos **OnTriggerEnter2D()** y **OnTriggerExit2D()**.
-:::
+!!! info "Sobre los triggers"
+    Los **triggers** son colisionadores que no afectan a la física de los objetos que colisionan con ellos. Esto significa que los objetos pueden atravesar el trigger sin ser afectados por la física. Sin embargo, podemos detectar cuando un objeto entra o sale del trigger utilizando los métodos **OnTriggerEnter2D()** y **OnTriggerExit2D()**.
 
 Una vez creados los triggers de las porterías, vamos a hacer que se detecte cuando la pelota entra en la portería. Para ello, vamos a crear un nuevo Script llamado **Goal** y lo abrimos con el editor de código.
 
@@ -622,7 +592,6 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    // highlight-next-line
     public bool isPlayerLeftGoal; // This is set in the inspector
 
     // This method is called when the ball enters the goal area (the trigger collider)
@@ -674,15 +643,15 @@ En este ejemplo, para darle un toque más adecuado, estamos usando la fuente **E
 Así queda en nuestro ejemplo:
 
 <figure>
-    <img src="img/pong/scoreText.png" alt="Score Text">
-    <figcaption>Score Text</figcaption>
+  <img src="img/pong/scoreText.png" alt="Score Text" />
+  <figcaption>Score Text</figcaption>
 </figure>
 
 Una vez añadidos a la escena ahora debemos asignarselos a las referencias del **GameManager** junto con el resto de elementos declarados en el script. Para ello, seleccionamos el objeto **GameManager** en la jerarquía y arrastramos los objetos de texto a las variables **ScoreLeft** y **ScoreRight** desde el inspector, junto con todas las demás:
 
 <figure>
-    <img src="img/pong/gamemanager.png" alt="GameManager">
-    <figcaption>GameManager</figcaption>
+  <img src="img/pong/gamemanager.png" alt="GameManager" />
+  <figcaption>GameManager</figcaption>
 </figure>
 
 Si hemos hecho todo correctamente, al ejecutar el juego ahora deberíamos ver los textos de la puntuación en la pantalla y al marcar un gol, la puntuación debería actualizarse correctamente.
@@ -745,58 +714,54 @@ public class AIPlayer : MonoBehaviour
 }
 ```
 
-:::info[Sobre el SerializeField]
-El atributo **[SerializeField]** nos permite serializar una variable privada para que aparezca en el inspector de Unity. Esto es útil para poder modificar la variable desde el inspector sin necesidad de hacerla pública.
-:::
+!!! info "Sobre el SerializeField"
+    El atributo **[SerializeField]** nos permite serializar una variable privada para que aparezca en el inspector de Unity. Esto es útil para poder modificar la variable desde el inspector sin necesidad de hacerla pública.
 
 Le asignamos el Script a la pala de la derecha y arrastramos la pelota al campo **ball** desde el editor. Esto hará que la pala de la derecha siga la pelota y se mueva hacia arriba o hacia abajo dependiendo de la posición de la pelota.
 
 <figure>
-    <img src="img/pong/iaPlayer.png" alt="AIPlayer">
-    <figcaption>AIPlayer</figcaption>
+  <img src="img/pong/iaPlayer.png" alt="AIPlayer" />
+  <figcaption>AIPlayer</figcaption>
 </figure>
 
 Si ejecutamos el juego podemos probar como la pala de la derecha se mueve sola para intentar interceptar la pelota. Si la pelota va muy rápido, la IA no podrá interceptarla, pero si la pelota va despacio, la IA podrá interceptarla sin problemas.
 
 Decir que podemos alternar entre el PVP y el PVE simplemente desactivando el Script de la IA o el de la pala derecha. De esta forma podemos jugar contra un amigo o contra la IA.
 
-:::warning[Si la bola rebota horizontalmente]
-Hay que tener en cuenta que en el punto del desarrollo que estamos ahora mismo puede ser que nos encontremos con un bug que hace que la pelota rebote de forma horizontal indefinidamente y la partida no avance. Esto es un bug que ocurre cuando la pelota rebota contra la pala y la pala se mueve hacia arriba o hacia abajo al mismo tiempo. 
+!!! warning "Si la bola rebota horizontalmente"
+    Hay que tener en cuenta que en el punto del desarrollo que estamos ahora mismo puede ser que nos encontremos con un bug que hace que la pelota rebote de forma horizontal indefinidamente y la partida no avance. Esto es un bug que ocurre cuando la pelota rebota contra la pala y la pala se mueve hacia arriba o hacia abajo al mismo tiempo. 
 
-Para solucionarlo, podemos añadir una pequeña fuerza a la pelota al chocar con la pala para que no rebote de forma horizontal indefinidamente. Ya veremos en futuros ejemplos como se implementa esto.
-:::
+    Para solucionarlo, podemos añadir una pequeña fuerza a la pelota al chocar con la pala para que no rebote de forma horizontal indefinidamente. Ya veremos en futuros ejemplos como se implementa esto.
 
-:::warning[Si tras el primer gol la pala derecha se va al medio]
-Como vamos a dejar de activar el Script de Player en la versión PVE debemos añadir una variable booleana para no resetear la posición de la pala derecha en la versión PVE, ya que si no intentará hacerlo pero como no tiene la posición inicial puede darnos un bug en el que tras el primer gol la pala derecha se posicione en la línea central.
+!!! warning "Si tras el primer gol la pala derecha se va al medio"
+    Como vamos a dejar de activar el Script de Player en la versión PVE debemos añadir una variable booleana para no resetear la posición de la pala derecha en la versión PVE, ya que si no intentará hacerlo pero como no tiene la posición inicial puede darnos un bug en el que tras el primer gol la pala derecha se posicione en la línea central.
 
-Algo así:
+    Algo así:
 
-```csharp title="GameManager.cs"
-using System;
-using UnityEngine;
+    ```csharp title="GameManager.cs"
+    using System;
+    using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
-
-...
-// highlight-next-line
-    public Boolean pvp;
-
-...
-
-    // This method is called to reset the ball and players to their starting positions
-    private void ReserPositions()
+    public class GameManager : MonoBehaviour
     {
-        ball.GetComponent<Ball>().Reset();
-        playerLeft.GetComponent<Player>().Reset();
-        // highlight-next-line
-        if (pvp)
+
+    ...
+        public Boolean pvp;
+
+    ...
+
+        // This method is called to reset the ball and players to their starting positions
+        private void ReserPositions()
         {
-            playerRight.GetComponent<Player>().Reset();
+            ball.GetComponent<Ball>().Reset();
+            playerLeft.GetComponent<Player>().Reset();
+            if (pvp)
+            {
+                playerRight.GetComponent<Player>().Reset();
+            }
         }
     }
-}
-
+    ```
 
 Ahora que la versión PVE está funcionando, puede ser que si le damos demasiada velocidad a la IA, la pelota no pueda pasar por la pala y no podamos marcar puntos. 
 
@@ -810,9 +775,8 @@ Podríamos hacer que subiese la velocidad también al chocar con las barras, per
 
 De todas formas sentíos libres de probar lo que queráis y dejar el juego a vuestro completo gusto.
 
-:::info[Sobre el GameFeel]
-El **GameFeel** es la sensación que tiene el jugador al jugar a un juego. Esto incluye la velocidad, la física, la animación y muchos otros aspectos del juego. Un buen **GameFeel** hace que el juego sea más divertido y agradable de jugar.
-:::
+!!! info "Sobre el GameFeel"
+    El **GameFeel** es la sensación que tiene el jugador al jugar a un juego. Esto incluye la velocidad, la física, la animación y muchos otros aspectos del juego. Un buen **GameFeel** hace que el juego sea más divertido y agradable de jugar.
 
 ```csharp title="Ball.cs"
 
@@ -823,7 +787,6 @@ public class Ball : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     private Vector2 startPos;
-    // highlight-next-line
     public float speedMultiplier = 0.1f; // This is set in the inspector
 
     ...
@@ -890,10 +853,9 @@ El código completo del método **OnCollisionEnter2D()** quedaría así:
     }
 ```
 
-:::tip[Sobre el Mathf.Abs()]
-La función **Mathf.Abs()** nos permite obtener el valor absoluto de un número. Esto es útil para comprobar si un número es mayor o menor que otro número sin importar si es positivo o negativo. En este caso, estamos utilizando **Mathf.Abs()** para comprobar si la velocidad de la pelota en el eje X o Y es menor que un valor mínimo. 
-Esto nos permite asegurarnos de que la velocidad de la pelota es mayor que un valor mínimo y evitar que la pelota rebote de forma horizontal indefinidamente.
-::: 
+!!! tip "Sobre el Mathf.Abs()"
+    La función **Mathf.Abs()** nos permite obtener el valor absoluto de un número. Esto es útil para comprobar si un número es mayor o menor que otro número sin importar si es positivo o negativo. En este caso, estamos utilizando **Mathf.Abs()** para comprobar si la velocidad de la pelota en el eje X o Y es menor que un valor mínimo. 
+    Esto nos permite asegurarnos de que la velocidad de la pelota es mayor que un valor mínimo y evitar que la pelota rebote de forma horizontal indefinidamente.
 
 Ya tenemos una versión PVP y una versión PVE del juego funcionando. Ahora vamos a añadir un menú de inicio y un menú de fin de partida para que el juego sea más completo y tenga un mejor aspecto.
 
@@ -928,8 +890,8 @@ Vamos a incluir tanto esta escena recién creada como las de PVP y PVE en el **B
 Podéis ordenarlas en el orden que queráis pero quizás el de arriba a abajo sea el más lógico, es decir, primero el menú principal y luego las dos escenas de juego.
 
 <figure>
-    <img src="img/pong/scenelist.png" alt="Scene List">
-    <figcaption>Scene List</figcaption>
+  <img src="img/pong/scenelist.png" alt="Scene List" />
+  <figcaption>Scene List</figcaption>
 </figure>
 
 Una vez hecho esto hacemos doble clic sobre la escena recién creada y esto nos la cargará en la jerarquía. Deberíamos estar ante una escena vacía con una cámara por defecto y poco más como cuándo inciamos el proyecto.
@@ -965,15 +927,14 @@ public class MainMenu : MonoBehaviour
 
 ```
 
-:::info[Sobre el SceneManager]
-El **SceneManager** es una clase de Unity que nos permite gestionar las escenas del juego. Esto incluye cargar, descargar y cambiar entre escenas. En este caso, estamos utilizando **SceneManager.LoadScene()** para cargar las escenas correspondientes al pulsar los botones del menú.
-:::
+!!! info "Sobre el SceneManager"
+    El **SceneManager** es una clase de Unity que nos permite gestionar las escenas del juego. Esto incluye cargar, descargar y cambiar entre escenas. En este caso, estamos utilizando **SceneManager.LoadScene()** para cargar las escenas correspondientes al pulsar los botones del menú.
 
 Con la UI creada y los métodos del Script creados, ahora simplemente debemos asignar el Script al Canvas y arrastrar los botones a los métodos correspondientes desde el editor. Para ello, seleccionamos el botón en la jerarquía y en el componente **Button** arrastramos el objeto **MainMenu** al campo **On Click()**. Luego seleccionamos el método que queremos que se ejecute al pulsar el botón.
 
 <figure>
-    <img src="img/pong/button_onclick.png" alt="Button on click">
-    <figcaption>Button on click</figcaption>
+  <img src="img/pong/button_onclick.png" alt="Button on click" />
+  <figcaption>Button on click</figcaption>
 </figure>
 
 Vamos a dar también la opción de cerrar el juego al pulsar el botón de Escape. Para ello, vamos a añadir el siguiente código al Script **MainMenu**:
@@ -987,23 +948,23 @@ Vamos a dar también la opción de cerrar el juego al pulsar el botón de Escape
         }
     }
 ```
-:::info[Sobre el Application.Quit()]
-El método **Application.Quit()** se encarga de cerrar la aplicación. Esto es útil para cerrar el juego al pulsar el botón de Escape. 
 
-Sin embargo, este método solo funciona en la versión compilada del juego y no en el editor de Unity. 
+!!! info "Sobre el Application.Quit()"
+    El método **Application.Quit()** se encarga de cerrar la aplicación. Esto es útil para cerrar el juego al pulsar el botón de Escape. 
 
-Para probar que funciona la detección de la tecla podemos hacer un Log por consola:
+    Sin embargo, este método solo funciona en la versión compilada del juego y no en el editor de Unity. 
 
-```csharp title="MainMenu.cs"
+    Para probar que funciona la detección de la tecla podemos hacer un Log por consola:
+
+    ```csharp title="MainMenu.cs"
     Debug.Log("Escape pressed, quitting the game...");
-```
-:::
+    ```
 
 Vamos a añadir junto con esto un pequeño mensaje en el menú principal para indicar que pulsando escape se puede salir del juego:
 
 <figure>
-    <img src="img/pong/mainmenu.png" alt="Main Menu">
-    <figcaption>Main Menu</figcaption>
+  <img src="img/pong/mainmenu.png" alt="Main Menu" />
+  <figcaption>Main Menu</figcaption>
 </figure>
 
 Lo siquiente que debemos hacer es crear una escena de fin de partida. 
@@ -1027,9 +988,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI playerLeftScoreText, playerRightScoreText;
     public bool pvp;
 
-// highlight-next-line
     private string winner;
-    // highlight-next-line
     [SerializeField] private int pointsToWin = 5;
 
     // This method is called when the ball enters the goal area (the trigger collider)
@@ -1045,12 +1004,10 @@ public class GameManager : MonoBehaviour
             rightPlayerScore++;
             playerRightScoreText.text = rightPlayerScore.ToString();
         }
-        // highlight-next-line
         CheckWinner();
         ReserPositions();
     }
 
-// highlight-start
     public void CheckWinner()
     {
         if(leftPlayerScore >= pointsToWin)
@@ -1073,7 +1030,6 @@ public class GameManager : MonoBehaviour
     {
         return winner;
     }
-// highlight-end
 
     // This method is called to reset the ball and players to their starting positions
     private void ReserPositions()
@@ -1099,8 +1055,8 @@ También incluiremos un botón para volver al menú prinicpal y así poder jugar
 Nuestra escena queda algo parecido a esto:
 
 <figure>
-    <img src="img/pong/WinnerScene.png" alt="WinnerScene">
-    <figcaption>WinnerScene</figcaption>
+  <img src="img/pong/WinnerScene.png" alt="WinnerScene" />
+  <figcaption>WinnerScene</figcaption>
 </figure>
 
 Al canvas de esta escena vamos a añadir un Script llamado **WinnerScene** y lo abrimos con el editor de código. Este Script se encargará de gestionar la escena de fin de partida y de mostrar el mensaje correspondiente al ganador.
@@ -1143,9 +1099,8 @@ Sin embargo, no podemos acceder al GameManager porque está en otra escena, ante
     }
 ```
 
-:::info[Sobre el DontDestroyOnLoad]
-El método **DontDestroyOnLoad()** se encarga de hacer que un objeto no se destruya al cambiar de escena. Esto es útil para hacer que el **GameManager** sobreviva al cambio de escena y podamos acceder a él desde otras escenas.
-:::
+!!! info "Sobre el DontDestroyOnLoad"
+    El método **DontDestroyOnLoad()** se encarga de hacer que un objeto no se destruya al cambiar de escena. Esto es útil para hacer que el **GameManager** sobreviva al cambio de escena y podamos acceder a él desde otras escenas.
 
 Con esto, el **GameManager** no se destruirá al cambiar de escena y podremos acceder a él desde la escena de fin de partida.
 
@@ -1160,6 +1115,7 @@ Vamos a modificar también el método **CheckWinner()** para que cargue la escen
 Hay que acordarse de añadir también el espacio de nombres **UnityEngine.SceneManagement** al principio del Script para poder utilizar la función **SceneManager.LoadScene()**.
 
 El método nos quedaría así:
+
 ```csharp title="GameManager.cs"
     public void CheckWinner()
     {
@@ -1191,39 +1147,35 @@ El problema que tenemos ahora, es que si volvemos a jugar tras finalizar una par
 ```csharp title="MainMenu.cs"
    public void LoadMainMenu()
     {
-        // highlight-next-line
         Destroy(FindAnyObjectByType<GameManager>()); // This destroys the GameManager of the previous game
         SceneManager.LoadScene("MainMenu"); // This loads the MainMenu scene
     }
 ```
 
-:::info[Sobre el Destroy]
-El método **Destroy()** se encarga de destruir un objeto en la escena. Esto es útil para destruir el **GameManager** de la partida anterior y evitar que haya dos GameManagers en la escena al volver al menú principal.
-:::
+!!! info "Sobre el Destroy"
+    El método **Destroy()** se encarga de destruir un objeto en la escena. Esto es útil para destruir el **GameManager** de la partida anterior y evitar que haya dos GameManagers en la escena al volver al menú principal.
 
-:::warning[Si no cambia el texto del ganador]
-Puede ser que os hayáis olvidado de arrastrar la referencia al texto del ganador al Script **WinnerScene**. Para ello, seleccionamos el objeto **WinnerScene** en la jerarquía y arrastramos el objeto de texto al campo **winnerText** desde el inspector.
+!!! warning "Si no cambia el texto del ganador"
+    Puede ser que os hayáis olvidado de arrastrar la referencia al texto del ganador al Script **WinnerScene**. Para ello, seleccionamos el objeto **WinnerScene** en la jerarquía y arrastramos el objeto de texto al campo **winnerText** desde el inspector.
 
-<figure>
-    <img src="img/pong/WinnerText.png" alt="WinnerText">
-    <figcaption>WinnerText</figcaption>
-</figure>
-:::
+    <figure>
+      <img src="img/pong/WinnerText.png" alt="WinnerText" />
+      <figcaption>WinnerText</figcaption>
+    </figure>
 
 Ahora ya debería de funcionar, debéis de probar que funciona todo correctamente jugando hasta que un jugador gané, pulsando en volver al menú principal y volviendo a jugar, si toda esta secuencia funciona sin problemas ya tenéis una versión funcional del pong.
 
 <figure>
-    <img src="img/pong/WinnerScene2.png" alt="WinnerScene 2">
-    <figcaption>WinnerScene 2</figcaption>
+  <img src="img/pong/WinnerScene2.png" alt="WinnerScene 2" />
+  <figcaption>WinnerScene 2</figcaption>
 </figure>
 
 ## **Haciendo nuestra primera Build**
 
 Ahora que tenemos una primera versión del juego funcional vamos a aprender cómo exportarlo. Empezaremos con Sistemas Windows por su sencillez y después veremos como exportar para Android y WebGL.
 
-:::info[¿Qué es una Build?]
-Una **Build** es una versión compilada del juego que se puede ejecutar en un dispositivo. Esto incluye todos los archivos necesarios para ejecutar el juego, como los scripts, las imágenes, los sonidos y otros recursos. En Unity, podemos crear una Build para diferentes plataformas, como Windows, Android, iOS y WebGL.
-:::
+!!! info "¿Qué es una Build?"
+    Una **Build** es una versión compilada del juego que se puede ejecutar en un dispositivo. Esto incluye todos los archivos necesarios para ejecutar el juego, como los scripts, las imágenes, los sonidos y otros recursos. En Unity, podemos crear una Build para diferentes plataformas, como Windows, Android, iOS y WebGL.
 
 Vamos a empezar creando una Build para Windows. Para ello, nos vamos a **File -> Build Profiles** (o pulsamos **control + shift + B**) y se nos abrirá la ventana de **Build Profiles**. 
 
@@ -1232,22 +1184,22 @@ En esta ventana podríamos directamente crear una Build para Windows o cambiar d
 Sin embargo, en lugar de hacerlo rápido, vamos a crearnos un perfil de Build para Windows. Para ello, pulsamos sobre el botón de **Add Build Profile**.
 
 <figure>
-    <img src="img/pong/build_profile_1.png" alt="Build Profile">
-    <figcaption>Build Profile</figcaption>
+  <img src="img/pong/build_profile_1.png" alt="Build Profile" />
+  <figcaption>Build Profile</figcaption>
 </figure>
 
 En la ventana de **Platform Browser** seleccionamos **Windows** y pulsamos sobre el botón de **Add Build Profile**. Esto nos creará un nuevo perfil de Build para Windows.
 
 <figure>
-    <img src="img/pong/build_profile_2.png" alt="Build Profile 2">
-    <figcaption>Build Profile 2</figcaption>
+  <img src="img/pong/build_profile_2.png" alt="Build Profile 2" />
+  <figcaption>Build Profile 2</figcaption>
 </figure>
 
 Con el perfil creado, pulsamos en **Switch** para cambiar a él y podemos pulsar en **Customize Player Settings** para cambiar la configuración de la Build. Esto nos abrirá la ventana de **Player Settings** donde podemos cambiar el nombre del juego, el icono, la resolución y otros aspectos de la Build.
 
 <figure>
-    <img src="img/pong/build_profile_3.png" alt="Build Profile 3">
-    <figcaption>Build Profile 3</figcaption>
+  <img src="img/pong/build_profile_3.png" alt="Build Profile 3" />
+  <figcaption>Build Profile 3</figcaption>
 </figure>
 
 Dentro de las Player Settings es interesante modificar el nombre del juego, el icono y la resolución. Para ello, en la sección de **Player** podemos cambiar el nombre del juego en el campo **Product Name** y el icono en el campo **Icon**. También podemos cambiar la resolución en la sección de **Resolution and Presentation**.
@@ -1257,8 +1209,8 @@ Si hacemos una primera Build con la información por defecto nos daremos cuenta 
 Para solucionarlo, podemos cambiar la resolución a **1920x1080** o a la resolución que queramos.
 
 <figure>
-    <img src="img/pong/build_profile_4.png" alt="Build Profile 4">
-    <figcaption>Build Profile 4</figcaption>
+  <img src="img/pong/build_profile_4.png" alt="Build Profile 4" />
+  <figcaption>Build Profile 4</figcaption>
 </figure>
 
 Con esta configuración ya podríamos exportar el juego, podemos configurar el resto de opciones a nuestro gusto. 
@@ -1270,11 +1222,9 @@ Con esta configuración ya podríamos exportar el juego, podemos configurar el r
 Para hacer una Build para WebGL, vamos a seguir los mismos pasos que para Windows. Vamos a **File -> Build Profiles** y pulsamos sobre el botón de **Add Build Profile**.
 
 <figure>
-    <img src="img/pong/build_profile_5.png" alt="Build Profile 5">
-    <figcaption>Build Profile 5</figcaption>
+  <img src="img/pong/build_profile_5.png" alt="Build Profile 5" />
+  <figcaption>Build Profile 5</figcaption>
 </figure>
-
-
 
 ## **Posibles ampliaciones y mejoras**
 
