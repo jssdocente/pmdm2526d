@@ -1,4 +1,7 @@
-# **Pong**
+# **Juego: Pong**
+
+!!! tip "Video desarrollo del juego"
+    En este video se muestra el desarrollo completo del juego: [Pong](https://youtu.be/Zro8IkFkXUc)
 
 El **Pong** fue publicado por Atari en 1972 y es uno de los primeros videojuegos de la historia. El juego es un simulador de tenis de mesa en el que los jugadores controlan una paleta y deben golpear una pelota de un lado a otro de la pantalla. El objetivo es hacer que la pelota pase al otro lado de la pantalla sin que el oponente la devuelva. El juego fue un gran éxito y ayudó a popularizar los videojuegos en todo el mundo.
 

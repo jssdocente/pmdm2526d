@@ -1,4 +1,4 @@
-# Breakout
+# **Juego Breakout**
 
 El videojuego Breakout es un clásico de los videojuegos, lanzado por Atari en 1972. Es un juego de arcade que consiste en controlar una paleta para hacer rebotar una bola y destruir bloques en la pantalla. El objetivo es eliminar todos los bloques sin dejar que la bola caiga al suelo.
 
@@ -8,7 +8,7 @@ Años más tarde, salió también el Arkanoid, que es una versión más moderna 
 
 Vamos a hacer nuestra versión de este juego en Unity 6.
 
-## Creando el escenario
+## **Creando el escenario**
 
 Partiremos de un proyecto nuevo en Unity 2D, y lo primero que haremos será crear un nuevo proyecto en blanco. Para ello, abrimos Unity Hub y creamos un nuevo proyecto 2D. Una vez creado el proyecto, lo abrimos y nos aparecerá la pantalla de bienvenida de Unity.
 
@@ -76,7 +76,7 @@ También vamos a añadir un nuevo componente de tipo Circle Collider 2D para que
 
 Con esto, ya tenemos el escenario básico del juego. Ahora vamos a crear el script que controlará la paleta y la bola.
 
-## Creando la mecánica principal
+## **Creando la mecánica principal**
 
 Vamos a hacer el Rigidbody2D de la paleta **Kinematic** para que no se vea afectada por la gravedad y no se mueva al colisionar con la bola.
 
@@ -226,7 +226,7 @@ Una vez hecho esto, la pelota ya rebota y destruye bloques, vamos a hacer ahora 
 
 Para gestionar todo esto debemos de empezar creando el GameManager, que será el encargado de gestionar el estado del juego y la lógica de reinicio y cambio de nivel.
 
-## Creando el GameManager
+## **Creando el GameManager**
 
 Vamos a crear un objeto vacío en la escena llamado "GameManager" y le añadimos un nuevo script llamado "GameManager". Este script se encargará de gestionar el estado del juego y la lógica de reinicio y cambio de nivel.
 
@@ -356,7 +356,7 @@ Por último, vamos a añadir el siguiente código al Script de la bola para que 
 
 Con esto, ya tenemos la mecánica básica del juego. Ahora vamos a añadir un sistema de puntuación y un número de vidas.
 
-## Añadiendo puntuación y vidas
+## **Añadiendo puntuación y vidas**
 
 Antes de nada, vamos a añadir un Canvas para gestionar la UI desde él, y vamos a añadirle un nuevo Script llamado "UIManager". Este script se encargará de gestionar la UI del juego, como la puntuación y el número de vidas.
 
@@ -532,15 +532,7 @@ Con esto, si probamos, ya podemos jugar y se van añadiendo puntos y las vidas s
 !!! warning "Si la bola no vuelve a su posición inicial"
     Asegúrate de que la pala está tagueada con el tag "Player" y que las posiciones iniciales se están recogiendo correctamente.
 
-## Dándole vida al juego
-
-Ya tenemos un nivel casi funcional, vamos a darle un poco de vida al juego con un par de efectos de sonido cuándo la bola choca y cuándo perdemos una vida, para ello, vamos a añadir unos cuantos clips de SFX gratuitos. 
-
-Podéis encontrar algunos en [Freesound](https://freesound.org/) o en [Mixkit](https://mixkit.co/).
-
-:::
-
-## Dándole vida al juego
+## **Dándole vida al juego**
 
 Ya tenemos un nivel casi funcional, vamos a darle un poco de vida al juego con un par de efectos de sonido cuándo la bola choca y cuándo perdemos una vida, para ello, vamos a añadir unos cuantos clips de SFX gratuitos. 
 
