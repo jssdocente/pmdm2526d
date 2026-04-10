@@ -91,39 +91,36 @@ nav:
     - "15. Soporte multiidioma": temas/proyectos/GameVault/15-Soporte-multilenguaje.md
     - "16. Compilación y Generación de Artefactos": temas/proyectos/GameVault/16-generar-artefactos.md
 
-    #- "Paso 1": temas/proyectos/GameVault/01-configuracion-proyecto.md
-    
-  #   - "1. Instalar Laravel": "temas/07/01.instalar-laravel.md"
-  #   - "2. Configurar Tailwind": "temas/07/02.configurar-tailwind.md"
-  #   - "3. Layouts con Blade": "temas/07/03.layouts-con-blade.md"
-  #   - "4. Primer componente": "temas/07/04.primer-componente.md"
-  #   - "5. Estilando componente": "temas/07/05.estilando-nav-link.md"
-  #   - "6. Pasar datos a las vistas": "temas/07/06.pasar-datos-vista-y-rutas.md"
-  #   - "7. Autloading y namespaces": "temas/07/07.autoloading-namespaces-y-models.md"
-  #   - "8. Introducción a las migraciones": "temas/07/08.intro-migraciones.md"
-  #   - "9. Introducción a Eloquent": "temas/07/09.intro-eloquent.md"
-  #   - "10. Eloquent: Factorias": "temas/07/10.eloquent-factories.md"
-  #   - "11. Eloquent: relaciones básicas": "temas/07/11.eloquent-relations-basic.md"
-  #   - "12. Eloquent: relación many-to-many": "temas/07/12.eloquent-relations-many-to-many.md"
-  #   - "13. Eloquent: relación many-has-many-throught": "temas/07/13.eloquent-relations-has-many-throught.md"
-  # - "8.- Frameworks PHP - Laravel avanzado":
-  #   - "Introducción": temas/08/index.md
-  #   - "14. Database Seeders": "temas/08/14.database-seeders.md"
-  #   - "15. Formularios con Laravel y CRSF": "temas/08/15.forms-csrf.md"
-  #   - "16. Validación": "temas/08/16.forms-always-validate.md"
-  #   - "17. Formularios CRUD": "temas/08/17.forms-edit-update-delete.md"
-  #   - "18. Mejorando las rutas": "temas/08/18.mejorar-rutas.md"
-  #   - "19. Autenticación: crear sistema": "temas/08/19.create-login-register-system.md"
-  #   - "20. Autorización: proteger rutas": "temas/08/20.proteger-rutas-middleware.md"
-  #   - "21. Informando al usuario": "temas/08/21.flash-messages.md"
-  #   - "22. Control y Gestión de excepciones": "temas/08/22.Manejando-excepciones.md"
-
-  # - "8.- Servicios REST": "09rest.md"
-  # - "Anexo":
-  #   - "Anexo I. Arquitecturas Web": "extra/ArquitecturasWebExtendido.md"
-
-  # - "Guias":
-  #   - "Configuración entorno desarrollo PHP con Laravel Herd": "extra/guias/02.config_devenv_laravel_herd.md"
+  - "UT5 - Desarrollo de Videojuegos":
+    - "Introducción": temas/05/index.md 
+    - "Unity":
+      - "Introducción": temas/05/1-Unity/1-Introduccion.md
+      - "Unity": temas/05/1-Unity/2-Unity.md
+      - "Assets": temas/05/1-Unity/3-Assets.md
+      - "Packages": temas/05/1-Unity/4-Packages.md
+      - "Tags y Layers": temas/05/1-Unity/5-TagsLayers.md
+      - "GameObjects y componentes": temas/05/1-Unity/6-GameObjects.md
+      - "Cámaras": temas/05/1-Unity/7-Camaras.md
+      - "Físicas": temas/05/1-Unity/8-Fisicas.md
+      - "Scripting": temas/05/1-Unity/9-Scripting.md
+      - "Prefabs": temas/05/1-Unity/10-Prefabs.md
+      - "UI": temas/05/1-Unity/11-UI.md
+      - "Luces": temas/05/1-Unity/12-Luces.md
+      - "Texturas": temas/05/1-Unity/13-MaterialShadersTexturas.md
+      - "Audio": temas/05/1-Unity/14-Audio.md
+      - "Animaciones": temas/05/1-Unity/14-Animaciones.md
+      - "Audio": temas/05/1-Unity/15-Audio.md
+      - "Animaciones": temas/05/1-Unity/15-Animaciones.md
+      - "Builds": temas/05/1-Unity/16-Builds.md
+      - "Corrutinas": temas/05/1-Unity/17-Corrutinas.md
+      - "Object Pooling": temas/05/1-Unity/18-ObjectPooling.md
+      - "Parallax": temas/05/1-Unity/19-Parallax.md
+      - "Coyote Time": temas/05/1-Unity/20-CoyoteTime.md
+    - "Juegos":
+      - "Pong": temas/05/2-Juegos/1-Pong.md
+      - "Breakout": temas/05/2-Juegos/2-Breakout.md
+    - "C#":
+      - "Introducción": temas/05/3-CSharp/3-CSharp.md
 
 theme:
   language: es
